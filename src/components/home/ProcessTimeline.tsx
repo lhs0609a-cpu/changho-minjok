@@ -20,24 +20,24 @@ export default function ProcessTimeline() {
     <section className="py-20 bg-hanji">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-          <span className="text-gold font-medium mb-4 block">시공 과정 안내</span>
+          <span className="text-primary font-medium mb-4 block">시공 과정 안내</span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">창호의민족과 함께하는 6단계</h2>
           <p className="text-muted max-w-2xl mx-auto">상담부터 사후관리까지, 체계적인 프로세스로 고객님께 최상의 서비스를 제공합니다.</p>
         </motion.div>
         <div className="relative">
-          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gold/30 -translate-x-1/2" />
+          <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-primary/30 -translate-x-1/2" />
           <div className="space-y-8 lg:space-y-0">
             {steps.map((step, index) => (
               <motion.div key={step.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className={"lg:flex lg:items-center lg:gap-8 " + (index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse")}>
                 <div className={"lg:w-1/2 " + (index % 2 === 0 ? "lg:text-right lg:pr-12" : "lg:text-left lg:pl-12")}>
                   <div className="bg-white rounded-2xl p-6 shadow-lg cursor-pointer" onClick={() => setActiveStep(activeStep === step.id ? null : step.id)}>
                     <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 bg-gold/10 rounded-xl flex items-center justify-center">
-                        <step.icon className="w-6 h-6 text-gold" />
+                      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                        <step.icon className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="text-xs font-bold text-gold">STEP {step.id}</span>
+                          <span className="text-xs font-bold text-primary">STEP {step.id}</span>
                           <span className="text-xs text-muted">{step.duration}</span>
                         </div>
                         <h3 className="font-bold text-ink text-lg">{step.title}</h3>
@@ -50,7 +50,7 @@ export default function ProcessTimeline() {
                         <ul className="space-y-2">
                           {step.details.map((detail, i) => (
                             <li key={i} className="flex items-center gap-2 text-sm text-ink">
-                              <span className="w-1.5 h-1.5 bg-gold rounded-full" />
+                              <span className="w-1.5 h-1.5 bg-primary rounded-full" />
                               {detail}
                             </li>
                           ))}
@@ -59,7 +59,7 @@ export default function ProcessTimeline() {
                     )}
                   </div>
                 </div>
-                <div className="hidden lg:flex w-12 h-12 bg-gold rounded-full items-center justify-center text-white font-bold shadow-lg z-10">{step.id}</div>
+                <div className="hidden lg:flex w-12 h-12 bg-primary rounded-full items-center justify-center text-white font-bold shadow-lg z-10">{step.id}</div>
                 <div className="lg:w-1/2" />
               </motion.div>
             ))}

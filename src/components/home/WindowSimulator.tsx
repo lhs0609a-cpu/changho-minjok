@@ -31,7 +31,7 @@ export default function WindowSimulator() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-gold font-medium mb-4">
+          <span className="inline-flex items-center gap-2 text-primary font-medium mb-4">
             <Palette className="w-5 h-5" />우리집 창호 시뮬레이터
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">내 집에 어울리는 창호는?</h2>
@@ -61,7 +61,7 @@ export default function WindowSimulator() {
               <h3 className="font-bold text-ink text-lg mb-4">프레임 색상</h3>
               <div className="grid grid-cols-3 gap-3">
                 {frameColors.map((color) => (
-                  <button key={color.id} onClick={() => setSelectedColor(color.id)} className={selectedColor === color.id ? "p-4 rounded-xl border-2 border-gold bg-white" : "p-4 rounded-xl border-2 border-transparent bg-white hover:border-gray-200"}>
+                  <button key={color.id} onClick={() => setSelectedColor(color.id)} className={selectedColor === color.id ? "p-4 rounded-xl border-2 border-primary bg-white" : "p-4 rounded-xl border-2 border-transparent bg-white hover:border-gray-200"}>
                     <div className="w-full h-8 rounded-md mb-2 border" style={{ backgroundColor: color.color }} />
                     <span className="text-sm font-medium text-ink">{color.label}</span>
                   </button>
@@ -72,7 +72,7 @@ export default function WindowSimulator() {
               <h3 className="font-bold text-ink text-lg mb-4">유리 타입</h3>
               <div className="grid grid-cols-2 gap-3">
                 {glassStyles.map((glass) => (
-                  <button key={glass.id} onClick={() => setSelectedGlass(glass.id)} className={selectedGlass === glass.id ? "p-4 rounded-xl border-2 border-gold bg-white text-left" : "p-4 rounded-xl border-2 border-transparent bg-white hover:border-gray-200 text-left"}>
+                  <button key={glass.id} onClick={() => setSelectedGlass(glass.id)} className={selectedGlass === glass.id ? "p-4 rounded-xl border-2 border-primary bg-white text-left" : "p-4 rounded-xl border-2 border-transparent bg-white hover:border-gray-200 text-left"}>
                     <div className="w-full h-8 rounded-md mb-2 border" style={{ backgroundColor: "rgba(135, 206, 235, " + glass.opacity + ")" }} />
                     <span className="text-sm font-medium text-ink">{glass.label}</span>
                   </button>

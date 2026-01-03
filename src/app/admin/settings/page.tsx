@@ -31,7 +31,7 @@ export default function AdminSettingsPage() {
                 onClick={() => setActiveTab(tab.id)}
                 className={"w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors " +
                   (activeTab === tab.id
-                    ? "bg-gold text-white"
+                    ? "bg-primary text-white"
                     : "text-muted hover:bg-gray-100 hover:text-ink")}
               >
                 <tab.icon className="w-5 h-5" />
@@ -49,7 +49,7 @@ export default function AdminSettingsPage() {
                 <h2 className="text-lg font-bold text-ink">프로필 설정</h2>
 
                 <div className="flex items-center gap-6">
-                  <div className="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                  <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-bold">
                     관
                   </div>
                   <button className="px-4 py-2 border rounded-lg text-ink hover:bg-gray-50 transition-colors">
@@ -63,7 +63,7 @@ export default function AdminSettingsPage() {
                     <input
                       type="text"
                       defaultValue="관리자"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
@@ -71,7 +71,7 @@ export default function AdminSettingsPage() {
                     <input
                       type="email"
                       defaultValue="admin@changho-minjok.co.kr"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
@@ -79,7 +79,7 @@ export default function AdminSettingsPage() {
                     <input
                       type="tel"
                       defaultValue="010-1234-5678"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
@@ -87,12 +87,12 @@ export default function AdminSettingsPage() {
                     <input
                       type="text"
                       defaultValue="경영지원팀"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-gold text-white px-6 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+                <button className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                   <Save className="w-5 h-5" />
                   저장
                 </button>
@@ -109,7 +109,7 @@ export default function AdminSettingsPage() {
                     <input
                       type="text"
                       defaultValue="창호의민족"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
@@ -117,7 +117,7 @@ export default function AdminSettingsPage() {
                     <input
                       type="tel"
                       defaultValue="1668-1453"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
@@ -125,7 +125,7 @@ export default function AdminSettingsPage() {
                     <input
                       type="text"
                       defaultValue="경기도 화성시 정남면 창호로 123"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
@@ -133,12 +133,12 @@ export default function AdminSettingsPage() {
                     <input
                       type="email"
                       defaultValue="info@changho-minjok.co.kr"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-gold text-white px-6 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+                <button className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                   <Save className="w-5 h-5" />
                   저장
                 </button>
@@ -155,7 +155,7 @@ export default function AdminSettingsPage() {
                       <p className="font-medium text-ink">신규 문의 알림</p>
                       <p className="text-sm text-muted">새로운 견적 문의가 접수되면 알림을 받습니다.</p>
                     </div>
-                    <input type="checkbox" defaultChecked className="w-5 h-5 accent-gold" />
+                    <input type="checkbox" defaultChecked className="w-5 h-5 accent-primary" />
                   </label>
 
                   <label className="flex items-center justify-between p-4 bg-hanji rounded-lg cursor-pointer">
@@ -163,7 +163,7 @@ export default function AdminSettingsPage() {
                       <p className="font-medium text-ink">일정 알림</p>
                       <p className="text-sm text-muted">예정된 실측/시공 일정 전날 알림을 받습니다.</p>
                     </div>
-                    <input type="checkbox" defaultChecked className="w-5 h-5 accent-gold" />
+                    <input type="checkbox" defaultChecked className="w-5 h-5 accent-primary" />
                   </label>
 
                   <label className="flex items-center justify-between p-4 bg-hanji rounded-lg cursor-pointer">
@@ -171,11 +171,11 @@ export default function AdminSettingsPage() {
                       <p className="font-medium text-ink">이메일 알림</p>
                       <p className="text-sm text-muted">중요 알림을 이메일로도 받습니다.</p>
                     </div>
-                    <input type="checkbox" className="w-5 h-5 accent-gold" />
+                    <input type="checkbox" className="w-5 h-5 accent-primary" />
                   </label>
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-gold text-white px-6 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+                <button className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                   <Save className="w-5 h-5" />
                   저장
                 </button>
@@ -191,26 +191,26 @@ export default function AdminSettingsPage() {
                     <label className="block text-sm font-medium text-ink mb-2">현재 비밀번호</label>
                     <input
                       type="password"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-2">새 비밀번호</label>
                     <input
                       type="password"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-ink mb-2">새 비밀번호 확인</label>
                     <input
                       type="password"
-                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                      className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                     />
                   </div>
                 </div>
 
-                <button className="inline-flex items-center gap-2 bg-gold text-white px-6 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+                <button className="inline-flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
                   <Save className="w-5 h-5" />
                   비밀번호 변경
                 </button>

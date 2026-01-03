@@ -58,7 +58,7 @@ export default function AdminConsultationsPage() {
           <h1 className="text-2xl font-bold text-ink">상담 기록</h1>
           <p className="text-muted mt-1">총 {consultations.length}건의 상담 기록</p>
         </div>
-        <button className="inline-flex items-center gap-2 bg-gold text-white px-4 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+        <button className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
           <Plus className="w-5 h-5" />
           상담 등록
         </button>
@@ -75,7 +75,7 @@ export default function AdminConsultationsPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="고객명, 상담 내용으로 검색"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
             />
           </div>
 
@@ -85,7 +85,7 @@ export default function AdminConsultationsPage() {
             <select
               value={selectedType}
               onChange={(e) => setSelectedType(e.target.value)}
-              className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+              className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
             >
               <option value="전체">전체 유형</option>
               <option value="전화">전화</option>
@@ -110,7 +110,7 @@ export default function AdminConsultationsPage() {
                 <div>
                   <Link
                     href={"/admin/customers/" + consultation.customerId}
-                    className="font-bold text-ink hover:text-gold transition-colors"
+                    className="font-bold text-ink hover:text-primary transition-colors"
                   >
                     {consultation.customerName}
                   </Link>
@@ -134,8 +134,8 @@ export default function AdminConsultationsPage() {
 
               {/* 우측: 다음 액션 */}
               <div className="lg:w-56 lg:text-right">
-                <div className="inline-block bg-gold/10 rounded-lg p-3 text-left">
-                  <p className="text-xs text-gold font-medium mb-1">다음 액션</p>
+                <div className="inline-block bg-primary/10 rounded-lg p-3 text-left">
+                  <p className="text-xs text-primary font-medium mb-1">다음 액션</p>
                   <p className="text-sm text-ink font-medium">{consultation.nextAction}</p>
                   <div className="flex items-center gap-1 mt-1 text-xs text-muted">
                     <Calendar className="w-3 h-3" />
@@ -157,7 +157,7 @@ export default function AdminConsultationsPage() {
           <button className="p-2 border rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 bg-white" disabled>
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button className="px-4 py-2 bg-gold text-white rounded-lg font-medium">1</button>
+          <button className="px-4 py-2 bg-primary text-white rounded-lg font-medium">1</button>
           <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 transition-colors bg-white">2</button>
           <button className="p-2 border rounded-lg hover:bg-gray-50 transition-colors bg-white">
             <ChevronRight className="w-5 h-5" />

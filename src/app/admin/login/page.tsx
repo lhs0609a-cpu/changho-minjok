@@ -63,7 +63,7 @@ export default function AdminLoginPage() {
                   required
                   value={formData.email}
                   onChange={e => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                  className="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                   placeholder="admin@changho-minjok.co.kr"
                 />
               </div>
@@ -79,7 +79,7 @@ export default function AdminLoginPage() {
                   required
                   value={formData.password}
                   onChange={e => setFormData({ ...formData, password: e.target.value })}
-                  className="w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+                  className="w-full pl-10 pr-12 py-3 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
                   placeholder="비밀번호 입력"
                 />
                 <button

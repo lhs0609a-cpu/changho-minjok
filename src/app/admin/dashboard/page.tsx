@@ -50,8 +50,8 @@ export default function AdminDashboardPage() {
             className="bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-gold/10 rounded-lg flex items-center justify-center">
-                <stat.icon className="w-6 h-6 text-gold" />
+              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <stat.icon className="w-6 h-6 text-primary" />
               </div>
               <span
                 className={`flex items-center text-sm font-medium ${
@@ -78,7 +78,7 @@ export default function AdminDashboardPage() {
         <div className="lg:col-span-2 bg-white rounded-xl shadow-sm">
           <div className="p-6 border-b flex items-center justify-between">
             <h2 className="font-bold text-ink text-lg">최근 문의</h2>
-            <Link href="/admin/inquiries" className="text-gold text-sm font-medium hover:underline">
+            <Link href="/admin/inquiries" className="text-primary text-sm font-medium hover:underline">
               전체 보기
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function AdminDashboardPage() {
                   <div className="text-right">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-sm text-muted">{inquiry.housingType}</span>
-                      <span className="text-sm text-gold font-medium">{inquiry.product}</span>
+                      <span className="text-sm text-primary font-medium">{inquiry.product}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <span
@@ -127,7 +127,7 @@ export default function AdminDashboardPage() {
         <div className="bg-white rounded-xl shadow-sm">
           <div className="p-6 border-b flex items-center justify-between">
             <h2 className="font-bold text-ink text-lg">오늘의 일정</h2>
-            <Link href="/admin/schedule" className="text-gold text-sm font-medium hover:underline">
+            <Link href="/admin/schedule" className="text-primary text-sm font-medium hover:underline">
               전체 보기
             </Link>
           </div>
@@ -159,7 +159,7 @@ export default function AdminDashboardPage() {
                     </span>
                   </div>
                   <p className="text-sm text-muted truncate">{schedule.address}</p>
-                  <p className="text-xs text-gold mt-1">{schedule.date}</p>
+                  <p className="text-xs text-primary mt-1">{schedule.date}</p>
                 </div>
               </div>
             ))}
@@ -178,14 +178,14 @@ export default function AdminDashboardPage() {
             <div className="space-y-6">
               {recentActivities.map((activity) => (
                 <div key={activity.id} className="flex items-start gap-4 relative">
-                  <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center z-10">
+                  <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center z-10">
                     <Phone className="w-4 h-4 text-white" />
                   </div>
                   <div className="flex-1 pt-1">
                     <p className="text-ink">
                       <span className="font-medium">{activity.user}</span>
                       님이{" "}
-                      <span className="font-medium text-gold">{activity.target}</span>
+                      <span className="font-medium text-primary">{activity.target}</span>
                       님에게{" "}
                       <span className="font-medium">{activity.action}</span>
                     </p>

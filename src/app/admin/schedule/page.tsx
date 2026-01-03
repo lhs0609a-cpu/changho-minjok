@@ -57,18 +57,18 @@ export default function AdminSchedulePage() {
           <div className="flex items-center border rounded-lg overflow-hidden">
             <button
               onClick={() => setView("week")}
-              className={"px-4 py-2 text-sm font-medium transition-colors " + (view === "week" ? "bg-gold text-white" : "bg-white text-ink hover:bg-gray-50")}
+              className={"px-4 py-2 text-sm font-medium transition-colors " + (view === "week" ? "bg-primary text-white" : "bg-white text-ink hover:bg-gray-50")}
             >
               주간
             </button>
             <button
               onClick={() => setView("month")}
-              className={"px-4 py-2 text-sm font-medium transition-colors " + (view === "month" ? "bg-gold text-white" : "bg-white text-ink hover:bg-gray-50")}
+              className={"px-4 py-2 text-sm font-medium transition-colors " + (view === "month" ? "bg-primary text-white" : "bg-white text-ink hover:bg-gray-50")}
             >
               월간
             </button>
           </div>
-          <button className="inline-flex items-center gap-2 bg-gold text-white px-4 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+          <button className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
             <Plus className="w-5 h-5" />
             일정 추가
           </button>
@@ -98,10 +98,10 @@ export default function AdminSchedulePage() {
             return (
               <div
                 key={index}
-                className={"p-4 text-center border-r last:border-r-0 " + (isToday ? "bg-gold/5" : "")}
+                className={"p-4 text-center border-r last:border-r-0 " + (isToday ? "bg-primary/5" : "")}
               >
                 <p className="text-sm text-muted">{weekDays[index]}</p>
-                <p className={"text-2xl font-bold mt-1 " + (isToday ? "text-gold" : "text-ink")}>
+                <p className={"text-2xl font-bold mt-1 " + (isToday ? "text-primary" : "text-ink")}>
                   {date.getDate()}
                 </p>
               </div>
@@ -116,7 +116,7 @@ export default function AdminSchedulePage() {
             return (
               <div
                 key={index}
-                className={"p-2 border-r last:border-r-0 " + (isToday ? "bg-gold/5" : "")}
+                className={"p-2 border-r last:border-r-0 " + (isToday ? "bg-primary/5" : "")}
               >
                 <div className="space-y-2">
                   {daySchedules.map((schedule) => (
@@ -164,7 +164,7 @@ export default function AdminSchedulePage() {
                     {schedule.address}
                   </div>
                 </div>
-                <span className="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm font-medium">
+                <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
                   {schedule.status}
                 </span>
               </div>

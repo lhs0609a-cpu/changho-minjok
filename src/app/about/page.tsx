@@ -83,8 +83,8 @@ export default function AboutPage() {
         {/* 히어로 */}
         <section className="relative hero-gradient py-32 overflow-hidden">
           <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-20 right-20 w-72 h-72 bg-gold/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 left-20 w-96 h-96 bg-gold/5 rounded-full blur-3xl" />
+            <div className="absolute top-20 right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
           </div>
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -119,7 +119,7 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <span className="section-label text-gold-light">Brand Philosophy</span>
+                <span className="section-label text-primary-light">Brand Philosophy</span>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mt-4 mb-6">
                   화려한 광고보다<br />
                   공장의 기계 소리를 믿습니다
@@ -140,11 +140,11 @@ export default function AboutPage() {
                   </p>
                 </div>
 
-                <blockquote className="mt-8 pl-6 border-l-2 border-gold">
+                <blockquote className="mt-8 pl-6 border-l-2 border-primary">
                   <p className="font-serif text-xl text-white italic">
                     "우리가 흘린 공장의 땀방울이 곧<br />제품의 내구성이 된다는 믿음.
                   </p>
-                  <p className="mt-2 text-gold text-sm font-medium">
+                  <p className="mt-2 text-primary-light text-sm font-medium">
                     그것이 창호의 민족을 지탱하는 유일한 철학입니다.
                   </p>
                 </blockquote>
@@ -159,22 +159,22 @@ export default function AboutPage() {
                 <div className="grid grid-cols-2 gap-6">
                   <div className="text-center p-6">
                     <p className="stat-number text-5xl text-white">10</p>
-                    <p className="text-gold text-lg font-bold mt-1">년</p>
+                    <p className="text-primary-light text-lg font-bold mt-1">년</p>
                     <p className="text-slate text-sm mt-2">제조 경력</p>
                   </div>
                   <div className="text-center p-6">
                     <p className="stat-number text-5xl text-white">3,500</p>
-                    <p className="text-gold text-lg font-bold mt-1">평</p>
+                    <p className="text-primary-light text-lg font-bold mt-1">평</p>
                     <p className="text-slate text-sm mt-2">스마트 팩토리</p>
                   </div>
                   <div className="text-center p-6">
                     <p className="stat-number text-5xl text-white">3,500</p>
-                    <p className="text-gold text-lg font-bold mt-1">+</p>
+                    <p className="text-primary-light text-lg font-bold mt-1">+</p>
                     <p className="text-slate text-sm mt-2">누적 시공</p>
                   </div>
                   <div className="text-center p-6">
                     <p className="stat-number text-5xl text-white">100</p>
-                    <p className="text-gold text-lg font-bold mt-1">틀/일</p>
+                    <p className="text-primary-light text-lg font-bold mt-1">틀/일</p>
                     <p className="text-slate text-sm mt-2">생산 능력</p>
                   </div>
                 </div>
@@ -210,8 +210,8 @@ export default function AboutPage() {
               >
                 <div className="glass rounded-3xl p-8">
                   <div className="flex items-start gap-4 mb-6">
-                    <div className="w-12 h-12 bg-gold/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                      <Zap className="w-6 h-6 text-gold" />
+                    <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <Zap className="w-6 h-6 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-serif text-xl font-bold text-ink mb-2">
@@ -234,7 +234,7 @@ export default function AboutPage() {
                     {partners.map((partner, index) => (
                       <span
                         key={index}
-                        className="px-4 py-2 bg-gold/10 text-gold rounded-full text-sm font-medium"
+                        className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium"
                       >
                         {partner}
                       </span>
@@ -256,8 +256,8 @@ export default function AboutPage() {
                     className="glass rounded-2xl p-6 card-hover"
                   >
                     <div className="flex items-start gap-4">
-                      <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
-                        <CheckCircle2 className="w-5 h-5 text-dark" />
+                      <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                        <CheckCircle2 className="w-5 h-5 text-white" />
                       </div>
                       <div>
                         <h4 className="font-bold text-ink mb-1">{item.title}</h4>
@@ -300,10 +300,10 @@ export default function AboutPage() {
                   transition={{ delay: index * 0.1 }}
                   className="bg-white rounded-3xl p-8 shadow-xl card-hover text-center"
                 >
-                  <div className="w-20 h-20 bg-gradient-to-br from-gold to-gold-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <item.icon className="w-10 h-10 text-dark" />
+                  <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary-light rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <item.icon className="w-10 h-10 text-white" />
                   </div>
-                  <span className="inline-block px-3 py-1 text-xs font-bold text-gold bg-gold/10 rounded-full mb-3">
+                  <span className="inline-block px-3 py-1 text-xs font-bold text-primary bg-primary/10 rounded-full mb-3">
                     {item.subtitle}
                   </span>
                   <h3 className="font-serif text-xl font-bold text-ink mb-3">{item.title}</h3>
@@ -321,7 +321,7 @@ export default function AboutPage() {
               <p className="font-serif text-xl md:text-2xl text-ink leading-relaxed">
                 금호석유화학 휴그린, KCC 등 대기업 파트너사들과 쌓아온<br className="hidden md:block" />
                 <strong>&apos;대기업 수준의 품질&apos;</strong>에, 중간 유통 마진을 걷어낸<br className="hidden md:block" />
-                <strong className="text-gold">&apos;공장 직영의 합리적인 가격&apos;</strong>을 더했습니다.
+                <strong className="text-primary">&apos;공장 직영의 합리적인 가격&apos;</strong>을 더했습니다.
               </p>
               <p className="mt-6 text-muted">
                 "견적만 비교하지 마시고, 공장을 방문해 주십시오."<br />
@@ -340,7 +340,7 @@ export default function AboutPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <span className="section-label text-gold-light">History</span>
+              <span className="section-label text-primary-light">History</span>
               <h2 className="font-serif text-3xl md:text-4xl font-bold mt-4 mb-4">
                 걸어온 길, 그리고 나아갈 길
               </h2>
@@ -361,8 +361,8 @@ export default function AboutPage() {
                   className="glass-dark rounded-3xl p-8"
                 >
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="text-2xl font-bold text-gold">{period.period}</span>
-                    <span className="px-4 py-1 bg-gold/20 text-gold rounded-full text-sm font-medium">
+                    <span className="text-2xl font-bold text-primary-light">{period.period}</span>
+                    <span className="px-4 py-1 bg-primary/20 text-primary-light rounded-full text-sm font-medium">
                       {period.label}
                     </span>
                   </div>
@@ -373,7 +373,7 @@ export default function AboutPage() {
                         key={eventIndex}
                         className="flex items-start gap-4 p-4 bg-white/5 rounded-xl"
                       >
-                        <span className="text-gold font-bold min-w-[80px]">{event.year}</span>
+                        <span className="text-primary-light font-bold min-w-[80px]">{event.year}</span>
                         <div>
                           <h4 className="font-bold text-white mb-1">{event.title}</h4>
                           <p className="text-sm text-slate">{event.description}</p>
@@ -388,18 +388,18 @@ export default function AboutPage() {
         </section>
 
         {/* 푸터 카피 */}
-        <section className="py-20 bg-gradient-to-r from-gold to-gold-light">
+        <section className="py-20 bg-gradient-to-r from-primary to-primary-light">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <Building2 className="w-16 h-16 text-dark/80 mx-auto mb-6" />
-              <h3 className="font-serif text-2xl md:text-3xl font-bold text-dark mb-4">
+              <Building2 className="w-16 h-16 text-white/90 mx-auto mb-6" />
+              <h3 className="font-serif text-2xl md:text-3xl font-bold text-white mb-4">
                 공장의 기술력에 영업의 진심을 담았습니다
               </h3>
-              <p className="text-dark/80 text-lg">
+              <p className="text-white/90 text-lg">
                 3,500평 스마트 팩토리의 자부심, 창호의 민족
               </p>
             </motion.div>

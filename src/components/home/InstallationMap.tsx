@@ -22,7 +22,7 @@ export default function InstallationMap() {
     <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-gold font-medium mb-4">
+          <span className="inline-flex items-center gap-2 text-primary font-medium mb-4">
             <MapPin className="w-5 h-5" />실시간 시공 현황
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">전국 어디서나 창호의민족</h2>
@@ -32,7 +32,7 @@ export default function InstallationMap() {
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-2">
             <div className="bg-hanji rounded-2xl p-4 shadow-lg aspect-video flex items-center justify-center">
               <div className="text-center text-muted">
-                <MapPin className="w-16 h-16 mx-auto mb-4 text-gold" />
+                <MapPin className="w-16 h-16 mx-auto mb-4 text-primary" />
                 <p className="font-medium">카카오맵 연동 예정</p>
                 <p className="text-sm mt-1">전국 시공 현황을 지도에서 확인하세요</p>
               </div>
@@ -40,7 +40,7 @@ export default function InstallationMap() {
             <div className="grid grid-cols-3 gap-4 mt-4">
               {stats.map((stat) => (
                 <div key={stat.label} className="bg-hanji rounded-xl p-4 text-center">
-                  <p className="text-2xl font-bold text-gold">{stat.value}</p>
+                  <p className="text-2xl font-bold text-primary">{stat.value}</p>
                   <p className="text-sm text-muted">{stat.label}</p>
                 </div>
               ))}

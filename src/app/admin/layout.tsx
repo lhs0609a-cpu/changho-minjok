@@ -78,7 +78,7 @@ export default function AdminLayout({
                 href={item.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                   isActive
-                    ? "bg-gold text-white"
+                    ? "bg-primary text-white"
                     : "text-white/70 hover:bg-white/10 hover:text-white"
                 }`}
               >
@@ -122,14 +122,14 @@ export default function AdminLayout({
             {/* 알림 */}
             <button className="relative text-muted hover:text-ink transition-colors">
               <Bell className="w-6 h-6" />
-              <span className="absolute -top-1 -right-1 w-5 h-5 bg-seal text-white text-xs rounded-full flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 w-5 h-5 bg-accent text-white text-xs rounded-full flex items-center justify-center">
                 3
               </span>
             </button>
 
             {/* 사용자 메뉴 */}
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center text-white font-bold">
+              <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white font-bold">
                 관
               </div>
               <div className="hidden sm:block">

@@ -43,7 +43,7 @@ export default function ContactPage() {
         <section className="bg-hanji py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
-              <span className="inline-flex items-center gap-2 text-gold font-medium">
+              <span className="inline-flex items-center gap-2 text-primary font-medium">
                 <MapPin className="w-5 h-5" />Contact
               </span>
               <h1 className="font-serif text-4xl md:text-5xl font-bold text-ink mt-4 mb-6">오시는 길</h1>
@@ -62,7 +62,7 @@ export default function ContactPage() {
               <div className="lg:col-span-2">
                 <div className="aspect-[16/9] bg-gradient-to-br from-hanji to-ivory rounded-2xl flex items-center justify-center">
                   <div className="text-center">
-                    <MapPin className="w-16 h-16 text-gold mx-auto mb-4" />
+                    <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
                     <p className="text-muted">카카오맵이 여기에 표시됩니다</p>
                     <p className="text-sm text-muted mt-2">경기도 화성시 정남면 창호로 123</p>
                   </div>
@@ -77,13 +77,13 @@ export default function ContactPage() {
                   <div className="space-y-4">
                     {contactInfo.map((info, index) => (
                       <div key={index} className="flex items-start gap-3">
-                        <div className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center flex-shrink-0">
-                          <info.icon className="w-5 h-5 text-gold" />
+                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                          <info.icon className="w-5 h-5 text-primary" />
                         </div>
                         <div>
                           <p className="text-sm text-muted">{info.label}</p>
                           {info.href ? (
-                            <a href={info.href} className="font-medium text-ink hover:text-gold transition-colors">
+                            <a href={info.href} className="font-medium text-ink hover:text-primary transition-colors">
                               {info.value}
                             </a>
                           ) : (
@@ -98,14 +98,14 @@ export default function ContactPage() {
                 {/* 영업시간 카드 */}
                 <div className="bg-ink rounded-2xl p-6 text-white">
                   <div className="flex items-center gap-2 mb-4">
-                    <Clock className="w-5 h-5 text-gold" />
+                    <Clock className="w-5 h-5 text-primary" />
                     <h3 className="font-bold text-lg">영업시간</h3>
                   </div>
                   <div className="space-y-2">
                     {businessHours.map((item, index) => (
                       <div key={index} className="flex justify-between">
                         <span className="text-gray-400">{item.day}</span>
-                        <span className={item.hours === "휴무" ? "text-seal" : "text-white font-medium"}>
+                        <span className={item.hours === "휴무" ? "text-accent" : "text-white font-medium"}>
                           {item.hours}
                         </span>
                       </div>
@@ -129,8 +129,8 @@ export default function ContactPage() {
             <div className="grid md:grid-cols-3 gap-6">
               {directions.map((item, index) => (
                 <div key={index} className="bg-white rounded-2xl p-6 shadow-lg">
-                  <div className="w-14 h-14 bg-gold/10 rounded-full flex items-center justify-center mb-4">
-                    <item.icon className="w-7 h-7 text-gold" />
+                  <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                    <item.icon className="w-7 h-7 text-primary" />
                   </div>
                   <h3 className="font-bold text-ink text-lg mb-2">{item.title}</h3>
                   <p className="text-muted text-sm leading-relaxed">{item.description}</p>
@@ -145,7 +145,7 @@ export default function ContactPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <span className="text-gold font-medium">Showroom</span>
+                <span className="text-primary font-medium">Showroom</span>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mt-2 mb-6">
                   직접 보고 결정하세요
                 </h2>
@@ -155,25 +155,25 @@ export default function ContactPage() {
                 </p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-center gap-3 text-ink">
-                    <span className="w-2 h-2 bg-gold rounded-full" />
+                    <span className="w-2 h-2 bg-primary rounded-full" />
                     PVC, 하이샤시, 시스템창호 전 제품 전시
                   </li>
                   <li className="flex items-center gap-3 text-ink">
-                    <span className="w-2 h-2 bg-gold rounded-full" />
+                    <span className="w-2 h-2 bg-primary rounded-full" />
                     단열/방음 성능 직접 체험
                   </li>
                   <li className="flex items-center gap-3 text-ink">
-                    <span className="w-2 h-2 bg-gold rounded-full" />
+                    <span className="w-2 h-2 bg-primary rounded-full" />
                     전문 상담사의 1:1 맞춤 상담
                   </li>
                   <li className="flex items-center gap-3 text-ink">
-                    <span className="w-2 h-2 bg-gold rounded-full" />
+                    <span className="w-2 h-2 bg-primary rounded-full" />
                     공장 견학 가능 (사전 예약)
                   </li>
                 </ul>
                 <Link
                   href="/inquiry"
-                  className="inline-flex items-center gap-2 bg-seal text-white px-6 py-3 rounded-lg font-medium hover:bg-seal/90 transition-colors"
+                  className="inline-flex items-center gap-2 btn-accent px-6 py-3 rounded-lg font-medium transition-colors"
                 >
                   방문 상담 예약<ArrowRight className="w-4 h-4" />
                 </Link>
@@ -202,7 +202,7 @@ export default function ContactPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/inquiry"
-                className="inline-flex items-center justify-center gap-2 bg-seal text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-seal/90 transition-colors"
+                className="inline-flex items-center justify-center gap-2 btn-accent px-8 py-4 rounded-lg font-bold text-lg transition-colors"
               >
                 무료 출장 상담 신청<ArrowRight className="w-5 h-5" />
               </Link>

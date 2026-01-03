@@ -50,7 +50,7 @@ export default function PriceSimulator() {
     <section id="simulator" className="py-20 bg-ivory">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-gold font-medium mb-4">
+          <span className="inline-flex items-center gap-2 text-primary font-medium mb-4">
             <Calculator className="w-5 h-5" />셀프 견적 시뮬레이터
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">우리집 창호, 얼마일까?</h2>
@@ -62,7 +62,7 @@ export default function PriceSimulator() {
               <label className="block text-ink font-bold mb-3">창문 종류</label>
               <div className="grid grid-cols-5 gap-2">
                 {windowTypes.map((type) => (
-                  <button key={type.id} onClick={() => setWindowType(type.id)} className={windowType === type.id ? "py-3 px-2 rounded-lg text-sm font-medium bg-gold text-white" : "py-3 px-2 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
+                  <button key={type.id} onClick={() => setWindowType(type.id)} className={windowType === type.id ? "py-3 px-2 rounded-lg text-sm font-medium bg-primary text-white" : "py-3 px-2 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
                 ))}
               </div>
             </div>
@@ -71,12 +71,12 @@ export default function PriceSimulator() {
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="text-sm text-muted mb-1 block">가로</label>
-                  <input type="range" min="500" max="4000" step="100" value={width} onChange={(e) => setWidth(Number(e.target.value))} className="w-full accent-gold" />
+                  <input type="range" min="500" max="4000" step="100" value={width} onChange={(e) => setWidth(Number(e.target.value))} className="w-full accent-primary" />
                   <div className="text-center font-bold text-ink mt-1">{width} mm</div>
                 </div>
                 <div>
                   <label className="text-sm text-muted mb-1 block">세로</label>
-                  <input type="range" min="500" max="3000" step="100" value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full accent-gold" />
+                  <input type="range" min="500" max="3000" step="100" value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full accent-primary" />
                   <div className="text-center font-bold text-ink mt-1">{height} mm</div>
                 </div>
               </div>
@@ -85,7 +85,7 @@ export default function PriceSimulator() {
               <label className="block text-ink font-bold mb-3">프레임 종류</label>
               <div className="grid grid-cols-2 gap-2">
                 {frameTypes.map((type) => (
-                  <button key={type.id} onClick={() => setFrameType(type.id)} className={frameType === type.id ? "py-3 px-4 rounded-lg text-sm font-medium bg-gold text-white" : "py-3 px-4 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
+                  <button key={type.id} onClick={() => setFrameType(type.id)} className={frameType === type.id ? "py-3 px-4 rounded-lg text-sm font-medium bg-primary text-white" : "py-3 px-4 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
                 ))}
               </div>
             </div>
@@ -93,7 +93,7 @@ export default function PriceSimulator() {
               <label className="block text-ink font-bold mb-3">유리 옵션</label>
               <div className="grid grid-cols-2 gap-2">
                 {glassTypes.map((type) => (
-                  <button key={type.id} onClick={() => setGlassType(type.id)} className={glassType === type.id ? "py-3 px-4 rounded-lg text-sm font-medium bg-gold text-white" : "py-3 px-4 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
+                  <button key={type.id} onClick={() => setGlassType(type.id)} className={glassType === type.id ? "py-3 px-4 rounded-lg text-sm font-medium bg-primary text-white" : "py-3 px-4 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
                 ))}
               </div>
             </div>
@@ -101,7 +101,7 @@ export default function PriceSimulator() {
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-ink text-white rounded-2xl p-6 md:p-8 shadow-lg flex flex-col justify-between">
             <div>
               <h3 className="text-lg font-medium text-gray-400 mb-2">예상 견적</h3>
-              <div className="text-5xl md:text-6xl font-bold text-gold mb-4">{formatPrice(estimatedPrice)}<span className="text-2xl text-gray-400 ml-2">원</span></div>
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-4">{formatPrice(estimatedPrice)}<span className="text-2xl text-gray-400 ml-2">원</span></div>
               <p className="text-gray-400 text-sm mb-8">* 실제 견적은 현장 실측 후 안내드립니다.</p>
               <div className="bg-white/10 rounded-xl p-4 space-y-2 text-sm">
                 <div className="flex justify-between"><span className="text-gray-400">창문</span><span>{windowTypes.find((w) => w.id === windowType)?.label}</span></div>
@@ -110,7 +110,7 @@ export default function PriceSimulator() {
                 <div className="flex justify-between"><span className="text-gray-400">유리</span><span>{glassTypes.find((g) => g.id === glassType)?.label}</span></div>
               </div>
             </div>
-            <Link href="/inquiry" className="mt-8 inline-flex items-center justify-center gap-2 bg-seal text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-seal/90 transition-colors w-full">정확한 견적 받기<ArrowRight className="w-5 h-5" /></Link>
+            <Link href="/inquiry" className="mt-8 inline-flex items-center justify-center gap-2 btn-accent px-8 py-4 rounded-lg font-bold text-lg w-full">정확한 견적 받기<ArrowRight className="w-5 h-5" /></Link>
           </motion.div>
         </div>
       </div>

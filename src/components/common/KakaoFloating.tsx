@@ -16,7 +16,7 @@ export default function KakaoFloating() {
             href="tel:1668-1453"
             className="flex items-center gap-3 bg-white px-4 py-3 rounded-full shadow-lg hover:shadow-xl transition-shadow"
           >
-            <div className="w-10 h-10 bg-seal rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
               <Phone className="w-5 h-5 text-white" />
             </div>
             <div className="pr-2">

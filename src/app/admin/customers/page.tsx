@@ -53,7 +53,7 @@ export default function AdminCustomersPage() {
           <h1 className="text-2xl font-bold text-ink">고객 관리</h1>
           <p className="text-muted mt-1">총 {customers.length}명의 고객</p>
         </div>
-        <button className="inline-flex items-center gap-2 bg-gold text-white px-4 py-2 rounded-lg font-medium hover:bg-gold/90 transition-colors">
+        <button className="inline-flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary/90 transition-colors">
           <Plus className="w-5 h-5" />
           고객 등록
         </button>
@@ -70,7 +70,7 @@ export default function AdminCustomersPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="이름, 전화번호, 이메일로 검색"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
             />
           </div>
 
@@ -80,7 +80,7 @@ export default function AdminCustomersPage() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+              className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
             >
               <option value="전체">전체 상태</option>
               <option value="신규">신규</option>
@@ -118,7 +118,7 @@ export default function AdminCustomersPage() {
                       <div>
                         <Link
                           href={"/admin/customers/" + customer.id}
-                          className="font-medium text-ink hover:text-gold transition-colors"
+                          className="font-medium text-ink hover:text-primary transition-colors"
                         >
                           {customer.name}
                         </Link>
@@ -172,7 +172,7 @@ export default function AdminCustomersPage() {
             <button className="p-2 border rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50" disabled>
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button className="px-4 py-2 bg-gold text-white rounded-lg font-medium">1</button>
+            <button className="px-4 py-2 bg-primary text-white rounded-lg font-medium">1</button>
             <button className="px-4 py-2 border rounded-lg hover:bg-gray-50 transition-colors">2</button>
             <button className="p-2 border rounded-lg hover:bg-gray-50 transition-colors">
               <ChevronRight className="w-5 h-5" />

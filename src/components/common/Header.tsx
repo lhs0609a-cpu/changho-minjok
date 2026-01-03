@@ -37,8 +37,8 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* 로고 */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
-              <span className="text-dark font-bold text-lg">창</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300">
+              <span className="text-white font-bold text-lg">창</span>
             </div>
             <div className="flex flex-col">
               <span className="font-serif text-xl font-bold text-ink leading-tight">
@@ -56,7 +56,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="animated-underline relative px-5 py-2 text-ink font-medium hover:text-gold transition-colors"
+                className="animated-underline relative px-5 py-2 text-ink font-medium hover:text-primary transition-colors"
               >
                 {item.label}
               </Link>
@@ -68,10 +68,10 @@ export default function Header() {
             {/* 대표번호 */}
             <a
               href="tel:1668-1453"
-              className="hidden md:flex items-center gap-2 text-ink hover:text-gold transition-colors group"
+              className="hidden md:flex items-center gap-2 text-ink hover:text-primary transition-colors group"
             >
-              <span className="w-9 h-9 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                <Phone className="w-4 h-4 text-gold" />
+              <span className="w-9 h-9 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Phone className="w-4 h-4 text-primary" />
               </span>
               <div className="flex flex-col">
                 <span className="text-xs text-muted">대표전화</span>
@@ -96,7 +96,7 @@ export default function Header() {
             {/* 무료 견적 버튼 */}
             <Link
               href="/inquiry"
-              className="hidden lg:flex btn-premium items-center gap-2 bg-gradient-to-r from-gold to-gold-light text-dark px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="hidden lg:flex btn-premium btn-primary items-center gap-2 px-6 py-2.5 rounded-full font-bold text-sm shadow-md hover:shadow-lg"
             >
               무료 견적
               <ChevronRight className="w-4 h-4" />
@@ -105,7 +105,7 @@ export default function Header() {
             {/* 모바일 메뉴 버튼 */}
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-gold/10 text-gold hover:bg-gold/20 transition-colors"
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-xl bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
               aria-label="메뉴"
             >
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -139,7 +139,7 @@ export default function Header() {
                       onClick={() => setIsMenuOpen(false)}
                     >
                       {item.label}
-                      <ChevronRight className="w-4 h-4 text-gold" />
+                      <ChevronRight className="w-4 h-4 text-primary-light" />
                     </Link>
                   </motion.div>
                 ))}
@@ -150,8 +150,8 @@ export default function Header() {
                   href="tel:1668-1453"
                   className="flex items-center gap-3 py-3 px-4 bg-white/5 rounded-xl"
                 >
-                  <span className="w-10 h-10 bg-gold/20 rounded-full flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-gold" />
+                  <span className="w-10 h-10 bg-primary/20 rounded-full flex items-center justify-center">
+                    <Phone className="w-5 h-5 text-primary-light" />
                   </span>
                   <div>
                     <span className="text-xs text-slate block">대표전화</span>
@@ -172,7 +172,7 @@ export default function Header() {
                 <Link
                   href="/inquiry"
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 bg-gradient-to-r from-gold to-gold-light text-dark py-3.5 rounded-xl font-bold"
+                  className="flex items-center justify-center gap-2 btn-primary py-3.5 rounded-xl font-bold"
                 >
                   무료 견적 받기
                   <ChevronRight className="w-5 h-5" />

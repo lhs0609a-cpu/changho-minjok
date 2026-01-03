@@ -24,7 +24,7 @@ export default function PortfolioGrid() {
     <section className="py-20 bg-ivory">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-gold font-medium mb-4">
+          <span className="inline-flex items-center gap-2 text-primary font-medium mb-4">
             <Grid className="w-5 h-5" />시공 사례
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">창호의민족 시공 포트폴리오</h2>
@@ -32,7 +32,7 @@ export default function PortfolioGrid() {
         </motion.div>
         <div className="flex justify-center gap-2 mb-8 flex-wrap">
           {filters.map((filter) => (
-            <button key={filter} onClick={() => setActiveFilter(filter)} className={activeFilter === filter ? "px-4 py-2 rounded-full text-sm font-medium bg-gold text-white" : "px-4 py-2 rounded-full text-sm font-medium bg-white text-ink hover:bg-gray-100"}>
+            <button key={filter} onClick={() => setActiveFilter(filter)} className={activeFilter === filter ? "px-4 py-2 rounded-full text-sm font-medium bg-primary text-white" : "px-4 py-2 rounded-full text-sm font-medium bg-white text-ink hover:bg-gray-100"}>
               {filter}
             </button>
           ))}
@@ -46,11 +46,11 @@ export default function PortfolioGrid() {
                 </div>
                 <div className="absolute top-3 left-3 flex gap-2">
                   <span className="px-2 py-1 bg-white/90 rounded-full text-xs font-medium">{item.type}</span>
-                  <span className="px-2 py-1 bg-gold/90 text-white rounded-full text-xs font-medium">{item.product}</span>
+                  <span className="px-2 py-1 bg-primary/90 text-white rounded-full text-xs font-medium">{item.product}</span>
                 </div>
               </div>
               <div className="p-5">
-                <h3 className="font-bold text-ink text-lg mb-1 group-hover:text-gold transition-colors">{item.title}</h3>
+                <h3 className="font-bold text-ink text-lg mb-1 group-hover:text-primary transition-colors">{item.title}</h3>
                 <p className="text-sm text-muted">{item.area}</p>
               </div>
             </motion.div>

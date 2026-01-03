@@ -23,21 +23,21 @@ export default function QuickInquiryForm() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-            <span className="text-gold font-medium mb-4 block">빠른 견적 문의</span>
+            <span className="text-primary-light font-medium mb-4 block">빠른 견적 문의</span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">지금 바로 무료 상담 신청하세요</h2>
             <p className="text-gray-400 mb-8">간단한 정보만 입력하시면 전문 상담사가 빠르게 연락드립니다.</p>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <input type="text" placeholder="성함" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-gold" required />
+                <input type="text" placeholder="성함" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-primary" required />
               </div>
               <div>
-                <input type="tel" placeholder="연락처" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-gold" required />
+                <input type="tel" placeholder="연락처" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-primary" required />
               </div>
               <div>
-                <input type="text" placeholder="주소 (시/구까지)" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-gold" required />
+                <input type="text" placeholder="주소 (시/구까지)" value={formData.address} onChange={(e) => setFormData({ ...formData, address: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:border-primary" required />
               </div>
               <div>
-                <select value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-gold">
+                <select value={formData.type} onChange={(e) => setFormData({ ...formData, type: e.target.value })} className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white focus:outline-none focus:border-primary">
                   <option value="apartment">아파트</option>
                   <option value="villa">빌라</option>
                   <option value="house">단독주택</option>
@@ -48,7 +48,7 @@ export default function QuickInquiryForm() {
                 <input type="checkbox" id="privacy" required className="w-4 h-4" />
                 <label htmlFor="privacy" className="text-sm text-gray-400">개인정보 수집 및 이용에 동의합니다</label>
               </div>
-              <button type="submit" className="w-full bg-seal text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-seal/90 transition-colors flex items-center justify-center gap-2">
+              <button type="submit" className="w-full btn-accent px-8 py-4 rounded-lg font-bold text-lg flex items-center justify-center gap-2">
                 무료 상담 신청<Send className="w-5 h-5" />
               </button>
             </form>
@@ -56,7 +56,7 @@ export default function QuickInquiryForm() {
           <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div className="flex items-center gap-4 mb-8">
               <div className="flex items-center gap-1">
-                {[1, 2, 3, 4, 5].map((i) => (<Star key={i} className="w-6 h-6 text-gold fill-gold" />))}
+                {[1, 2, 3, 4, 5].map((i) => (<Star key={i} className="w-6 h-6 text-accent fill-accent" />))}
               </div>
               <div>
                 <span className="text-3xl font-bold">4.9</span>
@@ -73,7 +73,7 @@ export default function QuickInquiryForm() {
                       <span className="text-sm text-gray-400">{review.area}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      {[...Array(review.rating)].map((_, i) => (<Star key={i} className="w-4 h-4 text-gold fill-gold" />))}
+                      {[...Array(review.rating)].map((_, i) => (<Star key={i} className="w-4 h-4 text-accent fill-accent" />))}
                     </div>
                   </div>
                   <p className="text-gray-300 text-sm">{review.content}</p>

@@ -56,7 +56,7 @@ export default function AdminInquiriesPage() {
           <p className="text-muted mt-1">
             총 {inquiries.length}건의 문의{" "}
             {pendingCount > 0 && (
-              <span className="text-seal font-medium">({pendingCount}건 대기중)</span>
+              <span className="text-accent font-medium">({pendingCount}건 대기중)</span>
             )}
           </p>
         </div>
@@ -99,7 +99,7 @@ export default function AdminInquiriesPage() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="이름, 전화번호로 검색"
-              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+              className="w-full pl-10 pr-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
             />
           </div>
 
@@ -109,7 +109,7 @@ export default function AdminInquiriesPage() {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-gold focus:border-gold outline-none"
+              className="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none"
             >
               <option value="전체">전체 상태</option>
               <option value="대기">대기</option>
@@ -164,7 +164,7 @@ export default function AdminInquiriesPage() {
                   <span className="text-muted">• {inquiry.housingType}</span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
-                  <span className="text-gold font-medium">{inquiry.product}</span>
+                  <span className="text-primary font-medium">{inquiry.product}</span>
                   <span className="text-muted">• 예산: {inquiry.budget}</span>
                 </div>
               </div>
@@ -198,7 +198,7 @@ export default function AdminInquiriesPage() {
           <button className="p-2 border rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-50 bg-white" disabled>
             <ChevronLeft className="w-5 h-5" />
           </button>
-          <button className="px-4 py-2 bg-gold text-white rounded-lg font-medium">1</button>
+          <button className="px-4 py-2 bg-primary text-white rounded-lg font-medium">1</button>
           <button className="p-2 border rounded-lg hover:bg-gray-50 transition-colors bg-white">
             <ChevronRight className="w-5 h-5" />
           </button>

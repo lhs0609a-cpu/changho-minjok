@@ -18,7 +18,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="text-center md:text-left">
               <h3 className="font-serif text-2xl font-bold mb-2">
-                지금 바로 <span className="text-gold">무료 견적</span>을 받아보세요
+                지금 바로 <span className="text-accent">무료 견적</span>을 받아보세요
               </h3>
               <p className="text-slate">
                 공장 직영가로 최대 30% 절감된 견적을 제공해드립니다
@@ -29,12 +29,12 @@ export default function Footer() {
                 href="tel:1668-1453"
                 className="flex items-center gap-2 bg-white/10 px-6 py-3 rounded-full font-medium hover:bg-white/20 transition-colors"
               >
-                <Phone className="w-4 h-4 text-gold" />
+                <Phone className="w-4 h-4 text-primary-light" />
                 <span>1668-1453</span>
               </a>
               <Link
                 href="/inquiry"
-                className="flex items-center gap-2 bg-gradient-to-r from-gold to-gold-light text-dark px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform"
+                className="flex items-center gap-2 btn-accent px-6 py-3 rounded-full font-bold hover:scale-105 transition-transform"
               >
                 견적 문의
                 <ChevronRight className="w-4 h-4" />
@@ -50,8 +50,8 @@ export default function Footer() {
           {/* 회사 정보 */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center">
-                <span className="text-dark font-bold text-lg">창</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary-light rounded-xl flex items-center justify-center">
+                <span className="text-white font-bold text-lg">창</span>
               </div>
               <div>
                 <h3 className="font-serif text-xl font-bold">창호의민족</h3>
@@ -70,7 +70,7 @@ export default function Footer() {
                 href="https://instagram.com/changhominjok"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-gold/20 hover:text-gold transition-colors"
+                className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-primary/20 hover:text-primary-light transition-colors"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -78,7 +78,7 @@ export default function Footer() {
                 href="https://blog.naver.com/changhominjok"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-gold/20 hover:text-gold transition-colors"
+                className="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center hover:bg-primary/20 hover:text-primary-light transition-colors"
               >
                 <FileText className="w-5 h-5" />
               </a>
@@ -87,12 +87,12 @@ export default function Footer() {
 
           {/* 연락처 */}
           <div>
-            <h4 className="text-sm font-bold text-gold uppercase tracking-wider mb-6">Contact</h4>
+            <h4 className="text-sm font-bold text-primary-light uppercase tracking-wider mb-6">Contact</h4>
             <ul className="space-y-4">
               <li>
                 <a href="tel:1668-1453" className="flex items-center gap-3 group">
-                  <span className="w-9 h-9 bg-gold/10 rounded-lg flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                    <Phone className="w-4 h-4 text-gold" />
+                  <span className="w-9 h-9 bg-primary/10 rounded-lg flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <Phone className="w-4 h-4 text-primary-light" />
                   </span>
                   <div>
                     <span className="text-xs text-slate block">대표전화</span>
@@ -123,7 +123,7 @@ export default function Footer() {
 
           {/* 바로가기 */}
           <div>
-            <h4 className="text-sm font-bold text-gold uppercase tracking-wider mb-6">Quick Links</h4>
+            <h4 className="text-sm font-bold text-primary-light uppercase tracking-wider mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {quickLinks.map((item) => (
                 <li key={item.href}>
@@ -131,7 +131,7 @@ export default function Footer() {
                     href={item.href}
                     className="flex items-center gap-2 text-slate hover:text-white transition-colors group"
                   >
-                    <ChevronRight className="w-3 h-3 text-gold opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ChevronRight className="w-3 h-3 text-primary-light opacity-0 group-hover:opacity-100 transition-opacity" />
                     <span>{item.label}</span>
                   </Link>
                 </li>
@@ -141,7 +141,7 @@ export default function Footer() {
 
           {/* 법적 & 인증 */}
           <div>
-            <h4 className="text-sm font-bold text-gold uppercase tracking-wider mb-6">Legal</h4>
+            <h4 className="text-sm font-bold text-primary-light uppercase tracking-wider mb-6">Legal</h4>
             <ul className="space-y-3 text-sm text-slate mb-8">
               <li>
                 <Link href="/privacy" className="hover:text-white transition-colors">
@@ -157,8 +157,8 @@ export default function Footer() {
 
             <div className="p-4 bg-white/5 rounded-xl">
               <div className="flex items-center gap-3 mb-2">
-                <Factory className="w-5 h-5 text-gold" />
-                <span className="text-xs font-bold text-gold">제조사 정보</span>
+                <Factory className="w-5 h-5 text-primary-light" />
+                <span className="text-xs font-bold text-primary-light">제조사 정보</span>
               </div>
               <p className="text-xs text-slate leading-relaxed">
                 (주)현경시스템<br />
@@ -178,7 +178,7 @@ export default function Footer() {
               &copy; 2024 창호의민족. All rights reserved.
             </p>
             <p className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-gold rounded-full animate-pulse" />
+              <span className="w-2 h-2 bg-primary-light rounded-full animate-pulse" />
               <span>공장의 기술력에 영업의 진심을 담았습니다</span>
             </p>
           </div>

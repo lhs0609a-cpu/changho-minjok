@@ -43,25 +43,24 @@ export default function HeroSection() {
     <section className="relative min-h-screen hero-gradient overflow-hidden">
       {/* 배경 장식 요소 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* 황금빛 글로우 */}
-        <div className="absolute top-20 right-20 w-96 h-96 bg-gold/10 rounded-full blur-3xl animate-pulse-glow" />
-        <div className="absolute bottom-40 left-10 w-64 h-64 bg-gold/5 rounded-full blur-2xl" />
+        <div className="absolute top-20 right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl animate-pulse-glow" />
+        <div className="absolute bottom-40 left-10 w-64 h-64 bg-primary-light/10 rounded-full blur-2xl" />
 
         {/* 떠다니는 도형들 */}
         <motion.div
           animate={{ y: [-10, 10, -10] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-40 right-1/4 w-20 h-20 border border-gold/20 rounded-2xl rotate-12"
+          className="absolute top-40 right-1/4 w-20 h-20 border border-primary/20 rounded-2xl rotate-12"
         />
         <motion.div
           animate={{ y: [10, -10, 10] }}
           transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-60 left-1/4 w-16 h-16 bg-gold/5 rounded-full"
+          className="absolute bottom-60 left-1/4 w-16 h-16 bg-primary-light/10 rounded-full"
         />
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/3 left-20 w-32 h-32 border border-gold/10 rounded-full"
+          className="absolute top-1/3 left-20 w-32 h-32 border border-primary/10 rounded-full"
         />
       </div>
 
@@ -110,7 +109,7 @@ export default function HeroSection() {
           >
             <Link
               href="/inquiry"
-              className="btn-premium inline-flex items-center justify-center gap-3 bg-gradient-to-r from-gold to-gold-light text-dark px-10 py-5 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="btn-premium btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl"
             >
               무료 견적 상담받기
               <ArrowRight className="w-5 h-5" />
@@ -119,8 +118,8 @@ export default function HeroSection() {
               href="#simulator"
               className="group inline-flex items-center justify-center gap-3 glass px-10 py-5 rounded-2xl font-bold text-lg text-ink hover:bg-white transition-all duration-300"
             >
-              <span className="w-10 h-10 bg-gold/10 rounded-full flex items-center justify-center group-hover:bg-gold/20 transition-colors">
-                <Play className="w-4 h-4 text-gold ml-0.5" />
+              <span className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <Play className="w-4 h-4 text-primary ml-0.5" />
               </span>
               셀프 견적 시뮬레이터
             </Link>
@@ -144,7 +143,7 @@ export default function HeroSection() {
             >
               <div className="flex items-baseline justify-center gap-1 mb-2">
                 <span className="stat-number text-3xl md:text-4xl">{stat.value}</span>
-                <span className="text-gold text-lg md:text-xl font-bold">{stat.suffix}</span>
+                <span className="text-primary text-lg md:text-xl font-bold">{stat.suffix}</span>
               </div>
               <p className="text-sm text-muted font-medium">{stat.label}</p>
             </motion.div>
@@ -155,7 +154,7 @@ export default function HeroSection() {
       {/* 핵심 가치 섹션 */}
       <div className="relative bg-dark py-24">
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,7 +164,7 @@ export default function HeroSection() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="section-label text-gold-light">Why Choose Us</span>
+            <span className="section-label text-primary-light">Why Choose Us</span>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-white mt-4 mb-4">
               창호의 민족을 선택해야 하는 이유
             </h2>
@@ -182,11 +181,11 @@ export default function HeroSection() {
                 transition={{ delay: index * 0.1 }}
                 className="group glass-dark rounded-3xl p-8 card-hover cursor-pointer"
               >
-                <div className="w-14 h-14 bg-gold/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gold/20 transition-colors">
-                  <item.icon className="w-7 h-7 text-gold" />
+                <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
+                  <item.icon className="w-7 h-7 text-primary" />
                 </div>
 
-                <span className="inline-block px-3 py-1 text-xs font-bold text-gold bg-gold/10 rounded-full mb-4">
+                <span className="inline-block px-3 py-1 text-xs font-bold text-accent bg-accent/10 rounded-full mb-4">
                   {item.highlight}
                 </span>
 
@@ -208,9 +207,9 @@ export default function HeroSection() {
               우리가 흘린 공장의 땀방울이 곧 제품의 내구성입니다."
             </blockquote>
             <div className="mt-6 flex items-center justify-center gap-4">
-              <div className="h-px w-12 bg-gold/30" />
-              <span className="text-gold text-sm font-medium tracking-wider">CHANGHO MINJOK</span>
-              <div className="h-px w-12 bg-gold/30" />
+              <div className="h-px w-12 bg-primary/30" />
+              <span className="text-primary-light text-sm font-medium tracking-wider">CHANGHO MINJOK</span>
+              <div className="h-px w-12 bg-primary/30" />
             </div>
           </motion.div>
         </div>

@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* 브랜드 컬러 */
+:root {
+  /* 창호의민족 브랜드 컬러 */
+  --hanji: #F5F0E8;       /* 한지베이지 (배경) */
+  --ink: #2C2C2C;         /* 먹색 (메인 텍스트) */
+  --gold: #B8860B;        /* 전통문양 골드 (포인트) */
+  --seal: #C41E3A;        /* 낙관 레드 (강조) */
+  --ivory: #FAF8F5;       /* 아이보리 (서브 배경) */
+  --muted: #6B5B4F;       /* 회갈색 (보조 텍스트) */
+
+  /* 기본 배경/전경 */
+  --background: var(--hanji);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  /* 브랜드 컬러 */
+  --color-hanji: var(--hanji);
+  --color-ink: var(--ink);
+  --color-gold: var(--gold);
+  --color-seal: var(--seal);
+  --color-ivory: var(--ivory);
+  --color-muted: var(--muted);
+
+  /* 배경/전경 */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* 폰트 */
+  --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  --font-serif: 'Nanum Myeongjo', Georgia, 'Times New Roman', serif;
+}
+
+/* 기본 스타일 */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* 링크 스타일 */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* 버튼 기본 스타일 */
+button {
+  cursor: pointer;
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--ivory);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink);
+}
+
+/* 선택 영역 스타일 */
+::selection {
+  background: var(--gold);
+  color: white;
+}

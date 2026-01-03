@@ -1,0 +1,241 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("STAFF")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  consultations Consultation[]
+  activities    ActivityLog[]
+
+  @@map("users")
+}
+
+model Customer {
+  id           String   @id @default(cuid())
+  name         String
+  phone        String   @unique
+  email        String?
+  address      String?
+  addressDetail String?
+  housingType  String?
+  area         String?
+  source       String?
+  memo         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  inquiries     Inquiry[]
+  consultations Consultation[]
+  quotes        Quote[]
+  installations Installation[]
+
+  @@map("customers")
+}
+
+model Inquiry {
+  id             String    @id @default(cuid())
+  customerId     String?
+  customer       Customer? @relation(fields: [customerId], references: [id])
+
+  name           String
+  phone          String
+  email          String?
+  address        String?
+  addressDetail  String?
+  housingType    String?
+  area           String?
+
+  product        String?
+  reasons        String?
+  budget         String?
+  message        String?
+
+  privacyAgree   Boolean  @default(false)
+  marketingAgree Boolean  @default(false)
+
+  status         String   @default("PENDING")
+  assignedTo     String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@map("inquiries")
+}
+
+model Consultation {
+  id          String   @id @default(cuid())
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id])
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  type        String
+  content     String
+  nextAction  String?
+  nextDate    DateTime?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("consultations")
+}
+
+model Quote {
+  id          String      @id @default(cuid())
+  quoteNumber String      @unique
+  customerId  String
+  customer    Customer    @relation(fields: [customerId], references: [id])
+
+  items       QuoteItem[]
+  subtotal    Int
+  discount    Int         @default(0)
+  vat         Int
+  total       Int
+
+  status      String      @default("DRAFT")
+  validUntil  DateTime
+  memo        String?
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("quotes")
+}
+
+model QuoteItem {
+  id          String   @id @default(cuid())
+  quoteId     String
+  quote       Quote    @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+
+  productId   String?
+  product     Product? @relation(fields: [productId], references: [id])
+
+  name        String
+  spec        String?
+  quantity    Int
+  unit        String   @default("개")
+  unitPrice   Int
+  amount      Int
+
+  @@map("quote_items")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  category    String
+  description String?
+  features    String?
+
+  priceMin    Int?
+  priceMax    Int?
+
+  thumbnail   String?
+  images      String?
+
+  isActive    Boolean  @default(true)
+  sortOrder   Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  quoteItems  QuoteItem[]
+  installations Installation[]
+
+  @@map("products")
+}
+
+model Installation {
+  id           String   @id @default(cuid())
+  customerId   String
+  customer     Customer @relation(fields: [customerId], references: [id])
+  productId    String?
+  product      Product? @relation(fields: [productId], references: [id])
+
+  address      String
+  addressDetail String?
+  latitude     Float?
+  longitude    Float?
+
+  windowCount  Int?
+  area         Int?
+
+  scheduledDate DateTime?
+  completedDate DateTime?
+
+  status       String   @default("SCHEDULED")
+  memo         String?
+
+  isPublic     Boolean  @default(false)
+  beforeImages String?
+  afterImages  String?
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("installations")
+}
+
+model PriceTable {
+  id         String   @id @default(cuid())
+  frameType  String
+  glassType  String
+  windowType String
+
+  pricePerSqm Int
+  laborCost   Int      @default(0)
+
+  isActive    Boolean  @default(true)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([frameType, glassType, windowType])
+  @@map("price_tables")
+}
+
+model ActivityLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  action    String
+  entity    String
+  entityId  String?
+  details   String?
+
+  createdAt DateTime @default(now())
+
+  @@map("activity_logs")
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  customerName String
+  content      String
+  rating       Int
+
+  housingType  String?
+  product      String?
+  area         String?
+
+  isPublic     Boolean  @default(false)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("reviews")
+}

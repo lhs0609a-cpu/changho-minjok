@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Calculator, ArrowRight } from "lucide-react";
+import { Calculator, ArrowRight, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const windowTypes = [
@@ -47,70 +47,195 @@ export default function PriceSimulator() {
   const formatPrice = (price: number) => new Intl.NumberFormat("ko-KR").format(price);
 
   return (
-    <section id="simulator" className="py-20 bg-ivory">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 text-primary font-medium mb-4">
-            <Calculator className="w-5 h-5" />셀프 견적 시뮬레이터
+    <section id="simulator" className="relative py-24 section-gradient overflow-hidden">
+      {/* 배경 효과 */}
+      <div className="absolute inset-0 grid-pattern opacity-30" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-electric/30 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <span className="inline-flex items-center gap-2 tag tag-cyber mb-4">
+            <Calculator className="w-4 h-4" />
+            셀프 견적 시뮬레이터
           </span>
-          <h2 className="font-serif text-3xl md:text-4xl font-bold text-ink mb-4">우리집 창호, 얼마일까?</h2>
-          <p className="text-muted max-w-2xl mx-auto">창문 종류와 사이즈, 프레임, 유리 옵션을 선택하면 예상 가격을 바로 확인할 수 있습니다.</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-cream mb-4">
+            우리집 창호, <span className="gradient-text-static">얼마일까?</span>
+          </h2>
+          <p className="text-smoke max-w-2xl mx-auto">
+            창문 종류와 사이즈, 프레임, 유리 옵션을 선택하면 예상 가격을 바로 확인할 수 있습니다.
+          </p>
         </motion.div>
+
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-          <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+          {/* 옵션 선택 패널 */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="glass-card rounded-3xl p-6 md:p-8"
+          >
+            {/* 창문 종류 */}
             <div className="mb-8">
-              <label className="block text-ink font-bold mb-3">창문 종류</label>
+              <label className="block text-cream font-bold mb-4">창문 종류</label>
               <div className="grid grid-cols-5 gap-2">
                 {windowTypes.map((type) => (
-                  <button key={type.id} onClick={() => setWindowType(type.id)} className={windowType === type.id ? "py-3 px-2 rounded-lg text-sm font-medium bg-primary text-white" : "py-3 px-2 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
+                  <motion.button
+                    key={type.id}
+                    onClick={() => setWindowType(type.id)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`py-3 px-2 rounded-xl text-sm font-medium transition-all ${
+                      windowType === type.id
+                        ? "aurora-gradient text-white shadow-lg glow-purple"
+                        : "bg-white/5 text-silver hover:bg-white/10 border border-white/10"
+                    }`}
+                  >
+                    {type.label}
+                  </motion.button>
                 ))}
               </div>
             </div>
+
+            {/* 사이즈 슬라이더 */}
             <div className="mb-8">
-              <label className="block text-ink font-bold mb-3">사이즈 (mm)</label>
-              <div className="grid grid-cols-2 gap-4">
+              <label className="block text-cream font-bold mb-4">사이즈 (mm)</label>
+              <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <label className="text-sm text-muted mb-1 block">가로</label>
-                  <input type="range" min="500" max="4000" step="100" value={width} onChange={(e) => setWidth(Number(e.target.value))} className="w-full accent-primary" />
-                  <div className="text-center font-bold text-ink mt-1">{width} mm</div>
+                  <label className="text-sm text-smoke mb-2 block">가로</label>
+                  <input
+                    type="range"
+                    min="500"
+                    max="4000"
+                    step="100"
+                    value={width}
+                    onChange={(e) => setWidth(Number(e.target.value))}
+                    className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-electric [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:glow-purple"
+                  />
+                  <div className="text-center font-bold text-cream mt-2 text-lg">{width} mm</div>
                 </div>
                 <div>
-                  <label className="text-sm text-muted mb-1 block">세로</label>
-                  <input type="range" min="500" max="3000" step="100" value={height} onChange={(e) => setHeight(Number(e.target.value))} className="w-full accent-primary" />
-                  <div className="text-center font-bold text-ink mt-1">{height} mm</div>
+                  <label className="text-sm text-smoke mb-2 block">세로</label>
+                  <input
+                    type="range"
+                    min="500"
+                    max="3000"
+                    step="100"
+                    value={height}
+                    onChange={(e) => setHeight(Number(e.target.value))}
+                    className="w-full h-2 bg-white/10 rounded-full appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-neon [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:glow-pink"
+                  />
+                  <div className="text-center font-bold text-cream mt-2 text-lg">{height} mm</div>
                 </div>
               </div>
             </div>
+
+            {/* 프레임 종류 */}
             <div className="mb-8">
-              <label className="block text-ink font-bold mb-3">프레임 종류</label>
-              <div className="grid grid-cols-2 gap-2">
+              <label className="block text-cream font-bold mb-4">프레임 종류</label>
+              <div className="grid grid-cols-2 gap-3">
                 {frameTypes.map((type) => (
-                  <button key={type.id} onClick={() => setFrameType(type.id)} className={frameType === type.id ? "py-3 px-4 rounded-lg text-sm font-medium bg-primary text-white" : "py-3 px-4 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
+                  <motion.button
+                    key={type.id}
+                    onClick={() => setFrameType(type.id)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`py-4 px-4 rounded-xl text-sm font-medium transition-all ${
+                      frameType === type.id
+                        ? "bg-electric/20 text-electric border-2 border-electric glow-purple"
+                        : "bg-white/5 text-silver hover:bg-white/10 border border-white/10"
+                    }`}
+                  >
+                    {type.label}
+                  </motion.button>
                 ))}
               </div>
             </div>
+
+            {/* 유리 옵션 */}
             <div>
-              <label className="block text-ink font-bold mb-3">유리 옵션</label>
-              <div className="grid grid-cols-2 gap-2">
+              <label className="block text-cream font-bold mb-4">유리 옵션</label>
+              <div className="grid grid-cols-2 gap-3">
                 {glassTypes.map((type) => (
-                  <button key={type.id} onClick={() => setGlassType(type.id)} className={glassType === type.id ? "py-3 px-4 rounded-lg text-sm font-medium bg-primary text-white" : "py-3 px-4 rounded-lg text-sm font-medium bg-gray-100 text-ink hover:bg-gray-200"}>{type.label}</button>
+                  <motion.button
+                    key={type.id}
+                    onClick={() => setGlassType(type.id)}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`py-4 px-4 rounded-xl text-sm font-medium transition-all ${
+                      glassType === type.id
+                        ? "bg-cyber/20 text-cyber border-2 border-cyber glow-cyan"
+                        : "bg-white/5 text-silver hover:bg-white/10 border border-white/10"
+                    }`}
+                  >
+                    {type.label}
+                  </motion.button>
                 ))}
               </div>
             </div>
           </motion.div>
-          <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="bg-ink text-white rounded-2xl p-6 md:p-8 shadow-lg flex flex-col justify-between">
-            <div>
-              <h3 className="text-lg font-medium text-gray-400 mb-2">예상 견적</h3>
-              <div className="text-5xl md:text-6xl font-bold text-accent mb-4">{formatPrice(estimatedPrice)}<span className="text-2xl text-gray-400 ml-2">원</span></div>
-              <p className="text-gray-400 text-sm mb-8">* 실제 견적은 현장 실측 후 안내드립니다.</p>
-              <div className="bg-white/10 rounded-xl p-4 space-y-2 text-sm">
-                <div className="flex justify-between"><span className="text-gray-400">창문</span><span>{windowTypes.find((w) => w.id === windowType)?.label}</span></div>
-                <div className="flex justify-between"><span className="text-gray-400">사이즈</span><span>{width} x {height} mm</span></div>
-                <div className="flex justify-between"><span className="text-gray-400">프레임</span><span>{frameTypes.find((f) => f.id === frameType)?.label}</span></div>
-                <div className="flex justify-between"><span className="text-gray-400">유리</span><span>{glassTypes.find((g) => g.id === glassType)?.label}</span></div>
+
+          {/* 결과 패널 */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="neon-border rounded-3xl"
+          >
+            <div className="bg-night rounded-3xl p-6 md:p-8 h-full flex flex-col justify-between relative overflow-hidden">
+              {/* 배경 글로우 */}
+              <div className="absolute -top-20 -right-20 w-60 h-60 bg-electric/20 rounded-full blur-[80px]" />
+              <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-neon/10 rounded-full blur-[80px]" />
+
+              <div className="relative">
+                <h3 className="text-lg font-medium text-smoke mb-2">예상 견적</h3>
+                <motion.div
+                  key={estimatedPrice}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  className="text-5xl md:text-6xl font-bold gradient-text mb-4"
+                >
+                  {formatPrice(estimatedPrice)}
+                  <span className="text-2xl text-smoke ml-2">원</span>
+                </motion.div>
+                <p className="text-smoke text-sm mb-8">* 실제 견적은 현장 실측 후 안내드립니다.</p>
+
+                {/* 선택 요약 */}
+                <div className="glass rounded-2xl p-5 space-y-3 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-smoke">창문</span>
+                    <span className="text-cream font-medium">{windowTypes.find((w) => w.id === windowType)?.label}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-smoke">사이즈</span>
+                    <span className="text-cream font-medium">{width} x {height} mm</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-smoke">프레임</span>
+                    <span className="text-cream font-medium">{frameTypes.find((f) => f.id === frameType)?.label}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-smoke">유리</span>
+                    <span className="text-cream font-medium">{glassTypes.find((g) => g.id === glassType)?.label}</span>
+                  </div>
+                </div>
               </div>
+
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="relative mt-8">
+                <Link
+                  href="/inquiry"
+                  className="btn-glow-cyan flex items-center justify-center gap-3 px-8 py-5 rounded-2xl font-bold text-lg w-full"
+                >
+                  <Sparkles className="w-5 h-5" />
+                  정확한 견적 받기
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </motion.div>
             </div>
-            <Link href="/inquiry" className="mt-8 inline-flex items-center justify-center gap-2 btn-accent px-8 py-4 rounded-lg font-bold text-lg w-full">정확한 견적 받기<ArrowRight className="w-5 h-5" /></Link>
           </motion.div>
         </div>
       </div>

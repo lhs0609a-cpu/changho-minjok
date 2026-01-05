@@ -11,55 +11,47 @@ const products = [
     name: 'PVC 창호',
     description: '뛰어난 단열성과 가성비를 갖춘 기본 창호',
     features: ['단열성 우수', '다양한 컬러', '경제적'],
-    image: '/images/products/pvc.jpg',
-    color: 'from-blue-500 to-blue-600',
+    color: 'bg-[#2AC1BC]',
   },
   {
     slug: 'hisash',
     name: '하이샤시',
     description: '알루미늄과 PVC의 장점을 결합한 복합 창호',
     features: ['내구성 강화', '단열+강도', '고급 디자인'],
-    image: '/images/products/hisash.jpg',
-    color: 'from-emerald-500 to-emerald-600',
+    color: 'bg-[#FF6F0F]',
   },
   {
     slug: 'system',
     name: '시스템창호',
     description: '최고급 기밀성과 단열성을 자랑하는 프리미엄 창호',
     features: ['최고급 사양', '에너지 절감', '방음 효과'],
-    image: '/images/products/system.jpg',
-    color: 'from-amber-500 to-amber-600',
+    color: 'bg-[#1E1E1E]',
   },
 ];
 
 export default function ProductHighlightSection() {
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section className="py-24 md:py-32 bg-[#F5F5F5]">
+      <div className="container mx-auto px-4 lg:px-8">
         <AnimatedSection className="text-center mb-16">
-          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">
-            Our Products
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
+          <span className="section-badge">Our Products</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1E1E1E] mt-4 mb-4 tracking-tight">
             창호의 민족 제품 라인업
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-[#767676] max-w-2xl mx-auto">
             고객의 다양한 니즈에 맞춘 최적의 창호 솔루션을 제공합니다.
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
           {products.map((product, index) => (
             <AnimatedSection key={product.slug} delay={index * 0.1}>
               <Link href={`/products/${product.slug}`} className="group block">
-                <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300">
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-[#EEEEEE] hover:border-[#2AC1BC] transition-all duration-300 hover:-translate-y-2">
                   {/* Image Placeholder */}
-                  <div
-                    className={`h-48 bg-gradient-to-br ${product.color} relative overflow-hidden`}
-                  >
-                    <div className="absolute inset-0 bg-black/10" />
+                  <div className={`h-48 ${product.color} relative overflow-hidden`}>
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white/30 text-6xl font-bold">
+                      <span className="text-white/30 text-8xl font-extrabold">
                         {product.name.charAt(0)}
                       </span>
                     </div>
@@ -67,10 +59,10 @@ export default function ProductHighlightSection() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-extrabold text-[#1E1E1E] mb-2 group-hover:text-[#2AC1BC] transition-colors tracking-tight">
                       {product.name}
                     </h3>
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-[#767676] text-sm mb-4">
                       {product.description}
                     </p>
 
@@ -79,7 +71,7 @@ export default function ProductHighlightSection() {
                       {product.features.map((feature) => (
                         <span
                           key={feature}
-                          className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded"
+                          className="text-xs px-3 py-1 bg-[#E8F8F7] text-[#2AC1BC] rounded-lg font-bold"
                         >
                           {feature}
                         </span>
@@ -87,9 +79,9 @@ export default function ProductHighlightSection() {
                     </div>
 
                     {/* Link */}
-                    <div className="flex items-center text-blue-600 text-sm font-medium group-hover:gap-2 transition-all">
+                    <div className="flex items-center text-[#2AC1BC] text-sm font-bold group-hover:gap-2 transition-all">
                       자세히 보기
-                      <ArrowRight className="w-4 h-4 ml-1" />
+                      <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </div>
@@ -99,7 +91,12 @@ export default function ProductHighlightSection() {
         </div>
 
         <AnimatedSection delay={0.4} className="text-center mt-12">
-          <Button asChild variant="outline" size="lg">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-2 border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white font-bold rounded-xl px-8"
+          >
             <Link href="/products">
               전체 제품 보기
               <ArrowRight className="ml-2 h-4 w-4" />

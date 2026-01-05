@@ -5,58 +5,51 @@ import { ArrowRight, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 
-// 임시 데이터 - 나중에 DB에서 가져옴
 const portfolios = [
   {
     id: '1',
-    slug: 'gangnam-apartment',
+    slug: 'gangnam-apartment-1',
     title: '강남 OO아파트 전체 교체',
     location: '서울 강남구',
     buildingType: '아파트',
     rating: 5,
-    image: '/images/portfolio/1.jpg',
   },
   {
     id: '2',
-    slug: 'suwon-villa',
+    slug: 'suwon-villa-1',
     title: '수원 OO빌라 시스템창호',
     location: '경기 수원시',
     buildingType: '빌라',
     rating: 5,
-    image: '/images/portfolio/2.jpg',
   },
   {
     id: '3',
-    slug: 'incheon-house',
+    slug: 'incheon-house-1',
     title: '인천 단독주택 하이샤시',
     location: '인천 연수구',
     buildingType: '단독주택',
     rating: 5,
-    image: '/images/portfolio/3.jpg',
   },
   {
     id: '4',
-    slug: 'bundang-apartment',
+    slug: 'bundang-apartment-1',
     title: '분당 OO아파트 리모델링',
     location: '경기 성남시',
     buildingType: '아파트',
     rating: 4,
-    image: '/images/portfolio/4.jpg',
   },
 ];
 
 export default function PortfolioPreviewSection() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="container mx-auto px-4">
+    <section className="py-24 md:py-32 bg-white">
+      <div className="container mx-auto px-4 lg:px-8">
         <AnimatedSection className="text-center mb-16">
-          <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">
-            Portfolio
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-4">
+          <span className="section-badge">Portfolio</span>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-[#1E1E1E] mt-4 mb-4 tracking-tight">
             최근 시공사례
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-[#767676] max-w-2xl mx-auto">
             창호의 민족이 완성한 다양한 시공 현장을 확인해보세요.
           </p>
         </AnimatedSection>
@@ -65,37 +58,37 @@ export default function PortfolioPreviewSection() {
           {portfolios.map((item, index) => (
             <AnimatedSection key={item.id} delay={index * 0.1}>
               <Link href={`/portfolio/${item.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-xl bg-gray-100 aspect-[4/3] mb-4">
+                <div className="relative overflow-hidden rounded-2xl bg-[#F5F5F5] aspect-[4/3] mb-4 border-2 border-[#EEEEEE] group-hover:border-[#2AC1BC] transition-colors">
                   {/* Placeholder Image */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                    <span className="text-gray-400 text-sm">시공 사진</span>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-[#C4C4C4] text-sm font-medium">시공 사진</span>
                   </div>
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="text-white font-medium">자세히 보기</span>
+                  <div className="absolute inset-0 bg-[#2AC1BC]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span className="text-white font-bold">자세히 보기</span>
                   </div>
 
                   {/* Badge */}
-                  <div className="absolute top-3 left-3 px-2 py-1 bg-white/90 rounded text-xs font-medium text-gray-700">
+                  <div className="absolute top-3 left-3 px-3 py-1.5 bg-white rounded-lg text-xs font-bold text-[#1E1E1E]">
                     {item.buildingType}
                   </div>
                 </div>
 
-                <h3 className="font-medium text-gray-900 group-hover:text-blue-600 transition-colors mb-1">
+                <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors mb-2">
                   {item.title}
                 </h3>
 
-                <div className="flex items-center justify-between text-sm text-gray-500">
-                  <div className="flex items-center gap-1">
-                    <MapPin className="w-3 h-3" />
+                <div className="flex items-center justify-between text-sm">
+                  <div className="flex items-center gap-1 text-[#767676]">
+                    <MapPin className="w-4 h-4" />
                     {item.location}
                   </div>
                   <div className="flex items-center gap-0.5">
                     {[...Array(item.rating)].map((_, i) => (
                       <Star
                         key={i}
-                        className="w-3 h-3 fill-yellow-400 text-yellow-400"
+                        className="w-4 h-4 fill-[#FF6F0F] text-[#FF6F0F]"
                       />
                     ))}
                   </div>
@@ -106,7 +99,12 @@ export default function PortfolioPreviewSection() {
         </div>
 
         <AnimatedSection delay={0.5} className="text-center mt-12">
-          <Button asChild variant="outline" size="lg">
+          <Button
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-2 border-[#2AC1BC] text-[#2AC1BC] hover:bg-[#2AC1BC] hover:text-white font-bold rounded-xl px-8"
+          >
             <Link href="/portfolio">
               전체 시공사례 보기
               <ArrowRight className="ml-2 h-4 w-4" />

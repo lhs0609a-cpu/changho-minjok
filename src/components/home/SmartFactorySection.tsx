@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react';
 import { useInView, motion } from 'framer-motion';
-import { Play, ArrowRight, CheckCircle, Sparkles } from 'lucide-react';
+import { Play, ArrowRight, CheckCircle } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import Link from 'next/link';
 
@@ -56,39 +56,37 @@ function CountUp({ end, suffix }: { end: number; suffix: string }) {
 
 export default function SmartFactorySection() {
   return (
-    <section className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950" />
+    <section className="relative py-24 md:py-32 bg-[#1E1E1E] overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }} />
+      </div>
 
-      {/* Pattern Overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px]" />
-
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-600/10 rounded-full blur-[100px]" />
+      {/* Gradient Accent */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#2AC1BC] rounded-full blur-[200px] opacity-10" />
 
       <div className="relative container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
           {/* Content */}
           <div>
             <AnimatedSection>
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span className="text-blue-400 font-medium text-sm">Smart Factory</span>
-              </div>
+              <span className="inline-block px-4 py-2 bg-[#2AC1BC] rounded-full text-white text-sm font-bold mb-8">
+                Smart Factory
+              </span>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-[1.1]">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
                 스마트 팩토리로
                 <br />
                 완성한{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400">
-                  제조의 혁신
-                </span>
+                <span className="text-[#2AC1BC]">제조의 혁신</span>
               </h2>
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
-              <p className="text-lg text-gray-400 leading-relaxed mb-10 max-w-xl">
+              <p className="text-lg text-[#767676] leading-relaxed mb-10 max-w-xl">
                 경기도에 위치한 3,500평 규모의 스마트 팩토리에서
                 첨단 자동화 설비와 숙련된 장인의 기술력이 만납니다.
                 일관된 품질과 빠른 납기를 보장합니다.
@@ -100,10 +98,10 @@ export default function SmartFactorySection() {
                 {features.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/10"
+                    className="flex items-center gap-3 p-4 bg-[#292929] rounded-xl border-2 border-[#3A3A3A]"
                   >
-                    <CheckCircle className="w-5 h-5 text-emerald-400 flex-shrink-0" />
-                    <span className="text-gray-300 text-sm">{item}</span>
+                    <CheckCircle className="w-5 h-5 text-[#2AC1BC] flex-shrink-0" />
+                    <span className="text-white text-sm font-medium">{item}</span>
                   </div>
                 ))}
               </div>
@@ -113,17 +111,17 @@ export default function SmartFactorySection() {
               <div className="flex flex-wrap gap-4">
                 <Link
                   href="/support/tour"
-                  className="group inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-semibold hover:shadow-xl hover:shadow-blue-600/25 transition-all"
+                  className="group inline-flex items-center gap-3 px-6 py-4 bg-[#2AC1BC] rounded-xl text-white font-bold hover:bg-[#1FA9A5] transition-colors"
                 >
                   공장 견학 예약
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/about/factory"
-                  className="group inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 rounded-xl text-white font-semibold hover:bg-white/10 transition-colors"
+                  className="group inline-flex items-center gap-3 px-6 py-4 bg-[#292929] border-2 border-[#3A3A3A] rounded-xl text-white font-bold hover:border-[#2AC1BC] transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
-                    <Play className="w-4 h-4 ml-0.5" />
+                  <div className="w-10 h-10 rounded-lg bg-[#3A3A3A] flex items-center justify-center group-hover:bg-[#2AC1BC] transition-colors">
+                    <Play className="w-5 h-5 ml-0.5" />
                   </div>
                   공장 영상 보기
                 </Link>
@@ -142,17 +140,14 @@ export default function SmartFactorySection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300"
+                    className="group relative bg-[#292929] border-2 border-[#3A3A3A] rounded-2xl p-6 hover:border-[#2AC1BC] transition-all duration-300"
                   >
-                    {/* Glow on hover */}
-                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-600/0 via-purple-600/0 to-cyan-600/0 group-hover:from-blue-600/10 group-hover:via-purple-600/10 group-hover:to-cyan-600/10 transition-all duration-300" />
-
-                    <div className="relative text-center">
-                      <div className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 mb-2">
+                    <div className="text-center">
+                      <div className="text-4xl md:text-5xl font-extrabold text-[#2AC1BC] mb-2 tracking-tight">
                         <CountUp end={stat.value} suffix={stat.suffix} />
                       </div>
-                      <div className="text-white font-semibold mb-1">{stat.label}</div>
-                      <div className="text-gray-500 text-sm">{stat.description}</div>
+                      <div className="text-white font-bold mb-1">{stat.label}</div>
+                      <div className="text-[#767676] text-sm">{stat.description}</div>
                     </div>
                   </motion.div>
                 ))}
@@ -161,20 +156,13 @@ export default function SmartFactorySection() {
 
             {/* Quote Card */}
             <AnimatedSection delay={0.4} direction="right">
-              <div className="mt-6 relative p-6 rounded-2xl overflow-hidden">
-                {/* Background */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20" />
-                <div className="absolute inset-0 backdrop-blur-sm" />
-                <div className="absolute inset-0 border border-white/10 rounded-2xl" />
-
-                <div className="relative">
-                  <p className="text-lg text-white font-medium mb-2 italic">
-                    &quot;견적만 비교하지 마시고, 공장을 방문해 주십시오&quot;
-                  </p>
-                  <p className="text-gray-400 text-sm">
-                    직접 눈으로 확인하는 것이 가장 정확합니다
-                  </p>
-                </div>
+              <div className="mt-6 p-6 rounded-2xl bg-[#2AC1BC]">
+                <p className="text-xl text-white font-bold mb-2">
+                  &quot;견적만 비교하지 마시고, 공장을 방문해 주십시오&quot;
+                </p>
+                <p className="text-white/80">
+                  직접 눈으로 확인하는 것이 가장 정확합니다
+                </p>
               </div>
             </AnimatedSection>
           </div>

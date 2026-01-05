@@ -5,7 +5,10 @@
       "Bash(mkdir:*)",
       "Bash(npm run build:*)",
       "Bash(git add:*)",
-      "Bash(git reset:*)"
+      "Bash(git reset:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: 공장 소개 페이지에 실제 공장 사진 추가 및 UI 개선\n\n- 공장 항공 전경, 내부 작업장, 자동화 라인 등 6장의 실제 사진 추가\n- 갤러리 섹션 신규 구성 \\(2x2 그리드 + 하단 배너\\)\n- 호버 효과 및 그라데이션 오버레이 적용\n- 기존 서브 페이지 및 컴포넌트 포함\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(git commit:*)"
     ]
   }
 }

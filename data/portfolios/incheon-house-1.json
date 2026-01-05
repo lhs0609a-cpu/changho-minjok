@@ -1,0 +1,25 @@
+{
+  "slug": "incheon-house-1",
+  "title": "인천 단독주택 하이샤시",
+  "location": "인천 연수구",
+  "buildingType": "단독주택",
+  "product": "하이샤시",
+  "rating": 5,
+  "date": "2024년 11월",
+  "description": "신축 단독주택에 하이샤시를 적용한 사례입니다. 대형 창을 통한 개방감과 에너지 효율을 동시에 달성하였습니다.",
+  "details": {
+    "area": "165㎡ (50평형)",
+    "windowCount": "18개",
+    "duration": "2일",
+    "features": ["하이샤시 전체", "대형 픽스창", "복층유리", "고급 핸들"]
+  },
+  "review": "처음 집 지으면서 창호 선택이 고민이었는데, 하이샤시로 결정하길 정말 잘했어요. 디자인도 고급스럽고 단열도 좋습니다.",
+  "images": {
+    "thumbnail": "/images/portfolio/incheon-house-1/thumbnail.jpg",
+    "before": "/images/portfolio/incheon-house-1/before.jpg",
+    "after": "/images/portfolio/incheon-house-1/after.jpg",
+    "gallery": []
+  },
+  "published": true,
+  "order": 3
+}

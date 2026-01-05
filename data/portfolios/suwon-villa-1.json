@@ -1,0 +1,25 @@
+{
+  "slug": "suwon-villa-1",
+  "title": "수원 OO빌라 시스템창호",
+  "location": "경기 수원시",
+  "buildingType": "빌라",
+  "product": "시스템창호",
+  "rating": 5,
+  "date": "2024년 11월",
+  "description": "20년 된 빌라 창호를 프리미엄 시스템창호로 교체한 사례입니다. 층간 소음이 심한 위치라 방음에 특히 신경 써서 시공하였습니다.",
+  "details": {
+    "area": "66㎡ (26평형)",
+    "windowCount": "8개",
+    "duration": "1일",
+    "features": ["시스템창호", "삼중유리", "방음 특화", "TPS 단열간봉"]
+  },
+  "review": "도로변이라 소음이 정말 심했는데, 창호 교체 후 조용해져서 너무 좋아요. 단열도 확실히 달라졌습니다.",
+  "images": {
+    "thumbnail": "/images/portfolio/suwon-villa-1/thumbnail.jpg",
+    "before": "/images/portfolio/suwon-villa-1/before.jpg",
+    "after": "/images/portfolio/suwon-villa-1/after.jpg",
+    "gallery": []
+  },
+  "published": true,
+  "order": 2
+}

@@ -1,0 +1,25 @@
+{
+  "slug": "gangnam-apartment-1",
+  "title": "강남 OO아파트 전체 교체",
+  "location": "서울 강남구",
+  "buildingType": "아파트",
+  "product": "시스템창호",
+  "rating": 5,
+  "date": "2024년 12월",
+  "description": "30년 된 노후 아파트의 전체 창호를 시스템창호로 교체한 사례입니다. 기존 알루미늄 창호에서 발생하던 결로와 외풍 문제를 완벽히 해결하고, 단열 성능을 대폭 개선하였습니다.",
+  "details": {
+    "area": "84㎡ (34평형)",
+    "windowCount": "12개",
+    "duration": "1일",
+    "features": ["시스템창호 전체 교체", "삼중유리 적용", "TPS 단열간봉", "로이유리 코팅"]
+  },
+  "review": "결로가 심해서 매년 겨울마다 고생했는데, 창호 교체 후 결로가 완전히 사라졌어요. 난방비도 눈에 띄게 줄었고, 방음도 훨씬 좋아졌습니다. 시공도 하루 만에 깔끔하게 마무리해주셔서 감사해요.",
+  "images": {
+    "thumbnail": "/images/portfolio/gangnam-apartment-1/thumbnail.jpg",
+    "before": "/images/portfolio/gangnam-apartment-1/before.jpg",
+    "after": "/images/portfolio/gangnam-apartment-1/after.jpg",
+    "gallery": []
+  },
+  "published": true,
+  "order": 1
+}

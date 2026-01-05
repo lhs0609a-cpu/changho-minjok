@@ -1,0 +1,33 @@
+{
+  "slug": "프로젝트-영문-슬러그",
+  "title": "시공 제목 (예: 강남 OO아파트 전체 교체)",
+  "location": "지역 (예: 서울 강남구)",
+  "buildingType": "건물유형 (아파트/빌라/단독주택/상가/기타 중 택1)",
+  "product": "제품유형 (시스템창호/하이샤시/PVC창호 중 택1)",
+  "rating": 5,
+  "date": "시공 날짜 (예: 2024년 12월)",
+  "description": "시공 내용에 대한 상세 설명을 작성합니다. 어떤 문제를 해결했는지, 어떤 특징이 있는지 등을 설명합니다.",
+  "details": {
+    "area": "면적 (예: 84㎡ (34평형))",
+    "windowCount": "창호 개수 (예: 12개)",
+    "duration": "시공 기간 (예: 1일)",
+    "features": [
+      "특징 1 (예: 시스템창호 전체 교체)",
+      "특징 2 (예: 삼중유리 적용)",
+      "특징 3 (예: TPS 단열간봉)",
+      "특징 4 (예: 로이유리 코팅)"
+    ]
+  },
+  "review": "고객 후기를 작성합니다. 없으면 이 항목을 삭제하세요.",
+  "images": {
+    "thumbnail": "/images/portfolio/프로젝트슬러그/thumbnail.jpg",
+    "before": "/images/portfolio/프로젝트슬러그/before.jpg",
+    "after": "/images/portfolio/프로젝트슬러그/after.jpg",
+    "gallery": [
+      "/images/portfolio/프로젝트슬러그/gallery-1.jpg",
+      "/images/portfolio/프로젝트슬러그/gallery-2.jpg"
+    ]
+  },
+  "published": true,
+  "order": 1
+}

@@ -1,76 +1,18 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { MapPin, Star, Filter, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
+import { getPublishedPortfolios } from '@/lib/portfolio-db';
 
 export const metadata: Metadata = {
   title: '시공사례',
   description: '창호의 민족이 시공한 다양한 사례를 확인하세요. 아파트, 빌라, 단독주택 등 다양한 건물 유형의 시공 사례를 제공합니다.',
 };
 
-const portfolios = [
-  {
-    id: '1',
-    slug: 'gangnam-apartment-1',
-    title: '강남 OO아파트 전체 교체',
-    location: '서울 강남구',
-    buildingType: '아파트',
-    product: '시스템창호',
-    rating: 5,
-    date: '2024년 12월',
-  },
-  {
-    id: '2',
-    slug: 'suwon-villa-1',
-    title: '수원 OO빌라 시스템창호',
-    location: '경기 수원시',
-    buildingType: '빌라',
-    product: '시스템창호',
-    rating: 5,
-    date: '2024년 11월',
-  },
-  {
-    id: '3',
-    slug: 'incheon-house-1',
-    title: '인천 단독주택 하이샤시',
-    location: '인천 연수구',
-    buildingType: '단독주택',
-    product: '하이샤시',
-    rating: 5,
-    date: '2024년 11월',
-  },
-  {
-    id: '4',
-    slug: 'bundang-apartment-1',
-    title: '분당 OO아파트 리모델링',
-    location: '경기 성남시',
-    buildingType: '아파트',
-    product: 'PVC창호',
-    rating: 4,
-    date: '2024년 10월',
-  },
-  {
-    id: '5',
-    slug: 'ilsan-apartment-1',
-    title: '일산 OO아파트 전체 교체',
-    location: '경기 고양시',
-    buildingType: '아파트',
-    product: '하이샤시',
-    rating: 5,
-    date: '2024년 10월',
-  },
-  {
-    id: '6',
-    slug: 'yongin-villa-1',
-    title: '용인 OO빌라 부분 교체',
-    location: '경기 용인시',
-    buildingType: '빌라',
-    product: 'PVC창호',
-    rating: 5,
-    date: '2024년 9월',
-  },
-];
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 const filters = ['전체', '아파트', '빌라', '단독주택', '상가'];
 
@@ -80,7 +22,9 @@ const productColors: Record<string, string> = {
   'PVC창호': 'bg-sky-500',
 };
 
-export default function PortfolioPage() {
+export default async function PortfolioPage() {
+  const portfolios = await getPublishedPortfolios();
+
   return (
     <div className="pt-20">
       {/* Hero Section */}
@@ -122,58 +66,66 @@ export default function PortfolioPage() {
       {/* Portfolio Grid */}
       <section className="section">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {portfolios.map((item, index) => (
-              <AnimatedSection key={item.id} delay={index * 0.05}>
-                <Link href={`/portfolio/${item.slug}`} className="block group">
-                  <div className="card-clean overflow-hidden p-0">
-                    {/* Image Placeholder */}
-                    <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 relative">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-gray-400 text-sm">시공 사진</span>
-                      </div>
-                      <div className="absolute top-3 left-3 px-2 py-1 bg-white/90 rounded-lg text-xs font-medium text-gray-700">
-                        {item.buildingType}
-                      </div>
-                      <div className={`absolute top-3 right-3 px-2 py-1 ${productColors[item.product]} text-white rounded-lg text-xs font-medium`}>
-                        {item.product}
-                      </div>
-                      <div className="absolute inset-0 bg-sky-500/0 group-hover:bg-sky-500/10 transition-colors" />
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-5">
-                      <h3 className="font-semibold text-gray-900 mb-2 line-clamp-1 group-hover:text-sky-600 transition-colors">
-                        {item.title}
-                      </h3>
-                      <div className="flex items-center justify-between text-sm text-gray-500">
-                        <div className="flex items-center gap-1">
-                          <MapPin className="w-4 h-4" />
-                          {item.location}
+          {portfolios.length === 0 ? (
+            <div className="text-center py-20">
+              <p className="text-gray-500">등록된 시공사례가 없습니다.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {portfolios.map((item, index) => (
+                <AnimatedSection key={item.id} delay={index * 0.05}>
+                  <Link href={`/portfolio/${item.slug}`} className="block group">
+                    <div className="card-clean overflow-hidden p-0">
+                      {/* Image */}
+                      <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 relative overflow-hidden">
+                        {item.thumbnail_url ? (
+                          <Image
+                            src={item.thumbnail_url}
+                            alt={item.title}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-gray-400 text-sm">시공 사진</span>
+                          </div>
+                        )}
+                        <div className="absolute top-3 left-3 px-2 py-1 bg-white/90 rounded-lg text-xs font-medium text-gray-700">
+                          {item.building_type}
                         </div>
-                        <div className="flex items-center gap-0.5">
-                          {[...Array(item.rating)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className="w-4 h-4 fill-amber-400 text-amber-400"
-                            />
-                          ))}
+                        <div className={`absolute top-3 right-3 px-2 py-1 ${productColors[item.product] || 'bg-gray-500'} text-white rounded-lg text-xs font-medium`}>
+                          {item.product}
                         </div>
+                        <div className="absolute inset-0 bg-sky-500/0 group-hover:bg-sky-500/10 transition-colors" />
                       </div>
-                      <p className="text-xs text-gray-400 mt-2">{item.date}</p>
-                    </div>
-                  </div>
-                </Link>
-              </AnimatedSection>
-            ))}
-          </div>
 
-          {/* Load More */}
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="border-gray-200 hover:border-sky-300 hover:text-sky-600">
-              더 보기
-            </Button>
-          </div>
+                      {/* Content */}
+                      <div className="p-5">
+                        <h3 className="font-semibold text-gray-900 mb-2 line-clamp-1 group-hover:text-sky-600 transition-colors">
+                          {item.title}
+                        </h3>
+                        <div className="flex items-center justify-between text-sm text-gray-500">
+                          <div className="flex items-center gap-1">
+                            <MapPin className="w-4 h-4" />
+                            {item.location}
+                          </div>
+                          <div className="flex items-center gap-0.5">
+                            {[...Array(item.rating)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className="w-4 h-4 fill-amber-400 text-amber-400"
+                              />
+                            ))}
+                          </div>
+                        </div>
+                        <p className="text-xs text-gray-400 mt-2">{item.date}</p>
+                      </div>
+                    </div>
+                  </Link>
+                </AnimatedSection>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

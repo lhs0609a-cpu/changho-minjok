@@ -7,7 +7,6 @@ const partners = [
   { name: 'KCC글라스', logo: '/images/partners/kcc-glass.png' },
   { name: '휴그린', logo: '/images/partners/hugreen.jpg' },
   { name: 'LX하우시스', logo: '/images/partners/lx-hausys.jpg' },
-  { name: '금호석유화학', logo: '/images/partners/kumho.png' },
 ];
 
 export default function PartnersSection() {

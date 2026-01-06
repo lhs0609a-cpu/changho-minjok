@@ -1,44 +1,60 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 
 const portfolios = [
   {
-    id: '1',
-    slug: 'gangnam-apartment-1',
-    title: '강남 OO아파트 전체 교체',
-    location: '서울 강남구',
+    id: 'yangjung-hyundai',
+    slug: 'yangjung-hyundai',
+    title: '양정현대아파트 창호 전체 교체',
+    location: '부산 부산진구',
     buildingType: '아파트',
+    product: '시스템창호',
     rating: 5,
+    thumbnail: '/images/portfolio/yangjung-hyundai/thumbnail.jpg',
   },
   {
-    id: '2',
-    slug: 'suwon-villa-1',
-    title: '수원 OO빌라 시스템창호',
-    location: '경기 수원시',
-    buildingType: '빌라',
-    rating: 5,
-  },
-  {
-    id: '3',
-    slug: 'incheon-house-1',
-    title: '인천 단독주택 하이샤시',
-    location: '인천 연수구',
+    id: 'cheongdo-house',
+    slug: 'cheongdo-house',
+    title: '청도 단독주택 이중창 교체',
+    location: '경북 청도군',
     buildingType: '단독주택',
+    product: '이중창',
     rating: 5,
+    thumbnail: '/images/portfolio/cheongdo-house/thumbnail.jpg',
   },
   {
-    id: '4',
-    slug: 'bundang-apartment-1',
-    title: '분당 OO아파트 리모델링',
-    location: '경기 성남시',
+    id: 'towol-sungwon',
+    slug: 'towol-sungwon',
+    title: '토월성원아파트 5단지 창호 교체',
+    location: '경남 창원시',
     buildingType: '아파트',
-    rating: 4,
+    product: '시스템창호',
+    rating: 5,
+    thumbnail: '/images/portfolio/towol-sungwon/thumbnail.jpg',
+  },
+  {
+    id: 'dongwon-royalduke',
+    slug: 'dongwon-royalduke',
+    title: '동원로얄듀크 창호 교체',
+    location: '부산 수영구',
+    buildingType: '아파트',
+    product: '시스템창호',
+    rating: 5,
+    thumbnail: '/images/portfolio/dongwon-royalduke/thumbnail.jpg',
   },
 ];
+
+const productColors: Record<string, string> = {
+  '시스템창호': 'bg-amber-500',
+  '하이샤시': 'bg-emerald-500',
+  'PVC창호': 'bg-sky-500',
+  '이중창': 'bg-violet-500',
+};
 
 export default function PortfolioPreviewSection() {
   return (
@@ -59,23 +75,31 @@ export default function PortfolioPreviewSection() {
             <AnimatedSection key={item.id} delay={index * 0.1}>
               <Link href={`/portfolio/${item.slug}`} className="group block">
                 <div className="relative overflow-hidden rounded-2xl bg-[#F5F5F5] aspect-[4/3] mb-4 border-2 border-[#EEEEEE] group-hover:border-[#2AC1BC] transition-colors">
-                  {/* Placeholder Image */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="text-[#C4C4C4] text-sm font-medium">시공 사진</span>
-                  </div>
+                  {/* Thumbnail Image */}
+                  <Image
+                    src={item.thumbnail}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-[#2AC1BC]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-white font-bold">자세히 보기</span>
                   </div>
 
-                  {/* Badge */}
+                  {/* Badge - Building Type */}
                   <div className="absolute top-3 left-3 px-3 py-1.5 bg-white rounded-lg text-xs font-bold text-[#1E1E1E]">
                     {item.buildingType}
                   </div>
+
+                  {/* Badge - Product Type */}
+                  <div className={`absolute top-3 right-3 px-3 py-1.5 ${productColors[item.product] || 'bg-gray-500'} rounded-lg text-xs font-bold text-white`}>
+                    {item.product}
+                  </div>
                 </div>
 
-                <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors mb-2">
+                <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors mb-2 line-clamp-1">
                   {item.title}
                 </h3>
 

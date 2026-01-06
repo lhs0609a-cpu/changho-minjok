@@ -25,7 +25,7 @@ export default function PartnersSection() {
             {partners.map((partner) => (
               <div
                 key={partner.name}
-                className="relative h-10 w-32 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                className="relative h-20 w-64 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
               >
                 <Image
                   src={partner.logo}

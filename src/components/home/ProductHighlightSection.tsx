@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
@@ -12,6 +13,7 @@ const products = [
     description: '뛰어난 단열성과 가성비를 갖춘 기본 창호',
     features: ['단열성 우수', '다양한 컬러', '경제적'],
     color: 'bg-[#2AC1BC]',
+    image: '/images/products/pvc-window.png',
   },
   {
     slug: 'hisash',
@@ -19,6 +21,7 @@ const products = [
     description: '알루미늄과 PVC의 장점을 결합한 복합 창호',
     features: ['내구성 강화', '단열+강도', '고급 디자인'],
     color: 'bg-[#FF6F0F]',
+    image: '/images/products/hisash-window.png',
   },
   {
     slug: 'system',
@@ -26,6 +29,7 @@ const products = [
     description: '최고급 기밀성과 단열성을 자랑하는 프리미엄 창호',
     features: ['최고급 사양', '에너지 절감', '방음 효과'],
     color: 'bg-[#1E1E1E]',
+    image: '/images/products/system-window.png',
   },
 ];
 
@@ -48,13 +52,14 @@ export default function ProductHighlightSection() {
             <AnimatedSection key={product.slug} delay={index * 0.1}>
               <Link href={`/products/${product.slug}`} className="group block">
                 <div className="bg-white rounded-3xl overflow-hidden border-2 border-[#EEEEEE] hover:border-[#2AC1BC] transition-all duration-300 hover:-translate-y-2">
-                  {/* Image Placeholder */}
-                  <div className={`h-48 ${product.color} relative overflow-hidden`}>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-white/30 text-8xl font-extrabold">
-                        {product.name.charAt(0)}
-                      </span>
-                    </div>
+                  {/* Product Image */}
+                  <div className="h-48 relative overflow-hidden">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
 
                   {/* Content */}

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { CheckCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,6 +14,7 @@ const products: Record<string, {
   specs: { label: string; value: string }[];
   advantages: { title: string; description: string }[];
   color: string;
+  image: string;
 }> = {
   pvc: {
     name: 'PVC 창호',
@@ -31,6 +33,7 @@ const products: Record<string, {
       { title: '쉬운 관리', description: '별도의 관리 없이도 오랜 시간 깨끗하게 유지됩니다.' },
     ],
     color: 'sky',
+    image: '/images/products/pvc-window.png',
   },
   hisash: {
     name: '하이샤시',
@@ -49,6 +52,7 @@ const products: Record<string, {
       { title: '고급 외관', description: '세련된 디자인으로 건물의 가치를 높입니다.' },
     ],
     color: 'emerald',
+    image: '/images/products/hisash-window.png',
   },
   system: {
     name: '시스템창호',
@@ -67,6 +71,7 @@ const products: Record<string, {
       { title: '프리미엄 품질', description: '유럽 인증을 받은 최고급 자재만 사용합니다.' },
     ],
     color: 'amber',
+    image: '/images/products/system-window.png',
   },
   glass: {
     name: '유리 종류',
@@ -85,6 +90,7 @@ const products: Record<string, {
       { title: '안전성', description: '강화유리와 접합유리로 안전을 보장합니다.' },
     ],
     color: 'cyan',
+    image: '/images/products/uv-protection.png',
   },
   tps: {
     name: 'TPS 단열간봉',
@@ -103,6 +109,7 @@ const products: Record<string, {
       { title: '비용 절감', description: '자체 생산으로 중간 마진 없이 합리적인 가격을 제공합니다.' },
     ],
     color: 'purple',
+    image: '/images/products/tps-spacer.png',
   },
 };
 
@@ -156,6 +163,25 @@ export default async function ProductDetailPage({ params }: PageProps) {
             <h1 className="page-hero-title">{product.name}</h1>
             <p className="page-hero-subtitle">{product.subtitle}</p>
           </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Product Image */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-5xl mx-auto">
+            <AnimatedSection>
+              <div className="relative aspect-[16/9] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={product.image}
+                  alt={product.name}
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </AnimatedSection>
+          </div>
         </div>
       </section>
 

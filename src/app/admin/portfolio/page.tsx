@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { verifyAdmin } from '@/lib/auth';
 import { getAllPortfoliosFromDB } from '@/lib/portfolio-db';
 import { logoutAction } from '../actions';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, Home } from 'lucide-react';
+import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, Home, MessageSquare } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -28,6 +28,13 @@ export default async function AdminPortfolioPage() {
             <h1 className="text-xl font-bold text-gray-900">시공사례 관리</h1>
           </div>
           <div className="flex items-center gap-3">
+            <Link
+              href="/admin/inquiries"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 px-3 py-2"
+            >
+              <MessageSquare className="w-4 h-4" />
+              상담신청
+            </Link>
             <Link
               href="/admin/portfolio/new"
               className="inline-flex items-center gap-2 bg-sky-500 text-white px-4 py-2 rounded-lg hover:bg-sky-600 transition-colors"

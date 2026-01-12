@@ -249,7 +249,7 @@ export default function FactoryPage() {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 rounded-xl">
+              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-sky-600 rounded-xl">
                 <Link href="/estimate">무료 견적받기</Link>
               </Button>
             </div>

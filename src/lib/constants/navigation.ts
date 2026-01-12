@@ -63,9 +63,9 @@ export const COMPANY_INFO = {
   name: '창호의 민족',
   companyName: '(주)현경시스템',
   address: '경기도 화성시 (상세주소)',
-  phone: '031-000-0000',
+  phone: '1668-1453',
   fax: '031-000-0001',
-  email: 'info@changho-minjok.co.kr',
+  email: 'changhopeople@naver.com',
   businessNumber: '000-00-00000',
   ceo: '대표이사명',
 };

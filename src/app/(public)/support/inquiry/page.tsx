@@ -1,12 +1,13 @@
 'use client';
 
 import { useState } from 'react';
-import { Phone, Mail, Clock, Send, CheckCircle } from 'lucide-react';
+import { Phone, Mail, Clock, Send, CheckCircle, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { COMPANY_INFO } from '@/lib/constants/navigation';
 import AnimatedSection from '@/components/shared/AnimatedSection';
+import { submitInquiryAction } from './actions';
 
 const inquiryTypes = [
   { value: 'estimate', label: '견적 문의' },
@@ -18,11 +19,24 @@ const inquiryTypes = [
 
 export default function InquiryPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: 실제 폼 제출 로직
-    setIsSubmitted(true);
+    setIsLoading(true);
+    setError(null);
+
+    const formData = new FormData(e.currentTarget);
+    const result = await submitInquiryAction(formData);
+
+    setIsLoading(false);
+
+    if (result.success) {
+      setIsSubmitted(true);
+    } else {
+      setError(result.error || '상담 신청 중 오류가 발생했습니다.');
+    }
   };
 
   if (isSubmitted) {
@@ -122,22 +136,27 @@ export default function InquiryPage() {
               <div className="lg:col-span-2">
                 <AnimatedSection delay={0.1}>
                   <form onSubmit={handleSubmit} className="card-clean">
+                    {error && (
+                      <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+                        {error}
+                      </div>
+                    )}
                     <div className="grid md:grid-cols-2 gap-6">
                       <div>
                         <label className="form-label">이름 *</label>
-                        <Input required placeholder="홍길동" className="form-input" />
+                        <Input name="name" required placeholder="홍길동" className="form-input" />
                       </div>
                       <div>
                         <label className="form-label">연락처 *</label>
-                        <Input required type="tel" placeholder="010-0000-0000" className="form-input" />
+                        <Input name="phone" required type="tel" placeholder="010-0000-0000" className="form-input" />
                       </div>
                       <div>
                         <label className="form-label">이메일</label>
-                        <Input type="email" placeholder="email@example.com" className="form-input" />
+                        <Input name="email" type="email" placeholder="email@example.com" className="form-input" />
                       </div>
                       <div>
                         <label className="form-label">문의 유형 *</label>
-                        <select required className="form-input">
+                        <select name="inquiryType" required className="form-input">
                           <option value="">선택해주세요</option>
                           {inquiryTypes.map((type) => (
                             <option key={type.value} value={type.value}>{type.label}</option>
@@ -146,11 +165,12 @@ export default function InquiryPage() {
                       </div>
                       <div className="md:col-span-2">
                         <label className="form-label">주소</label>
-                        <Input placeholder="시공 예정 주소" className="form-input" />
+                        <Input name="address" placeholder="시공 예정 주소" className="form-input" />
                       </div>
                       <div className="md:col-span-2">
                         <label className="form-label">문의 내용 *</label>
                         <Textarea
+                          name="message"
                           required
                           rows={5}
                           placeholder="문의하실 내용을 자세히 적어주세요."
@@ -163,9 +183,18 @@ export default function InquiryPage() {
                       <p className="text-sm text-gray-500">
                         * 필수 입력 항목
                       </p>
-                      <Button type="submit" className="bg-sky-500 hover:bg-sky-600 px-8">
-                        <Send className="w-4 h-4 mr-2" />
-                        상담 신청하기
+                      <Button type="submit" disabled={isLoading} className="bg-sky-500 hover:bg-sky-600 px-8">
+                        {isLoading ? (
+                          <>
+                            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                            처리중...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="w-4 h-4 mr-2" />
+                            상담 신청하기
+                          </>
+                        )}
                       </Button>
                     </div>
                   </form>

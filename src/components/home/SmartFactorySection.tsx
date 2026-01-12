@@ -5,6 +5,7 @@ import { useInView, motion } from 'framer-motion';
 import { Play, ArrowRight, CheckCircle } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const stats = [
   { value: 10, suffix: '년+', label: '제조 경력', description: '2015년 설립' },
@@ -129,10 +130,28 @@ export default function SmartFactorySection() {
             </AnimatedSection>
           </div>
 
-          {/* Stats Grid */}
+          {/* Factory Images & Stats */}
           <div>
+            {/* Factory Aerial Image */}
             <AnimatedSection direction="right">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 shadow-2xl">
+                <Image
+                  src="/images/trust/factory-aerial.jpg"
+                  alt="창호의 민족 공장 항공 전경"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="text-white font-bold text-lg">3,500평 규모 스마트 팩토리</p>
+                  <p className="text-white/80 text-sm">경상북도 청도군 소재</p>
+                </div>
+              </div>
+            </AnimatedSection>
+
+            {/* Stats Grid */}
+            <AnimatedSection delay={0.2} direction="right">
+              <div className="grid grid-cols-4 gap-3 mb-6">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -140,15 +159,12 @@ export default function SmartFactorySection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="group relative bg-[#292929] border-2 border-[#3A3A3A] rounded-2xl p-6 hover:border-[#2AC1BC] transition-all duration-300"
+                    className="bg-[#292929] border border-[#3A3A3A] rounded-xl p-4 text-center"
                   >
-                    <div className="text-center">
-                      <div className="text-4xl md:text-5xl font-extrabold text-[#2AC1BC] mb-2 tracking-tight">
-                        <CountUp end={stat.value} suffix={stat.suffix} />
-                      </div>
-                      <div className="text-white font-bold mb-1">{stat.label}</div>
-                      <div className="text-[#767676] text-sm">{stat.description}</div>
+                    <div className="text-2xl md:text-3xl font-extrabold text-[#2AC1BC] mb-1 tracking-tight">
+                      <CountUp end={stat.value} suffix={stat.suffix} />
                     </div>
+                    <div className="text-white text-sm font-bold">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
@@ -156,7 +172,7 @@ export default function SmartFactorySection() {
 
             {/* Quote Card */}
             <AnimatedSection delay={0.4} direction="right">
-              <div className="mt-6 p-6 rounded-2xl bg-[#2AC1BC]">
+              <div className="p-6 rounded-2xl bg-[#2AC1BC]">
                 <p className="text-xl text-white font-bold mb-2">
                   &quot;견적만 비교하지 마시고, 공장을 방문해 주십시오&quot;
                 </p>

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight, Factory, Award, Users, Target } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
@@ -74,15 +75,27 @@ export default function AboutPage() {
 
             <div className="space-y-12">
               <AnimatedSection>
-                <div className="prose prose-lg max-w-none">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    01. 우리의 철학
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    2015년, 작은 공장에서 시작한 현경시스템은 오직 품질 하나만을 생각했습니다.
-                    화려한 마케팅보다 묵묵히 좋은 제품을 만드는 것, 그것이 우리의 철학입니다.
-                    10년이 지난 지금도 우리는 매일 아침 공장의 기계 소리와 함께 하루를 시작합니다.
-                  </p>
+                <div className="flex flex-col md:flex-row gap-8 items-center">
+                  <div className="md:w-1/3 flex-shrink-0">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg">
+                      <Image
+                        src="/images/about/ceo-photo.png"
+                        alt="창호의 민족 대표"
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  </div>
+                  <div className="md:w-2/3 prose prose-lg max-w-none">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      01. 우리의 철학
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed">
+                      2015년, 작은 공장에서 시작한 현경시스템은 오직 품질 하나만을 생각했습니다.
+                      화려한 마케팅보다 묵묵히 좋은 제품을 만드는 것, 그것이 우리의 철학입니다.
+                      10년이 지난 지금도 우리는 매일 아침 공장의 기계 소리와 함께 하루를 시작합니다.
+                    </p>
+                  </div>
                 </div>
               </AnimatedSection>
 
@@ -110,6 +123,29 @@ export default function AboutPage() {
                     우리의 다짐이 담겨 있습니다. 제조-영업-시공 원스톱 서비스로
                     중간 마진 없이 합리적인 가격과 책임 있는 A/S를 약속합니다.
                   </p>
+                </div>
+              </AnimatedSection>
+
+              {/* Team Photo */}
+              <AnimatedSection delay={0.3}>
+                <div className="mt-8">
+                  <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
+                    <Image
+                      src="/images/about/team-photo.jpg"
+                      alt="창호의 민족 팀원들"
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
+                        함께 만들어가는 창호의 민족
+                      </h3>
+                      <p className="text-white/80 text-sm md:text-base">
+                        숙련된 기술자들이 한마음으로 최고의 품질을 만들어갑니다.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </AnimatedSection>
             </div>

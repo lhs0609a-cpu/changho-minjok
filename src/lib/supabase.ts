@@ -60,3 +60,27 @@ export interface PortfolioInput {
   published?: boolean;
   display_order?: number;
 }
+
+// 상담신청 타입 정의
+export interface InquiryRecord {
+  id: string;
+  name: string;
+  phone: string;
+  email: string | null;
+  inquiry_type: string;
+  address: string | null;
+  message: string;
+  status: 'pending' | 'in_progress' | 'completed' | 'cancelled';
+  admin_note: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface InquiryInput {
+  name: string;
+  phone: string;
+  email?: string;
+  inquiry_type: string;
+  address?: string;
+  message: string;
+}

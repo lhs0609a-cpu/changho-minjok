@@ -11,6 +11,7 @@ const values = [
     subtitle: 'SMART FACTORY',
     description: '3,500평 스마트 팩토리에서 전 공정을 직접 관리하여 일관된 품질을 보장합니다.',
     number: '01',
+    href: '/about/factory',
   },
   {
     icon: Truck,
@@ -18,6 +19,7 @@ const values = [
     subtitle: 'FACTORY DIRECT',
     description: '중간 유통 마진 없이 공장에서 직접 고객님께 공급하여 합리적인 가격을 제공합니다.',
     number: '02',
+    href: '/about',
   },
   {
     icon: Wrench,
@@ -25,6 +27,7 @@ const values = [
     subtitle: 'EXPERT INSTALLATION',
     description: '숙련된 전문 시공팀이 제품 특성을 정확히 이해하고 완벽하게 설치합니다.',
     number: '03',
+    href: '/portfolio',
   },
 ];
 
@@ -51,16 +54,16 @@ export default function CoreValuesSection() {
         <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {values.map((value, index) => (
             <AnimatedSection key={value.title} delay={index * 0.1}>
-              <div className="group relative h-full">
-                <div className="relative h-full bg-white rounded-3xl p-8 lg:p-10 border-2 border-[#EEEEEE] hover:border-[#2AC1BC] transition-all duration-300 hover:-translate-y-2">
+              <Link href={value.href} className="group block h-full">
+                <div className="relative h-full bg-white rounded-3xl p-6 md:p-8 lg:p-10 border-2 border-[#EEEEEE] hover:border-[#2AC1BC] transition-all duration-300 hover:-translate-y-2">
                   {/* Number */}
-                  <span className="absolute top-6 right-6 text-7xl font-extrabold text-[#F5F5F5] group-hover:text-[#E8F8F7] transition-colors select-none">
+                  <span className="absolute top-4 right-4 md:top-6 md:right-6 text-5xl md:text-7xl font-extrabold text-[#F5F5F5] group-hover:text-[#E8F8F7] transition-colors select-none">
                     {value.number}
                   </span>
 
                   {/* Icon */}
-                  <div className="relative w-16 h-16 rounded-2xl bg-[#E8F8F7] flex items-center justify-center mb-6 group-hover:bg-[#2AC1BC] transition-colors">
-                    <value.icon className="h-8 w-8 text-[#2AC1BC] group-hover:text-white transition-colors" />
+                  <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#E8F8F7] flex items-center justify-center mb-5 md:mb-6 group-hover:bg-[#2AC1BC] transition-colors">
+                    <value.icon className="h-7 w-7 md:h-8 md:w-8 text-[#2AC1BC] group-hover:text-white transition-colors" />
                   </div>
 
                   {/* Content */}
@@ -68,24 +71,24 @@ export default function CoreValuesSection() {
                     <span className="text-xs font-bold text-[#C4C4C4] uppercase tracking-wider block mb-2">
                       {value.subtitle}
                     </span>
-                    <h3 className="text-2xl font-extrabold text-[#1E1E1E] mb-4 tracking-tight">
+                    <h3 className="text-xl md:text-2xl font-extrabold text-[#1E1E1E] mb-3 md:mb-4 tracking-tight">
                       {value.title}
                     </h3>
-                    <p className="text-[#767676] leading-relaxed mb-6">
+                    <p className="text-[#767676] leading-relaxed mb-5 md:mb-6 text-sm md:text-base">
                       {value.description}
                     </p>
 
                     {/* Arrow Link */}
-                    <div className="flex items-center gap-2 text-[#C4C4C4] group-hover:text-[#2AC1BC] transition-colors font-bold">
+                    <div className="flex items-center gap-2 text-[#2AC1BC] font-bold">
                       <span className="text-sm">자세히 보기</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
 
                   {/* Bottom Line */}
-                  <div className="absolute bottom-0 left-8 right-8 h-1 rounded-full bg-[#2AC1BC] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                  <div className="absolute bottom-0 left-6 right-6 md:left-8 md:right-8 h-1 rounded-full bg-[#2AC1BC] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
-              </div>
+              </Link>
             </AnimatedSection>
           ))}
         </div>

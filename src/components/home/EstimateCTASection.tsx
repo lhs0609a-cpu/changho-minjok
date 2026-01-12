@@ -13,7 +13,7 @@ const features = [
 
 export default function EstimateCTASection() {
   return (
-    <section className="relative py-24 md:py-32 bg-[#2AC1BC] overflow-hidden">
+    <section className="relative py-16 md:py-24 lg:py-32 bg-[#2AC1BC] overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -91,15 +91,15 @@ export default function EstimateCTASection() {
           <AnimatedSection delay={0.4} className="text-center">
             <Link
               href="/estimate"
-              className="group inline-flex items-center gap-4 px-10 py-5 bg-[#1E1E1E] text-white rounded-2xl font-bold text-lg hover:bg-[#292929] transition-all duration-300"
+              className="group inline-flex items-center gap-3 md:gap-4 px-6 md:px-10 py-4 md:py-5 bg-[#1E1E1E] text-white rounded-xl md:rounded-2xl font-bold text-base md:text-lg hover:bg-[#292929] transition-all duration-300"
             >
               지금 바로 견적 받기
-              <div className="w-12 h-12 rounded-xl bg-[#2AC1BC] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <ArrowRight className="w-6 h-6" />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[#2AC1BC] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
               </div>
             </Link>
 
-            <p className="mt-6 text-white/60 text-sm font-medium">
+            <p className="mt-4 md:mt-6 text-white/60 text-xs md:text-sm font-medium">
               회원가입 없이 바로 이용 가능합니다
             </p>
           </AnimatedSection>

@@ -48,11 +48,11 @@ export default function TrustSection() {
           </p>
         </AnimatedSection>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
           {/* Certification Images */}
           <AnimatedSection>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+            <div className="grid grid-cols-2 gap-3 md:gap-4">
+              <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <Image
                   src="/images/trust/construction-license.jpg"
                   alt="건설업등록증"
@@ -60,12 +60,12 @@ export default function TrustSection() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white font-bold text-sm">건설업등록증</p>
-                  <p className="text-white/80 text-xs">(주)현경시스템</p>
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                  <p className="text-white font-bold text-xs md:text-sm">건설업등록증</p>
+                  <p className="text-white/80 text-[10px] md:text-xs">(주)현경시스템</p>
                 </div>
               </div>
-              <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+              <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <Image
                   src="/images/trust/kcc-certificate.jpg"
                   alt="KCC e-MAX Club 회원사 명패"
@@ -73,9 +73,9 @@ export default function TrustSection() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <p className="text-white font-bold text-sm">KCC 공식 파트너</p>
-                  <p className="text-white/80 text-xs">e-MAX Club 회원사</p>
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                  <p className="text-white font-bold text-xs md:text-sm">KCC 공식 파트너</p>
+                  <p className="text-white/80 text-[10px] md:text-xs">e-MAX Club 회원사</p>
                 </div>
               </div>
             </div>
@@ -83,19 +83,19 @@ export default function TrustSection() {
 
           {/* Certification List */}
           <AnimatedSection delay={0.2}>
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {certifications.map((cert, index) => (
                 <div
                   key={cert.title}
-                  className="flex items-start gap-4 p-5 bg-white rounded-2xl border-2 border-gray-100 hover:border-[#2AC1BC]/30 hover:shadow-lg transition-all"
+                  className="flex items-start gap-3 md:gap-4 p-4 md:p-5 bg-white rounded-xl md:rounded-2xl border-2 border-gray-100 hover:border-[#2AC1BC]/30 hover:shadow-lg transition-all"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-[#2AC1BC]/10 flex items-center justify-center flex-shrink-0">
-                    <cert.icon className="w-7 h-7 text-[#2AC1BC]" />
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-xl bg-[#2AC1BC]/10 flex items-center justify-center flex-shrink-0">
+                    <cert.icon className="w-6 h-6 md:w-7 md:h-7 text-[#2AC1BC]" />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-[#1E1E1E] text-lg mb-1">{cert.title}</h3>
-                    <p className="text-[#767676]">{cert.description}</p>
-                    <p className="text-sm text-[#2AC1BC] font-medium mt-1">{cert.detail}</p>
+                  <div className="min-w-0">
+                    <h3 className="font-bold text-[#1E1E1E] text-base md:text-lg mb-0.5 md:mb-1">{cert.title}</h3>
+                    <p className="text-[#767676] text-sm md:text-base">{cert.description}</p>
+                    <p className="text-xs md:text-sm text-[#2AC1BC] font-medium mt-1">{cert.detail}</p>
                   </div>
                 </div>
               ))}

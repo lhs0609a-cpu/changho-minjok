@@ -57,7 +57,7 @@ function CountUp({ end, suffix }: { end: number; suffix: string }) {
 
 export default function SmartFactorySection() {
   return (
-    <section className="relative py-24 md:py-32 bg-[#1E1E1E] overflow-hidden">
+    <section className="relative py-16 md:py-24 lg:py-32 bg-[#1E1E1E] overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -78,7 +78,7 @@ export default function SmartFactorySection() {
                 Smart Factory
               </span>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight leading-[1.1]">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white mb-4 md:mb-6 tracking-tight leading-[1.1]">
                 스마트 팩토리로
                 <br />
                 완성한{' '}
@@ -109,22 +109,22 @@ export default function SmartFactorySection() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
                 <Link
                   href="/support/tour"
-                  className="group inline-flex items-center gap-3 px-6 py-4 bg-[#2AC1BC] rounded-xl text-white font-bold hover:bg-[#1FA9A5] transition-colors"
+                  className="group inline-flex items-center justify-center gap-2 md:gap-3 px-5 md:px-6 py-3 md:py-4 bg-[#2AC1BC] rounded-xl text-white font-bold hover:bg-[#1FA9A5] transition-colors text-sm md:text-base"
                 >
                   공장 견학 예약
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link
                   href="/about/factory"
-                  className="group inline-flex items-center gap-3 px-6 py-4 bg-[#292929] border-2 border-[#3A3A3A] rounded-xl text-white font-bold hover:border-[#2AC1BC] transition-colors"
+                  className="group inline-flex items-center justify-center gap-2 md:gap-3 px-5 md:px-6 py-3 md:py-4 bg-[#292929] border-2 border-[#3A3A3A] rounded-xl text-white font-bold hover:border-[#2AC1BC] transition-colors text-sm md:text-base"
                 >
-                  <div className="w-10 h-10 rounded-lg bg-[#3A3A3A] flex items-center justify-center group-hover:bg-[#2AC1BC] transition-colors">
-                    <Play className="w-5 h-5 ml-0.5" />
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-[#3A3A3A] flex items-center justify-center group-hover:bg-[#2AC1BC] transition-colors">
+                    <Play className="w-4 h-4 md:w-5 md:h-5 ml-0.5" />
                   </div>
-                  공장 영상 보기
+                  공장 둘러보기
                 </Link>
               </div>
             </AnimatedSection>
@@ -134,19 +134,19 @@ export default function SmartFactorySection() {
           <div>
             {/* Factory Aerial Image */}
             <AnimatedSection direction="right">
-              <div className="relative aspect-[16/10] rounded-2xl overflow-hidden mb-6 shadow-2xl">
+              <Link href="/about/factory" className="block relative aspect-[16/10] rounded-xl md:rounded-2xl overflow-hidden mb-4 md:mb-6 shadow-2xl group">
                 <Image
                   src="/images/trust/factory-aerial.jpg"
                   alt="창호의 민족 공장 항공 전경"
                   fill
-                  className="object-cover"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <p className="text-white font-bold text-lg">3,500평 규모 스마트 팩토리</p>
-                  <p className="text-white/80 text-sm">경상북도 청도군 소재</p>
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                  <p className="text-white font-bold text-base md:text-lg">3,500평 규모 스마트 팩토리</p>
+                  <p className="text-white/80 text-xs md:text-sm">경상북도 청도군 소재</p>
                 </div>
-              </div>
+              </Link>
             </AnimatedSection>
 
             {/* Stats Grid */}
@@ -172,14 +172,17 @@ export default function SmartFactorySection() {
 
             {/* Quote Card */}
             <AnimatedSection delay={0.4} direction="right">
-              <div className="p-6 rounded-2xl bg-[#2AC1BC]">
-                <p className="text-xl text-white font-bold mb-2">
+              <Link href="/support/tour" className="block p-4 md:p-6 rounded-xl md:rounded-2xl bg-[#2AC1BC] hover:bg-[#25b0ab] transition-colors group">
+                <p className="text-base md:text-xl text-white font-bold mb-1 md:mb-2">
                   &quot;견적만 비교하지 마시고, 공장을 방문해 주십시오&quot;
                 </p>
-                <p className="text-white/80">
-                  직접 눈으로 확인하는 것이 가장 정확합니다
-                </p>
-              </div>
+                <div className="flex items-center justify-between">
+                  <p className="text-white/80 text-sm md:text-base">
+                    직접 눈으로 확인하는 것이 가장 정확합니다
+                  </p>
+                  <ArrowRight className="w-5 h-5 text-white/80 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             </AnimatedSection>
           </div>
         </div>

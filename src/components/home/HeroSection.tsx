@@ -15,7 +15,7 @@ const stats = [
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center overflow-hidden">
       {/* Full-screen Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -205,20 +205,20 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="lg:hidden mt-12"
+          className="lg:hidden mt-8"
         >
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-6">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-white font-bold">15,000+ 고객이 선택</p>
-                <p className="text-white/60 text-sm">평균 만족도 4.9/5.0</p>
+          <Link href="/about/factory" className="block bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-4 active:bg-white/20">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-[#2AC1BC] flex items-center justify-center flex-shrink-0">
+                <Play className="w-6 h-6 text-white ml-0.5" />
               </div>
-              <Link href="/about/factory" className="flex items-center gap-2 text-[#2AC1BC] font-bold text-sm">
-                공장 보기
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+              <div className="flex-1 min-w-0">
+                <p className="text-white font-bold">공장 둘러보기</p>
+                <p className="text-white/60 text-sm">15,000+ 고객이 선택한 스마트 팩토리</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-[#2AC1BC] flex-shrink-0" />
             </div>
-          </div>
+          </Link>
         </motion.div>
       </div>
 

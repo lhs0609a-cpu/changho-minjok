@@ -95,11 +95,11 @@ export default function SmartFactorySection() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="grid grid-cols-2 gap-4 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
                 {features.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-3 p-4 bg-[#292929] rounded-xl border-2 border-[#3A3A3A]"
+                    className="flex items-center gap-3 p-3 md:p-4 bg-[#292929] rounded-xl border-2 border-[#3A3A3A]"
                   >
                     <CheckCircle className="w-5 h-5 text-[#2AC1BC] flex-shrink-0" />
                     <span className="text-white text-sm font-medium">{item}</span>
@@ -151,7 +151,7 @@ export default function SmartFactorySection() {
 
             {/* Stats Grid */}
             <AnimatedSection delay={0.2} direction="right">
-              <div className="grid grid-cols-4 gap-3 mb-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
                 {stats.map((stat, index) => (
                   <motion.div
                     key={stat.label}
@@ -159,12 +159,12 @@ export default function SmartFactorySection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     viewport={{ once: true }}
-                    className="bg-[#292929] border border-[#3A3A3A] rounded-xl p-4 text-center"
+                    className="bg-[#292929] border border-[#3A3A3A] rounded-xl p-3 md:p-4 text-center"
                   >
-                    <div className="text-2xl md:text-3xl font-extrabold text-[#2AC1BC] mb-1 tracking-tight">
+                    <div className="text-xl md:text-2xl lg:text-3xl font-extrabold text-[#2AC1BC] mb-1 tracking-tight">
                       <CountUp end={stat.value} suffix={stat.suffix} />
                     </div>
-                    <div className="text-white text-sm font-bold">{stat.label}</div>
+                    <div className="text-white text-xs md:text-sm font-bold">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>

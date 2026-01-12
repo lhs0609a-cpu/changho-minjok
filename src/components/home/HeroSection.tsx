@@ -132,9 +132,9 @@ export default function HeroSection() {
               {/* Partners */}
               <div className="text-center">
                 <p className="text-sm text-[#767676] font-medium mb-4">신뢰할 수 있는 파트너사</p>
-                <div className="flex justify-center items-center gap-8">
+                <div className="flex justify-center items-center gap-4 md:gap-8">
                   {partners.map((partner) => (
-                    <div key={partner.name} className="relative h-8 w-24 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all">
+                    <div key={partner.name} className="relative h-6 w-16 md:h-8 md:w-24 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all">
                       <Image
                         src={partner.logo}
                         alt={partner.name}
@@ -152,7 +152,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0, rotate: -12 }}
               animate={{ opacity: 1, scale: 1, rotate: -6 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute -right-4 -top-4 bg-[#FF6F0F] text-white px-5 py-3 rounded-2xl font-extrabold text-lg shadow-lg"
+              className="absolute right-2 md:-right-4 -top-2 md:-top-4 bg-[#FF6F0F] text-white px-3 md:px-5 py-2 md:py-3 rounded-xl md:rounded-2xl font-extrabold text-sm md:text-lg shadow-lg"
             >
               BEST 가성비
             </motion.div>

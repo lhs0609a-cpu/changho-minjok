@@ -129,79 +129,72 @@ export default function HeroSection() {
           >
             <div className="relative">
               {/* Main Card */}
-              <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-8 lg:p-10">
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-[#2AC1BC] flex items-center justify-center">
-                    <Play className="w-7 h-7 text-white ml-1" />
+              <Link href="/about/factory" className="block bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-6 lg:p-8 hover:bg-white/15 transition-colors group">
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-[#2AC1BC] flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play className="w-6 h-6 text-white ml-0.5" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-lg">공장 영상 보기</p>
+                    <p className="text-white font-bold">공장 둘러보기</p>
                     <p className="text-white/60 text-sm">3,500평 스마트 팩토리</p>
                   </div>
                 </div>
 
                 {/* Factory Preview Image */}
-                <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
+                <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-5">
                   <Image
                     src="/images/factory/automation-line.jpg"
                     alt="창호 생산 라인"
                     fill
-                    className="object-cover"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
-                      <Play className="w-8 h-8 text-[#2AC1BC] ml-1" />
+                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Play className="w-7 h-7 text-[#2AC1BC] ml-0.5" />
                     </div>
                   </div>
                 </div>
 
                 {/* Trust Points */}
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-white/80">
-                    <div className="w-2 h-2 rounded-full bg-[#2AC1BC]" />
+                <div className="space-y-2 mb-5">
+                  <div className="flex items-center gap-3 text-white/80 text-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2AC1BC]" />
                     <span>전 공정 자동화 시스템</span>
                   </div>
-                  <div className="flex items-center gap-3 text-white/80">
-                    <div className="w-2 h-2 rounded-full bg-[#2AC1BC]" />
+                  <div className="flex items-center gap-3 text-white/80 text-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2AC1BC]" />
                     <span>TPS 단열 간봉 자체 생산</span>
                   </div>
-                  <div className="flex items-center gap-3 text-white/80">
-                    <div className="w-2 h-2 rounded-full bg-[#2AC1BC]" />
+                  <div className="flex items-center gap-3 text-white/80 text-sm">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#2AC1BC]" />
                     <span>실시간 품질 모니터링</span>
                   </div>
                 </div>
-              </div>
+
+                {/* Bottom Trust Badge - 카드 내부로 이동 */}
+                <div className="bg-white rounded-xl p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="text-[#1E1E1E] font-bold text-sm">15,000+ 고객이 선택</p>
+                      <p className="text-[#767676] text-xs">평균 만족도 4.9/5.0</p>
+                    </div>
+                    <div className="flex gap-0.5">
+                      {[1, 2, 3, 4, 5].map((i) => (
+                        <span key={i} className="text-amber-400 text-lg">★</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Link>
 
               {/* Floating Badge */}
               <motion.div
                 initial={{ opacity: 0, scale: 0, rotate: -12 }}
                 animate={{ opacity: 1, scale: 1, rotate: -6 }}
                 transition={{ duration: 0.5, delay: 0.8 }}
-                className="absolute -right-4 -top-4 bg-[#FF6F0F] text-white px-5 py-3 rounded-2xl font-extrabold text-lg shadow-lg"
+                className="absolute -right-3 -top-3 bg-[#FF6F0F] text-white px-4 py-2 rounded-xl font-extrabold shadow-lg"
               >
                 BEST 가성비
-              </motion.div>
-
-              {/* Bottom Trust Badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.9 }}
-                className="absolute -bottom-6 left-6 right-6 bg-white rounded-2xl p-4 shadow-xl"
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-[#1E1E1E] font-bold">15,000+ 고객이 선택</p>
-                    <p className="text-[#767676] text-sm">평균 만족도 4.9/5.0</p>
-                  </div>
-                  <div className="flex -space-x-2">
-                    {[1, 2, 3, 4].map((i) => (
-                      <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2AC1BC] to-[#1FA9A5] border-2 border-white flex items-center justify-center text-white text-xs font-bold">
-                        ★
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </motion.div>
             </div>
           </motion.div>

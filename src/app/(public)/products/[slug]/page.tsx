@@ -271,7 +271,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>
-              <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 rounded-xl">
+              <Button asChild size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-sky-600 rounded-xl">
                 <Link href="/support/inquiry">상담 신청</Link>
               </Button>
             </div>

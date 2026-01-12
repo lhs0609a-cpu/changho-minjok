@@ -11,7 +11,7 @@ const partners = [
 
 export default function PartnersSection() {
   return (
-    <section className="py-16 md:py-20 bg-[#F5F5F5] border-y border-[#EEEEEE]">
+    <section className="py-16 md:py-20 bg-white">
       <div className="container mx-auto px-4">
         <AnimatedSection className="text-center mb-10">
           <p className="text-[#767676] text-sm font-medium">
@@ -30,7 +30,7 @@ export default function PartnersSection() {
                   src={partner.logo}
                   alt={partner.name}
                   fill
-                  className="object-contain mix-blend-multiply"
+                  className="object-contain"
                 />
               </div>
             ))}

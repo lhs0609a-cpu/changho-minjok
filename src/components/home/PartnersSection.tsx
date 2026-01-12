@@ -24,13 +24,13 @@ export default function PartnersSection() {
             {partners.map((partner) => (
               <div
                 key={partner.name}
-                className="relative h-20 w-64 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
+                className="relative h-16 md:h-20 w-48 md:w-64 grayscale hover:grayscale-0 opacity-70 hover:opacity-100 transition-all duration-300"
               >
                 <Image
                   src={partner.logo}
                   alt={partner.name}
                   fill
-                  className="object-contain"
+                  className="object-contain mix-blend-multiply"
                 />
               </div>
             ))}

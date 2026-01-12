@@ -3,21 +3,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle, Phone, Factory, Award, Users } from 'lucide-react';
+import { ArrowRight, Phone, Factory, Award, Users, Play } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { COMPANY_INFO } from '@/lib/constants/navigation';
-
-const partners = [
-  { name: 'KCC글라스', logo: '/images/partners/kcc-glass.png' },
-  { name: '휴그린', logo: '/images/partners/hugreen.jpg' },
-  { name: 'LX하우시스', logo: '/images/partners/lx-hausys.jpg' },
-];
-
-const features = [
-  '공장 직영 가격',
-  '10년 품질 보증',
-  '무료 현장 방문',
-];
 
 const stats = [
   { icon: Factory, number: '3,500', unit: '평', label: '스마트 팩토리' },
@@ -27,138 +15,236 @@ const stats = [
 
 export default function HeroSection() {
   return (
-    <section className="relative pt-20 lg:pt-24 pb-16 lg:pb-24 bg-[#F5F5F5] overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 right-20 w-72 h-72 bg-[#2AC1BC] rounded-full blur-[120px]" />
-        <div className="absolute bottom-20 left-20 w-96 h-96 bg-[#2AC1BC] rounded-full blur-[150px] opacity-20" />
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      {/* Full-screen Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/trust/factory-aerial.jpg"
+          alt="창호의 민족 스마트 팩토리 전경"
+          fill
+          className="object-cover"
+          priority
+        />
+        {/* Dark Overlay with Gradient */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        {/* Accent Color Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#2AC1BC]/20 via-transparent to-transparent" />
       </div>
 
-      <div className="relative container mx-auto px-4 lg:px-8">
+      {/* Content */}
+      <div className="relative container mx-auto px-4 lg:px-8 pt-24 pb-16">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left - Content */}
+          {/* Left - Main Content */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.7 }}
           >
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E8F8F7] rounded-full text-[#2AC1BC] text-sm font-bold mb-6">
-              <span className="w-2 h-2 rounded-full bg-[#2AC1BC] animate-pulse" />
-              스마트 팩토리 직영
-            </div>
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-[#2AC1BC] rounded-full text-white text-sm font-bold mb-8"
+            >
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+              3,500평 스마트 팩토리 직영
+            </motion.div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1E1E1E] leading-tight mb-6 tracking-tight">
+            {/* Main Headline */}
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
               창호 교체,
               <br />
-              <span className="text-[#2AC1BC]">공장 직영</span>으로
+              <span className="text-[#2AC1BC]">공장에서 직접</span>
               <br />
-              합리적으로
+              만들어 드립니다
             </h1>
 
-            <p className="text-lg text-[#767676] mb-8 max-w-md leading-relaxed">
-              10년 제조 노하우와 3,500평 스마트 팩토리.
+            {/* Sub Headline */}
+            <p className="text-lg md:text-xl text-white/80 mb-10 max-w-lg leading-relaxed">
+              중간 유통 없이 공장에서 고객님께 바로.
               <br />
-              중간 마진 없이 품질과 가격 모두 잡으세요.
+              <span className="text-[#2AC1BC] font-semibold">품질은 높이고, 가격은 낮추고.</span>
             </p>
 
-            {/* Features */}
-            <div className="flex flex-wrap gap-4 mb-8">
-              {features.map((feature) => (
-                <div key={feature} className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl">
-                  <CheckCircle className="w-5 h-5 text-[#2AC1BC]" />
-                  <span className="text-[#1E1E1E] font-bold">{feature}</span>
-                </div>
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex flex-wrap gap-6 md:gap-10 mb-10"
+            >
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
+                  className="text-center"
+                >
+                  <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                    {stat.number}<span className="text-xl md:text-2xl text-[#2AC1BC]">{stat.unit}</span>
+                  </div>
+                  <div className="text-sm text-white/60 font-medium mt-1">{stat.label}</div>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
-            {/* CTAs - 배민 스타일 */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
               <Button
                 asChild
                 size="lg"
-                className="h-14 px-8 bg-[#2AC1BC] hover:bg-[#1FA9A5] text-white rounded-xl font-bold text-lg"
+                className="h-14 md:h-16 px-8 md:px-10 bg-[#2AC1BC] hover:bg-[#1FA9A5] text-white rounded-2xl font-bold text-lg md:text-xl shadow-lg shadow-[#2AC1BC]/30"
               >
-                <Link href="/estimate" className="flex items-center gap-2">
+                <Link href="/estimate" className="flex items-center gap-3">
                   30초 무료 견적
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
                 </Link>
               </Button>
               <Button
                 asChild
-                variant="outline"
                 size="lg"
-                className="h-14 px-8 border-2 border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white rounded-xl font-bold text-lg"
+                className="h-14 md:h-16 px-8 md:px-10 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-[#1E1E1E] rounded-2xl font-bold text-lg md:text-xl"
               >
-                <a href={`tel:${COMPANY_INFO.phone}`} className="flex items-center gap-2">
-                  <Phone className="w-5 h-5" />
+                <a href={`tel:${COMPANY_INFO.phone}`} className="flex items-center gap-3">
+                  <Phone className="w-5 h-5 md:w-6 md:h-6" />
                   전화 상담
                 </a>
               </Button>
-            </div>
-          </motion.div>
-
-          {/* Right - Stats Card */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="relative"
-          >
-            <div className="bg-white rounded-3xl border-2 border-[#EEEEEE] p-8 lg:p-10">
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mb-8">
-                {stats.map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                    className="text-center"
-                  >
-                    <div className="w-12 h-12 rounded-xl bg-[#E8F8F7] flex items-center justify-center mx-auto mb-3">
-                      <stat.icon className="w-6 h-6 text-[#2AC1BC]" />
-                    </div>
-                    <div className="text-3xl lg:text-4xl font-extrabold text-[#2AC1BC] tracking-tight">
-                      {stat.number}<span className="text-xl">{stat.unit}</span>
-                    </div>
-                    <div className="text-sm text-[#767676] font-medium mt-1">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
-
-              <div className="h-px bg-[#EEEEEE] mb-8" />
-
-              {/* Partners */}
-              <div className="text-center">
-                <p className="text-sm text-[#767676] font-medium mb-4">신뢰할 수 있는 파트너사</p>
-                <div className="flex justify-center items-center gap-4 md:gap-8">
-                  {partners.map((partner) => (
-                    <div key={partner.name} className="relative h-6 w-16 md:h-8 md:w-24 grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all">
-                      <Image
-                        src={partner.logo}
-                        alt={partner.name}
-                        fill
-                        className="object-contain"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Floating Badge - 배민 스타일 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0, rotate: -12 }}
-              animate={{ opacity: 1, scale: 1, rotate: -6 }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className="absolute right-2 md:-right-4 -top-2 md:-top-4 bg-[#FF6F0F] text-white px-3 md:px-5 py-2 md:py-3 rounded-xl md:rounded-2xl font-extrabold text-sm md:text-lg shadow-lg"
-            >
-              BEST 가성비
             </motion.div>
           </motion.div>
+
+          {/* Right - Feature Card */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="hidden lg:block"
+          >
+            <div className="relative">
+              {/* Main Card */}
+              <div className="bg-white/10 backdrop-blur-md rounded-3xl border border-white/20 p-8 lg:p-10">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-2xl bg-[#2AC1BC] flex items-center justify-center">
+                    <Play className="w-7 h-7 text-white ml-1" />
+                  </div>
+                  <div>
+                    <p className="text-white font-bold text-lg">공장 영상 보기</p>
+                    <p className="text-white/60 text-sm">3,500평 스마트 팩토리</p>
+                  </div>
+                </div>
+
+                {/* Factory Preview Image */}
+                <div className="relative aspect-video rounded-2xl overflow-hidden mb-6">
+                  <Image
+                    src="/images/factory/automation-line.jpg"
+                    alt="창호 생산 라인"
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform">
+                      <Play className="w-8 h-8 text-[#2AC1BC] ml-1" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Trust Points */}
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 text-white/80">
+                    <div className="w-2 h-2 rounded-full bg-[#2AC1BC]" />
+                    <span>전 공정 자동화 시스템</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/80">
+                    <div className="w-2 h-2 rounded-full bg-[#2AC1BC]" />
+                    <span>TPS 단열 간봉 자체 생산</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-white/80">
+                    <div className="w-2 h-2 rounded-full bg-[#2AC1BC]" />
+                    <span>실시간 품질 모니터링</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating Badge */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0, rotate: -12 }}
+                animate={{ opacity: 1, scale: 1, rotate: -6 }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+                className="absolute -right-4 -top-4 bg-[#FF6F0F] text-white px-5 py-3 rounded-2xl font-extrabold text-lg shadow-lg"
+              >
+                BEST 가성비
+              </motion.div>
+
+              {/* Bottom Trust Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+                className="absolute -bottom-6 left-6 right-6 bg-white rounded-2xl p-4 shadow-xl"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-[#1E1E1E] font-bold">15,000+ 고객이 선택</p>
+                    <p className="text-[#767676] text-sm">평균 만족도 4.9/5.0</p>
+                  </div>
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div key={i} className="w-10 h-10 rounded-full bg-gradient-to-br from-[#2AC1BC] to-[#1FA9A5] border-2 border-white flex items-center justify-center text-white text-xs font-bold">
+                        ★
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
         </div>
+
+        {/* Mobile Stats Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.7 }}
+          className="lg:hidden mt-12"
+        >
+          <div className="bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 p-6">
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-white font-bold">15,000+ 고객이 선택</p>
+                <p className="text-white/60 text-sm">평균 만족도 4.9/5.0</p>
+              </div>
+              <Link href="/about/factory" className="flex items-center gap-2 text-[#2AC1BC] font-bold text-sm">
+                공장 보기
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </div>
+        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 1 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2"
+      >
+        <span className="text-white/50 text-sm">스크롤</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+          className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2"
+        >
+          <div className="w-1.5 h-3 bg-white/50 rounded-full" />
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

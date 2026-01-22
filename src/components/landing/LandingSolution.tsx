@@ -1,0 +1,166 @@
+'use client';
+
+import { motion } from 'framer-motion';
+import { Coins, Users, ShieldCheck, Check, X } from 'lucide-react';
+import AnimatedSection from '@/components/shared/AnimatedSection';
+
+const solutions = [
+  {
+    icon: Coins,
+    number: '01',
+    title: '유통업자 배 불리는 돈, 이제 그만',
+    subtitle: '동일 제품 평균 200만원 절약',
+    description: '제조사→총판→대리점→시공업체? 저희는 공장에서 바로 고객님께. 중간 마진 4단계가 0단계로 줄어듭니다.',
+    highlight: '200만원 절약',
+    color: 'bg-[#FF6F0F]',
+  },
+  {
+    icon: Users,
+    number: '02',
+    title: '대기업이 키운 기술자가 직접 시공',
+    subtitle: 'KCC·LG 현장 10년+ 경력팀',
+    description: '삼성, LG, KCC 브랜드 현장에서 10년 넘게 검증받은 기술진. 고난도 현장도 완벽하게 마감합니다.',
+    highlight: '10년+ 베테랑',
+    color: 'bg-[#2AC1BC]',
+  },
+  {
+    icon: ShieldCheck,
+    number: '03',
+    title: '10년 A/S, 책임질 수 있는 이유',
+    subtitle: '전문건설업 면허 + 3,500평 공장',
+    description: '인터넷 업체가 1년 뒤에도 있을까요? 저희는 면허와 공장이 있습니다. 도망갈 수가 없어요.',
+    highlight: '10년 무상보증',
+    color: 'bg-[#1E1E1E]',
+  },
+];
+
+const comparisonData = [
+  { label: '제조 방식', others: '외주 위탁', ours: '자체 공장 직접 제조' },
+  { label: '유통 단계', others: '3~4단계 (마진 누적)', ours: '0단계 (직거래)' },
+  { label: '평균 견적가', others: '350~450만원', ours: '180~250만원' },
+  { label: '시공팀 경력', others: '확인 불가', ours: '대기업 출신 10년+' },
+  { label: 'A/S 보증', others: '1~2년', ours: '10년 무상' },
+  { label: '공장 견학', others: false, ours: true },
+];
+
+export default function LandingSolution() {
+  return (
+    <section className="py-20 md:py-28 bg-[#F8F9FA]">
+      <div className="container mx-auto px-4 lg:px-8">
+        {/* Header */}
+        <AnimatedSection className="text-center mb-16">
+          <span className="inline-block px-4 py-2 bg-[#E8F8F7] text-[#2AC1BC] rounded-full text-sm font-bold mb-6">
+            왜 창호의민족인가?
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4 tracking-tight">
+            같은 창호인데
+            <br />
+            <span className="text-[#2AC1BC]">왜 가격이 다를까요?</span>
+          </h2>
+          <p className="text-lg text-[#767676] max-w-2xl mx-auto">
+            비밀은 간단합니다. <span className="text-[#1E1E1E] font-bold">중간에서 빠지는 돈이 없으니까요.</span>
+          </p>
+        </AnimatedSection>
+
+        {/* Solution Cards - 3가지로 압축 */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-20">
+          {solutions.map((solution, index) => (
+            <AnimatedSection key={solution.title} delay={index * 0.1}>
+              <motion.div
+                whileHover={{ y: -8 }}
+                className="relative bg-white rounded-3xl p-6 md:p-8 border-2 border-gray-100 hover:border-[#2AC1BC] transition-all h-full group"
+              >
+                {/* Number Badge */}
+                <span className="absolute top-6 right-6 text-5xl md:text-6xl font-extrabold text-gray-100 group-hover:text-[#E8F8F7] transition-colors">
+                  {solution.number}
+                </span>
+
+                {/* Icon */}
+                <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-[#E8F8F7] flex items-center justify-center mb-5 group-hover:bg-[#2AC1BC] transition-colors">
+                  <solution.icon className="w-7 h-7 md:w-8 md:h-8 text-[#2AC1BC] group-hover:text-white transition-colors" />
+                </div>
+
+                {/* Highlight Badge */}
+                <span className={`inline-block px-3 py-1 ${solution.color} text-white text-xs font-bold rounded-full mb-4`}>
+                  {solution.highlight}
+                </span>
+
+                {/* Content */}
+                <h3 className="text-lg md:text-xl font-bold text-[#1E1E1E] mb-2 leading-tight">
+                  {solution.title}
+                </h3>
+                <p className="text-sm text-[#2AC1BC] font-semibold mb-3">
+                  {solution.subtitle}
+                </p>
+                <p className="text-[#767676] leading-relaxed text-sm">
+                  {solution.description}
+                </p>
+              </motion.div>
+            </AnimatedSection>
+          ))}
+        </div>
+
+        {/* Comparison Table */}
+        <AnimatedSection delay={0.3}>
+          <div className="max-w-4xl mx-auto">
+            <h3 className="text-2xl md:text-3xl font-extrabold text-center text-[#1E1E1E] mb-8">
+              한눈에 비교해보세요
+            </h3>
+            <div className="bg-white rounded-3xl overflow-hidden border-2 border-gray-100 shadow-lg">
+              {/* Table Header */}
+              <div className="grid grid-cols-3 bg-[#1E1E1E] text-white">
+                <div className="p-4 md:p-6 font-bold text-sm md:text-base">비교 항목</div>
+                <div className="p-4 md:p-6 font-bold text-center text-sm md:text-base border-l border-white/20">일반 창호업체</div>
+                <div className="p-4 md:p-6 font-bold text-center text-sm md:text-base border-l border-white/20 bg-[#2AC1BC]">창호의 민족</div>
+              </div>
+
+              {/* Table Rows */}
+              {comparisonData.map((row, index) => (
+                <div
+                  key={row.label}
+                  className={`grid grid-cols-3 ${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}`}
+                >
+                  <div className="p-4 md:p-5 font-semibold text-[#1E1E1E] text-sm md:text-base">
+                    {row.label}
+                  </div>
+                  <div className="p-4 md:p-5 text-center text-[#767676] text-sm md:text-base border-l border-gray-100">
+                    {typeof row.others === 'boolean' ? (
+                      row.others ? (
+                        <Check className="w-5 h-5 text-green-500 mx-auto" />
+                      ) : (
+                        <X className="w-5 h-5 text-red-400 mx-auto" />
+                      )
+                    ) : (
+                      row.others
+                    )}
+                  </div>
+                  <div className="p-4 md:p-5 text-center font-semibold text-[#2AC1BC] text-sm md:text-base border-l border-gray-100 bg-[#E8F8F7]/30">
+                    {typeof row.ours === 'boolean' ? (
+                      row.ours ? (
+                        <Check className="w-5 h-5 text-[#2AC1BC] mx-auto" />
+                      ) : (
+                        <X className="w-5 h-5 text-red-400 mx-auto" />
+                      )
+                    ) : (
+                      row.ours
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-8">
+              <p className="text-[#767676] mb-2">
+                💡 <span className="font-bold text-[#1E1E1E]">같은 KCC창호</span>인데 왜 가격이 다르냐고요?
+              </p>
+              <p className="text-lg font-bold text-[#2AC1BC]">
+                중간에서 빠지는 마진이 없으니까요.
+              </p>
+            </div>
+          </div>
+        </AnimatedSection>
+      </div>
+    </section>
+  );
+}

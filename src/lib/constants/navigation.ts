@@ -2,6 +2,11 @@ import { NavItem } from '@/types';
 
 export const MAIN_NAV: NavItem[] = [
   {
+    title: '프로모션',
+    href: '/landing',
+    highlight: true,
+  },
+  {
     title: '회사소개',
     href: '/about',
     children: [

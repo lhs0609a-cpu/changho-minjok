@@ -57,8 +57,10 @@ export default function Header() {
                   href={item.href}
                   className={cn(
                     'flex items-center gap-1 px-4 py-2 text-[15px] font-bold transition-colors rounded-xl',
-                    'text-[#4A4A4A] hover:text-[#2AC1BC] hover:bg-[#E8F8F7]',
-                    activeMenu === item.href && 'text-[#2AC1BC] bg-[#E8F8F7]'
+                    item.highlight
+                      ? 'bg-[#FF6F0F] text-white hover:bg-[#E5630D] shadow-md shadow-[#FF6F0F]/20'
+                      : 'text-[#4A4A4A] hover:text-[#2AC1BC] hover:bg-[#E8F8F7]',
+                    !item.highlight && activeMenu === item.href && 'text-[#2AC1BC] bg-[#E8F8F7]'
                   )}
                 >
                   {item.title}
@@ -146,11 +148,16 @@ export default function Header() {
                       <div key={item.href} className="mb-2">
                         <Link
                           href={item.href}
-                          className="flex items-center justify-between p-3 rounded-xl text-[#1E1E1E] font-bold hover:bg-[#E8F8F7] hover:text-[#2AC1BC] transition-colors"
+                          className={cn(
+                            'flex items-center justify-between p-3 rounded-xl font-bold transition-colors',
+                            item.highlight
+                              ? 'bg-[#FF6F0F] text-white hover:bg-[#E5630D]'
+                              : 'text-[#1E1E1E] hover:bg-[#E8F8F7] hover:text-[#2AC1BC]'
+                          )}
                           onClick={() => setIsMobileMenuOpen(false)}
                         >
                           {item.title}
-                          <ArrowRight className="w-4 h-4 text-[#C4C4C4]" />
+                          <ArrowRight className={cn('w-4 h-4', item.highlight ? 'text-white' : 'text-[#C4C4C4]')} />
                         </Link>
                         {item.children && (
                           <div className="ml-4 mt-1 space-y-1">

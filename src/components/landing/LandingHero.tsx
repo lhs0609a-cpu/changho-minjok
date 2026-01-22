@@ -13,9 +13,9 @@ const stats = [
 ];
 
 const trustBadges = [
-  { icon: Shield, text: '전문건설업 면허 보유' },
+  { icon: Shield, text: '원데이 시공 (하루 완료)' },
   { icon: Award, text: 'KCC글라스 공식 파트너' },
-  { icon: Users, text: '대기업 출신 10년+ 기술팀' },
+  { icon: Users, text: '무료 방문 실측' },
 ];
 
 export default function LandingHero() {
@@ -54,7 +54,7 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.15] mb-6 tracking-tight text-center lg:text-left"
+            className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.2] mb-5 md:mb-6 tracking-tight text-center lg:text-left"
           >
             창호 견적,
             <br />
@@ -68,15 +68,14 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg md:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl leading-relaxed text-center lg:text-left"
+            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 max-w-2xl leading-relaxed text-center lg:text-left px-2 sm:px-0"
           >
             똑같은 KCC·휴그린 창호,
-            <br className="md:hidden" />
             <span className="text-[#2AC1BC] font-semibold"> 왜 200만원 더 내세요?</span>
             <br />
-            <span className="text-white/70 text-base md:text-lg">
+            <span className="text-white/70 text-sm sm:text-base md:text-lg">
               3,500평 공장에서 직접 만들어 유통 마진 0원.
-              <br className="hidden md:block" />
+              <br className="hidden sm:block" />
               15,000세대가 선택한 이유, 지금 확인하세요.
             </span>
           </motion.p>
@@ -86,7 +85,7 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex justify-center lg:justify-start gap-6 md:gap-12 mb-12"
+            className="flex justify-center lg:justify-start gap-4 sm:gap-6 md:gap-12 mb-8 md:mb-12"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -96,11 +95,11 @@ export default function LandingHero() {
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
                   {stat.number}
-                  <span className="text-lg md:text-xl text-[#2AC1BC]">{stat.unit}</span>
+                  <span className="text-sm sm:text-lg md:text-xl text-[#2AC1BC]">{stat.unit}</span>
                 </div>
-                <div className="text-xs md:text-sm text-white/60 font-medium mt-1">{stat.label}</div>
+                <div className="text-[10px] sm:text-xs md:text-sm text-white/60 font-medium mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -110,25 +109,25 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.5 }}
-            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4"
+            className="flex flex-col sm:flex-row justify-center lg:justify-start gap-3 sm:gap-4 px-2 sm:px-0"
           >
             <Button
               asChild
               size="lg"
-              className="h-16 px-10 bg-[#FF6F0F] hover:bg-[#E5630D] text-white rounded-2xl font-bold text-xl shadow-lg shadow-[#FF6F0F]/30 group"
+              className="h-14 sm:h-16 px-6 sm:px-10 bg-[#FF6F0F] hover:bg-[#E5630D] text-white rounded-2xl font-bold text-base sm:text-xl shadow-lg shadow-[#FF6F0F]/30 group"
             >
-              <a href="#contact-form" className="flex items-center gap-3">
+              <a href="#contact-form" className="flex items-center justify-center gap-2 sm:gap-3">
                 우리 집 얼마나 아낄 수 있을까?
-                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
             <Button
               asChild
               size="lg"
-              className="h-16 px-10 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-[#1E1E1E] rounded-2xl font-bold text-xl"
+              className="h-14 sm:h-16 px-6 sm:px-10 bg-white/10 backdrop-blur-sm border-2 border-white/30 text-white hover:bg-white hover:text-[#1E1E1E] rounded-2xl font-bold text-base sm:text-xl"
             >
-              <a href={`tel:${COMPANY_INFO.phone}`} className="flex items-center gap-3">
-                <Phone className="w-6 h-6" />
+              <a href={`tel:${COMPANY_INFO.phone}`} className="flex items-center justify-center gap-2 sm:gap-3">
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
                 지금 바로 상담
               </a>
             </Button>

@@ -53,9 +53,9 @@ function FAQItem({
     <div className="border-b border-gray-200 last:border-b-0">
       <button
         onClick={onToggle}
-        className="w-full py-6 flex items-center justify-between text-left group"
+        className="w-full py-4 sm:py-6 flex items-center justify-between text-left group"
       >
-        <span className="text-lg font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors pr-8">
+        <span className="text-sm sm:text-base md:text-lg font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors pr-4 sm:pr-8">
           {question}
         </span>
         <motion.div
@@ -63,7 +63,7 @@ function FAQItem({
           transition={{ duration: 0.2 }}
           className="flex-shrink-0"
         >
-          <ChevronDown className="w-6 h-6 text-[#767676]" />
+          <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 text-[#767676]" />
         </motion.div>
       </button>
       <AnimatePresence>
@@ -75,7 +75,7 @@ function FAQItem({
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-[#767676] leading-relaxed">{answer}</p>
+            <p className="pb-4 sm:pb-6 text-xs sm:text-sm md:text-base text-[#767676] leading-relaxed">{answer}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -87,21 +87,21 @@ export default function LandingFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-20 md:py-28 bg-[#F8F9FA]">
+    <section className="py-12 sm:py-16 md:py-28 bg-[#F8F9FA]">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <AnimatedSection className="text-center mb-12">
-          <span className="inline-block px-4 py-2 bg-[#E8F8F7] text-[#2AC1BC] rounded-full text-sm font-bold mb-6">
+        <AnimatedSection className="text-center mb-8 sm:mb-12">
+          <span className="inline-block px-3 sm:px-4 py-2 bg-[#E8F8F7] text-[#2AC1BC] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
             FAQ
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-6 tracking-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4 sm:mb-6 tracking-tight">
             자주 묻는 <span className="text-[#2AC1BC]">질문</span>
           </h2>
         </AnimatedSection>
 
         {/* FAQ List */}
         <AnimatedSection delay={0.2}>
-          <div className="max-w-3xl mx-auto bg-white rounded-3xl p-8 md:p-10 border-2 border-gray-100">
+          <div className="max-w-3xl mx-auto bg-white rounded-2xl sm:rounded-3xl p-4 sm:p-8 md:p-10 border-2 border-gray-100">
             {faqs.map((faq, index) => (
               <FAQItem
                 key={index}

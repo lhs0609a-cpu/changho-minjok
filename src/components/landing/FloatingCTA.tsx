@@ -25,18 +25,18 @@ export default function FloatingCTA() {
   return (
     <>
       {/* Mobile Bottom Bar */}
-      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white border-t-2 border-gray-100 p-3 z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
-        <div className="flex gap-3">
+      <div className="fixed bottom-0 left-0 right-0 md:hidden bg-white border-t-2 border-gray-100 px-3 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.1)]">
+        <div className="flex gap-2 sm:gap-3">
           <a
             href={`tel:${COMPANY_INFO.phone}`}
-            className="flex-1 flex items-center justify-center gap-2 h-14 bg-[#1E1E1E] text-white rounded-xl font-bold"
+            className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 h-12 sm:h-14 bg-[#1E1E1E] text-white rounded-lg sm:rounded-xl font-bold text-sm sm:text-base"
           >
-            <Phone className="w-5 h-5" />
+            <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
             바로 전화
           </a>
           <a
             href="#contact-form"
-            className="flex-1 flex items-center justify-center gap-2 h-14 bg-[#FF6F0F] text-white rounded-xl font-bold shadow-lg shadow-[#FF6F0F]/30"
+            className="flex-1 flex items-center justify-center gap-1.5 sm:gap-2 h-12 sm:h-14 bg-[#FF6F0F] text-white rounded-lg sm:rounded-xl font-bold text-sm sm:text-base shadow-lg shadow-[#FF6F0F]/30"
           >
             30초 견적 받기
           </a>
@@ -64,7 +64,9 @@ export default function FloatingCTA() {
 
               {/* KakaoTalk Button */}
               <a
-                href="#"
+                href={COMPANY_INFO.kakaoChannel}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 px-5 py-3 bg-[#FEE500] text-[#3C1E1E] rounded-full shadow-lg hover:bg-[#F5DC00] transition-colors"
               >
                 <MessageCircle className="w-5 h-5" />

@@ -1,10 +1,13 @@
 import { Metadata } from 'next';
 import LandingHero from '@/components/landing/LandingHero';
+import LandingPromo from '@/components/landing/LandingPromo';
 import LandingProblem from '@/components/landing/LandingProblem';
 import LandingSolution from '@/components/landing/LandingSolution';
-import LandingFactory from '@/components/landing/LandingFactory';
+import LandingProcess from '@/components/landing/LandingProcess';
 import LandingPricing from '@/components/landing/LandingPricing';
 import LandingCases from '@/components/landing/LandingCases';
+import LandingReviews from '@/components/landing/LandingReviews';
+import LandingFactory from '@/components/landing/LandingFactory';
 import LandingTrust from '@/components/landing/LandingTrust';
 import LandingProducts from '@/components/landing/LandingProducts';
 import LandingFAQ from '@/components/landing/LandingFAQ';
@@ -38,15 +41,31 @@ export default function LandingPage() {
   return (
     <main className="min-h-screen pb-20 md:pb-0">
       <StickyHeader />
+      {/* 1. Hero - 메인 후킹 */}
       <LandingHero />
+      {/* 2. Promo - 긴급성/한정 혜택 */}
+      <LandingPromo />
+      {/* 3. Problem - 고통 증폭 */}
       <LandingProblem />
+      {/* 4. Solution - 해결책 제시 */}
       <LandingSolution />
-      <LandingFactory />
+      {/* 5. Process - 원데이 시공 프로세스 */}
+      <LandingProcess />
+      {/* 6. Pricing - 가격 앵커링 */}
       <LandingPricing />
+      {/* 7. Cases - Before/After */}
       <LandingCases />
+      {/* 8. Reviews - 고객 후기 */}
+      <LandingReviews />
+      {/* 9. Factory - 공장 신뢰 */}
+      <LandingFactory />
+      {/* 10. Trust - 인증/파트너 */}
       <LandingTrust />
+      {/* 11. Products - 제품 라인업 */}
       <LandingProducts />
+      {/* 12. FAQ - 반론 처리 */}
       <LandingFAQ />
+      {/* 13. CTA - 최종 전환 */}
       <LandingCTA />
       <FloatingCTA />
     </main>

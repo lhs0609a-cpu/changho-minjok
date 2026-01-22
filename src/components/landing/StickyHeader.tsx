@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, ArrowRight } from 'lucide-react';
@@ -34,14 +33,13 @@ export default function StickyHeader() {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex items-center justify-between h-16 md:h-20">
               {/* Logo */}
-              <Link href="/landing" className="flex items-center gap-3">
-                <Image
-                  src="/logo.png"
-                  alt="창호의 민족"
-                  width={140}
-                  height={40}
-                  className="h-8 md:h-10 w-auto"
-                />
+              <Link href="/landing" className="flex items-center gap-2">
+                <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#2AC1BC] flex items-center justify-center text-white font-extrabold text-lg md:text-xl">
+                  창
+                </div>
+                <span className="text-lg md:text-xl font-extrabold text-[#1E1E1E] tracking-tight">
+                  창호의<span className="text-[#2AC1BC]">민족</span>
+                </span>
               </Link>
 
               {/* Trust Points (Desktop) */}

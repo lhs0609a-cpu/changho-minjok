@@ -10,7 +10,7 @@ const products = [
   {
     name: 'PVC 창호',
     slug: 'pvc',
-    image: '/images/landing/PVC 창호.png',
+    image: '/images/products/pvc-window.png',
     description: '가성비와 단열성을 겸비한 대중적인 선택',
     features: ['우수한 단열성', '합리적 가격', '다양한 색상'],
     icon: Snowflake,
@@ -19,7 +19,7 @@ const products = [
   {
     name: '시스템 창호',
     slug: 'system',
-    image: '/images/landing/시스템창호.png',
+    image: '/images/products/system-window.png',
     description: '프리미엄 성능과 디자인의 완벽한 조화',
     features: ['최고급 단열', '슬림한 디자인', '기밀성 우수'],
     icon: Volume2,
@@ -28,7 +28,7 @@ const products = [
   {
     name: '하이샤시',
     slug: 'hi-sash',
-    image: '/images/landing/하이샤시.png',
+    image: '/images/products/hisash-window.png',
     description: '탁 트인 시야와 채광을 극대화',
     features: ['넓은 유리면적', '세련된 외관', '자연채광'],
     icon: Sun,

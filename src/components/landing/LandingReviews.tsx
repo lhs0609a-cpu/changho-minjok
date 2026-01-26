@@ -12,8 +12,8 @@ const reviews = [
     location: '부산 해운대구',
     date: '2024.12',
     rating: 5,
-    content: '다른 곳에서 450만원 견적 받고 여기 문의했는데 270만원에 해결했습니다. 처음엔 가격이 너무 싸서 의심했는데, 직접 공장 견학 가보니까 이해됐어요. 중간 마진 없이 직접 만들어서 이 가격이 가능하다고 하더라고요. 시공도 하루만에 깔끔하게 끝났습니다.',
-    highlight: '180만원 절약',
+    content: '다른 곳에서 900만원 견적 받고 여기 문의했는데 700만원에 해결했습니다. 처음엔 가격이 너무 싸서 의심했는데, 직접 공장 견학 가보니까 이해됐어요. 중간 마진 없이 직접 만들어서 이 가격이 가능하다고 하더라고요. 시공도 하루만에 깔끔하게 끝났습니다.',
+    highlight: '200만원 절약',
     verified: true,
   },
   {
@@ -61,7 +61,7 @@ const reviews = [
 const stats = [
   { number: '4.9', label: '평균 만족도', suffix: '/5.0' },
   { number: '98', label: '재구매 의향', suffix: '%' },
-  { number: '15,000', label: '시공 완료', suffix: '+' },
+  { number: '5,000', label: '시공 완료', suffix: '+' },
 ];
 
 export default function LandingReviews() {
@@ -86,7 +86,7 @@ export default function LandingReviews() {
             Real Reviews
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4 sm:mb-6 tracking-tight leading-tight">
-            <span className="text-[#2AC1BC]">15,000세대</span>가
+            <span className="text-[#2AC1BC]">5,000세대</span>가
             <br className="sm:hidden" />
             선택한 이유
           </h2>
@@ -221,9 +221,16 @@ export default function LandingReviews() {
           </div>
         </AnimatedSection>
 
-        {/* Trust Note */}
+        {/* CTA */}
         <AnimatedSection delay={0.3} className="text-center mt-8 sm:mt-12">
-          <p className="text-xs sm:text-sm text-gray-500">
+          <a
+            href="#contact-form"
+            className="inline-flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 bg-[#2AC1BC] text-white rounded-xl font-bold text-sm sm:text-lg hover:bg-[#25b0ab] transition-colors w-full sm:w-auto max-w-md mx-auto"
+          >
+            5,000번째 만족 고객 되기
+            <span className="text-white/80">→</span>
+          </a>
+          <p className="text-xs sm:text-sm text-gray-500 mt-3">
             * 실제 시공 고객님들의 후기이며, 개인정보 보호를 위해 성함을 일부 가렸습니다.
           </p>
         </AnimatedSection>

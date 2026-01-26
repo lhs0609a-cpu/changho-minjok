@@ -21,16 +21,40 @@ function getCurrentMonth() {
 
 const promoItems = [
   {
-    icon: Gift,
-    title: '방충망 무료 업그레이드',
-    description: '미세먼지 차단 고급 방충망',
-    value: '15만원 상당',
-  },
-  {
     icon: Sparkles,
     title: '로이유리 무료 적용',
     description: '단열 성능 30% UP',
     value: '20만원 상당',
+  },
+  {
+    icon: Gift,
+    title: '빨래건조대',
+    description: '천장형 설치',
+    value: '무료',
+  },
+  {
+    icon: Gift,
+    title: '탄성코트',
+    description: '베란다 마감',
+    value: '무료',
+  },
+  {
+    icon: Gift,
+    title: '베란다장',
+    description: '수납장 설치',
+    value: '무료',
+  },
+  {
+    icon: Gift,
+    title: '단열작업',
+    description: '베란다 단열',
+    value: '무료',
+  },
+  {
+    icon: Gift,
+    title: '베란다 하부 타일',
+    description: '바닥 마감',
+    value: '무료',
   },
 ];
 

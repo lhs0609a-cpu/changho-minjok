@@ -8,13 +8,13 @@ import { COMPANY_INFO } from '@/lib/constants/navigation';
 
 const stats = [
   { number: '200', unit: '만원+', label: '평균 절약 금액' },
-  { number: '15,000', unit: '+', label: '세대 시공 완료' },
+  { number: '5,000', unit: '+', label: '세대 시공 완료' },
   { number: '10', unit: '년', label: '무상 A/S 보증' },
 ];
 
 const trustBadges = [
   { icon: Shield, text: '원데이 시공 (하루 완료)' },
-  { icon: Award, text: 'KCC글라스 공식 파트너' },
+  { icon: Award, text: 'KCC·휴그린 공식 파트너' },
   { icon: Users, text: '무료 방문 실측' },
 ];
 
@@ -56,11 +56,11 @@ export default function LandingHero() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.2] mb-5 md:mb-6 tracking-tight text-center lg:text-left"
           >
-            창호 견적,
+            창호 견적 받고
             <br />
-            <span className="text-[#2AC1BC]">받아보고 놀라셨죠?</span>
+            <span className="text-[#2AC1BC]">심장 떨어지셨죠?</span>
             <br />
-            <span className="text-[#FF6F0F]">여기서 30% 더 빠집니다</span>
+            <span className="text-[#FF6F0F]">200만원 돌려드립니다</span>
           </motion.h1>
 
           {/* Sub Headline - 구체적 증거 */}
@@ -70,13 +70,12 @@ export default function LandingHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 max-w-2xl leading-relaxed text-center lg:text-left px-2 sm:px-0"
           >
-            똑같은 KCC·휴그린 창호,
-            <span className="text-[#2AC1BC] font-semibold"> 왜 200만원 더 내세요?</span>
+            <span className="text-[#2AC1BC] font-semibold">KCC·휴그린 정품</span>을 공장에서 직접 받으세요.
             <br />
             <span className="text-white/70 text-sm sm:text-base md:text-lg">
-              3,500평 공장에서 직접 만들어 유통 마진 0원.
+              중간 유통상 빼고, 3,500평 공장에서 바로 고객님 집으로.
               <br className="hidden sm:block" />
-              15,000세대가 선택한 이유, 지금 확인하세요.
+              <span className="text-white font-semibold">5,000가구+</span>가 평균 <span className="text-[#FF6F0F] font-bold">203만원</span> 절약했습니다.
             </span>
           </motion.p>
 
@@ -114,11 +113,11 @@ export default function LandingHero() {
             <Button
               asChild
               size="lg"
-              className="h-14 sm:h-16 px-6 sm:px-10 bg-[#FF6F0F] hover:bg-[#E5630D] text-white rounded-2xl font-bold text-base sm:text-xl shadow-lg shadow-[#FF6F0F]/30 group"
+              className="h-14 sm:h-16 px-6 sm:px-10 bg-[#FF6F0F] hover:bg-[#E5630D] text-white rounded-2xl font-bold text-base sm:text-xl shadow-lg shadow-[#FF6F0F]/30 group relative overflow-hidden"
             >
               <a href="#contact-form" className="flex items-center justify-center gap-2 sm:gap-3">
-                우리 집 얼마나 아낄 수 있을까?
-                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-10">30초 만에 내 집 견적 확인</span>
+                <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform relative z-10" />
               </a>
             </Button>
             <Button

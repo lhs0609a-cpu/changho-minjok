@@ -8,6 +8,7 @@ import AnimatedSection from '@/components/shared/AnimatedSection';
 const partners = [
   { name: 'KCC글라스', logo: '/images/partners/kcc-glass.png' },
   { name: '금호석유화학 휴그린', logo: '/images/partners/hugreen.jpg' },
+  { name: 'LX하우시스', logo: '/images/partners/lx-hausys.png' },
 ];
 
 const certifications = [
@@ -24,7 +25,7 @@ const certifications = [
   {
     icon: Award,
     title: '공식 파트너',
-    description: 'KCC글라스·휴그린 인증',
+    description: 'KCC·휴그린·LX하우시스 인증',
   },
   {
     icon: Building2,

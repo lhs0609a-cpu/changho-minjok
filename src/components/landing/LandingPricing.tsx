@@ -88,7 +88,7 @@ export default function LandingPricing() {
                 ))}
               </div>
               <p className="text-center mt-3 sm:mt-4 text-red-500 font-bold text-base sm:text-lg">
-                = 350~450만원
+                = 700~900만원
               </p>
             </div>
 
@@ -114,7 +114,7 @@ export default function LandingPricing() {
                   </div>
                 </div>
                 <p className="text-center mt-3 sm:mt-4 text-[#2AC1BC] font-extrabold text-xl sm:text-2xl">
-                  = 180~250만원
+                  = 500~700만원
                 </p>
               </div>
             </div>
@@ -131,7 +131,7 @@ export default function LandingPricing() {
                   평균 절약 금액
                 </span>
                 <span className="text-white text-xl sm:text-2xl md:text-3xl font-extrabold">
-                  150~200만원
+                  200~400만원
                 </span>
               </div>
             </motion.div>

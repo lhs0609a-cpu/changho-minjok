@@ -2,12 +2,13 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Phone, MessageCircle, MapPin, Clock, Send } from 'lucide-react';
+import { Phone, MessageCircle, MapPin, Clock, Send, AlertCircle } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { COMPANY_INFO } from '@/lib/constants/navigation';
+import { submitLandingInquiryAction } from './actions';
 
 export default function LandingCTA() {
   const [formData, setFormData] = useState({
@@ -18,16 +19,28 @@ export default function LandingCTA() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
 
-    // 실제로는 API 호출
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const formDataObj = new FormData();
+    formDataObj.append('name', formData.name);
+    formDataObj.append('phone', formData.phone);
+    formDataObj.append('address', formData.address);
+    formDataObj.append('message', formData.message);
+
+    const result = await submitLandingInquiryAction(formDataObj);
 
     setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    if (result.success) {
+      setIsSubmitted(true);
+    } else {
+      setError(result.error || '상담 신청 중 오류가 발생했습니다.');
+    }
   };
 
   return (
@@ -127,6 +140,12 @@ export default function LandingCTA() {
                       className="min-h-[100px] sm:min-h-[120px] rounded-lg sm:rounded-xl border-2 border-gray-200 focus:border-[#2AC1BC] resize-none text-base"
                     />
                   </div>
+                  {error && (
+                    <div className="flex items-center gap-2 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{error}</span>
+                    </div>
+                  )}
                   <Button
                     type="submit"
                     disabled={isSubmitting}
@@ -195,6 +214,17 @@ export default function LandingCTA() {
                   <p className="text-white font-bold text-sm sm:text-base mb-0.5 sm:mb-1">공장 위치</p>
                   <p className="text-gray-400 text-xs sm:text-sm">경북 청도군</p>
                 </div>
+              </div>
+
+              {/* Office Address */}
+              <div className="bg-[#292929] rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-[#3A3A3A]">
+                <MapPin className="w-6 h-6 sm:w-8 sm:h-8 text-[#FF6F0F] mb-2 sm:mb-4" />
+                <p className="text-white font-bold text-sm sm:text-base mb-0.5 sm:mb-1">창호의민족 사무실</p>
+                <p className="text-gray-400 text-xs sm:text-sm leading-relaxed">
+                  경남 창원시 의창구 용동로 45
+                  <br />
+                  현대썬엔빌더스퀘어 F동 106호
+                </p>
               </div>
             </div>
           </AnimatedSection>

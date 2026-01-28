@@ -6,9 +6,9 @@ import { Shield, Award, FileCheck, Building2 } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 
 const partners = [
+  { name: 'KCC창호', logo: '/images/partners/kcc-window.png' },
   { name: 'KCC글라스', logo: '/images/partners/kcc-glass.png' },
   { name: '금호석유화학 휴그린', logo: '/images/partners/hugreen.jpg' },
-  { name: 'LX하우시스', logo: '/images/partners/lx-hausys.png' },
 ];
 
 const certifications = [
@@ -25,7 +25,7 @@ const certifications = [
   {
     icon: Award,
     title: '공식 파트너',
-    description: 'KCC·휴그린·LX하우시스 인증',
+    description: 'KCC창호·KCC글라스·휴그린 인증',
   },
   {
     icon: Building2,
@@ -35,9 +35,10 @@ const certifications = [
 ];
 
 const timeline = [
-  { year: '2025', event: '스마트 팩토리 구축 (TPS 간봉 자동화)' },
-  { year: '2024', event: '영업 브랜드 \'창호의 민족\' 런칭' },
-  { year: '2020', event: '주식회사 현경시스템 법인 전환' },
+  { year: '2026', event: '창호의민족 자체 브랜드 생산 (OEM/특허권 보유)' },
+  { year: '2024', event: '3,500평 스마트 팩토리 구축 (TPS 간봉 자동화)' },
+  { year: '2020', event: 'KCC창호·KCC글라스·휴그린 대리점 계약' },
+  { year: '2017', event: '복층유리 제작 부문 별도 설립' },
   { year: '2015', event: '현경시스템 설립 및 창호 제조 사업 개시' },
 ];
 

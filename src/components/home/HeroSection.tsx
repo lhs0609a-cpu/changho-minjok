@@ -9,7 +9,7 @@ import { COMPANY_INFO } from '@/lib/constants/navigation';
 
 const stats = [
   { icon: Factory, number: '3,500', unit: '평', label: '스마트 팩토리' },
-  { icon: Award, number: '10', unit: '년+', label: '제조 경력' },
+  { icon: Award, number: '10', unit: '년 이상', label: '제조 경력' },
   { icon: Users, number: '15,000', unit: '+', label: '시공 완료' },
 ];
 

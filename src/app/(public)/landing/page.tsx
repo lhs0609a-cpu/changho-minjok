@@ -15,6 +15,7 @@ import LandingFAQ from '@/components/landing/LandingFAQ';
 import LandingCTA from '@/components/landing/LandingCTA';
 import FloatingCTA from '@/components/landing/FloatingCTA';
 import StickyHeader from '@/components/landing/StickyHeader';
+import LandingGasketTech from '@/components/landing/LandingGasketTech';
 
 export const metadata: Metadata = {
   title: '창호 견적 받고 심장 떨어지셨죠? 200만원 돌려드립니다 | 창호의 민족',
@@ -64,6 +65,8 @@ export default function LandingPage() {
       <LandingObjections />
       {/* 10. Factory - 공장 신뢰 */}
       <LandingFactory />
+      {/* 10.5 GasketTech - 가스켓 타입 공법 기술 차별화 */}
+      <LandingGasketTech />
       {/* 11. Trust - 인증/파트너 */}
       <LandingTrust />
       {/* 12. Products - 제품 라인업 */}

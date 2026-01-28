@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const stats = [
-  { value: 10, suffix: '년+', label: '제조 경력', description: '2015년 설립' },
+  { value: 10, suffix: '년 이상 →', label: '제조 경력', description: '2015년 설립' },
   { value: 3500, suffix: '평', label: '공장 규모', description: '경기도 소재' },
   { value: 30, suffix: '세대/일', label: '일일 생산량', description: '안정적 공급' },
   { value: 15000, suffix: '+', label: '누적 시공', description: '고객 만족' },

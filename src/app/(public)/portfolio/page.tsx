@@ -28,8 +28,8 @@ const hardcodedPortfolios = [
   {
     id: 'yangjung-hyundai',
     slug: 'yangjung-hyundai',
-    title: '양정현대아파트 창호 전체 교체',
-    location: '부산 부산진구',
+    title: '부산 아파트 창호 전체 교체',
+    location: '부산 소재',
     building_type: '아파트',
     product: '시스템창호',
     rating: 5,
@@ -53,8 +53,8 @@ const hardcodedPortfolios = [
   {
     id: 'cheongdo-house',
     slug: 'cheongdo-house',
-    title: '청도 단독주택 이중창 교체',
-    location: '경북 청도군',
+    title: '경북 단독주택 이중창 교체',
+    location: '경북 소재',
     building_type: '단독주택',
     product: '이중창',
     rating: 5,
@@ -78,8 +78,8 @@ const hardcodedPortfolios = [
   {
     id: 'towol-sungwon',
     slug: 'towol-sungwon',
-    title: '토월성원아파트 5단지 창호 교체',
-    location: '경남 창원시',
+    title: '경남 아파트 창호 교체',
+    location: '경남 소재',
     building_type: '아파트',
     product: '시스템창호',
     rating: 5,
@@ -103,8 +103,8 @@ const hardcodedPortfolios = [
   {
     id: 'dongwon-royalduke',
     slug: 'dongwon-royalduke',
-    title: '동원로얄듀크 창호 교체',
-    location: '부산 수영구',
+    title: '부산 아파트 창호 교체',
+    location: '부산 소재',
     building_type: '아파트',
     product: '시스템창호',
     rating: 5,

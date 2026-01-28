@@ -7,7 +7,7 @@ import AnimatedSection from '@/components/shared/AnimatedSection';
 
 export const metadata: Metadata = {
   title: '회사소개',
-  description: '창호의 민족은 10년의 제조 노하우와 스마트 팩토리 기술력으로 고품질 창호를 합리적인 가격에 제공합니다.',
+  description: '현경시스템이 10년 이상의 제조 노하우를 집약해 런칭한 프리미엄 창호 브랜드 창호의민족. 스마트 팩토리 기술력으로 고품질 창호를 합리적인 가격에 제공합니다.',
 };
 
 const values = [
@@ -46,9 +46,9 @@ export default function AboutPage() {
               <span className="text-blue-400">공장의 기계 소리</span>를 믿습니다
             </h1>
             <p className="text-lg text-gray-300 mb-8">
-              창호의 민족은 (주)현경시스템의 영업 브랜드로,
+              <span className="text-blue-400 font-semibold">&apos;창호의민족&apos;</span>은 (주)현경시스템이 10년 이상의 제조 노하우를 집약해
               <br />
-              10년간 쌓아온 제조 역량을 바탕으로 고품질 창호를 직접 생산하고 공급합니다.
+              런칭한 프리미엄 창호 브랜드입니다. 본사-브랜드 일원화로 책임 있는 서비스를 제공합니다.
             </p>
             <Button asChild variant="secondary" size="lg">
               <Link href="/about/factory">
@@ -93,7 +93,7 @@ export default function AboutPage() {
                     <p className="text-gray-600 leading-relaxed">
                       2015년, 작은 공장에서 시작한 현경시스템은 오직 품질 하나만을 생각했습니다.
                       화려한 마케팅보다 묵묵히 좋은 제품을 만드는 것, 그것이 우리의 철학입니다.
-                      10년이 지난 지금도 우리는 매일 아침 공장의 기계 소리와 함께 하루를 시작합니다.
+                      10년 이상이 지난 지금, 그 노하우를 집약한 프리미엄 브랜드 &apos;창호의민족&apos;을 런칭했습니다.
                     </p>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export default function AboutPage() {
                 <div className="mt-8">
                   <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
                     <Image
-                      src="/images/about/team-photo.png"
+                      src="/images/about/team-photo.jpg"
                       alt="창호의 민족 팀원들"
                       fill
                       className="object-cover"

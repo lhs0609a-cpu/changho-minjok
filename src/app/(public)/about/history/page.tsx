@@ -8,11 +8,19 @@ export const metadata: Metadata = {
 
 const history = [
   {
+    year: '2026',
+    events: [
+      { month: '01월', title: '창호의민족 자체 브랜드 생산 개시', highlight: true },
+      { month: '', title: 'OEM 방식 자체 제품 생산 시스템 구축' },
+      { month: '', title: '부속품 개발 및 특허권 보유' },
+    ],
+  },
+  {
     year: '2024',
     events: [
       { month: '09월', title: '3,500평 스마트 팩토리 신축 완공', highlight: true },
       { month: '06월', title: 'TPS 단열간봉 자동화 라인 구축' },
-      { month: '03월', title: '창호의 민족 브랜드 런칭' },
+      { month: '03월', title: '창호의민족 브랜드 런칭' },
     ],
   },
   {
@@ -31,16 +39,10 @@ const history = [
     ],
   },
   {
-    year: '2021',
-    events: [
-      { month: '09월', title: 'LX하우시스 파트너 계약' },
-      { month: '03월', title: '온라인 견적 시스템 도입' },
-    ],
-  },
-  {
     year: '2020',
     events: [
       { month: '11월', title: '누적 시공 10,000세대 돌파' },
+      { month: '09월', title: 'KCC창호, KCC글라스, 휴그린 대리점 계약 및 협력', highlight: true },
       { month: '06월', title: '경기 남부권 영업망 확장' },
     ],
   },
@@ -49,6 +51,12 @@ const history = [
     events: [
       { month: '08월', title: '자동화 생산설비 도입' },
       { month: '01월', title: '서울/경기 전역 서비스 확대' },
+    ],
+  },
+  {
+    year: '2017',
+    events: [
+      { month: '06월', title: '복층유리 제작 부문 별도 설립/가동', highlight: true },
     ],
   },
   {

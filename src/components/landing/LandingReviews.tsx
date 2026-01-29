@@ -23,7 +23,7 @@ const reviews = [
     date: '2024.11',
     rating: 5,
     content: '20년 된 아파트라 겨울마다 외풍이 심했는데, 창호 바꾸고 나서 보일러 안 틀어도 따뜻해요. 난방비가 확 줄었습니다. 무엇보다 하루만에 끝나서 아이들 학교 보내고 퇴근하니까 다 끝나있어서 좋았어요.',
-    highlight: '원데이 시공',
+    highlight: '1-day 시공',
     verified: true,
   },
   {

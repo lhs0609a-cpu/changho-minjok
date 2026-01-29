@@ -8,9 +8,9 @@ import AnimatedSection from '@/components/shared/AnimatedSection';
 
 const features = [
   '전 공정 자동화 시스템',
-  'TPS 단열 간봉 자동화 라인',
-  '내외부 전체 가스켓 마감',
-  '실시간 품질 모니터링',
+  '복층유리 자동화 및 TPS설비보유',
+  '창짝 내외부 전체 가스켓 마감',
+  '자체 프로그램 운영으로 품질 하자 감소 및 정확한 견적산출',
   '일일 30세대 생산 능력',
   'Human Error 제로',
 ];

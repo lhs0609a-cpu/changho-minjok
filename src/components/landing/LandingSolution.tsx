@@ -18,9 +18,9 @@ const solutions = [
     icon: Users,
     number: '02',
     title: '브랜드 현장 검증 기술진이 직접 시공',
-    subtitle: 'KCC·휴그린 현장 10년 이상 경력팀',
-    description: 'KCC, 휴그린 브랜드 현장에서 10년 이상 검증받은 기술진. 고난도 현장도 완벽하게 마감합니다.',
-    highlight: '10년 이상 베테랑',
+    subtitle: '신축 리모델링 아파트 다수 경험 및 대기업 경력 보유',
+    description: '발코니창호 브랜드 현장에서 10년↑ 검증받은 기술진. 고난도 현장도 완벽하게 마감합니다.',
+    highlight: '10년↑ 베테랑',
     color: 'bg-[#2AC1BC]',
   },
   {
@@ -38,7 +38,7 @@ const comparisonData = [
   { label: '제조 방식', others: '외주 위탁', ours: '자체 공장 직접 제조' },
   { label: '유통 단계', others: '3~4단계 (마진 누적)', ours: '0단계 (직거래)' },
   { label: '평균 견적가', others: '700~900만원', ours: '500~700만원' },
-  { label: '시공팀 경력', others: '확인 불가', ours: '대기업 출신 10년 이상' },
+  { label: '시공팀 경력', others: '확인 불가', ours: '신축 리모델링 아파트 다수 경험 및 대기업 경력 보유' },
   { label: 'A/S 보증', others: '1~2년', ours: '10년 무상' },
   { label: '공장 견학', others: false, ours: true },
 ];

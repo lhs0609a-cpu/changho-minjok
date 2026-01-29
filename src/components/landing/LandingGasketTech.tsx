@@ -7,7 +7,7 @@ import AnimatedSection from '@/components/shared/AnimatedSection';
 const gasketTypes = [
   {
     title: '창호의민족 자체 브랜드',
-    subtitle: '내/외부 모두 가스켓 타입',
+    subtitle: '창짝 내/외부 모두 가스켓 타입',
     badge: '프리미엄',
     badgeColor: 'bg-[#2AC1BC]',
     description: '단열성 및 기밀성을 극대화하고, 실리콘 노후화로 인한 문제를 원천 차단합니다.',
@@ -19,8 +19,8 @@ const gasketTypes = [
     highlight: true,
   },
   {
-    title: '대기업 브랜드 (KCC/휴그린)',
-    subtitle: '내부 노턴 테이프 + 외부 가스켓',
+    title: '대기업 브랜드 (발코니창호)',
+    subtitle: '창짝 내부 노턴 테이프 + 외부 가스켓',
     badge: '표준 사양',
     badgeColor: 'bg-[#767676]',
     description: '대기업 브랜드의 표준 사양을 준수하면서도, 시공 효율성과 안정적인 품질을 동시에 확보합니다.',

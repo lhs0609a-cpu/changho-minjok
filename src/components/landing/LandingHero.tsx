@@ -13,9 +13,9 @@ const stats = [
 ];
 
 const trustBadges = [
-  { icon: Shield, text: '원데이 시공 (하루 완료)' },
-  { icon: Award, text: 'KCC·휴그린 공식 파트너' },
-  { icon: Users, text: '무료 방문 실측' },
+  { icon: Shield, text: '1-day 시공 (하루 완료)' },
+  { icon: Award, text: '발코니창호 공식 파트너' },
+  { icon: Users, text: '무료 방문견적' },
 ];
 
 export default function LandingHero() {
@@ -70,7 +70,7 @@ export default function LandingHero() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 max-w-2xl leading-relaxed text-center lg:text-left px-2 sm:px-0"
           >
-            <span className="text-[#2AC1BC] font-semibold">KCC·휴그린 정품</span>을 공장에서 직접 받으세요.
+            <span className="text-[#2AC1BC] font-semibold">발코니창호 정품</span>을 공장에서 직접 받으세요.
             <br />
             <span className="text-white/70 text-sm sm:text-base md:text-lg">
               중간 유통상 빼고, 3,500평 공장에서 바로 고객님 집으로.

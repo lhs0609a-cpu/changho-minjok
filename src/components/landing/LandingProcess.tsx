@@ -15,7 +15,7 @@ const processSteps = [
   {
     step: '02',
     icon: Ruler,
-    title: '무료 방문 실측',
+    title: '무료 방문견적',
     description: '전문가가 직접 방문하여 정확한 실측',
     duration: '30분',
   },
@@ -29,7 +29,7 @@ const processSteps = [
   {
     step: '04',
     icon: Wrench,
-    title: '원데이 시공',
+    title: '1-day 시공',
     description: '숙련된 기술진의 빠르고 깔끔한 시공',
     duration: '1일',
     highlight: true,
@@ -63,7 +63,7 @@ export default function LandingProcess() {
           >
             <div className="flex items-center gap-2">
               <Clock className="w-5 h-5 sm:w-6 sm:h-6" />
-              <span className="text-lg sm:text-xl md:text-2xl font-extrabold">원데이 시공</span>
+              <span className="text-lg sm:text-xl md:text-2xl font-extrabold">1-day 시공</span>
             </div>
             <span className="hidden sm:block w-px h-6 bg-white/30" />
             <span className="text-sm sm:text-base font-medium">
@@ -225,7 +225,7 @@ export default function LandingProcess() {
             className="inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#1E1E1E] text-white rounded-xl font-bold text-sm sm:text-base hover:bg-[#292929] transition-colors"
           >
             <Ruler className="w-4 h-4 sm:w-5 sm:h-5" />
-            무료 방문 실측 신청하기
+            무료 방문견적 신청하기
           </a>
         </AnimatedSection>
       </div>

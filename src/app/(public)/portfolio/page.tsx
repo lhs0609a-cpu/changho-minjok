@@ -179,7 +179,7 @@ export default async function PortfolioPage() {
               <p className="text-gray-500">등록된 시공사례가 없습니다.</p>
             </div>
           ) : (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {portfolios.map((item, index) => (
                 <AnimatedSection key={item.id} delay={index * 0.05}>
                   <Link href={`/portfolio/${item.slug}`} className="block group">
@@ -241,10 +241,10 @@ export default async function PortfolioPage() {
       <section className="cta-section">
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
               우리 집도 이렇게 바꿀 수 있을까요?
             </h2>
-            <p className="text-sky-100 mb-8">
+            <p className="text-sm sm:text-base text-sky-100 mb-6 sm:mb-8 px-2">
               지금 바로 무료 견적을 받아보세요.
               <br />
               전문 상담원이 최적의 솔루션을 제안해드립니다.

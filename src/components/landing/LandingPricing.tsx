@@ -145,7 +145,7 @@ export default function LandingPricing() {
               3년이면 창호값 본전 뽑습니다
             </h3>
 
-            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8">
               {roiItems.map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -153,13 +153,15 @@ export default function LandingPricing() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="text-center p-3 sm:p-4 md:p-6 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10"
+                  className="flex sm:flex-col items-center sm:items-center gap-4 sm:gap-0 p-4 sm:p-4 md:p-6 bg-white/5 rounded-xl sm:rounded-2xl border border-white/10"
                 >
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-[#2AC1BC]/20 flex items-center justify-center mx-auto mb-2 sm:mb-4">
-                    <item.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2AC1BC]" />
+                  <div className="w-10 h-10 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-lg sm:rounded-xl bg-[#2AC1BC]/20 flex items-center justify-center flex-shrink-0 sm:mx-auto sm:mb-4">
+                    <item.icon className="w-5 h-5 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#2AC1BC]" />
                   </div>
-                  <p className="text-gray-400 text-[10px] sm:text-xs md:text-sm mb-1 sm:mb-2">{item.label}</p>
-                  <p className="text-white text-base sm:text-xl md:text-3xl font-extrabold">{item.amount}</p>
+                  <div className="flex-1 sm:text-center">
+                    <p className="text-gray-400 text-xs sm:text-xs md:text-sm mb-0.5 sm:mb-2">{item.label}</p>
+                    <p className="text-white text-lg sm:text-xl md:text-3xl font-extrabold">{item.amount}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>

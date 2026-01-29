@@ -43,18 +43,18 @@ const supportLinks = [
 
 export default function SupportPage() {
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-20 sm:pt-32 pb-12 sm:pb-20">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 py-10 sm:py-12 md:py-16">
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mx-auto text-center">
-            <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">
+            <span className="text-blue-600 font-medium text-xs sm:text-sm tracking-wider uppercase">
               Customer Support
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-2 sm:mt-3 mb-4 sm:mb-6">
               고객센터
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 px-2">
               창호의 민족은 언제나 고객님과 함께합니다.
               <br />
               궁금한 점이 있으시면 언제든 문의해주세요.
@@ -64,18 +64,18 @@ export default function SupportPage() {
       </section>
 
       {/* Quick Contact */}
-      <section className="py-12 border-b">
+      <section className="py-8 sm:py-10 md:py-12 border-b">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-center items-center gap-8">
-            <AnimatedSection className="flex items-center gap-4">
-              <div className="p-3 bg-blue-100 rounded-full">
-                <Phone className="w-6 h-6 text-blue-600" />
+          <div className="flex flex-col md:flex-row justify-center items-center gap-4 sm:gap-6 md:gap-8">
+            <AnimatedSection className="flex items-center gap-3 sm:gap-4">
+              <div className="p-2 sm:p-3 bg-blue-100 rounded-full">
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
               </div>
               <div>
-                <p className="text-sm text-gray-500">전화 상담</p>
+                <p className="text-xs sm:text-sm text-gray-500">전화 상담</p>
                 <a
                   href={`tel:${COMPANY_INFO.phone}`}
-                  className="text-2xl font-bold text-gray-900 hover:text-blue-600"
+                  className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 hover:text-blue-600"
                 >
                   {COMPANY_INFO.phone}
                 </a>
@@ -85,29 +85,29 @@ export default function SupportPage() {
             <div className="hidden md:block w-px h-12 bg-gray-200" />
 
             <AnimatedSection delay={0.1} className="text-center md:text-left">
-              <p className="text-sm text-gray-500">운영시간</p>
-              <p className="font-medium text-gray-900">평일 09:00 - 18:00</p>
-              <p className="text-sm text-gray-500">점심시간 12:00 - 13:00</p>
+              <p className="text-xs sm:text-sm text-gray-500">운영시간</p>
+              <p className="text-sm sm:text-base font-medium text-gray-900">평일 09:00 - 18:00</p>
+              <p className="text-xs sm:text-sm text-gray-500">점심시간 12:00 - 13:00</p>
             </AnimatedSection>
           </div>
         </div>
       </section>
 
       {/* Support Links */}
-      <section className="py-20">
+      <section className="py-10 sm:py-14 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto">
             {supportLinks.map((link, index) => (
               <AnimatedSection key={link.href} delay={index * 0.1}>
                 <Link href={link.href}>
-                  <Card className="p-6 h-full hover:shadow-lg transition-shadow">
-                    <div className={`w-12 h-12 ${link.color} rounded-xl flex items-center justify-center mb-4`}>
-                      <link.icon className="w-6 h-6" />
+                  <Card className="p-4 sm:p-5 md:p-6 h-full hover:shadow-lg transition-shadow">
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 ${link.color} rounded-lg sm:rounded-xl flex items-center justify-center mb-3 sm:mb-4`}>
+                      <link.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    <h3 className="text-sm sm:text-base md:text-lg font-semibold text-gray-900 mb-1 sm:mb-2">
                       {link.title}
                     </h3>
-                    <p className="text-gray-600 text-sm">
+                    <p className="text-gray-600 text-xs sm:text-sm">
                       {link.description}
                     </p>
                   </Card>
@@ -119,37 +119,37 @@ export default function SupportPage() {
       </section>
 
       {/* Map Section (Placeholder) */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-10 sm:py-12 md:py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-4xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1 sm:mb-2">
                 찾아오시는 길
               </h2>
-              <p className="text-gray-600">{COMPANY_INFO.address}</p>
+              <p className="text-sm sm:text-base text-gray-600">{COMPANY_INFO.address}</p>
             </div>
 
             {/* Map Placeholder */}
-            <div className="aspect-video bg-gray-200 rounded-2xl flex items-center justify-center">
-              <span className="text-gray-400">지도 영역</span>
+            <div className="aspect-video bg-gray-200 rounded-xl sm:rounded-2xl flex items-center justify-center">
+              <span className="text-gray-400 text-sm">지도 영역</span>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
               <div className="text-center">
-                <h4 className="font-semibold text-gray-900 mb-1">자가용 이용시</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-0.5 sm:mb-1">자가용 이용시</h4>
+                <p className="text-xs sm:text-sm text-gray-600">
                   네비게이션에 &ldquo;창호의 민족&rdquo; 또는 주소 검색
                 </p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold text-gray-900 mb-1">대중교통 이용시</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-0.5 sm:mb-1">대중교통 이용시</h4>
+                <p className="text-xs sm:text-sm text-gray-600">
                   OO역 하차 후 버스 이용
                 </p>
               </div>
               <div className="text-center">
-                <h4 className="font-semibold text-gray-900 mb-1">주차 안내</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-0.5 sm:mb-1">주차 안내</h4>
+                <p className="text-xs sm:text-sm text-gray-600">
                   공장 내 무료 주차 가능
                 </p>
               </div>

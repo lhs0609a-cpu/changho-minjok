@@ -54,7 +54,7 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-[28px] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold text-white leading-[1.2] mb-5 md:mb-6 tracking-tight text-center lg:text-left"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-[1.15] mb-4 md:mb-6 tracking-tight text-center lg:text-left"
           >
             창호 견적 받고
             <br />
@@ -68,7 +68,7 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-base sm:text-lg md:text-xl lg:text-2xl text-white/90 mb-8 md:mb-10 max-w-2xl leading-relaxed text-center lg:text-left px-2 sm:px-0"
+            className="text-sm sm:text-base md:text-lg lg:text-xl text-white/90 mb-6 md:mb-10 max-w-2xl leading-relaxed text-center lg:text-left px-2 sm:px-0"
           >
             <span className="text-[#2AC1BC] font-semibold">발코니창호 정품</span>을 공장에서 직접 받으세요.
             <br />
@@ -84,7 +84,7 @@ export default function LandingHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex justify-center lg:justify-start gap-4 sm:gap-6 md:gap-12 mb-8 md:mb-12"
+            className="flex justify-center lg:justify-start gap-3 sm:gap-6 md:gap-10 mb-6 md:mb-10"
           >
             {stats.map((stat, index) => (
               <motion.div
@@ -94,7 +94,7 @@ export default function LandingHero() {
                 transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                 className="text-center"
               >
-                <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+                <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-white tracking-tight">
                   {stat.number}
                   <span className="text-sm sm:text-lg md:text-xl text-[#2AC1BC]">{stat.unit}</span>
                 </div>

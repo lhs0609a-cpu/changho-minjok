@@ -54,18 +54,18 @@ const productCategories = [
 
 export default function ProductsPage() {
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-20 sm:pt-32 pb-12 sm:pb-20">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-16">
+      <section className="bg-gray-50 py-10 sm:py-12 md:py-16">
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mx-auto text-center">
-            <span className="text-blue-600 font-medium text-sm tracking-wider uppercase">
+            <span className="text-blue-600 font-medium text-xs sm:text-sm tracking-wider uppercase">
               Products
             </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mt-3 mb-6">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mt-2 sm:mt-3 mb-4 sm:mb-6">
               창호의 민족 제품 라인업
             </h1>
-            <p className="text-lg text-gray-600">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 px-2">
               고객의 다양한 니즈에 맞춘 최적의 창호 솔루션을 제공합니다.
               <br />
               모든 제품은 자체 스마트 팩토리에서 직접 생산됩니다.
@@ -75,9 +75,9 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Categories */}
-      <section className="py-20">
+      <section className="py-12 sm:py-16 md:py-20">
         <div className="container mx-auto px-4">
-          <div className="space-y-16">
+          <div className="space-y-10 sm:space-y-12 md:space-y-16">
             {productCategories.map((category, index) => (
               <AnimatedSection key={category.slug} delay={index * 0.1}>
                 <div
@@ -100,21 +100,21 @@ export default function ProductsPage() {
 
                   {/* Content */}
                   <div className={index % 2 === 1 ? 'md:order-1' : ''}>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
                       {category.name}
                     </h2>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
                       {category.description}
                     </p>
 
                     {/* Features */}
-                    <ul className="grid grid-cols-2 gap-3 mb-8">
+                    <ul className="grid grid-cols-2 gap-2 sm:gap-3 mb-6 sm:mb-8">
                       {category.features.map((feature) => (
                         <li
                           key={feature}
-                          className="flex items-center gap-2 text-gray-700"
+                          className="flex items-center gap-2 text-xs sm:text-sm md:text-base text-gray-700"
                         >
-                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full" />
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full flex-shrink-0" />
                           {feature}
                         </li>
                       ))}
@@ -136,13 +136,13 @@ export default function ProductsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-blue-600">
+      <section className="py-10 sm:py-12 md:py-16 bg-blue-600">
         <div className="container mx-auto px-4">
           <AnimatedSection className="max-w-3xl mx-auto text-center text-white">
-            <h2 className="text-3xl font-bold mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
               어떤 제품이 적합한지 모르시겠나요?
             </h2>
-            <p className="text-blue-100 mb-8">
+            <p className="text-sm sm:text-base text-blue-100 mb-6 sm:mb-8 px-2">
               견적 시뮬레이션을 통해 건물 유형에 맞는 최적의 제품을 추천받으세요.
             </p>
             <Link

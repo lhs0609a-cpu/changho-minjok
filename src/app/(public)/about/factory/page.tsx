@@ -90,7 +90,7 @@ export default function FactoryPage() {
         <div className="container mx-auto px-4">
           <AnimatedSection>
             <div className="max-w-6xl mx-auto">
-              <div className="relative aspect-[21/9] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl">
                 <Image
                   src="/images/factory/aerial-view.jpg"
                   alt="창호의 민족 공장 전경"
@@ -99,17 +99,17 @@ export default function FactoryPage() {
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-                      <Factory className="w-5 h-5 text-white" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <Factory className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
-                    <span className="text-white/80 text-sm font-medium">경기도 소재</span>
+                    <span className="text-white/80 text-xs sm:text-sm font-medium">경기도 소재</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                  <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
                     3,500평 규모의 스마트 팩토리
                   </h2>
-                  <p className="text-white/80 max-w-xl">
+                  <p className="text-white/80 text-sm sm:text-base max-w-xl hidden sm:block">
                     전 공정 자동화 시스템과 숙련된 장인의 기술력이 만나는 곳
                   </p>
                 </div>
@@ -178,7 +178,7 @@ export default function FactoryPage() {
 
             {/* Bottom Feature Image */}
             <AnimatedSection delay={0.4}>
-              <div className="mt-6 relative aspect-[21/9] rounded-2xl overflow-hidden shadow-lg">
+              <div className="mt-6 relative aspect-[16/9] md:aspect-[21/9] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg">
                 <Image
                   src="/images/factory/exterior-view.jpg"
                   alt="공장 외부 전경"
@@ -186,18 +186,18 @@ export default function FactoryPage() {
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-transparent" />
-                <div className="absolute left-0 top-0 bottom-0 flex items-center p-8 md:p-12">
+                <div className="absolute left-0 top-0 bottom-0 flex items-center p-4 sm:p-8 md:p-12">
                   <div className="max-w-md">
-                    <h3 className="text-xl md:text-2xl font-bold text-white mb-3">
+                    <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-3">
                       직접 방문하여 확인하세요
                     </h3>
-                    <p className="text-white/80 text-sm md:text-base mb-4">
+                    <p className="text-white/80 text-xs sm:text-sm md:text-base mb-3 sm:mb-4 hidden sm:block">
                       언제든지 공장 견학을 예약하시고 직접 눈으로 확인해 보세요.
                     </p>
-                    <Button asChild size="sm" className="bg-white text-gray-900 hover:bg-gray-100">
+                    <Button asChild size="sm" className="bg-white text-gray-900 hover:bg-gray-100 text-xs sm:text-sm">
                       <Link href="/support/tour">
                         견학 예약하기
-                        <ArrowRight className="w-4 h-4 ml-2" />
+                        <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-1 sm:ml-2" />
                       </Link>
                     </Button>
                   </div>

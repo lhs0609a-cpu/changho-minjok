@@ -20,8 +20,12 @@ export async function submitLandingInquiryAction(formData: FormData) {
     message: message || '랜딩페이지 견적 문의',
   });
 
-  if (!result) {
-    return { success: false, error: '상담 신청 중 오류가 발생했습니다.' };
+  if (result.error) {
+    return { success: false, error: `오류: ${result.error}` };
+  }
+
+  if (!result.data) {
+    return { success: false, error: '데이터 저장에 실패했습니다.' };
   }
 
   return { success: true };

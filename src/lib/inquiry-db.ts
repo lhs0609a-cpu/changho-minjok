@@ -39,10 +39,10 @@ export async function getInquiryById(id: string): Promise<InquiryRecord | null> 
   return data;
 }
 
-export async function createInquiry(input: InquiryInput): Promise<InquiryRecord | null> {
+export async function createInquiry(input: InquiryInput): Promise<{ data: InquiryRecord | null; error: string | null }> {
   if (!supabase) {
     console.warn('Supabase not configured');
-    return null;
+    return { data: null, error: 'Supabase가 설정되지 않았습니다.' };
   }
 
   const { data, error } = await supabase
@@ -58,10 +58,10 @@ export async function createInquiry(input: InquiryInput): Promise<InquiryRecord 
 
   if (error) {
     console.error('Error creating inquiry:', error);
-    return null;
+    return { data: null, error: error.message };
   }
 
-  return data;
+  return { data, error: null };
 }
 
 export async function updateInquiryStatus(

@@ -39,3 +39,9 @@ export function verifyPassword(password: string): boolean {
   const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
   return password === adminPassword;
 }
+
+export function verifyCredentials(username: string, password: string): boolean {
+  const adminUsername = process.env.ADMIN_USERNAME || 'admin';
+  const adminPassword = process.env.ADMIN_PASSWORD || 'admin123';
+  return username === adminUsername && password === adminPassword;
+}

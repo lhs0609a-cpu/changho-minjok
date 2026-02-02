@@ -1,12 +1,13 @@
 'use server';
 
 import { redirect } from 'next/navigation';
-import { verifyPassword, setAdminSession, clearAdminSession } from '@/lib/auth';
+import { verifyCredentials, setAdminSession, clearAdminSession } from '@/lib/auth';
 
 export async function loginAction(formData: FormData): Promise<void> {
+  const username = formData.get('username') as string;
   const password = formData.get('password') as string;
 
-  if (!password || !verifyPassword(password)) {
+  if (!username || !password || !verifyCredentials(username, password)) {
     redirect('/admin?error=invalid');
   }
 

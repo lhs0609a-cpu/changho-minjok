@@ -185,6 +185,9 @@ export default function Footer() {
               <Link href="/terms" className="text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium">
                 이용약관
               </Link>
+              <Link href="/admin" className="text-[#4A4A4A] hover:text-[#767676] transition-colors font-medium">
+                관리자
+              </Link>
             </div>
           </div>
           <div className="text-center lg:text-left text-[10px] sm:text-xs text-[#4A4A4A] mt-4 sm:mt-6">

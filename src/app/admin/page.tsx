@@ -23,6 +23,20 @@ export default async function AdminLoginPage() {
           </div>
 
           <form action={loginAction}>
+            <div className="mb-4">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
+                아이디
+              </label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                required
+                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition-all"
+                placeholder="관리자 아이디 입력"
+              />
+            </div>
+
             <div className="mb-6">
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 비밀번호

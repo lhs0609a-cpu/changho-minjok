@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { verifyAdmin } from '@/lib/auth';
 import { getAllPortfoliosFromDB } from '@/lib/portfolio-db';
 import { logoutAction } from '../actions';
-import { Plus, Edit, Trash2, Eye, EyeOff, LogOut, Home, MessageSquare } from 'lucide-react';
+import DeleteButton from '@/components/admin/DeleteButton';
+import { Plus, Edit, Eye, EyeOff, LogOut, Home, MessageSquare } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -117,6 +118,7 @@ export default async function AdminPortfolioPage() {
                         <Link
                           href={`/admin/portfolio/${item.id}`}
                           className="p-2 text-gray-500 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-colors"
+                          title="수정"
                         >
                           <Edit className="w-4 h-4" />
                         </Link>
@@ -124,9 +126,11 @@ export default async function AdminPortfolioPage() {
                           href={`/portfolio/${item.slug}`}
                           target="_blank"
                           className="p-2 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg transition-colors"
+                          title="미리보기"
                         >
                           <Eye className="w-4 h-4" />
                         </Link>
+                        <DeleteButton id={item.id} />
                       </div>
                     </td>
                   </tr>

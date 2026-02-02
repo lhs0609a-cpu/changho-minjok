@@ -73,5 +73,5 @@ export const COMPANY_INFO = {
   email: 'changhopeople@naver.com',
   businessNumber: '000-00-00000',
   ceo: '대표이사명',
-  kakaoChannel: 'https://pf.kakao.com/_changhopeople', // 카카오톡 채널 URL (실제 채널 ID로 변경 필요)
+  kakaoChannel: 'http://pf.kakao.com/_GjHxgn/chat', // 카카오톡 채널 URL
 };

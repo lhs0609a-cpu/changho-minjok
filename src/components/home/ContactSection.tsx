@@ -84,7 +84,7 @@ export default function ContactSection() {
                       24시간 편하게 문의 주세요!
                     </p>
                     <a
-                      href="https://pf.kakao.com/_xnxaxmxj"
+                      href="http://pf.kakao.com/_GjHxgn/chat"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

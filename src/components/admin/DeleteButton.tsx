@@ -1,7 +1,7 @@
 'use client';
 
 import { Trash2 } from 'lucide-react';
-import { deletePortfolioAction } from '@/app/admin/portfolio/actions';
+import { deletePortfolioAction } from '@/app/admin/(authenticated)/portfolio/actions';
 
 interface DeleteButtonProps {
   id: string;

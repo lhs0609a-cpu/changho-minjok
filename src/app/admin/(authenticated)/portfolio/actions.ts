@@ -2,27 +2,21 @@
 
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
-import { verifyAdmin } from '@/lib/auth';
 import { createPortfolio, updatePortfolio, deletePortfolio, uploadImage } from '@/lib/portfolio-db';
 
 function generateSlug(title: string): string {
   return title
     .toLowerCase()
-    .replace(/[가-힣]/g, '') // 한글 제거
-    .replace(/[^a-z0-9\s-]/g, '') // 특수문자 제거
-    .replace(/\s+/g, '-') // 공백을 하이픈으로
-    .replace(/-+/g, '-') // 연속 하이픈 제거
+    .replace(/[가-힣]/g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
     .trim()
-    .replace(/^-|-$/g, '') // 앞뒤 하이픈 제거
-    || `portfolio-${Date.now()}`; // 빈 문자열이면 기본값
+    .replace(/^-|-$/g, '')
+    || `portfolio-${Date.now()}`;
 }
 
 export async function createPortfolioAction(formData: FormData): Promise<void> {
-  const isAdmin = await verifyAdmin();
-  if (!isAdmin) {
-    redirect('/admin');
-  }
-
   const title = formData.get('title') as string;
   const location = formData.get('location') as string;
   const buildingType = formData.get('buildingType') as string;
@@ -38,7 +32,6 @@ export async function createPortfolioAction(formData: FormData): Promise<void> {
   const published = formData.get('published') === 'true';
   const displayOrder = parseInt(formData.get('displayOrder') as string) || 1;
 
-  // 이미지 업로드
   const thumbnail = formData.get('thumbnail') as File;
   const before = formData.get('before') as File;
   const after = formData.get('after') as File;
@@ -96,11 +89,6 @@ export async function createPortfolioAction(formData: FormData): Promise<void> {
 }
 
 export async function updatePortfolioAction(formData: FormData): Promise<void> {
-  const isAdmin = await verifyAdmin();
-  if (!isAdmin) {
-    redirect('/admin');
-  }
-
   const id = formData.get('id') as string;
   const slug = formData.get('slug') as string;
   const title = formData.get('title') as string;
@@ -118,12 +106,10 @@ export async function updatePortfolioAction(formData: FormData): Promise<void> {
   const published = formData.get('published') === 'true';
   const displayOrder = parseInt(formData.get('displayOrder') as string) || 1;
 
-  // 기존 이미지 URL
   const existingThumbnail = formData.get('existingThumbnail') as string;
   const existingBefore = formData.get('existingBefore') as string;
   const existingAfter = formData.get('existingAfter') as string;
 
-  // 새 이미지 업로드
   const thumbnail = formData.get('thumbnail') as File;
   const before = formData.get('before') as File;
   const after = formData.get('after') as File;
@@ -178,11 +164,6 @@ export async function updatePortfolioAction(formData: FormData): Promise<void> {
 }
 
 export async function deletePortfolioAction(formData: FormData): Promise<void> {
-  const isAdmin = await verifyAdmin();
-  if (!isAdmin) {
-    redirect('/admin');
-  }
-
   const id = formData.get('id') as string;
 
   const result = await deletePortfolio(id);

@@ -7,7 +7,7 @@ export default async function AdminLoginPage() {
   const isAdmin = await verifyAdmin();
 
   if (isAdmin) {
-    redirect('/admin/portfolio');
+    redirect('/admin/dashboard');
   }
 
   return (

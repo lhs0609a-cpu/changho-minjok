@@ -12,7 +12,7 @@ export async function loginAction(formData: FormData): Promise<void> {
   }
 
   await setAdminSession();
-  redirect('/admin/portfolio');
+  redirect('/admin/dashboard');
 }
 
 export async function logoutAction() {

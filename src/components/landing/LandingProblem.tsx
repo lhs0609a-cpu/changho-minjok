@@ -86,14 +86,21 @@ export default function LandingProblem() {
           ))}
         </div>
 
-        {/* Bottom Message - 해결책 예고 */}
+        {/* Bottom CTA */}
         <AnimatedSection delay={0.5} className="text-center mt-8 sm:mt-12">
-          <div className="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 bg-[#E8F8F7] rounded-xl sm:rounded-2xl">
-            <span className="text-lg sm:text-2xl">👇</span>
-            <p className="text-sm sm:text-lg font-bold text-[#1E1E1E]">
-              지금 바꾸면{' '}
-              <span className="text-[#2AC1BC]">올겨울부터 난방비 30% 절감</span>
+          <div className="bg-gradient-to-r from-[#2AC1BC]/10 to-[#2AC1BC]/5 rounded-2xl sm:rounded-3xl p-5 sm:p-8 max-w-2xl mx-auto">
+            <p className="text-base sm:text-xl font-bold text-[#1E1E1E] mb-3 sm:mb-4">
+              더 이상 미루지 마세요.
+              <br />
+              <span className="text-[#2AC1BC]">올겨울부터 난방비 30% 절감</span> 가능합니다.
             </p>
+            <a
+              href="#contact-form"
+              className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-[#2AC1BC] text-white rounded-lg sm:rounded-xl font-bold text-sm sm:text-base hover:bg-[#25b0ab] transition-colors"
+            >
+              우리 집 진단받기
+              <span className="text-white/80">→</span>
+            </a>
           </div>
         </AnimatedSection>
       </div>

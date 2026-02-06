@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Shield, Thermometer, Droplets, Check } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
@@ -123,8 +124,22 @@ export default function LandingGasketTech() {
           ))}
         </div>
 
+        {/* Comparison Image */}
+        <AnimatedSection delay={0.3} className="mt-10 sm:mt-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="relative w-full aspect-[16/12] rounded-2xl sm:rounded-3xl overflow-hidden border-2 border-[#3A3A3A]">
+              <Image
+                src="/images/landing/comparison.png"
+                alt="마감 방식 및 단열 간봉 비교"
+                fill
+                className="object-contain bg-[#F5F5F5]"
+              />
+            </div>
+          </div>
+        </AnimatedSection>
+
         {/* Bottom Note */}
-        <AnimatedSection delay={0.3} className="text-center mt-8 sm:mt-12">
+        <AnimatedSection delay={0.4} className="text-center mt-8 sm:mt-12">
           <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-3 bg-[#2AC1BC]/10 rounded-full">
             <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#2AC1BC]" />
             <span className="text-sm sm:text-base text-[#2AC1BC] font-semibold">

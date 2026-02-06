@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Phone, Mail, MapPin, ArrowRight, Instagram, Youtube } from 'lucide-react';
-import { FOOTER_LINKS, COMPANY_INFO } from '@/lib/constants/navigation';
+import { FOOTER_LINKS, COMPANY_INFO, COMPANY_INFO_SUB } from '@/lib/constants/navigation';
 
 export default function Footer() {
   return (
@@ -173,10 +173,16 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4 sm:gap-6">
             <div className="flex flex-wrap justify-center lg:justify-start gap-x-2 sm:gap-x-4 gap-y-1 sm:gap-y-2 text-[10px] sm:text-sm text-[#767676]">
               <span>{COMPANY_INFO.companyName}</span>
-              <span className="hidden sm:inline text-[#4A4A4A]">|</span>
+              <span className="text-[#4A4A4A]">|</span>
               <span>대표: {COMPANY_INFO.ceo}</span>
-              <span className="hidden sm:inline text-[#4A4A4A]">|</span>
+              <span className="text-[#4A4A4A]">|</span>
               <span>사업자등록번호: {COMPANY_INFO.businessNumber}</span>
+              <span className="text-[#4A4A4A]">/</span>
+              <span>{COMPANY_INFO_SUB.name}</span>
+              <span className="text-[#4A4A4A]">|</span>
+              <span>대표: {COMPANY_INFO_SUB.ceo}</span>
+              <span className="text-[#4A4A4A]">|</span>
+              <span>사업자등록번호: {COMPANY_INFO_SUB.businessNumber}</span>
             </div>
             <div className="flex items-center gap-4 sm:gap-6 text-[10px] sm:text-sm">
               <Link href="/privacy" className="text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium">

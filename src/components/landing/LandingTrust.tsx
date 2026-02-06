@@ -7,8 +7,8 @@ import AnimatedSection from '@/components/shared/AnimatedSection';
 
 const partners = [
   { name: 'KCC', logo: '/images/partners/kcc-window.png' },
-  { name: '발코니창호', logo: '/images/partners/kcc-glass.png' },
-  { name: '하나로 샷시', logo: '/images/partners/hugreen.jpg' },
+  { name: 'KCC글라스', logo: '/images/partners/kcc-glass.png' },
+  { name: 'LX하우시스', logo: '/images/partners/lx-hausys.jpg' },
 ];
 
 const certifications = [
@@ -25,7 +25,7 @@ const certifications = [
   {
     icon: Award,
     title: '공식 파트너',
-    description: 'KCC·발코니창호·하나로샷시 인증',
+    description: 'KCC·KCC글라스·LX하우시스 인증',
   },
   {
     icon: Building2,

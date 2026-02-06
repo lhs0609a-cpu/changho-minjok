@@ -67,11 +67,18 @@ export const FOOTER_LINKS = {
 export const COMPANY_INFO = {
   name: '창호의 민족',
   companyName: '(주)현경시스템',
-  address: '경기도 화성시 (상세주소)',
+  address: '경상북도 청도군 청도읍 청매로 86-29',
   phone: '1668-1453',
   fax: '031-000-0001',
   email: 'changhopeople@naver.com',
-  businessNumber: '000-00-00000',
-  ceo: '대표이사명',
+  businessNumber: '268-86-01889',
+  ceo: '허자현',
   kakaoChannel: 'http://pf.kakao.com/_GjHxgn/chat', // 카카오톡 채널 URL
+};
+
+export const COMPANY_INFO_SUB = {
+  name: '창호의민족',
+  businessNumber: '221-31-52133',
+  ceo: '허자현',
+  address: '경상남도 창원시 의창구 팔용로396번길 9, 1층(팔용동)',
 };

@@ -129,10 +129,25 @@ export default function SupportPage() {
               <p className="text-sm sm:text-base text-gray-600">{COMPANY_INFO.address}</p>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="aspect-video bg-gray-200 rounded-xl sm:rounded-2xl flex items-center justify-center">
-              <span className="text-gray-400 text-sm">지도 영역</span>
-            </div>
+            {/* Naver Map Embed */}
+            <a
+              href="https://map.naver.com/p/entry/place/36921531?lng=128.7771773&lat=35.5693645&placePath=/home"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block aspect-video rounded-xl sm:rounded-2xl overflow-hidden relative group"
+            >
+              <iframe
+                src="https://map.naver.com/p/entry/place/36921531?lng=128.7771773&lat=35.5693645&placePath=/home"
+                className="w-full h-full border-0 pointer-events-none"
+                loading="lazy"
+                title="창호의 민족 위치 - 네이버 지도"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/90 text-gray-900 px-4 py-2 rounded-lg text-sm font-medium shadow-lg">
+                  네이버 지도에서 보기
+                </span>
+              </div>
+            </a>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 sm:mt-8">
               <div className="text-center">
@@ -144,7 +159,7 @@ export default function SupportPage() {
               <div className="text-center">
                 <h4 className="text-sm sm:text-base font-semibold text-gray-900 mb-0.5 sm:mb-1">대중교통 이용시</h4>
                 <p className="text-xs sm:text-sm text-gray-600">
-                  OO역 하차 후 버스 이용
+                  청도역 하차 후 버스 이용
                 </p>
               </div>
               <div className="text-center">

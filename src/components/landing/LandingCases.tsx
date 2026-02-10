@@ -3,8 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ZoomIn, X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, ZoomIn, X, ChevronLeft, ChevronRight, Camera } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import {
   Dialog,
@@ -60,12 +59,9 @@ const brands = [
 ];
 
 export default function LandingCases() {
-  const [activeBrand, setActiveBrand] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImages, setModalImages] = useState<{ src: string; alt: string }[]>([]);
   const [modalIndex, setModalIndex] = useState(0);
-
-  const brand = brands[activeBrand];
 
   const openModal = (images: { src: string; alt: string }[], index: number) => {
     setModalImages(images);
@@ -98,116 +94,98 @@ export default function LandingCases() {
             </p>
           </AnimatedSection>
 
-          {/* Brand Tabs */}
+          {/* Brand Cards Grid */}
           <AnimatedSection delay={0.1}>
-            <div className="flex justify-center gap-2 sm:gap-3 mb-8 sm:mb-12">
-              {brands.map((b, idx) => (
-                <button
-                  key={b.id}
-                  onClick={() => setActiveBrand(idx)}
-                  className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-xl font-bold text-sm sm:text-base transition-all ${
-                    idx === activeBrand
-                      ? 'text-white shadow-lg scale-105'
-                      : 'bg-gray-100 text-[#767676] hover:bg-gray-200'
-                  }`}
-                  style={
-                    idx === activeBrand
-                      ? { backgroundColor: b.color }
-                      : undefined
-                  }
-                >
-                  {b.name}
-                </button>
-              ))}
-            </div>
-          </AnimatedSection>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-6xl mx-auto">
+              {brands.map((brand) => {
+                const allImages = [...brand.before, ...brand.after];
+                const totalCount = allImages.length;
 
-          {/* Before / After Grid */}
-          <AnimatedSection delay={0.2}>
-            <div className="max-w-4xl mx-auto">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={brand.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Before Row */}
-                  <div className="mb-6 sm:mb-8">
-                    <div className="flex items-center gap-2 mb-3 sm:mb-4">
-                      <span className="px-3 py-1 bg-gray-800 text-white rounded-full text-xs sm:text-sm font-bold">
-                        시공 전
-                      </span>
-                    </div>
-                    <div className={`grid gap-2 sm:gap-4 ${brand.before.length === 3 ? 'grid-cols-3' : 'grid-cols-2'}`}>
-                      {brand.before.map((img, idx) => (
-                        <button
-                          key={img.src}
-                          onClick={() => openModal(brand.before, idx)}
-                          className="group relative aspect-[3/4] rounded-lg sm:rounded-xl overflow-hidden bg-gray-100"
-                        >
-                          <Image
-                            src={img.src}
-                            alt={img.alt}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                            <ZoomIn className="w-6 h-6 sm:w-8 sm:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
-                          </div>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Arrow */}
-                  <div className="flex justify-center my-3 sm:my-4">
+                return (
+                  <div
+                    key={brand.id}
+                    className="bg-gray-50 rounded-2xl overflow-hidden border border-gray-100"
+                  >
+                    {/* Brand Header */}
                     <div
-                      className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center"
+                      className="px-4 py-3 text-center"
                       style={{ backgroundColor: brand.color }}
                     >
-                      <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                      </svg>
-                    </div>
-                  </div>
-
-                  {/* After Row */}
-                  <div>
-                    <div className="flex items-center gap-2 mb-3 sm:mb-4">
-                      <span
-                        className="px-3 py-1 rounded-full text-xs sm:text-sm font-bold text-white"
-                        style={{ backgroundColor: brand.color }}
-                      >
-                        시공 후
+                      <span className="text-white font-bold text-sm sm:text-base">
+                        {brand.name}
                       </span>
                     </div>
-                    <div className="grid grid-cols-3 gap-2 sm:gap-4">
-                      {brand.after.map((img, idx) => (
+
+                    <div className="p-3 sm:p-4">
+                      {/* Before */}
+                      <div className="mb-2">
+                        <span className="inline-block px-2.5 py-0.5 bg-gray-800 text-white rounded-full text-xs font-bold mb-2">
+                          시공 전
+                        </span>
                         <button
-                          key={img.src}
-                          onClick={() => openModal(brand.after, idx)}
-                          className="group relative aspect-[3/4] rounded-lg sm:rounded-xl overflow-hidden bg-gray-100 ring-2 ring-transparent hover:ring-offset-2"
-                          style={
-                            { '--tw-ring-color': brand.color } as React.CSSProperties
-                          }
+                          onClick={() => openModal(brand.before, 0)}
+                          className="group relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200"
                         >
                           <Image
-                            src={img.src}
-                            alt={img.alt}
+                            src={brand.before[0].src}
+                            alt={brand.before[0].alt}
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-300"
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
-                            <ZoomIn className="w-6 h-6 sm:w-8 sm:h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
                           </div>
                         </button>
-                      ))}
+                      </div>
+
+                      {/* Arrow */}
+                      <div className="flex justify-center my-2">
+                        <div
+                          className="w-8 h-8 rounded-full flex items-center justify-center"
+                          style={{ backgroundColor: brand.color }}
+                        >
+                          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* After */}
+                      <div className="mb-3">
+                        <span
+                          className="inline-block px-2.5 py-0.5 rounded-full text-xs font-bold text-white mb-2"
+                          style={{ backgroundColor: brand.color }}
+                        >
+                          시공 후
+                        </span>
+                        <button
+                          onClick={() => openModal(brand.after, 0)}
+                          className="group relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-gray-200"
+                        >
+                          <Image
+                            src={brand.after[0].src}
+                            alt={brand.after[0].alt}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                            <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
+                          </div>
+                        </button>
+                      </div>
+
+                      {/* View All Button */}
+                      <button
+                        onClick={() => openModal(allImages, 0)}
+                        className="w-full flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-semibold transition-colors hover:bg-gray-200 text-[#555]"
+                      >
+                        <Camera className="w-4 h-4" />
+                        전체 {totalCount}장 보기
+                      </button>
                     </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
+                );
+              })}
             </div>
           </AnimatedSection>
 

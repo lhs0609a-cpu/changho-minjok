@@ -107,7 +107,7 @@ export default function LandingObjections() {
                 </div>
 
                 {/* Detail */}
-                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed pl-11 sm:pl-13">
+                <p className="text-xs sm:text-sm text-gray-500 leading-relaxed pl-0 sm:pl-[52px]">
                   {obj.detail}
                 </p>
               </motion.div>

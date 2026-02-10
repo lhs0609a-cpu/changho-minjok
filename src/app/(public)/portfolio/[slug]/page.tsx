@@ -154,7 +154,7 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
   const hasGallery = portfolio.gallery_urls && portfolio.gallery_urls.length > 0;
 
   return (
-    <div className="pt-20">
+    <div className="pt-16 sm:pt-20">
       {/* Hero */}
       <section className="page-hero">
         <div className="container mx-auto px-4">
@@ -264,7 +264,7 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
       <section className="section">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="grid lg:grid-cols-3 gap-12">
+            <div className="grid lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12">
               {/* Description */}
               <div className="lg:col-span-2">
                 <AnimatedSection>
@@ -356,10 +356,10 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
       <section className="cta-section">
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">
               비슷한 시공을 원하시나요?
             </h2>
-            <p className="text-sky-100 mb-8">
+            <p className="text-sky-100 text-sm sm:text-base mb-6 sm:mb-8">
               무료 견적을 통해 예상 비용을 확인하세요.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

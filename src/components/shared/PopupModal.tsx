@@ -68,7 +68,7 @@ export default function PopupModal({ popups }: PopupModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full overflow-hidden">
+      <div className="relative bg-white rounded-2xl shadow-2xl max-w-[calc(100%-2rem)] sm:max-w-md w-full overflow-hidden">
         {/* Close Button */}
         <button
           onClick={handleClose}

@@ -86,8 +86,8 @@ export default function AboutPage() {
                       />
                     </div>
                   </div>
-                  <div className="md:w-2/3 prose prose-lg max-w-none">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <div className="md:w-2/3 prose prose-sm sm:prose-lg max-w-none">
+                    <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                       01. 우리의 철학
                     </h3>
                     <p className="text-gray-600 leading-relaxed">
@@ -100,8 +100,8 @@ export default function AboutPage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.1}>
-                <div className="prose prose-lg max-w-none">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="prose prose-sm sm:prose-lg max-w-none">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                     02. 기술 혁신
                   </h3>
                   <p className="text-gray-600 leading-relaxed">
@@ -114,8 +114,8 @@ export default function AboutPage() {
               </AnimatedSection>
 
               <AnimatedSection delay={0.2}>
-                <div className="prose prose-lg max-w-none">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                <div className="prose prose-sm sm:prose-lg max-w-none">
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4">
                     03. 우리의 약속
                   </h3>
                   <p className="text-gray-600 leading-relaxed">

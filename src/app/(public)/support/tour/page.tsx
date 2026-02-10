@@ -61,7 +61,7 @@ export default function TourPage() {
   }
 
   return (
-    <div className="pt-20">
+    <div className="pt-16 sm:pt-20">
       {/* Hero */}
       <section className="page-hero">
         <div className="container mx-auto px-4">
@@ -119,7 +119,7 @@ export default function TourPage() {
 
             {/* Tour Includes */}
             <AnimatedSection delay={0.4}>
-              <div className="bg-white rounded-2xl p-8 border border-gray-100">
+              <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-100">
                 <div className="flex items-center gap-3 mb-6">
                   <Factory className="w-6 h-6 text-sky-500" />
                   <h3 className="text-lg font-semibold text-gray-900">견학 포함 내용</h3>
@@ -204,7 +204,7 @@ export default function TourPage() {
                   </div>
                 </div>
 
-                <div className="mt-8 flex items-center justify-between">
+                <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center gap-3 sm:justify-between">
                   <p className="text-sm text-gray-500">
                     * 필수 입력 항목
                   </p>

@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Factory, Cpu, Shield, Clock, CheckCircle, ArrowRight, Play } from 'lucide-react';
+import { Factory, Cpu, Shield, Clock, CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 
@@ -44,27 +44,18 @@ const facilities = [
   '완제품 보관창고',
 ];
 
+const FACTORY_VIDEO_ID = 'Wie9aS4jxdQ';
+
 const galleryImages = [
-  {
-    src: '/images/factory/interior-wide.jpg',
-    alt: '공장 내부 전경',
-    title: '넓은 작업 공간',
-  },
-  {
-    src: '/images/factory/automation-line.jpg',
-    alt: '자동화 생산 라인',
-    title: '자동화 설비',
-  },
-  {
-    src: '/images/factory/products-storage.jpg',
-    alt: '완제품 보관',
-    title: '제품 적재',
-  },
-  {
-    src: '/images/factory/production-floor.jpg',
-    alt: '창호 제작 현장',
-    title: '제작 현장',
-  },
+  { src: '/images/factory/new-6.jpg', alt: '공장 내부 전경', title: '공장 내부 전경' },
+  { src: '/images/factory/new-8.jpg', alt: '생산 라인 전경', title: '생산 라인 전경' },
+  { src: '/images/factory/new-1.jpg', alt: 'PVC 프레임 자동화 라인', title: '자동화 라인' },
+  { src: '/images/factory/new-9.jpg', alt: '창호 프레임 조립', title: '프레임 조립' },
+  { src: '/images/factory/new-2.jpg', alt: '프레임 용접 작업', title: '용접 공정' },
+  { src: '/images/factory/new-5.jpg', alt: '프레임 가공 작업', title: '가공 공정' },
+  { src: '/images/factory/new-3.jpg', alt: '컨베이어 가공 라인', title: '컨베이어 라인' },
+  { src: '/images/factory/new-4.jpg', alt: '설비 조작', title: '정밀 설비' },
+  { src: '/images/factory/new-7.jpg', alt: 'PVC 프레임 적재', title: '프레임 적재' },
 ];
 
 export default function FactoryPage() {
@@ -156,11 +147,24 @@ export default function FactoryPage() {
           </AnimatedSection>
 
           <div className="max-w-6xl mx-auto">
-            {/* Main Gallery Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
+            {/* YouTube Video */}
+            <AnimatedSection>
+              <div className="relative aspect-video rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl mb-6">
+                <iframe
+                  src={`https://www.youtube.com/embed/${FACTORY_VIDEO_ID}`}
+                  title="창호의 민족 스마트 팩토리 영상"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full"
+                />
+              </div>
+            </AnimatedSection>
+
+            {/* Photo Grid - 3 columns */}
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6">
               {galleryImages.map((image, index) => (
-                <AnimatedSection key={image.src} delay={index * 0.1}>
-                  <div className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <AnimatedSection key={image.src} delay={index * 0.05}>
+                  <div className="group relative aspect-[4/3] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                     <Image
                       src={image.src}
                       alt={image.alt}
@@ -168,15 +172,15 @@ export default function FactoryPage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <span className="text-white font-medium">{image.title}</span>
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <span className="text-white text-sm sm:text-base font-medium">{image.title}</span>
                     </div>
                   </div>
                 </AnimatedSection>
               ))}
             </div>
 
-            {/* Bottom Feature Image */}
+            {/* Bottom CTA Banner */}
             <AnimatedSection delay={0.4}>
               <div className="mt-6 relative aspect-[16/9] md:aspect-[21/9] rounded-xl sm:rounded-2xl overflow-hidden shadow-lg">
                 <Image

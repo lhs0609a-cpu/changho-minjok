@@ -17,8 +17,9 @@ const brands = [
     name: '창호의민족',
     color: '#2AC1BC',
     before: [
-      { src: '/images/landing/cases/changho/before/2.jpg', alt: '창호의민족 시공 전 1' },
-      { src: '/images/landing/cases/changho/before/3.jpg', alt: '창호의민족 시공 전 2' },
+      { src: '/images/landing/cases/changho/before/1.jpg', alt: '창호의민족 시공 전 1' },
+      { src: '/images/landing/cases/changho/before/2.jpg', alt: '창호의민족 시공 전 2' },
+      { src: '/images/landing/cases/changho/before/3.jpg', alt: '창호의민족 시공 전 3' },
     ],
     after: [
       { src: '/images/landing/cases/changho/after/1.jpg', alt: '창호의민족 시공 후 1' },

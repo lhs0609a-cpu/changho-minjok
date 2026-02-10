@@ -34,7 +34,7 @@ export default function AdvisorWidget() {
   };
 
   return (
-    <div className="fixed bottom-20 left-4 md:bottom-8 md:left-6 z-50">
+    <div className="fixed bottom-20 right-4 md:bottom-8 md:right-6 z-50">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -42,26 +42,33 @@ export default function AdvisorWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-14 left-0 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
+            className="absolute bottom-16 right-0 w-[calc(100vw-2rem)] sm:w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-3.5 bg-gray-50 border-b border-gray-100">
+            <div className="flex items-center justify-between px-5 py-3.5 bg-[#2AC1BC] border-b border-[#24ADA8]">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-[#2AC1BC]" />
-                <span className="text-base font-bold text-gray-900">
+                <ShieldCheck className="w-5 h-5 text-white" />
+                <span className="text-base font-bold text-white">
                   어드바이저 조회
                 </span>
               </div>
               <button
                 onClick={handleClose}
-                className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-white/20 transition-colors"
               >
-                <X className="w-4 h-4 text-gray-500" />
+                <X className="w-4 h-4 text-white" />
               </button>
             </div>
 
+            {/* Description */}
+            <div className="px-5 pt-4 pb-2">
+              <p className="text-xs text-gray-500">
+                방문한 담당자가 본사 소속인지 확인하세요
+              </p>
+            </div>
+
             {/* Search */}
-            <div className="p-4">
+            <div className="px-4 pb-4">
               <form onSubmit={handleSearch} className="flex gap-2">
                 <input
                   type="text"
@@ -142,7 +149,7 @@ export default function AdvisorWidget() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2 px-4 py-2.5 bg-white border-2 border-[#2AC1BC] rounded-full shadow-lg hover:bg-[#E8F8F7] transition-colors text-base font-bold text-[#2AC1BC]"
+        className="flex items-center gap-2.5 px-5 py-3 bg-[#2AC1BC] rounded-full shadow-lg shadow-[#2AC1BC]/30 hover:bg-[#24ADA8] transition-colors text-base font-bold text-white"
       >
         <ShieldCheck className="w-5 h-5" />
         어드바이저 조회

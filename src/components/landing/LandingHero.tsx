@@ -98,7 +98,7 @@ export default function LandingHero() {
                   {stat.number}
                   <span className="text-sm sm:text-lg md:text-xl text-[#2AC1BC]">{stat.unit}</span>
                 </div>
-                <div className="text-[10px] sm:text-xs md:text-sm text-white/60 font-medium mt-1">{stat.label}</div>
+                <div className="text-xs md:text-sm text-white/60 font-medium mt-1">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>

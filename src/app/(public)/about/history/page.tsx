@@ -69,7 +69,7 @@ const history = [
 
 export default function HistoryPage() {
   return (
-    <div className="pt-20">
+    <div className="pt-16 sm:pt-20">
       {/* Hero */}
       <section className="page-hero">
         <div className="container mx-auto px-4">
@@ -90,14 +90,14 @@ export default function HistoryPage() {
           <div className="max-w-3xl mx-auto">
             {history.map((yearGroup, groupIndex) => (
               <AnimatedSection key={yearGroup.year} delay={groupIndex * 0.1}>
-                <div className="relative pl-8 pb-12 last:pb-0">
+                <div className="relative pl-6 sm:pl-8 pb-8 sm:pb-12 last:pb-0">
                   {/* Year Badge */}
-                  <div className="absolute left-0 top-0 -translate-x-1/2 w-16 h-16 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-sky-500/25">
+                  <div className="absolute left-0 top-0 -translate-x-1/2 w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-sky-500 text-white flex items-center justify-center font-bold text-sm sm:text-lg shadow-lg shadow-sky-500/25">
                     {yearGroup.year}
                   </div>
 
                   {/* Events */}
-                  <div className="ml-12 space-y-4">
+                  <div className="ml-8 sm:ml-12 space-y-4">
                     {yearGroup.events.map((event, eventIndex) => (
                       <div
                         key={eventIndex}

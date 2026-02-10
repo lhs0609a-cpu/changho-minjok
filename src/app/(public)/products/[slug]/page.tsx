@@ -150,7 +150,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
   const colors = colorClasses[product.color] || colorClasses.sky;
 
   return (
-    <div className="pt-20">
+    <div className="pt-16 sm:pt-20">
       {/* Hero */}
       <section className="page-hero">
         <div className="container mx-auto px-4">
@@ -190,7 +190,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <AnimatedSection>
-              <p className="text-lg text-gray-600 leading-relaxed mb-8">
+              <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-8">
                 {product.description}
               </p>
             </AnimatedSection>
@@ -240,7 +240,7 @@ export default async function ProductDetailPage({ params }: PageProps) {
               <h2 className="section-title">주요 장점</h2>
             </AnimatedSection>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
               {product.advantages.map((adv, index) => (
                 <AnimatedSection key={adv.title} delay={index * 0.1}>
                   <div className="card-clean h-full">
@@ -258,10 +258,10 @@ export default async function ProductDetailPage({ params }: PageProps) {
       <section className="cta-section">
         <div className="container mx-auto px-4 relative z-10">
           <AnimatedSection className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4">
               {product.name}가 궁금하신가요?
             </h2>
-            <p className="text-sky-100 mb-8">
+            <p className="text-sky-100 text-sm sm:text-base mb-6 sm:mb-8">
               무료 견적을 통해 정확한 비용을 확인하세요.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

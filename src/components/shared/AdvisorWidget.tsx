@@ -42,39 +42,39 @@ export default function AdvisorWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-12 left-0 w-72 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
+            className="absolute bottom-14 left-0 w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 bg-gray-50 border-b border-gray-100">
+            <div className="flex items-center justify-between px-5 py-3.5 bg-gray-50 border-b border-gray-100">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#2AC1BC]" />
-                <span className="text-sm font-bold text-gray-900">
+                <ShieldCheck className="w-5 h-5 text-[#2AC1BC]" />
+                <span className="text-base font-bold text-gray-900">
                   어드바이저 조회
                 </span>
               </div>
               <button
                 onClick={handleClose}
-                className="w-6 h-6 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
+                className="w-7 h-7 flex items-center justify-center rounded-full hover:bg-gray-200 transition-colors"
               >
-                <X className="w-3.5 h-3.5 text-gray-500" />
+                <X className="w-4 h-4 text-gray-500" />
               </button>
             </div>
 
             {/* Search */}
-            <div className="p-3">
+            <div className="p-4">
               <form onSubmit={handleSearch} className="flex gap-2">
                 <input
                   type="text"
                   placeholder="이름 또는 전화번호"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="flex-1 h-9 text-sm bg-gray-50 border border-gray-200 focus:border-[#2AC1BC] focus:outline-none rounded-lg px-3"
+                  className="flex-1 h-10 text-sm bg-gray-50 border border-gray-200 focus:border-[#2AC1BC] focus:outline-none rounded-lg px-3"
                 />
                 <button
                   type="submit"
-                  className="h-9 px-3 bg-[#2AC1BC] hover:bg-[#24ADA8] rounded-lg text-white text-sm font-bold transition-colors flex items-center gap-1"
+                  className="h-10 px-4 bg-[#2AC1BC] hover:bg-[#24ADA8] rounded-lg text-white text-sm font-bold transition-colors flex items-center gap-1.5"
                 >
-                  <Search className="w-3.5 h-3.5" />
+                  <Search className="w-4 h-4" />
                   조회
                 </button>
               </form>
@@ -142,9 +142,9 @@ export default function AdvisorWidget() {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-1.5 px-3 py-2 bg-white border-2 border-[#2AC1BC] rounded-full shadow-lg hover:bg-[#E8F8F7] transition-colors text-sm font-bold text-[#2AC1BC]"
+        className="flex items-center gap-2 px-4 py-2.5 bg-white border-2 border-[#2AC1BC] rounded-full shadow-lg hover:bg-[#E8F8F7] transition-colors text-base font-bold text-[#2AC1BC]"
       >
-        <ShieldCheck className="w-4 h-4" />
+        <ShieldCheck className="w-5 h-5" />
         어드바이저 조회
       </motion.button>
     </div>

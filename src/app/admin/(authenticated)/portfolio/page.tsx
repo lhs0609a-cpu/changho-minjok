@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getAllPortfoliosFromDB } from '@/lib/portfolio-db';
 import { deletePortfolioAction } from './actions';
 import { Plus, Edit, Eye, EyeOff, Trash2, FolderOpen, ExternalLink } from 'lucide-react';
+import SeedPortfoliosButton from './seed-button';
 
 export const dynamic = 'force-dynamic';
 
@@ -30,13 +31,16 @@ export default async function AdminPortfolioPage() {
         <div className="text-center py-20 bg-white rounded-2xl">
           <FolderOpen className="w-12 h-12 text-gray-300 mx-auto mb-4" />
           <p className="text-gray-500 mb-4">등록된 시공사례가 없습니다.</p>
-          <Link
-            href="/admin/portfolio/new"
-            className="inline-flex items-center gap-2 bg-sky-500 text-white px-6 py-3 rounded-xl hover:bg-sky-600 transition-colors"
-          >
-            <Plus className="w-5 h-5" />
-            첫 시공사례 등록하기
-          </Link>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <SeedPortfoliosButton />
+            <Link
+              href="/admin/portfolio/new"
+              className="inline-flex items-center gap-2 bg-sky-500 text-white px-6 py-3 rounded-xl hover:bg-sky-600 transition-colors"
+            >
+              <Plus className="w-5 h-5" />
+              첫 시공사례 등록하기
+            </Link>
+          </div>
         </div>
       ) : (
         <div className="bg-white rounded-2xl shadow-sm overflow-hidden">

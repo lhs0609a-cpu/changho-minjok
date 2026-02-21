@@ -1,53 +1,9 @@
-'use client';
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MapPin, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
-
-const portfolios = [
-  {
-    id: 'yangjung-hyundai',
-    slug: 'yangjung-hyundai',
-    title: '양정현대아파트 창호 전체 교체',
-    location: '부산 부산진구',
-    buildingType: '아파트',
-    product: '시스템창호',
-    rating: 5,
-    thumbnail: '/images/portfolio/yangjung-hyundai/thumbnail.jpg',
-  },
-  {
-    id: 'cheongdo-house',
-    slug: 'cheongdo-house',
-    title: '청도 단독주택 이중창 교체',
-    location: '경북 청도군',
-    buildingType: '단독주택',
-    product: '이중창',
-    rating: 5,
-    thumbnail: '/images/portfolio/cheongdo-house/thumbnail.jpg',
-  },
-  {
-    id: 'towol-sungwon',
-    slug: 'towol-sungwon',
-    title: '토월성원아파트 5단지 창호 교체',
-    location: '경남 창원시',
-    buildingType: '아파트',
-    product: '시스템창호',
-    rating: 5,
-    thumbnail: '/images/portfolio/towol-sungwon/thumbnail.jpg',
-  },
-  {
-    id: 'dongwon-royalduke',
-    slug: 'dongwon-royalduke',
-    title: '동원로얄듀크 창호 교체',
-    location: '부산 수영구',
-    buildingType: '아파트',
-    product: '시스템창호',
-    rating: 5,
-    thumbnail: '/images/portfolio/dongwon-royalduke/thumbnail.jpg',
-  },
-];
+import { getPublishedPortfolios } from '@/lib/portfolio-db';
 
 const productColors: Record<string, string> = {
   '시스템창호': 'bg-amber-500',
@@ -56,7 +12,14 @@ const productColors: Record<string, string> = {
   '이중창': 'bg-violet-500',
 };
 
-export default function PortfolioPreviewSection() {
+export default async function PortfolioPreviewSection() {
+  const allPortfolios = await getPublishedPortfolios();
+  const portfolios = allPortfolios.slice(0, 4);
+
+  if (portfolios.length === 0) {
+    return null;
+  }
+
   return (
     <section className="py-24 md:py-32 bg-white">
       <div className="container mx-auto px-4 lg:px-8">
@@ -75,13 +38,18 @@ export default function PortfolioPreviewSection() {
             <AnimatedSection key={item.id} delay={index * 0.1}>
               <Link href={`/portfolio/${item.slug}`} className="group block">
                 <div className="relative overflow-hidden rounded-2xl bg-[#F5F5F5] aspect-[4/3] mb-4 border-2 border-[#EEEEEE] group-hover:border-[#2AC1BC] transition-colors">
-                  {/* Thumbnail Image */}
-                  <Image
-                    src={item.thumbnail}
-                    alt={item.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
+                  {item.thumbnail_url ? (
+                    <Image
+                      src={item.thumbnail_url}
+                      alt={item.title}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-gray-400 text-sm">시공 사진</span>
+                    </div>
+                  )}
 
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-[#2AC1BC]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -90,7 +58,7 @@ export default function PortfolioPreviewSection() {
 
                   {/* Badge - Building Type */}
                   <div className="absolute top-3 left-3 px-3 py-1.5 bg-white rounded-lg text-xs font-bold text-[#1E1E1E]">
-                    {item.buildingType}
+                    {item.building_type}
                   </div>
 
                   {/* Badge - Product Type */}

@@ -84,3 +84,74 @@ export interface InquiryInput {
   address?: string;
   message: string;
 }
+
+// 퍼널 템플릿 타입 정의
+export interface FunnelTemplateRecord {
+  id: string;
+  name: string;
+  description: string | null;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FunnelTemplateInput {
+  name: string;
+  description?: string;
+  is_active?: boolean;
+}
+
+// 퍼널 단계 타입 정의
+export interface FunnelStepRecord {
+  id: string;
+  template_id: string;
+  step_order: number;
+  delay_hours: number;
+  title: string;
+  message: string;
+  channel: 'kakao' | 'sms' | 'email';
+  link_url: string | null;
+  created_at: string;
+}
+
+export interface FunnelStepInput {
+  template_id: string;
+  step_order: number;
+  delay_hours: number;
+  title: string;
+  message: string;
+  channel: 'kakao' | 'sms' | 'email';
+  link_url?: string;
+}
+
+// 고객 퍼널 진행 상태 타입 정의
+export interface CustomerFunnelRecord {
+  id: string;
+  inquiry_id: string;
+  template_id: string;
+  current_step: number;
+  total_steps: number;
+  status: 'active' | 'paused' | 'completed' | 'stopped';
+  started_at: string;
+  next_send_at: string | null;
+  completed_at: string | null;
+  paused_at: string | null;
+}
+
+export interface CustomerFunnelInput {
+  inquiry_id: string;
+  template_id: string;
+  total_steps: number;
+}
+
+// 메시지 발송 이력 타입 정의
+export interface MessageLogRecord {
+  id: string;
+  customer_funnel_id: string;
+  step_id: string;
+  channel: string;
+  status: 'pending' | 'sent' | 'failed';
+  sent_at: string | null;
+  error_message: string | null;
+  created_at: string;
+}

@@ -19,6 +19,7 @@ import {
   Home,
   ChevronLeft,
   ChevronRight,
+  Zap,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -55,6 +56,7 @@ const navGroups: NavGroup[] = [
     title: '고객 관리',
     items: [
       { href: '/admin/inquiries', label: '상담신청', icon: MessageSquare },
+      { href: '/admin/funnels', label: '자동 퍼널', icon: Zap },
       { href: '/admin/customers', label: '고객관리(CRM)', icon: Users },
       { href: '/admin/estimates', label: '견적 관리', icon: Calculator },
       { href: '/admin/reviews', label: '후기 관리', icon: Star },

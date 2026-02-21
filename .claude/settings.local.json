@@ -39,7 +39,10 @@
       "Bash(cmd /c \"xcopy /Y \"\"C:\\\\Users\\\\u\\\\Downloads\\\\창호의민족\\\\전\\\\1번 전.jpg\"\" \"\"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\public\\\\images\\\\landing\\\\cases\\\\changho\\\\before\\\\1.jpg*\"\"\")",
       "Bash(robocopy:*)",
       "Bash(git config:*)",
-      "Bash(copy \"C:\\\\Users\\\\u\\\\OneDrive\\\\문서\\\\카카오톡 받은 파일\\\\KakaoTalk_20260210_161115806.png\" \"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\public\\\\images\\\\products\\\\aluminum-window.png\")"
+      "Bash(copy \"C:\\\\Users\\\\u\\\\OneDrive\\\\문서\\\\카카오톡 받은 파일\\\\KakaoTalk_20260210_161115806.png\" \"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\public\\\\images\\\\products\\\\aluminum-window.png\")",
+      "Bash(cat:*)",
+      "Bash(head:*)",
+      "Bash(realpath:*)"
     ]
   }
 }

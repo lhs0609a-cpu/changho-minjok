@@ -4,6 +4,14 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { updateInquiryStatus, deleteInquiry } from '@/lib/inquiry-db';
 import { InquiryRecord } from '@/lib/supabase';
+import {
+  startCustomerFunnel,
+  pauseFunnel,
+  resumeFunnel,
+  stopFunnel,
+  getStepsByTemplateId,
+} from '@/lib/funnel-db';
+import { initializeFunnel } from '@/lib/funnel-processor';
 
 export async function updateInquiryStatusAction(formData: FormData) {
   const id = formData.get('id') as string;
@@ -31,4 +39,65 @@ export async function deleteInquiryAction(formData: FormData) {
 
   revalidatePath('/admin/inquiries');
   redirect('/admin/inquiries');
+}
+
+export async function startFunnelAction(formData: FormData) {
+  const inquiryId = formData.get('inquiry_id') as string;
+  const templateId = formData.get('template_id') as string;
+
+  if (!inquiryId || !templateId) {
+    return;
+  }
+
+  const steps = await getStepsByTemplateId(templateId);
+
+  const customerFunnel = await startCustomerFunnel({
+    inquiry_id: inquiryId,
+    template_id: templateId,
+    total_steps: steps.length,
+  });
+
+  // 퍼널 생성 후 첫 스텝의 delay_hours 기반으로 next_send_at 설정
+  if (customerFunnel) {
+    await initializeFunnel(customerFunnel.id, templateId);
+  }
+
+  revalidatePath('/admin/inquiries');
+  revalidatePath(`/admin/inquiries/${inquiryId}`);
+}
+
+export async function pauseFunnelAction(formData: FormData) {
+  const funnelId = formData.get('funnel_id') as string;
+  const inquiryId = formData.get('inquiry_id') as string;
+
+  if (!funnelId) return;
+
+  await pauseFunnel(funnelId);
+
+  revalidatePath('/admin/inquiries');
+  if (inquiryId) revalidatePath(`/admin/inquiries/${inquiryId}`);
+}
+
+export async function resumeFunnelAction(formData: FormData) {
+  const funnelId = formData.get('funnel_id') as string;
+  const inquiryId = formData.get('inquiry_id') as string;
+
+  if (!funnelId) return;
+
+  await resumeFunnel(funnelId);
+
+  revalidatePath('/admin/inquiries');
+  if (inquiryId) revalidatePath(`/admin/inquiries/${inquiryId}`);
+}
+
+export async function stopFunnelAction(formData: FormData) {
+  const funnelId = formData.get('funnel_id') as string;
+  const inquiryId = formData.get('inquiry_id') as string;
+
+  if (!funnelId) return;
+
+  await stopFunnel(funnelId);
+
+  revalidatePath('/admin/inquiries');
+  if (inquiryId) revalidatePath(`/admin/inquiries/${inquiryId}`);
 }

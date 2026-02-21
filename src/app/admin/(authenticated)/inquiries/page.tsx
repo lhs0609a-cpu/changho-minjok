@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getAllInquiries, getInquiryStats } from '@/lib/inquiry-db';
+import { getCustomerFunnelsByInquiryIds } from '@/lib/funnel-db';
 import {
   MessageSquare,
   Clock,
@@ -8,6 +9,7 @@ import {
   Phone,
   Mail,
   Eye,
+  Zap,
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -32,6 +34,9 @@ export default async function AdminInquiriesPage() {
     getAllInquiries(),
     getInquiryStats(),
   ]);
+
+  const inquiryIds = inquiries.map(i => i.id);
+  const funnelMap = await getCustomerFunnelsByInquiryIds(inquiryIds);
 
   return (
     <div className="p-6 lg:p-8">
@@ -77,6 +82,7 @@ export default async function AdminInquiriesPage() {
                 <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">연락처</th>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">문의유형</th>
                 <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">상태</th>
+                <th className="text-left px-6 py-4 text-sm font-semibold text-gray-600">퍼널</th>
                 <th className="text-right px-6 py-4 text-sm font-semibold text-gray-600">관리</th>
               </tr>
             </thead>
@@ -84,6 +90,7 @@ export default async function AdminInquiriesPage() {
               {inquiries.map((item) => {
                 const status = statusConfig[item.status] || statusConfig.pending;
                 const StatusIcon = status.icon;
+                const funnel = funnelMap[item.id];
                 return (
                   <tr key={item.id} className="hover:bg-gray-50">
                     <td className="px-6 py-4 text-sm text-gray-500">
@@ -125,6 +132,27 @@ export default async function AdminInquiriesPage() {
                         <StatusIcon className="w-3 h-3" />
                         {status.label}
                       </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      {funnel ? (
+                        <span className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-medium rounded-full ${
+                          funnel.status === 'active'
+                            ? 'bg-purple-100 text-purple-700'
+                            : funnel.status === 'paused'
+                            ? 'bg-yellow-100 text-yellow-700'
+                            : funnel.status === 'completed'
+                            ? 'bg-green-100 text-green-700'
+                            : 'bg-gray-100 text-gray-500'
+                        }`}>
+                          <Zap className="w-3 h-3" />
+                          {funnel.status === 'active' && `진행중 ${funnel.current_step}/${funnel.total_steps}`}
+                          {funnel.status === 'paused' && '일시정지'}
+                          {funnel.status === 'completed' && '완료'}
+                          {funnel.status === 'stopped' && '중지'}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-gray-400">-</span>
+                      )}
                     </td>
                     <td className="px-6 py-4">
                       <div className="flex items-center justify-end">

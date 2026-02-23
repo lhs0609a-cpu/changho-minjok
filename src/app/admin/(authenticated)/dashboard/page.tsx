@@ -33,11 +33,19 @@ const quickLinks = [
 ];
 
 export default async function AdminDashboardPage() {
-  const [stats, todayStats, recentInquiries] = await Promise.all([
-    getInquiryStats(),
-    getTodayStats(),
-    getAllInquiries().then((data) => data.slice(0, 5)),
-  ]);
+  let stats = { total: 0, pending: 0, in_progress: 0, completed: 0 };
+  let todayStats = { todayInquiries: 0, thisMonthInquiries: 0, pendingCount: 0 };
+  let recentInquiries: Awaited<ReturnType<typeof getAllInquiries>> = [];
+
+  try {
+    [stats, todayStats, recentInquiries] = await Promise.all([
+      getInquiryStats(),
+      getTodayStats(),
+      getAllInquiries().then((data) => data.slice(0, 5)),
+    ]);
+  } catch (error) {
+    console.error('Dashboard data fetch error:', error);
+  }
 
   return (
     <div className="p-6 lg:p-8">

@@ -13,8 +13,6 @@ import {
   MessageSquare,
   Clock,
   Link as LinkIcon,
-  HelpCircle,
-  ChevronDown,
   ArrowDown,
 } from 'lucide-react';
 
@@ -96,10 +94,13 @@ export default function FunnelForm({ template, steps: existingSteps }: FunnelFor
     formData.set('steps', JSON.stringify(steps));
 
     try {
-      if (isEditing) {
-        await updateFunnelAction(formData);
-      } else {
-        await createFunnelAction(formData);
+      const result = isEditing
+        ? await updateFunnelAction(formData)
+        : await createFunnelAction(formData);
+
+      if (result && !result.success) {
+        alert(result.error || '저장에 실패했습니다.');
+        setIsLoading(false);
       }
     } catch {
       setIsLoading(false);

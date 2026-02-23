@@ -5,12 +5,12 @@ import { deleteBannerAction, toggleBannerStatusAction } from './actions';
 import {
   Plus,
   Edit,
-  Trash2,
   Eye,
   EyeOff,
   Image as ImageIcon,
   MapPin,
 } from 'lucide-react';
+import DeleteButton from '@/components/admin/DeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -130,21 +130,7 @@ export default async function AdminBannersPage() {
                   </Link>
 
                   {/* Delete */}
-                  <form action={deleteBannerAction}>
-                    <input type="hidden" name="id" value={banner.id} />
-                    <button
-                      type="submit"
-                      className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                      title="삭제"
-                      onClick={(e) => {
-                        if (!confirm('정말 삭제하시겠습니까?')) {
-                          e.preventDefault();
-                        }
-                      }}
-                    >
-                      <Trash2 className="w-5 h-5" />
-                    </button>
-                  </form>
+                  <DeleteButton action={deleteBannerAction} id={banner.id} />
                 </div>
               </div>
             </div>

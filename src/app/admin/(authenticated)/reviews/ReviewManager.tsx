@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ReviewRecord } from '@/lib/review-db';
 import {
@@ -29,8 +29,12 @@ interface ReviewManagerProps {
 
 export default function ReviewManager({ initialReviews }: ReviewManagerProps) {
   const router = useRouter();
-  const [reviews] = useState(initialReviews);
+  const [reviews, setReviews] = useState(initialReviews);
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  useEffect(() => {
+    setReviews(initialReviews);
+  }, [initialReviews]);
   const [editingReview, setEditingReview] = useState<ReviewRecord | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 

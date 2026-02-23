@@ -27,10 +27,13 @@ export default function BannerForm({ banner }: BannerFormProps) {
     const formData = new FormData(e.currentTarget);
 
     try {
-      if (isEditing) {
-        await updateBannerAction(formData);
-      } else {
-        await createBannerAction(formData);
+      const result = isEditing
+        ? await updateBannerAction(formData)
+        : await createBannerAction(formData);
+
+      if (result && !result.success) {
+        alert(result.error || '저장에 실패했습니다.');
+        setIsLoading(false);
       }
     } catch {
       setIsLoading(false);

@@ -46,13 +46,14 @@ export async function processPendingFunnels(): Promise<ProcessResult> {
   for (const funnel of pendingFunnels) {
     try {
       // 이중 처리 방지: next_send_at을 null로 설정하여 다른 Cron 실행에서 잡히지 않도록 함
-      const { error: claimError } = await supabase
+      const { data: claimData, error: claimError } = await supabase
         .from('customer_funnels')
         .update({ next_send_at: null })
         .eq('id', funnel.id)
-        .eq('next_send_at', funnel.next_send_at); // 낙관적 잠금: 원래 값이 같을 때만 업데이트
+        .eq('next_send_at', funnel.next_send_at) // 낙관적 잠금: 원래 값이 같을 때만 업데이트
+        .select();
 
-      if (claimError) {
+      if (claimError || !claimData || claimData.length === 0) {
         console.warn(`[funnel-processor] 퍼널 ${funnel.id} 클레임 실패 (이미 다른 프로세스가 처리 중)`);
         continue;
       }
@@ -129,18 +130,29 @@ export async function processPendingFunnels(): Promise<ProcessResult> {
         console.error(`[funnel-processor] 퍼널 ${funnel.id} 스텝 ${currentStep.step_order} 발송 실패: ${sendResult.error}`);
       }
 
-      // 7. 다음 스텝으로 진행 (발송 성공/실패 관계없이)
-      const nextStepOrder = funnel.current_step + 1;
-      const nextStep = steps.find(s => s.step_order === nextStepOrder);
+      // 7. 다음 스텝으로 진행 (발송 성공 시에만)
+      if (sendResult.success) {
+        const nextStepOrder = funnel.current_step + 1;
+        const nextStep = steps.find(s => s.step_order === nextStepOrder);
 
-      let nextSendAt: string | null = null;
-      if (nextStep) {
-        const nextDate = new Date();
-        nextDate.setHours(nextDate.getHours() + nextStep.delay_hours);
-        nextSendAt = nextDate.toISOString();
+        let nextSendAt: string | null = null;
+        if (nextStep) {
+          const nextDate = new Date();
+          nextDate.setHours(nextDate.getHours() + nextStep.delay_hours);
+          nextSendAt = nextDate.toISOString();
+        }
+
+        await advanceFunnelStep(funnel.id, nextSendAt);
+      } else {
+        // 발송 실패 시: 5분 후 재시도하도록 next_send_at 복구
+        const retryDate = new Date();
+        retryDate.setMinutes(retryDate.getMinutes() + 5);
+        await supabase
+          .from('customer_funnels')
+          .update({ next_send_at: retryDate.toISOString() })
+          .eq('id', funnel.id);
+        console.log(`[funnel-processor] 퍼널 ${funnel.id} 발송 실패 - 5분 후 재시도 예정`);
       }
-
-      await advanceFunnelStep(funnel.id, nextSendAt);
 
     } catch (err) {
       const errorMsg = `퍼널 ${funnel.id} 처리 중 예외: ${err instanceof Error ? err.message : String(err)}`;

@@ -1,14 +1,20 @@
 import { redirect } from 'next/navigation';
 import { verifyAdmin } from '@/lib/auth';
 import { loginAction } from './actions';
-import { Lock } from 'lucide-react';
+import { Lock, AlertCircle } from 'lucide-react';
 
-export default async function AdminLoginPage() {
+interface PageProps {
+  searchParams: Promise<{ error?: string }>;
+}
+
+export default async function AdminLoginPage({ searchParams }: PageProps) {
   const isAdmin = await verifyAdmin();
 
   if (isAdmin) {
     redirect('/admin/dashboard');
   }
+
+  const { error } = await searchParams;
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
@@ -21,6 +27,13 @@ export default async function AdminLoginPage() {
             <h1 className="text-2xl font-bold text-gray-900">관리자 로그인</h1>
             <p className="text-gray-500 mt-2">시공사례를 관리하려면 로그인하세요.</p>
           </div>
+
+          {error === 'invalid' && (
+            <div className="mb-6 flex items-center gap-2 px-4 py-3 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
+              <AlertCircle className="w-5 h-5 shrink-0" />
+              아이디 또는 비밀번호가 올바르지 않습니다.
+            </div>
+          )}
 
           <form action={loginAction}>
             <div className="mb-4">

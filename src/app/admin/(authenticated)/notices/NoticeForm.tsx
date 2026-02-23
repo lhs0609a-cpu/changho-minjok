@@ -25,10 +25,13 @@ export default function NoticeForm({ notice }: NoticeFormProps) {
     const formData = new FormData(e.currentTarget);
 
     try {
-      if (isEditing) {
-        await updateNoticeAction(formData);
-      } else {
-        await createNoticeAction(formData);
+      const result = isEditing
+        ? await updateNoticeAction(formData)
+        : await createNoticeAction(formData);
+
+      if (result && !result.success) {
+        alert(result.error || '저장에 실패했습니다.');
+        setIsLoading(false);
       }
     } catch {
       setIsLoading(false);

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { FAQRecord } from '@/lib/faq-db';
 import {
@@ -39,6 +39,10 @@ export default function FAQManager({ initialFaqs }: FAQManagerProps) {
   const router = useRouter();
   const [faqs, setFaqs] = useState(initialFaqs);
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  useEffect(() => {
+    setFaqs(initialFaqs);
+  }, [initialFaqs]);
   const [editingFaq, setEditingFaq] = useState<FAQRecord | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);

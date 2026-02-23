@@ -15,8 +15,8 @@ export interface BannerRecord {
 export interface BannerInput {
   title: string;
   image_url: string;
-  mobile_image_url?: string;
-  link_url?: string;
+  mobile_image_url?: string | null;
+  link_url?: string | null;
   location?: string;
   is_active?: boolean;
   display_order?: number;

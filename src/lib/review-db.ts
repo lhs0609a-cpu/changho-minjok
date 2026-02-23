@@ -15,7 +15,7 @@ export interface ReviewInput {
   customer_name: string;
   content: string;
   rating?: number;
-  portfolio_id?: string;
+  portfolio_id?: string | null;
   is_approved?: boolean;
   is_best?: boolean;
 }

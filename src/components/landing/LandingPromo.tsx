@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Clock, Gift, ArrowRight, Sparkles, AlertCircle } from 'lucide-react';
+import { Clock, Gift, ArrowRight, Sparkles, AlertCircle, Shield } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 
 // 이번 달 말일까지 남은 일수 계산
@@ -32,6 +32,12 @@ const promoItems = [
     description: '단열 가스 충전',
     value: '무상적용',
   },
+  {
+    icon: Shield,
+    title: '방충망 블랙스텐망',
+    description: '프리미엄 업그레이드',
+    value: '무상 업그레이드',
+  },
 ];
 
 export default function LandingPromo() {
@@ -47,7 +53,7 @@ export default function LandingPromo() {
   }, []);
 
   return (
-    <section className="py-8 sm:py-12 bg-gradient-to-r from-[#FF6F0F] to-[#FF8F3F] relative overflow-hidden">
+    <section className="py-6 sm:py-8 lg:py-10 bg-gradient-to-r from-[#FF6F0F] to-[#FF8F3F] relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -61,8 +67,8 @@ export default function LandingPromo() {
 
       <div className="container mx-auto px-4 lg:px-8 relative">
         <AnimatedSection>
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
-            {/* Left - Timer Badge */}
+          <div className="flex flex-col items-center gap-4 lg:gap-5">
+            {/* Top Row - Timer Badge + CTA */}
             <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4">
               <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
@@ -86,8 +92,8 @@ export default function LandingPromo() {
               </div>
             </div>
 
-            {/* Center - Promo Items */}
-            <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {/* Bottom Row - Promo Items + CTA */}
+            <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4">
               {promoItems.map((item, index) => (
                 <motion.div
                   key={item.title}
@@ -106,16 +112,15 @@ export default function LandingPromo() {
                   </div>
                 </motion.div>
               ))}
-            </div>
 
-            {/* Right - CTA */}
-            <a
-              href="#contact-form"
-              className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-[#FF6F0F] rounded-xl font-bold text-sm sm:text-base hover:bg-gray-100 transition-colors group shadow-lg"
-            >
-              혜택 받고 견적받기
-              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+              <a
+                href="#contact-form"
+                className="flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 bg-white text-[#FF6F0F] rounded-xl font-bold text-sm sm:text-base hover:bg-gray-100 transition-colors group shadow-lg"
+              >
+                혜택 받고 견적받기
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
         </AnimatedSection>
       </div>

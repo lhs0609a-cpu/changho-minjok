@@ -33,8 +33,11 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
 
   const handleSubmit = async (formData: FormData) => {
     setIsSubmitting(true);
-    await action(formData);
-    setIsSubmitting(false);
+    try {
+      await action(formData);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

@@ -14,10 +14,10 @@ export interface PopupRecord {
 
 export interface PopupInput {
   title: string;
-  image_url?: string;
-  link_url?: string;
-  start_date?: string;
-  end_date?: string;
+  image_url?: string | null;
+  link_url?: string | null;
+  start_date?: string | null;
+  end_date?: string | null;
   is_active?: boolean;
   display_order?: number;
 }

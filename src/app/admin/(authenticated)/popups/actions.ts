@@ -51,10 +51,10 @@ export async function updatePopupAction(formData: FormData) {
 
   const popup = await updatePopup(id, {
     title,
-    image_url: image_url || undefined,
-    link_url: link_url || undefined,
-    start_date: start_date || undefined,
-    end_date: end_date || undefined,
+    image_url: image_url || null,
+    link_url: link_url || null,
+    start_date: start_date || null,
+    end_date: end_date || null,
     is_active,
     display_order,
   });

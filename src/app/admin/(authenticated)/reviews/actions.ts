@@ -19,7 +19,7 @@ export async function createReviewAction(formData: FormData) {
     customer_name,
     content,
     rating,
-    portfolio_id: portfolio_id || undefined,
+    portfolio_id: portfolio_id || null,
     is_approved,
     is_best,
   });
@@ -49,7 +49,7 @@ export async function updateReviewAction(formData: FormData) {
     customer_name,
     content,
     rating,
-    portfolio_id: portfolio_id || undefined,
+    portfolio_id: portfolio_id || null,
     is_approved,
     is_best,
   });

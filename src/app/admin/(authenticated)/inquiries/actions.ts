@@ -99,7 +99,7 @@ export async function resumeFunnelAction(formData: FormData) {
 }
 
 export async function stopFunnelAction(formData: FormData) {
-  const funnelId = formData.get('funnel_id') as string;
+  const funnelId = formData.get('funnel_id') as string || formData.get('id') as string;
   const inquiryId = formData.get('inquiry_id') as string;
 
   if (!funnelId) return;

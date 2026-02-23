@@ -4,7 +4,6 @@ import { deleteFunnelAction, toggleFunnelActiveAction, createSampleFunnelAction 
 import {
   Plus,
   Edit,
-  Trash2,
   Eye,
   EyeOff,
   Zap,
@@ -16,6 +15,7 @@ import {
   Send,
   Sparkles,
 } from 'lucide-react';
+import DeleteButton from '@/components/admin/DeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -194,21 +194,12 @@ export default async function AdminFunnelsPage() {
                       >
                         <Edit className="w-4 h-4" />
                       </Link>
-                      <form action={deleteFunnelAction}>
-                        <input type="hidden" name="id" value={template.id} />
-                        <button
-                          type="submit"
-                          className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                          title="삭제"
-                          onClick={(e) => {
-                            if (!confirm('정말 삭제하시겠습니까? 모든 단계와 진행 기록이 삭제됩니다.')) {
-                              e.preventDefault();
-                            }
-                          }}
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </form>
+                      <DeleteButton
+                        action={deleteFunnelAction}
+                        id={template.id}
+                        confirmMessage="정말 삭제하시겠습니까? 모든 단계와 진행 기록이 삭제됩니다."
+                        className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+                      />
                     </div>
                   </div>
                 </div>

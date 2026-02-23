@@ -22,7 +22,6 @@ import {
   CheckCircle2,
   XCircle,
   Eye,
-  Trash2,
   Zap,
   Pause,
   Play,
@@ -32,6 +31,7 @@ import {
   ArrowRight,
   Timer,
 } from 'lucide-react';
+import DeleteButton from '@/components/admin/DeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -112,21 +112,13 @@ export default async function InquiryDetailPage({
           </Link>
           <h1 className="text-2xl font-bold text-gray-900">상담신청 상세</h1>
         </div>
-        <form action={deleteInquiryAction}>
-          <input type="hidden" name="id" value={inquiry.id} />
-          <button
-            type="submit"
-            className="inline-flex items-center gap-2 text-red-500 hover:text-red-700 px-3 py-2"
-            onClick={(e) => {
-              if (!confirm('정말 삭제하시겠습니까?')) {
-                e.preventDefault();
-              }
-            }}
-          >
-            <Trash2 className="w-4 h-4" />
-            삭제
-          </button>
-        </form>
+        <DeleteButton
+          action={deleteInquiryAction}
+          id={inquiry.id}
+          className="inline-flex items-center gap-2 text-red-500 hover:text-red-700 px-3 py-2"
+        >
+          삭제
+        </DeleteButton>
       </div>
 
       {/* Content */}
@@ -230,14 +222,26 @@ export default async function InquiryDetailPage({
         </div>
 
         {/* Admin Note */}
-        {inquiry.admin_note && (
-          <div className="px-6 pb-6">
+        <div className="px-6 pb-6">
+          <form action={updateInquiryStatusAction}>
+            <input type="hidden" name="id" value={inquiry.id} />
+            <input type="hidden" name="status" value={inquiry.status} />
             <label className="text-sm text-gray-500 mb-2 block">관리자 메모</label>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 whitespace-pre-wrap text-gray-800">
-              {inquiry.admin_note}
-            </div>
-          </div>
-        )}
+            <textarea
+              name="admin_note"
+              rows={3}
+              defaultValue={inquiry.admin_note || ''}
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none resize-none mb-2"
+              placeholder="관리자 메모를 입력하세요 (저장 시 상태변경 버튼을 누르세요)"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1 px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors text-sm"
+            >
+              메모 저장
+            </button>
+          </form>
+        </div>
 
         {/* Actions */}
         <div className="px-6 py-4 bg-gray-50 border-t">
@@ -432,22 +436,15 @@ export default async function InquiryDetailPage({
                     </button>
                   </form>
                 )}
-                <form action={stopFunnelAction}>
-                  <input type="hidden" name="funnel_id" value={customerFunnel.id} />
-                  <input type="hidden" name="inquiry_id" value={inquiry.id} />
-                  <button
-                    type="submit"
-                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
-                    onClick={(e) => {
-                      if (!confirm('퍼널을 완전히 중지하시겠습니까? 남은 메시지는 발송되지 않습니다.')) {
-                        e.preventDefault();
-                      }
-                    }}
-                  >
-                    <Square className="w-4 h-4" />
-                    중지
-                  </button>
-                </form>
+                <DeleteButton
+                  action={stopFunnelAction}
+                  id={customerFunnel.id}
+                  confirmMessage="퍼널을 완전히 중지하시겠습니까? 남은 메시지는 발송되지 않습니다."
+                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 transition-colors text-sm font-medium"
+                >
+                  <Square className="w-4 h-4" />
+                  중지
+                </DeleteButton>
               </div>
             </div>
           ) : customerFunnel && (customerFunnel.status === 'completed' || customerFunnel.status === 'stopped') ? (

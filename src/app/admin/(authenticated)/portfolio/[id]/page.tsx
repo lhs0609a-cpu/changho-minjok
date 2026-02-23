@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { getPortfolioById } from '@/lib/portfolio-db';
 import { updatePortfolioAction, deletePortfolioAction } from '../actions';
 import PortfolioForm from '@/components/admin/PortfolioForm';
-import { ArrowLeft, Trash2 } from 'lucide-react';
+import DeleteButton from '@/components/admin/DeleteButton';
+import { ArrowLeft } from 'lucide-react';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -32,21 +33,13 @@ export default async function EditPortfolioPage({ params }: PageProps) {
           <h1 className="text-2xl font-bold text-gray-900">시공사례 수정</h1>
           <p className="text-gray-500 mt-1">시공사례 정보를 수정합니다.</p>
         </div>
-        <form action={deletePortfolioAction}>
-          <input type="hidden" name="id" value={portfolio.id} />
-          <button
-            type="submit"
-            onClick={(e) => {
-              if (!confirm('정말 삭제하시겠습니까?')) {
-                e.preventDefault();
-              }
-            }}
-            className="inline-flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors"
-          >
-            <Trash2 className="w-4 h-4" />
-            삭제
-          </button>
-        </form>
+        <DeleteButton
+          action={deletePortfolioAction}
+          id={portfolio.id}
+          className="inline-flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 rounded-xl transition-colors"
+        >
+          삭제
+        </DeleteButton>
       </div>
 
       {/* Form */}

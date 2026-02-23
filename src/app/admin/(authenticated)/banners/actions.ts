@@ -52,8 +52,8 @@ export async function updateBannerAction(formData: FormData) {
   const banner = await updateBanner(id, {
     title,
     image_url,
-    mobile_image_url: mobile_image_url || undefined,
-    link_url: link_url || undefined,
+    mobile_image_url: mobile_image_url || null,
+    link_url: link_url || null,
     location: location || 'main',
     is_active,
     display_order,

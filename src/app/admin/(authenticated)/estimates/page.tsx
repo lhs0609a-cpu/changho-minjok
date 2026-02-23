@@ -7,9 +7,9 @@ import {
   Calendar,
   Building2,
   Ruler,
-  Trash2,
   TrendingUp,
 } from 'lucide-react';
+import DeleteButton from '@/components/admin/DeleteButton';
 
 export const dynamic = 'force-dynamic';
 
@@ -151,21 +151,7 @@ export default async function AdminEstimatesPage() {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <form action={deleteEstimateAction}>
-                      <input type="hidden" name="id" value={estimate.id} />
-                      <button
-                        type="submit"
-                        className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors"
-                        title="삭제"
-                        onClick={(e) => {
-                          if (!confirm('정말 삭제하시겠습니까?')) {
-                            e.preventDefault();
-                          }
-                        }}
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </form>
+                    <DeleteButton action={deleteEstimateAction} id={estimate.id} />
                   </td>
                 </tr>
               ))}

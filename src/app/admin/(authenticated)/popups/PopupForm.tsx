@@ -26,10 +26,13 @@ export default function PopupForm({ popup }: PopupFormProps) {
     const formData = new FormData(e.currentTarget);
 
     try {
-      if (isEditing) {
-        await updatePopupAction(formData);
-      } else {
-        await createPopupAction(formData);
+      const result = isEditing
+        ? await updatePopupAction(formData)
+        : await createPopupAction(formData);
+
+      if (result && !result.success) {
+        alert(result.error || '저장에 실패했습니다.');
+        setIsLoading(false);
       }
     } catch {
       setIsLoading(false);

@@ -26,15 +26,26 @@ const statusLabels: Record<string, string> = {
 };
 
 export default async function AdminAnalyticsPage() {
-  const [dailyStats, monthlyStats, regionStats, statusStats, conversion, todayStats] =
-    await Promise.all([
-      getInquiryDailyStats(30),
-      getInquiryMonthlyStats(12),
-      getInquiryRegionStats(),
-      getInquiryStatusStats(),
-      getConversionRate(),
-      getTodayStats(),
-    ]);
+  let dailyStats: Awaited<ReturnType<typeof getInquiryDailyStats>> = [];
+  let monthlyStats: Awaited<ReturnType<typeof getInquiryMonthlyStats>> = [];
+  let regionStats: Awaited<ReturnType<typeof getInquiryRegionStats>> = [];
+  let statusStats: Awaited<ReturnType<typeof getInquiryStatusStats>> = [];
+  let conversion: Awaited<ReturnType<typeof getConversionRate>> = { totalInquiries: 0, contracted: 0, conversionRate: 0 };
+  let todayStats: Awaited<ReturnType<typeof getTodayStats>> = { todayInquiries: 0, thisMonthInquiries: 0, pendingCount: 0 };
+
+  try {
+    [dailyStats, monthlyStats, regionStats, statusStats, conversion, todayStats] =
+      await Promise.all([
+        getInquiryDailyStats(30),
+        getInquiryMonthlyStats(12),
+        getInquiryRegionStats(),
+        getInquiryStatusStats(),
+        getConversionRate(),
+        getTodayStats(),
+      ]);
+  } catch (error) {
+    console.error('Analytics data fetch error:', error);
+  }
 
   return (
     <div className="p-6 lg:p-8">

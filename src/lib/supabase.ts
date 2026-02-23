@@ -52,10 +52,10 @@ export interface PortfolioInput {
   window_count: string;
   duration: string;
   features: string[];
-  review?: string;
-  thumbnail_url?: string;
-  before_url?: string;
-  after_url?: string;
+  review?: string | null;
+  thumbnail_url?: string | null;
+  before_url?: string | null;
+  after_url?: string | null;
   gallery_urls?: string[];
   published?: boolean;
   display_order?: number;
@@ -72,6 +72,12 @@ export interface InquiryRecord {
   message: string;
   status: 'pending' | 'in_progress' | 'completed' | 'cancelled';
   admin_note: string | null;
+  contract_status?: string;
+  contract_date?: string | null;
+  construction_date?: string | null;
+  construction_status?: string | null;
+  total_amount?: number | null;
+  notes?: string | null;
   created_at: string;
   updated_at: string;
 }

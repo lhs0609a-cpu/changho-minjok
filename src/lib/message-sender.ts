@@ -25,6 +25,7 @@ export async function sendMessage(
     case 'sms':
       return sendViaSms(phone, title, message);
     case 'email':
+      // TODO: email 채널 구현 시 inquiry에서 email 필드를 조회하도록 변경 필요
       return sendViaEmail(phone, title, message);
     default:
       return { success: false, error: `지원하지 않는 채널: ${channel}` };

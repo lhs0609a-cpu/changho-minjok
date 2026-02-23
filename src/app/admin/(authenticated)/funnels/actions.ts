@@ -70,15 +70,21 @@ export async function updateFunnelAction(formData: FormData) {
   }
 
   if (stepsJson) {
-    await deleteStepsByTemplateId(id);
-
-    const steps = JSON.parse(stepsJson) as Array<{
+    let steps: Array<{
       delay_hours: number;
       title: string;
       message: string;
       channel: 'kakao' | 'sms' | 'email';
       link_url?: string;
     }>;
+
+    try {
+      steps = JSON.parse(stepsJson);
+    } catch {
+      return { success: false, error: '단계 데이터가 올바르지 않습니다.' };
+    }
+
+    await deleteStepsByTemplateId(id);
 
     for (let i = 0; i < steps.length; i++) {
       await createStep({
@@ -128,7 +134,7 @@ export async function createSampleFunnelAction() {
   });
 
   if (!template) {
-    return;
+    redirect('/admin/funnels?error=sample-create-failed');
   }
 
   const sampleSteps = [

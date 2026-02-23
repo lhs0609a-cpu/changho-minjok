@@ -52,7 +52,7 @@ export async function createPortfolioAction(formData: FormData): Promise<void> {
     afterUrl = await uploadImage(after, slug);
   }
 
-  const features = featuresRaw
+  const features = (featuresRaw || '')
     .split('\n')
     .map((f) => f.trim())
     .filter((f) => f.length > 0);
@@ -70,10 +70,10 @@ export async function createPortfolioAction(formData: FormData): Promise<void> {
     window_count: windowCount,
     duration,
     features,
-    review: review || undefined,
-    thumbnail_url: thumbnailUrl || undefined,
-    before_url: beforeUrl || undefined,
-    after_url: afterUrl || undefined,
+    review: review || null,
+    thumbnail_url: thumbnailUrl || null,
+    before_url: beforeUrl || null,
+    after_url: afterUrl || null,
     gallery_urls: [],
     published,
     display_order: displayOrder,
@@ -128,7 +128,7 @@ export async function updatePortfolioAction(formData: FormData): Promise<void> {
     afterUrl = await uploadImage(after, slug);
   }
 
-  const features = featuresRaw
+  const features = (featuresRaw || '')
     .split('\n')
     .map((f) => f.trim())
     .filter((f) => f.length > 0);
@@ -145,10 +145,10 @@ export async function updatePortfolioAction(formData: FormData): Promise<void> {
     window_count: windowCount,
     duration,
     features,
-    review: review || undefined,
-    thumbnail_url: thumbnailUrl || undefined,
-    before_url: beforeUrl || undefined,
-    after_url: afterUrl || undefined,
+    review: review || null,
+    thumbnail_url: thumbnailUrl || null,
+    before_url: beforeUrl || null,
+    after_url: afterUrl || null,
     published,
     display_order: displayOrder,
   });

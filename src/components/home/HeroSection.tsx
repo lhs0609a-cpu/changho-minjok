@@ -18,16 +18,14 @@ export default function HeroSection() {
       {/* Full-screen Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-logo-bg.png"
-          alt="창호의민족 브랜드 로고"
+          src="/images/trust/factory-aerial.jpg"
+          alt="창호의민족 스마트 팩토리 전경"
           fill
           className="object-cover"
           priority
         />
         {/* Dark Overlay with Gradient */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30" />
-        {/* Subtle vignette */}
-        <div className="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-transparent" />
       </div>
 
       {/* Content */}
@@ -139,19 +137,14 @@ export default function HeroSection() {
                   </div>
                 </div>
 
-                {/* Factory Preview Image */}
+                {/* Brand Logo Image */}
                 <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-5">
                   <Image
-                    src="/images/factory/automation-line.jpg"
-                    alt="창호 생산 라인"
+                    src="/images/hero-logo-bg.png"
+                    alt="창호의민족 브랜드 로고"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
-                    <div className="w-14 h-14 rounded-full bg-white/90 flex items-center justify-center group-hover:scale-110 transition-transform">
-                      <Play className="w-7 h-7 text-[#2AC1BC] ml-0.5" />
-                    </div>
-                  </div>
                 </div>
 
                 {/* Trust Points */}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Menu, Phone, ChevronDown, ArrowRight, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -36,14 +37,16 @@ export default function Header() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo - 배민 스타일 */}
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-xl bg-[#2AC1BC] flex items-center justify-center text-white font-extrabold text-xl">
-              창
-            </div>
-            <span className="text-xl font-extrabold text-[#1E1E1E] tracking-tight">
-              창호의<span className="text-[#2AC1BC]">민족</span>
-            </span>
+          {/* Logo */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/logo-character.png"
+              alt="창호의민족"
+              width={180}
+              height={56}
+              className="h-12 lg:h-14 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -144,13 +147,14 @@ export default function Header() {
               <SheetContent side="right" className="w-full max-w-sm p-0 border-l-2 border-[#EEEEEE]">
                 <div className="flex flex-col h-full">
                   <div className="p-6 border-b-2 border-[#EEEEEE]">
-                    <Link href="/" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                      <div className="w-10 h-10 rounded-xl bg-[#2AC1BC] flex items-center justify-center text-white font-extrabold text-xl">
-                        창
-                      </div>
-                      <span className="text-xl font-extrabold text-[#1E1E1E] tracking-tight">
-                        창호의<span className="text-[#2AC1BC]">민족</span>
-                      </span>
+                    <Link href="/" className="flex items-center" onClick={() => setIsMobileMenuOpen(false)}>
+                      <Image
+                        src="/images/logo-character.png"
+                        alt="창호의민족"
+                        width={160}
+                        height={48}
+                        className="h-12 w-auto object-contain"
+                      />
                     </Link>
                   </div>
 

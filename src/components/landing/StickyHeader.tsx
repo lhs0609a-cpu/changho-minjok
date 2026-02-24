@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Phone, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { COMPANY_INFO } from '@/lib/constants/navigation';
@@ -33,13 +34,14 @@ export default function StickyHeader() {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex items-center justify-between h-16 md:h-20">
               {/* Logo */}
-              <Link href="/" className="flex items-center gap-2">
-                <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-[#2AC1BC] flex items-center justify-center text-white font-extrabold text-lg md:text-xl">
-                  창
-                </div>
-                <span className="text-lg md:text-xl font-extrabold text-[#1E1E1E] tracking-tight">
-                  창호의<span className="text-[#2AC1BC]">민족</span>
-                </span>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/images/logo-character.png"
+                  alt="창호의민족"
+                  width={160}
+                  height={48}
+                  className="h-10 md:h-12 w-auto object-contain"
+                />
               </Link>
 
               {/* Trust Points (Desktop) */}

@@ -38,13 +38,13 @@ export default function Header() {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center py-1">
+          <Link href="/" className="flex items-center">
             <Image
               src="/images/logo-character.png"
               alt="창호의민족"
               width={300}
-              height={200}
-              className="h-[72px] lg:h-[88px] w-auto object-contain scale-[1.35] origin-left"
+              height={126}
+              className="h-[64px] lg:h-[80px] w-auto object-contain"
               priority
             />
           </Link>

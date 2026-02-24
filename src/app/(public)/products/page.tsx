@@ -143,13 +143,13 @@ export default function ProductsPage() {
               어떤 제품이 적합한지 모르시겠나요?
             </h2>
             <p className="text-sm sm:text-base text-blue-100 mb-6 sm:mb-8 px-2">
-              견적 시뮬레이션을 통해 건물 유형에 맞는 최적의 제품을 추천받으세요.
+              무료 상담을 통해 건물 유형에 맞는 최적의 제품을 추천받으세요.
             </p>
             <Link
               href="/estimate"
               className="inline-flex items-center px-8 py-3 bg-white text-blue-600 font-medium rounded-lg hover:bg-blue-50 transition-colors"
             >
-              무료 견적 시뮬레이션
+              무료 상담 신청
               <ArrowRight className="ml-2 w-4 h-4" />
             </Link>
           </AnimatedSection>

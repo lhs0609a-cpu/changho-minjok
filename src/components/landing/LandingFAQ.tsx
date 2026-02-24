@@ -19,7 +19,7 @@ const faqs = [
   {
     question: '"하루 만에 된다는데 날림 공사 아닌가요?"',
     answer:
-      '창호는 이미 공장에서 완성되어 옵니다. 시공 당일은 "설치만" 하는 거예요. 기존 창 철거 2시간 + 새 창 설치 4시간 + 마감 2시간. 신축 리모델링 아파트 다수 경험 및 대기업 경력 보유 기술진이 직접 시공하니까 가능합니다. 날림이면 10년 A/S를 왜 걸겠습니까.',
+      '창호는 이미 공장에서 완성되어 옵니다. 시공 당일은 "설치만" 하는 거예요. 기존 창 철거 2시간 + 새 창 설치 4시간 + 마감 2시간. 신축 리모델링 아파트 다수 경험 및 대기업 경력 보유 기술진이 직접 시공하니까 가능합니다. 날림이면 10년 이상 A/S를 왜 걸겠습니까.',
   },
   {
     question: '"A/S 한다더니 연락 안 되면 어떡해요?"',
@@ -55,7 +55,7 @@ function FAQItem({
         onClick={onToggle}
         className="w-full py-4 sm:py-6 flex items-center justify-between text-left group"
       >
-        <span className="text-sm sm:text-base md:text-lg font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors pr-4 sm:pr-8">
+        <span className="text-sm sm:text-base md:text-lg font-bold text-[#1E1E1E] group-hover:text-[#FF6F0F] transition-colors pr-4 sm:pr-8">
           {question}
         </span>
         <motion.div
@@ -91,11 +91,11 @@ export default function LandingFAQ() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <AnimatedSection className="text-center mb-8 sm:mb-12">
-          <span className="inline-block px-3 sm:px-4 py-2 bg-[#E8F8F7] text-[#2AC1BC] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
+          <span className="inline-block px-3 sm:px-4 py-2 bg-[#FFF3EB] text-[#FF6F0F] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
             솔직한 Q&A
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-3 sm:mb-4 tracking-tight">
-            고객님들이 <span className="text-[#2AC1BC]">실제로</span> 물어보신 것들
+            고객님들이 <span className="text-[#FF6F0F]">실제로</span> 물어보신 것들
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-[#767676] max-w-2xl mx-auto px-2">
             듣기 좋은 말 대신, 솔직하게 답변드립니다

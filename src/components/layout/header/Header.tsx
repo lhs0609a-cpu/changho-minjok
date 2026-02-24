@@ -42,9 +42,9 @@ export default function Header() {
             <Image
               src="/images/logo-character.png"
               alt="창호의민족"
-              width={180}
-              height={56}
-              className="h-12 lg:h-14 w-auto object-contain"
+              width={240}
+              height={160}
+              className="h-14 lg:h-16 w-auto object-contain"
               priority
             />
           </Link>
@@ -151,9 +151,9 @@ export default function Header() {
                       <Image
                         src="/images/logo-character.png"
                         alt="창호의민족"
-                        width={160}
-                        height={48}
-                        className="h-12 w-auto object-contain"
+                        width={210}
+                        height={140}
+                        className="h-14 w-auto object-contain"
                       />
                     </Link>
                   </div>

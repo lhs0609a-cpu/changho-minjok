@@ -100,7 +100,7 @@ export default function HeroSection() {
                 className="h-14 md:h-16 px-8 md:px-10 bg-[#FF6F0F] hover:bg-[#E5630D] text-white rounded-2xl font-bold text-lg md:text-xl shadow-lg shadow-[#FF6F0F]/30"
               >
                 <Link href="/estimate" className="flex items-center gap-3">
-                  온라인 견적 받기
+                  무료 상담 신청
                   <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
                 </Link>
               </Button>

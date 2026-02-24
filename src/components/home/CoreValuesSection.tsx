@@ -1,6 +1,6 @@
 'use client';
 
-import { Factory, Truck, Wrench, ArrowRight } from 'lucide-react';
+import { Factory, BadgeDollarSign, Images, ArrowRight } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import Link from 'next/link';
 
@@ -14,18 +14,18 @@ const values = [
     href: '/about/factory',
   },
   {
-    icon: Truck,
+    icon: BadgeDollarSign,
     title: '공장 직영',
     subtitle: 'FACTORY DIRECT',
-    description: '중간 유통 마진 없이 공장에서 직접 고객님께 공급하여 합리적인 가격을 제공합니다.',
+    description: '중간 유통 마진 없이 공장에서 직접 공급하여 동일 제품 대비 평균 200만원 이상 절약할 수 있습니다.',
     number: '02',
-    href: '/about',
+    href: '/products',
   },
   {
-    icon: Wrench,
-    title: '전문 시공',
-    subtitle: 'EXPERT INSTALLATION',
-    description: '숙련된 전문 시공팀이 제품 특성을 정확히 이해하고 완벽하게 설치합니다.',
+    icon: Images,
+    title: '시공사례',
+    subtitle: 'PORTFOLIO',
+    description: '숙련된 시공업체에서 시공한 사례들을 확인하세요.',
     number: '03',
     href: '/portfolio',
   },

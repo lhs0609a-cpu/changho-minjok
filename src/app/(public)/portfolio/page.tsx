@@ -21,6 +21,7 @@ const productColors: Record<string, string> = {
   '알루미늄 창호': 'bg-emerald-500',
   'PVC창호': 'bg-sky-500',
   '이중창': 'bg-violet-500',
+  '발코니 창호': 'bg-rose-500',
 };
 
 export default async function PortfolioPage() {
@@ -145,7 +146,7 @@ export default async function PortfolioPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-white text-sky-600 hover:bg-sky-50 rounded-xl">
                 <Link href="/estimate">
-                  무료 견적 시뮬레이션
+                  무료 상담 신청
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </Button>

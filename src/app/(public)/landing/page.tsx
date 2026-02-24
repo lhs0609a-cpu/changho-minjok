@@ -20,7 +20,7 @@ import LandingGasketTech from '@/components/landing/LandingGasketTech';
 export const metadata: Metadata = {
   title: '창호 견적 받고 심장 떨어지셨죠? 200만원 돌려드립니다 | 창호의 민족',
   description:
-    'KCC·휴그린 정품 창호, 공장 직거래로 평균 203만원 절약. 15,000가구+ 시공 완료. 원데이 시공 + 10년 무상 A/S. 추가비용 0원 서면 보장. 지금 무료 견적 받아보세요.',
+    'KCC·휴그린 정품 창호, 공장 직거래로 평균 203만원 절약. 15,000가구+ 시공 완료. 원데이 시공 + 10년 이상 무상 A/S. 추가비용 0원 서면 보장. 지금 무료 견적 받아보세요.',
   keywords: [
     '창호 교체',
     '창문 교체',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '창호 견적 받고 심장 떨어지셨죠? 200만원 돌려드립니다 | 창호의 민족',
     description:
-      'KCC·휴그린 정품을 공장 직거래로. 15,000가구+ 시공, 평균 203만원 절약, 원데이 시공, 10년 무상 A/S.',
+      'KCC·휴그린 정품을 공장 직거래로. 15,000가구+ 시공, 평균 203만원 절약, 원데이 시공, 10년 이상 무상 A/S.',
     type: 'website',
   },
 };

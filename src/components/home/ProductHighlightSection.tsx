@@ -51,7 +51,7 @@ export default function ProductHighlightSection() {
           {products.map((product, index) => (
             <AnimatedSection key={product.slug} delay={index * 0.1}>
               <Link href={`/products/${product.slug}`} className="group block">
-                <div className="bg-white rounded-3xl overflow-hidden border-2 border-[#EEEEEE] hover:border-[#2AC1BC] transition-all duration-300 hover:-translate-y-2">
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-[#EEEEEE] hover:border-[#FF6F0F] transition-all duration-300 hover:-translate-y-2">
                   {/* Product Image */}
                   <div className="h-48 relative overflow-hidden">
                     <Image
@@ -64,7 +64,7 @@ export default function ProductHighlightSection() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-extrabold text-[#1E1E1E] mb-2 group-hover:text-[#2AC1BC] transition-colors tracking-tight">
+                    <h3 className="text-xl font-extrabold text-[#1E1E1E] mb-2 group-hover:text-[#FF6F0F] transition-colors tracking-tight">
                       {product.name}
                     </h3>
                     <p className="text-[#767676] text-sm mb-4">
@@ -76,7 +76,7 @@ export default function ProductHighlightSection() {
                       {product.features.map((feature) => (
                         <span
                           key={feature}
-                          className="text-xs px-3 py-1 bg-[#E8F8F7] text-[#2AC1BC] rounded-lg font-bold"
+                          className="text-xs px-3 py-1 bg-[#FFF3EB] text-[#FF6F0F] rounded-lg font-bold"
                         >
                           {feature}
                         </span>
@@ -84,7 +84,7 @@ export default function ProductHighlightSection() {
                     </div>
 
                     {/* Link */}
-                    <div className="flex items-center text-[#2AC1BC] text-sm font-bold group-hover:gap-2 transition-all">
+                    <div className="flex items-center text-[#FF6F0F] text-sm font-bold group-hover:gap-2 transition-all">
                       자세히 보기
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>

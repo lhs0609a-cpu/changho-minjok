@@ -129,6 +129,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
               <option value="시스템창호">시스템창호</option>
               <option value="알루미늄 창호">알루미늄 창호</option>
               <option value="PVC창호">PVC창호</option>
+              <option value="발코니 창호">발코니 창호</option>
             </select>
           </div>
         </div>

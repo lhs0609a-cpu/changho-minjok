@@ -14,14 +14,14 @@ export default function Footer() {
                 창호 교체, 지금 시작하세요
               </h2>
               <p className="text-white/80 text-sm sm:text-base lg:text-lg">
-                30초 만에 예상 견적을 확인할 수 있습니다.
+                전문 상담원이 친절하게 안내해드립니다.
               </p>
             </div>
             <Link
               href="/estimate"
               className="flex items-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 bg-[#1E1E1E] rounded-lg sm:rounded-xl text-white font-bold text-sm sm:text-base lg:text-lg hover:bg-[#292929] transition-colors w-full sm:w-auto justify-center"
             >
-              무료 견적 시뮬레이션
+              무료 상담 신청
               <ArrowRight className="w-5 h-5" />
             </Link>
           </div>
@@ -43,7 +43,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-[#767676] text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
-              10년의 제조 노하우와 3,500평 스마트 팩토리 기술력으로
+              10년 이상의 제조 노하우와 3,500평 스마트 팩토리 기술력으로
               고품질 창호를 합리적인 가격에 제공합니다.
             </p>
 
@@ -53,12 +53,12 @@ export default function Footer() {
                 href={`tel:${COMPANY_INFO.phone}`}
                 className="flex items-center gap-3 sm:gap-4 group"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center group-hover:bg-[#2AC1BC] transition-colors">
-                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#2AC1BC] group-hover:text-white transition-colors" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center group-hover:bg-[#FF6F0F] transition-colors">
+                  <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6F0F] group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs text-[#767676] font-medium">전화 상담</p>
-                  <p className="text-sm sm:text-base text-white font-bold group-hover:text-[#2AC1BC] transition-colors">
+                  <p className="text-sm sm:text-base text-white font-bold group-hover:text-[#FF6F0F] transition-colors">
                     {COMPANY_INFO.phone}
                   </p>
                 </div>
@@ -67,19 +67,19 @@ export default function Footer() {
                 href={`mailto:${COMPANY_INFO.email}`}
                 className="flex items-center gap-3 sm:gap-4 group"
               >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center group-hover:bg-[#2AC1BC] transition-colors">
-                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#2AC1BC] group-hover:text-white transition-colors" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center group-hover:bg-[#FF6F0F] transition-colors">
+                  <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6F0F] group-hover:text-white transition-colors" />
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs text-[#767676] font-medium">이메일</p>
-                  <p className="text-sm sm:text-base text-white font-bold group-hover:text-[#2AC1BC] transition-colors">
+                  <p className="text-sm sm:text-base text-white font-bold group-hover:text-[#FF6F0F] transition-colors">
                     {COMPANY_INFO.email}
                   </p>
                 </div>
               </a>
               <div className="flex items-center gap-3 sm:gap-4">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center">
-                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#2AC1BC]" />
+                  <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6F0F]" />
                 </div>
                 <div>
                   <p className="text-[10px] sm:text-xs text-[#767676] font-medium">주소</p>
@@ -99,7 +99,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium"
+                    className="text-xs sm:text-sm text-[#767676] hover:text-[#FF6F0F] transition-colors font-medium"
                   >
                     {link.title}
                   </Link>
@@ -117,7 +117,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium"
+                    className="text-xs sm:text-sm text-[#767676] hover:text-[#FF6F0F] transition-colors font-medium"
                   >
                     {link.title}
                   </Link>
@@ -135,7 +135,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-xs sm:text-sm text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium"
+                    className="text-xs sm:text-sm text-[#767676] hover:text-[#FF6F0F] transition-colors font-medium"
                   >
                     {link.title}
                   </Link>
@@ -152,13 +152,13 @@ export default function Footer() {
             <div className="flex gap-2 sm:gap-3">
               <a
                 href="#"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center text-[#767676] hover:bg-[#2AC1BC] hover:text-white transition-all"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center text-[#767676] hover:bg-[#FF6F0F] hover:text-white transition-all"
               >
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
               <a
                 href="#"
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center text-[#767676] hover:bg-[#2AC1BC] hover:text-white transition-all"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center text-[#767676] hover:bg-[#FF6F0F] hover:text-white transition-all"
               >
                 <Youtube className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
@@ -185,10 +185,10 @@ export default function Footer() {
               <span>사업자등록번호: {COMPANY_INFO_SUB.businessNumber}</span>
             </div>
             <div className="flex items-center gap-4 sm:gap-6 text-[10px] sm:text-sm">
-              <Link href="/privacy" className="text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium">
+              <Link href="/privacy" className="text-[#767676] hover:text-[#FF6F0F] transition-colors font-medium">
                 개인정보처리방침
               </Link>
-              <Link href="/terms" className="text-[#767676] hover:text-[#2AC1BC] transition-colors font-medium">
+              <Link href="/terms" className="text-[#767676] hover:text-[#FF6F0F] transition-colors font-medium">
                 이용약관
               </Link>
               <Link href="/admin" className="text-[#4A4A4A] hover:text-[#767676] transition-colors font-medium">

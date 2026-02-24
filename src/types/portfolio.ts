@@ -3,7 +3,7 @@ export interface PortfolioItem {
   title: string;
   location: string;
   buildingType: '아파트' | '빌라' | '단독주택' | '상가' | '기타';
-  product: '시스템창호' | '알루미늄 창호' | 'PVC창호';
+  product: '시스템창호' | '알루미늄 창호' | 'PVC창호' | '발코니 창호';
   rating: 1 | 2 | 3 | 4 | 5;
   date: string;
   description: string;

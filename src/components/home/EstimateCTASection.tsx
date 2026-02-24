@@ -2,13 +2,13 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Calculator, Clock, CheckCircle, ArrowRight } from 'lucide-react';
+import { Phone, Clock, CheckCircle, ArrowRight } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 
 const features = [
-  { icon: Calculator, text: '실시간 견적 계산', description: 'AI 기반 정확한 계산' },
-  { icon: Clock, text: '간편한 6단계', description: '누구나 쉽게' },
-  { icon: CheckCircle, text: '무료 견적', description: '부담 없이 확인' },
+  { icon: Phone, text: '전화 한 통으로 시작', description: '전문 상담원 즉시 안내' },
+  { icon: Clock, text: '빠른 무료 방문 견적', description: '정확한 현장 실측' },
+  { icon: CheckCircle, text: '부담 없는 상담', description: '강매 없이 비교만' },
 ];
 
 export default function EstimateCTASection() {
@@ -40,15 +40,15 @@ export default function EstimateCTASection() {
           <div className="text-center mb-16">
             <AnimatedSection>
               <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-white text-sm font-bold mb-8">
-                온라인 견적 시뮬레이션
+                무료 상담 신청
               </span>
             </AnimatedSection>
 
             <AnimatedSection delay={0.1}>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 tracking-tight">
-                간편하게
+                지금 바로
                 <br />
-                예상 견적 확인
+                무료 상담 신청
               </h2>
             </AnimatedSection>
 
@@ -56,7 +56,7 @@ export default function EstimateCTASection() {
               <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed">
                 복잡한 창호 견적, 더 이상 어렵게 생각하지 마세요.
                 <br className="hidden md:block" />
-                건물 유형과 사양만 선택하면 예상 가격을 바로 확인할 수 있습니다.
+                전화 한 통이면 전문 상담원이 친절하게 안내해드립니다.
               </p>
             </AnimatedSection>
           </div>
@@ -93,7 +93,7 @@ export default function EstimateCTASection() {
               href="/estimate"
               className="group inline-flex items-center gap-3 md:gap-4 px-6 md:px-10 py-4 md:py-5 bg-[#1E1E1E] text-white rounded-xl md:rounded-2xl font-bold text-base md:text-lg hover:bg-[#292929] transition-all duration-300"
             >
-              지금 바로 견적 받기
+              무료 상담 신청하기
               <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[#FF6F0F] flex items-center justify-center group-hover:scale-110 transition-transform">
                 <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
               </div>

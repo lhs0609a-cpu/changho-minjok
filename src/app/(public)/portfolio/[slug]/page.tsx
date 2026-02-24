@@ -37,6 +37,7 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
     '알루미늄 창호': { bg: 'bg-emerald-100', text: 'text-emerald-700' },
     'PVC창호': { bg: 'bg-sky-100', text: 'text-sky-700' },
     '이중창': { bg: 'bg-violet-100', text: 'text-violet-700' },
+    '발코니 창호': { bg: 'bg-rose-100', text: 'text-rose-700' },
   };
 
   const colors = productColors[portfolio.product] || productColors['PVC창호'];

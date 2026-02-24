@@ -37,11 +37,11 @@ export const SEARCH_DATA: SearchItem[] = [
     keywords: ['공장', '팩토리', '생산', '제조', '스마트팩토리', '시설'],
   },
   {
-    title: '견적 시뮬레이션',
-    description: '30초 만에 예상 견적 확인',
+    title: '상담 신청',
+    description: '무료 전화 상담 및 카카오톡 상담',
     href: '/estimate',
     category: '페이지',
-    keywords: ['견적', '가격', '비용', '시뮬레이션', '무료견적', '예상가격'],
+    keywords: ['상담', '견적', '가격', '비용', '무료상담', '전화상담', '카카오톡'],
   },
   {
     title: '시공사례',
@@ -175,7 +175,7 @@ export const SEARCH_DATA: SearchItem[] = [
   },
   {
     title: 'A/S 보증 기간은 얼마인가요?',
-    description: '기본 2년 무상 A/S, 제품 결함 10년 보증',
+    description: '기본 2년 무상 A/S, 제품 결함 10년 이상 보증',
     href: '/support/faq',
     category: 'FAQ',
     keywords: ['AS', 'A/S', '보증', '기간', '무상', '보증기간'],

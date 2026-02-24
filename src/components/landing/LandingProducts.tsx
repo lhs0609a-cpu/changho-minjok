@@ -79,7 +79,7 @@ export default function LandingProducts() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4 sm:mb-6 tracking-tight">
             전문가가 추천하는
             <br />
-            <span className="text-[#2AC1BC]">창호 조합</span>
+            <span className="text-[#FF6F0F]">창호 조합</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-[#767676] max-w-2xl mx-auto px-2">
             어떤 창호를 선택해야 할지 모르겠다면?

@@ -50,7 +50,7 @@ export default function AdvisorWidget({ embedded = false }: { embedded?: boolean
             className="absolute bottom-14 right-0 w-[calc(100vw-2rem)] sm:w-80 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-3.5 bg-[#2AC1BC] border-b border-[#24ADA8]">
+            <div className="flex items-center justify-between px-5 py-3.5 bg-[#FF6F0F] border-b border-[#E5630D]">
               <div className="flex items-center gap-2">
                 <ShieldCheck className="w-5 h-5 text-white" />
                 <span className="text-base font-bold text-white">
@@ -80,11 +80,11 @@ export default function AdvisorWidget({ embedded = false }: { embedded?: boolean
                   placeholder="이름 또는 전화번호"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  className="flex-1 h-10 text-sm bg-gray-50 border border-gray-200 focus:border-[#2AC1BC] focus:outline-none rounded-lg px-3"
+                  className="flex-1 h-10 text-sm bg-gray-50 border border-gray-200 focus:border-[#FF6F0F] focus:outline-none rounded-lg px-3"
                 />
                 <button
                   type="submit"
-                  className="h-10 px-4 bg-[#2AC1BC] hover:bg-[#24ADA8] rounded-lg text-white text-sm font-bold transition-colors flex items-center gap-1.5"
+                  className="h-10 px-4 bg-[#FF6F0F] hover:bg-[#E5630D] rounded-lg text-white text-sm font-bold transition-colors flex items-center gap-1.5"
                 >
                   <Search className="w-4 h-4" />
                   조회
@@ -102,10 +102,10 @@ export default function AdvisorWidget({ embedded = false }: { embedded?: boolean
                   exit={{ opacity: 0, height: 0 }}
                   className="px-3 pb-3"
                 >
-                  <div className="bg-[#E8F8F7] rounded-xl p-3">
+                  <div className="bg-[#FFF3EB] rounded-xl p-3">
                     <div className="flex items-center gap-2 mb-2">
-                      <ShieldCheck className="w-4 h-4 text-[#2AC1BC]" />
-                      <span className="text-xs font-bold text-[#2AC1BC]">
+                      <ShieldCheck className="w-4 h-4 text-[#FF6F0F]" />
+                      <span className="text-xs font-bold text-[#FF6F0F]">
                         본사 정식 소속 확인됨
                       </span>
                     </div>
@@ -154,7 +154,7 @@ export default function AdvisorWidget({ embedded = false }: { embedded?: boolean
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="flex items-center gap-2.5 px-5 py-3 bg-[#2AC1BC] rounded-full shadow-lg shadow-[#2AC1BC]/30 hover:bg-[#24ADA8] transition-colors text-base font-bold text-white"
+        className="flex items-center gap-2.5 px-5 py-3 bg-[#FF6F0F] rounded-full shadow-lg shadow-[#FF6F0F]/30 hover:bg-[#E5630D] transition-colors text-base font-bold text-white"
       >
         <ShieldCheck className="w-5 h-5" />
         어드바이저 조회

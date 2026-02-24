@@ -26,10 +26,10 @@ const solutions = [
   {
     icon: ShieldCheck,
     number: '03',
-    title: '10년 A/S, 책임질 수 있는 이유',
+    title: '10년 이상 A/S, 책임질 수 있는 이유',
     subtitle: '전문건설업 면허 + 3,500평 공장',
     description: '인터넷 업체가 1년 뒤에도 있을까요? 저희는 면허와 공장이 있습니다. 도망갈 수가 없어요.',
-    highlight: '10년 무상보증',
+    highlight: '10년 이상 무상보증',
     color: 'bg-[#1E1E1E]',
   },
 ];
@@ -39,7 +39,7 @@ const comparisonData = [
   { label: '유통 단계', others: '3~4단계 (마진 누적)', ours: '0단계 (직거래)' },
   { label: '평균 견적가', others: '700~900만원', ours: '500~700만원' },
   { label: '시공팀 경력', others: '확인 불가', ours: '신축 리모델링 아파트 다수 경험 및 대기업 경력 보유' },
-  { label: 'A/S 보증', others: '1~2년', ours: '10년 무상' },
+  { label: 'A/S 보증', others: '1~2년', ours: '10년 이상 무상' },
   { label: '공장 견학', others: false, ours: true },
 ];
 
@@ -49,13 +49,13 @@ export default function LandingSolution() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <AnimatedSection className="text-center mb-10 sm:mb-16">
-          <span className="inline-block px-3 sm:px-4 py-2 bg-[#E8F8F7] text-[#2AC1BC] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
+          <span className="inline-block px-3 sm:px-4 py-2 bg-[#FFF3EB] text-[#FF6F0F] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
             왜 창호의민족인가?
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-3 sm:mb-4 tracking-tight leading-tight">
             같은 창호인데
             <br />
-            <span className="text-[#2AC1BC]">왜 가격이 다를까요?</span>
+            <span className="text-[#FF6F0F]">왜 가격이 다를까요?</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-[#767676] max-w-2xl mx-auto px-2">
             비밀은 간단합니다. <span className="text-[#1E1E1E] font-bold">중간에서 빠지는 돈이 없으니까요.</span>
@@ -89,7 +89,7 @@ export default function LandingSolution() {
                 <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#1E1E1E] mb-1 sm:mb-2 leading-tight pr-8">
                   {solution.title}
                 </h3>
-                <p className="text-xs sm:text-sm text-[#2AC1BC] font-semibold mb-2 sm:mb-3">
+                <p className="text-xs sm:text-sm text-[#FF6F0F] font-semibold mb-2 sm:mb-3">
                   {solution.subtitle}
                 </p>
                 <p className="text-[#767676] leading-relaxed text-xs sm:text-sm">
@@ -134,7 +134,7 @@ export default function LandingSolution() {
                       row.others
                     )}
                   </div>
-                  <div className="p-3 sm:p-4 md:p-5 text-center font-semibold text-[#2AC1BC] text-[11px] sm:text-sm md:text-base border-l border-gray-100 bg-[#E8F8F7]/30">
+                  <div className="p-3 sm:p-4 md:p-5 text-center font-semibold text-[#FF6F0F] text-[11px] sm:text-sm md:text-base border-l border-gray-100 bg-[#FFF3EB]/30">
                     {typeof row.ours === 'boolean' ? (
                       row.ours ? (
                         <Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#2AC1BC] mx-auto" />
@@ -154,7 +154,7 @@ export default function LandingSolution() {
               <p className="text-sm sm:text-base text-[#767676] mb-2">
                 💡 <span className="font-bold text-[#1E1E1E]">같은 KCC창호</span>인데 왜 가격이 다르냐고요?
               </p>
-              <p className="text-base sm:text-lg font-bold text-[#2AC1BC]">
+              <p className="text-base sm:text-lg font-bold text-[#FF6F0F]">
                 중간에서 빠지는 마진이 없으니까요.
               </p>
             </div>

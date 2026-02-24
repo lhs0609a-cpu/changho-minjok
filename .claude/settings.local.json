@@ -42,7 +42,21 @@
       "Bash(copy \"C:\\\\Users\\\\u\\\\OneDrive\\\\문서\\\\카카오톡 받은 파일\\\\KakaoTalk_20260210_161115806.png\" \"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\public\\\\images\\\\products\\\\aluminum-window.png\")",
       "Bash(cat:*)",
       "Bash(head:*)",
-      "Bash(realpath:*)"
+      "Bash(realpath:*)",
+      "Bash(gh api:*)",
+      "Bash(git fetch:*)",
+      "Bash(npx vercel:*)",
+      "Bash(vercel:*)",
+      "Bash(npx next build)",
+      "Bash(findstr:*)",
+      "WebFetch(domain:changho-minjok.vercel.app)",
+      "Bash(cd:*)",
+      "Bash(copy \"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\창호의민족\\\\Gemini_Generated_Image_tem96wtem96wtem9.png\" \"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\public\\\\images\\\\hero-logo-bg.png\")",
+      "Bash(magick:*)",
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(copy \"C:\\\\Users\\\\u\\\\Downloads\\\\KakaoTalk_20260224_150402409.png\" \"G:\\\\내 드라이브\\\\developer\\\\changho-minjok\\\\public\\\\images\\\\logo-character.png\" /Y)",
+      "Bash(identify:*)"
     ]
   }
 }

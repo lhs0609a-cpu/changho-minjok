@@ -69,6 +69,7 @@ export default async function AdminPortfolioPage() {
                     <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
                       item.product === '시스템창호' ? 'bg-amber-100 text-amber-700' :
                       item.product === '알루미늄 창호' ? 'bg-emerald-100 text-emerald-700' :
+                      item.product === '발코니 창호' ? 'bg-rose-100 text-rose-700' :
                       'bg-sky-100 text-sky-700'
                     }`}>
                       {item.product}

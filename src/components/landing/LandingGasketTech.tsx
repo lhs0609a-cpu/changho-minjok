@@ -40,11 +40,11 @@ export default function LandingGasketTech() {
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
         <AnimatedSection className="text-center mb-10 sm:mb-16">
-          <span className="inline-block px-3 sm:px-4 py-2 bg-[#2AC1BC]/20 text-[#2AC1BC] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
+          <span className="inline-block px-3 sm:px-4 py-2 bg-[#FF6F0F]/20 text-[#FF6F0F] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
             기술 차별화
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-3 sm:mb-4 tracking-tight leading-tight">
-            모든 제품에 <span className="text-[#2AC1BC]">최적의 공법</span>을
+            모든 제품에 <span className="text-[#FF6F0F]">최적의 공법</span>을
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-[#767676] max-w-2xl mx-auto px-2">
             자체 브랜드부터 대기업 브랜드까지, 모든 제품을 취급합니다.
@@ -140,9 +140,9 @@ export default function LandingGasketTech() {
 
         {/* Bottom Note */}
         <AnimatedSection delay={0.4} className="text-center mt-8 sm:mt-12">
-          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-3 bg-[#2AC1BC]/10 rounded-full">
-            <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#2AC1BC]" />
-            <span className="text-sm sm:text-base text-[#2AC1BC] font-semibold">
+          <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-3 bg-[#FF6F0F]/10 rounded-full">
+            <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#FF6F0F]" />
+            <span className="text-sm sm:text-base text-[#FF6F0F] font-semibold">
               자체 브랜드 + 대기업 브랜드, 모든 제품을 한 곳에서 최적의 공법으로
             </span>
           </div>

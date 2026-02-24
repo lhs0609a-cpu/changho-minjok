@@ -27,7 +27,7 @@ export const MAIN_NAV: NavItem[] = [
     ],
   },
   {
-    title: '견적 시뮬레이션',
+    title: '상담 신청',
     href: '/estimate',
   },
   {
@@ -59,7 +59,7 @@ export const FOOTER_LINKS = {
     { title: '시스템창호', href: '/products/system' },
   ],
   support: [
-    { title: '견적 시뮬레이션', href: '/estimate' },
+    { title: '상담 신청', href: '/estimate' },
     { title: '상담 신청', href: '/support/inquiry' },
     { title: 'FAQ', href: '/support/faq' },
   ],

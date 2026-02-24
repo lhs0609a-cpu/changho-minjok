@@ -10,6 +10,7 @@ const productColors: Record<string, string> = {
   '알루미늄 창호': 'bg-emerald-500',
   'PVC창호': 'bg-sky-500',
   '이중창': 'bg-violet-500',
+  '발코니 창호': 'bg-rose-500',
 };
 
 export default async function PortfolioPreviewSection() {
@@ -37,7 +38,7 @@ export default async function PortfolioPreviewSection() {
           {portfolios.map((item, index) => (
             <AnimatedSection key={item.id} delay={index * 0.1}>
               <Link href={`/portfolio/${item.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-2xl bg-[#F5F5F5] aspect-[4/3] mb-4 border-2 border-[#EEEEEE] group-hover:border-[#2AC1BC] transition-colors">
+                <div className="relative overflow-hidden rounded-2xl bg-[#F5F5F5] aspect-[4/3] mb-4 border-2 border-[#EEEEEE] group-hover:border-[#FF6F0F] transition-colors">
                   {item.thumbnail_url ? (
                     <Image
                       src={item.thumbnail_url}
@@ -52,7 +53,7 @@ export default async function PortfolioPreviewSection() {
                   )}
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-[#2AC1BC]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-[#FF6F0F]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-white font-bold">자세히 보기</span>
                   </div>
 
@@ -67,7 +68,7 @@ export default async function PortfolioPreviewSection() {
                   </div>
                 </div>
 
-                <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors mb-2 line-clamp-1">
+                <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#FF6F0F] transition-colors mb-2 line-clamp-1">
                   {item.title}
                 </h3>
 
@@ -95,7 +96,7 @@ export default async function PortfolioPreviewSection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-[#2AC1BC] text-[#2AC1BC] hover:bg-[#2AC1BC] hover:text-white font-bold rounded-xl px-8"
+            className="border-2 border-[#FF6F0F] text-[#FF6F0F] hover:bg-[#FF6F0F] hover:text-white font-bold rounded-xl px-8"
           >
             <Link href="/portfolio">
               전체 시공사례 보기

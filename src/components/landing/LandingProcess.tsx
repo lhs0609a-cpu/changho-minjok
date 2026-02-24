@@ -37,9 +37,9 @@ const processSteps = [
   {
     step: '05',
     icon: HeartHandshake,
-    title: '10년 A/S',
+    title: '10년 이상 A/S',
     description: '시공 후에도 책임지는 장기 보증',
-    duration: '10년',
+    duration: '10년 이상',
   },
 ];
 
@@ -74,7 +74,7 @@ export default function LandingProcess() {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4 sm:mb-6 tracking-tight leading-tight">
             거주하시면서
             <br className="sm:hidden" />
-            <span className="text-[#2AC1BC]"> 하루만에 끝</span>납니다
+            <span className="text-[#FF6F0F]"> 하루만에 끝</span>납니다
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-[#767676] max-w-2xl mx-auto px-2">
             이사 갈 필요 없이, 생활하시면서 창호 교체 가능합니다.
@@ -106,7 +106,7 @@ export default function LandingProcess() {
         <AnimatedSection delay={0.2}>
           <div className="max-w-5xl mx-auto">
             <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-center text-[#1E1E1E] mb-8 sm:mb-12">
-              상담부터 A/S까지, <span className="text-[#2AC1BC]">5단계 원스톱 서비스</span>
+              상담부터 A/S까지, <span className="text-[#FF6F0F]">5단계 원스톱 서비스</span>
             </h3>
 
             {/* Desktop Timeline */}
@@ -149,7 +149,7 @@ export default function LandingProcess() {
                     </div>
 
                     {/* Content */}
-                    <span className="text-xs text-[#2AC1BC] font-bold mb-1">STEP {step.step}</span>
+                    <span className="text-xs text-[#FF6F0F] font-bold mb-1">STEP {step.step}</span>
                     <h4 className="text-base lg:text-lg font-bold text-[#1E1E1E] mb-1">{step.title}</h4>
                     <p className="text-xs lg:text-sm text-[#767676] mb-2 px-2">{step.description}</p>
                     <span
@@ -190,7 +190,7 @@ export default function LandingProcess() {
                   </div>
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs text-[#2AC1BC] font-bold">STEP {step.step}</span>
+                      <span className="text-xs text-[#FF6F0F] font-bold">STEP {step.step}</span>
                       {step.highlight && (
                         <span className="px-2 py-0.5 bg-[#FF6F0F] text-white text-[10px] font-bold rounded-full">
                           핵심

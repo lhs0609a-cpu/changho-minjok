@@ -25,7 +25,7 @@ const certifications = [
   },
   {
     icon: FileCheck,
-    title: '10년 품질 보증',
+    title: '10년 이상 품질 보증',
     description: '하자 발생 시 무상 A/S',
     detail: '제조사 직접 책임',
   },

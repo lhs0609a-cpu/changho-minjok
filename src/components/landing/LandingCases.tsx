@@ -28,21 +28,6 @@ const brands = [
     ],
   },
   {
-    id: 'huggreen',
-    name: '휴그린',
-    color: '#4CAF50',
-    before: [
-      { src: '/images/landing/cases/huggreen/before/1.jpg', alt: '휴그린 시공 전 1' },
-      { src: '/images/landing/cases/huggreen/before/2.jpg', alt: '휴그린 시공 전 2' },
-      { src: '/images/landing/cases/huggreen/before/3.jpg', alt: '휴그린 시공 전 3' },
-    ],
-    after: [
-      { src: '/images/landing/cases/huggreen/after/1.jpg', alt: '휴그린 시공 후 1' },
-      { src: '/images/landing/cases/huggreen/after/2.jpg', alt: '휴그린 시공 후 2' },
-      { src: '/images/landing/cases/huggreen/after/3.jpg', alt: '휴그린 시공 후 3' },
-    ],
-  },
-  {
     id: 'kcc',
     name: 'KCC',
     color: '#1976D2',
@@ -55,6 +40,21 @@ const brands = [
       { src: '/images/landing/cases/kcc/after/1.jpg', alt: 'KCC 시공 후 1' },
       { src: '/images/landing/cases/kcc/after/2.jpg', alt: 'KCC 시공 후 2' },
       { src: '/images/landing/cases/kcc/after/3.jpg', alt: 'KCC 시공 후 3' },
+    ],
+  },
+  {
+    id: 'huggreen',
+    name: '휴그린',
+    color: '#4CAF50',
+    before: [
+      { src: '/images/landing/cases/huggreen/before/1.jpg', alt: '휴그린 시공 전 1' },
+      { src: '/images/landing/cases/huggreen/before/2.jpg', alt: '휴그린 시공 전 2' },
+      { src: '/images/landing/cases/huggreen/before/3.jpg', alt: '휴그린 시공 전 3' },
+    ],
+    after: [
+      { src: '/images/landing/cases/huggreen/after/1.jpg', alt: '휴그린 시공 후 1' },
+      { src: '/images/landing/cases/huggreen/after/2.jpg', alt: '휴그린 시공 후 2' },
+      { src: '/images/landing/cases/huggreen/after/3.jpg', alt: '휴그린 시공 후 3' },
     ],
   },
 ];
@@ -84,11 +84,11 @@ export default function LandingCases() {
         <div className="container mx-auto px-4 lg:px-8">
           {/* Header */}
           <AnimatedSection className="text-center mb-8 sm:mb-12">
-            <span className="inline-block px-3 sm:px-4 py-2 bg-[#E8F8F7] text-[#2AC1BC] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
+            <span className="inline-block px-3 sm:px-4 py-2 bg-[#FFF3EB] text-[#FF6F0F] rounded-full text-xs sm:text-sm font-bold mb-4 sm:mb-6">
               Before & After
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4 sm:mb-6 tracking-tight">
-              <span className="text-[#2AC1BC]">이렇게</span> 달라집니다
+              <span className="text-[#FF6F0F]">이렇게</span> 달라집니다
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-[#767676]">
               브랜드별 실제 시공 사례를 비교해보세요

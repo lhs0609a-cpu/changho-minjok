@@ -51,7 +51,7 @@ export default function StickyHeader() {
                   <span className="text-[#1E1E1E] font-semibold">평균 200만원 절약</span>
                 </span>
                 <span className="flex items-center gap-1.5 text-[#767676]">
-                  <span className="text-[#2AC1BC]">✓</span> 10년 무상 A/S
+                  <span className="text-[#2AC1BC]">✓</span> 10년 이상 무상 A/S
                 </span>
                 <span className="flex items-center gap-1.5 text-[#767676]">
                   <span className="text-[#2AC1BC]">✓</span> 전문건설업 면허

@@ -44,7 +44,7 @@ export default function Header() {
               alt="창호의민족"
               width={180}
               height={56}
-              className="h-12 lg:h-14 w-auto object-contain"
+              className="h-12 lg:h-14 w-auto object-contain mix-blend-multiply"
               priority
             />
           </Link>
@@ -153,7 +153,7 @@ export default function Header() {
                         alt="창호의민족"
                         width={160}
                         height={48}
-                        className="h-12 w-auto object-contain"
+                        className="h-12 w-auto object-contain mix-blend-multiply"
                       />
                     </Link>
                   </div>

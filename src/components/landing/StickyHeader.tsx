@@ -40,7 +40,7 @@ export default function StickyHeader() {
                   alt="창호의민족"
                   width={160}
                   height={48}
-                  className="h-10 md:h-12 w-auto object-contain"
+                  className="h-10 md:h-12 w-auto object-contain mix-blend-multiply"
                 />
               </Link>
 

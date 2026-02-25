@@ -32,7 +32,7 @@ export default function PartnersSection() {
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
         <AnimatedSection className="mb-12">
-          <p className="text-[#2AC1BC] text-sm font-bold tracking-widest mb-4">
+          <p className="text-[#767676] text-sm font-bold tracking-widest mb-4">
             TRUSTED PARTNERS
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#1E1E1E] mb-4">
@@ -75,8 +75,8 @@ export default function PartnersSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
-          <div className="bg-white rounded-2xl p-6 border-2 border-[#2AC1BC]/30 mb-8">
-            <h3 className="text-[#2AC1BC] font-bold text-lg mb-2">
+          <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 mb-8">
+            <h3 className="text-[#1E1E1E] font-bold text-lg mb-2">
               대기업 수준의 품질
             </h3>
             <p className="text-[#767676]">
@@ -87,13 +87,13 @@ export default function PartnersSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.3}>
-          <div className="bg-[#FEF2F2] rounded-2xl py-8 px-6 text-center border-2 border-[#EF4444]/20">
+          <div className="bg-gray-50 rounded-2xl py-8 px-6 text-center border-2 border-gray-200">
             <p className="text-[#1E1E1E] text-lg md:text-xl font-bold">
-              <span className="text-[#EF4444]">대기업 품질</span>에
+              <span className="text-[#1E1E1E]">대기업 품질</span>에
             </p>
             <p className="text-[#1E1E1E] text-lg md:text-xl font-bold">
-              <span className="text-[#EF4444]">공장 직영</span>
-              <span className="text-[#FF6F0F]">만족가격</span>을 더했습니다
+              <span className="text-[#1E1E1E]">공장 직영</span>
+              <span className="text-[#1E1E1E]">만족가격</span>을 더했습니다
             </p>
           </div>
         </AnimatedSection>

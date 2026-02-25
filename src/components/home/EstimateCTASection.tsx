@@ -91,11 +91,11 @@ export default function EstimateCTASection() {
           <AnimatedSection delay={0.4} className="text-center">
             <Link
               href="/estimate"
-              className="group inline-flex items-center gap-3 md:gap-4 px-6 md:px-10 py-4 md:py-5 bg-[#2AC1BC] text-white rounded-xl md:rounded-2xl font-bold text-base md:text-lg hover:bg-[#1FA9A5] transition-all duration-300"
+              className="group inline-flex items-center gap-3 md:gap-4 px-6 md:px-10 py-4 md:py-5 bg-white text-[#FF6F0F] rounded-xl md:rounded-2xl font-bold text-base md:text-lg hover:bg-gray-100 transition-all duration-300"
             >
               무료 상담 신청하기
-              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[#FF6F0F] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
+              <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl bg-[#1E1E1E] flex items-center justify-center group-hover:scale-110 transition-transform">
+                <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-white" />
               </div>
             </Link>
 

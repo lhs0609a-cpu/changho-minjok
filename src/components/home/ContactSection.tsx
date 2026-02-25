@@ -37,7 +37,7 @@ export default function ContactSection() {
           {/* Left - Info */}
           <div>
             <AnimatedSection>
-              <span className="text-red-600 font-medium text-sm tracking-wider uppercase">
+              <span className="text-[#767676] font-medium text-sm tracking-wider uppercase">
                 Contact Us
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-3 mb-6">
@@ -53,8 +53,8 @@ export default function ContactSection() {
             <AnimatedSection delay={0.1}>
               <div className="space-y-6">
                 <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-xl">
-                  <div className="p-3 bg-red-100 rounded-lg">
-                    <Phone className="w-6 h-6 text-red-600" />
+                  <div className="p-3 bg-gray-100 rounded-lg">
+                    <Phone className="w-6 h-6 text-gray-500" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">
@@ -171,7 +171,7 @@ export default function ContactSection() {
                   />
                   <label htmlFor="privacy" className="text-sm text-gray-600">
                     개인정보 수집 및 이용에 동의합니다.{' '}
-                    <a href="/privacy" className="text-red-600 underline">
+                    <a href="/privacy" className="text-gray-600 underline">
                       자세히
                     </a>
                   </label>

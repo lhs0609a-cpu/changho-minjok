@@ -53,7 +53,7 @@ export default async function PortfolioPreviewSection() {
                   )}
 
                   {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-[#FF6F0F]/80 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                     <span className="text-white font-bold">자세히 보기</span>
                   </div>
 
@@ -96,7 +96,7 @@ export default async function PortfolioPreviewSection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-[#FF6F0F] text-[#FF6F0F] hover:bg-[#FF6F0F] hover:text-white font-bold rounded-xl px-8"
+            className="border-2 border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white font-bold rounded-xl px-8"
           >
             <Link href="/portfolio">
               전체 시공사례 보기

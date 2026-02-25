@@ -51,7 +51,7 @@ export default function ProductHighlightSection() {
           {products.map((product, index) => (
             <AnimatedSection key={product.slug} delay={index * 0.1}>
               <Link href={`/products/${product.slug}`} className="group block">
-                <div className="bg-white rounded-3xl overflow-hidden border-2 border-[#EEEEEE] hover:border-[#FF6F0F] transition-all duration-300 hover:-translate-y-2">
+                <div className="bg-white rounded-3xl overflow-hidden border-2 border-[#EEEEEE] hover:border-gray-300 transition-all duration-300 hover:-translate-y-2">
                   {/* Product Image */}
                   <div className="h-48 relative overflow-hidden">
                     <Image
@@ -64,7 +64,7 @@ export default function ProductHighlightSection() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-extrabold text-[#1E1E1E] mb-2 group-hover:text-[#FF6F0F] transition-colors tracking-tight">
+                    <h3 className="text-xl font-extrabold text-[#1E1E1E] mb-2 group-hover:text-[#1E1E1E] transition-colors tracking-tight">
                       {product.name}
                     </h3>
                     <p className="text-[#767676] text-sm mb-4">
@@ -76,7 +76,7 @@ export default function ProductHighlightSection() {
                       {product.features.map((feature) => (
                         <span
                           key={feature}
-                          className={`text-xs px-3 py-1 rounded-lg font-bold ${index === 1 ? 'bg-[#E0F7F6] text-[#2AC1BC]' : 'bg-[#FFF3EB] text-[#FF6F0F]'}`}
+                          className="text-xs px-3 py-1 rounded-lg font-bold bg-gray-100 text-gray-600"
                         >
                           {feature}
                         </span>
@@ -84,7 +84,7 @@ export default function ProductHighlightSection() {
                     </div>
 
                     {/* Link */}
-                    <div className="flex items-center text-[#FF6F0F] text-sm font-bold group-hover:gap-2 transition-all">
+                    <div className="flex items-center text-[#767676] text-sm font-bold group-hover:gap-2 transition-all">
                       자세히 보기
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -100,7 +100,7 @@ export default function ProductHighlightSection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-[#2AC1BC] text-[#2AC1BC] hover:bg-[#2AC1BC] hover:text-white font-bold rounded-xl px-8"
+            className="border-2 border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white font-bold rounded-xl px-8"
           >
             <Link href="/products">
               전체 제품 보기

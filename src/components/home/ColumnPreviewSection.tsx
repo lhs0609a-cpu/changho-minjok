@@ -30,7 +30,7 @@ export default async function ColumnPreviewSection() {
           {columns.map((item, index) => (
             <AnimatedSection key={item.id} delay={index * 0.1}>
               <Link href={`/column/${item.slug}`} className="group block h-full">
-                <div className="bg-white rounded-2xl overflow-hidden border-2 border-[#EEEEEE] hover:border-[#2AC1BC] transition-all hover:-translate-y-1 h-full flex flex-col">
+                <div className="bg-white rounded-2xl overflow-hidden border-2 border-[#EEEEEE] hover:border-gray-300 transition-all hover:-translate-y-1 h-full flex flex-col">
                   {item.thumbnail_url ? (
                     <div className="relative aspect-[16/9] overflow-hidden">
                       <Image
@@ -44,15 +44,15 @@ export default async function ColumnPreviewSection() {
                       </div>
                     </div>
                   ) : (
-                    <div className="relative aspect-[16/9] bg-gradient-to-br from-[#E0F7F6] to-[#2AC1BC]/20 flex items-center justify-center">
-                      <BookOpen className="w-10 h-10 text-[#2AC1BC]/40" />
+                    <div className="relative aspect-[16/9] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center">
+                      <BookOpen className="w-10 h-10 text-gray-300" />
                       <div className="absolute top-3 left-3 px-3 py-1 bg-[#2AC1BC] text-white text-xs font-bold rounded-lg">
                         {item.category}
                       </div>
                     </div>
                   )}
                   <div className="p-5 flex-1 flex flex-col">
-                    <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#2AC1BC] transition-colors mb-2 line-clamp-2">
+                    <h3 className="font-bold text-[#1E1E1E] group-hover:text-[#1E1E1E] transition-colors mb-2 line-clamp-2">
                       {item.title}
                     </h3>
                     <p className="text-sm text-[#767676] line-clamp-2 mb-4 flex-1">
@@ -69,7 +69,7 @@ export default async function ColumnPreviewSection() {
                           {item.view_count}
                         </span>
                       </div>
-                      <span className="text-[#2AC1BC] font-bold flex items-center gap-1">
+                      <span className="text-[#767676] font-bold flex items-center gap-1">
                         읽기
                         <ArrowRight className="w-3 h-3" />
                       </span>
@@ -86,7 +86,7 @@ export default async function ColumnPreviewSection() {
             asChild
             variant="outline"
             size="lg"
-            className="border-2 border-[#2AC1BC] text-[#2AC1BC] hover:bg-[#2AC1BC] hover:text-white font-bold rounded-xl px-8"
+            className="border-2 border-[#1E1E1E] text-[#1E1E1E] hover:bg-[#1E1E1E] hover:text-white font-bold rounded-xl px-8"
           >
             <Link href="/column">
               전체 칼럼 보기

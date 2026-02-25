@@ -55,15 +55,15 @@ export default function CoreValuesSection() {
           {values.map((value, index) => (
             <AnimatedSection key={value.title} delay={index * 0.1}>
               <Link href={value.href} className="group block h-full">
-                <div className={`relative h-full bg-white rounded-3xl p-6 md:p-8 lg:p-10 border-2 border-[#EEEEEE] ${index === 2 ? 'hover:border-[#2AC1BC]' : 'hover:border-[#FF6F0F]'} transition-all duration-300 hover:-translate-y-2`}>
+                <div className={`relative h-full bg-white rounded-3xl p-6 md:p-8 lg:p-10 border-2 border-[#EEEEEE] hover:border-gray-300 transition-all duration-300 hover:-translate-y-2`}>
                   {/* Number */}
-                  <span className={`absolute top-4 right-4 md:top-6 md:right-6 text-5xl md:text-7xl font-extrabold text-[#F5F5F5] ${index === 2 ? 'group-hover:text-[#E0F7F6]' : 'group-hover:text-[#FFF3EB]'} transition-colors select-none`}>
+                  <span className={`absolute top-4 right-4 md:top-6 md:right-6 text-5xl md:text-7xl font-extrabold text-[#F5F5F5] group-hover:text-gray-200 transition-colors select-none`}>
                     {value.number}
                   </span>
 
                   {/* Icon */}
-                  <div className={`relative w-14 h-14 md:w-16 md:h-16 rounded-2xl ${index === 2 ? 'bg-[#E0F7F6]' : 'bg-[#FFF3EB]'} flex items-center justify-center mb-5 md:mb-6 ${index === 2 ? 'group-hover:bg-[#2AC1BC]' : 'group-hover:bg-[#FF6F0F]'} transition-colors`}>
-                    <value.icon className={`h-7 w-7 md:h-8 md:w-8 ${index === 2 ? 'text-[#2AC1BC]' : 'text-[#FF6F0F]'} group-hover:text-white transition-colors`} />
+                  <div className="relative w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gray-100 flex items-center justify-center mb-5 md:mb-6 group-hover:bg-[#1E1E1E] transition-colors">
+                    <value.icon className="h-7 w-7 md:h-8 md:w-8 text-gray-500 group-hover:text-white transition-colors" />
                   </div>
 
                   {/* Content */}
@@ -79,14 +79,14 @@ export default function CoreValuesSection() {
                     </p>
 
                     {/* Arrow Link */}
-                    <div className={`flex items-center gap-2 ${index === 2 ? 'text-[#2AC1BC]' : 'text-[#FF6F0F]'} font-bold`}>
+                    <div className="flex items-center gap-2 text-[#767676] font-bold">
                       <span className="text-sm">자세히 보기</span>
                       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
 
                   {/* Bottom Line */}
-                  <div className={`absolute bottom-0 left-6 right-6 md:left-8 md:right-8 h-1 rounded-full ${index === 2 ? 'bg-[#2AC1BC]' : 'bg-[#FF6F0F]'} transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`} />
+                  <div className="absolute bottom-0 left-6 right-6 md:left-8 md:right-8 h-1 rounded-full bg-[#1E1E1E] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
               </Link>
             </AnimatedSection>
@@ -97,7 +97,7 @@ export default function CoreValuesSection() {
         <AnimatedSection delay={0.4} className="mt-16 text-center">
           <Link
             href="/about"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#2AC1BC] text-white rounded-xl font-bold hover:bg-[#1FA9A5] transition-colors group"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#1E1E1E] text-white rounded-xl font-bold hover:bg-[#292929] transition-colors group"
           >
             창호의 민족 더 알아보기
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

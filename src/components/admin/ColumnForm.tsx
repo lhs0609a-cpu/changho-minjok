@@ -176,7 +176,7 @@ export default function ColumnForm({ column, action, submitLabel }: ColumnFormPr
             <label className="block text-sm font-medium text-gray-700 mb-2">공개 여부</label>
             <select
               name="isPublished"
-              defaultValue={column?.is_published ? 'true' : 'false'}
+              defaultValue={column?.is_published !== false ? 'true' : 'false'}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[#EF4444] focus:border-[#EF4444] outline-none"
             >
               <option value="true">공개</option>

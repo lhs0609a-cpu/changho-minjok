@@ -5,6 +5,7 @@ import TrustSection from '@/components/home/TrustSection';
 import ProductHighlightSection from '@/components/home/ProductHighlightSection';
 import EstimateCTASection from '@/components/home/EstimateCTASection';
 import PortfolioPreviewSection from '@/components/home/PortfolioPreviewSection';
+import ColumnPreviewSection from '@/components/home/ColumnPreviewSection';
 import PartnersSection from '@/components/home/PartnersSection';
 import ContactSection from '@/components/home/ContactSection';
 
@@ -18,6 +19,7 @@ export default function HomePage() {
       <ProductHighlightSection />
       <EstimateCTASection />
       <PortfolioPreviewSection />
+      <ColumnPreviewSection />
       <PartnersSection />
       <ContactSection />
     </>

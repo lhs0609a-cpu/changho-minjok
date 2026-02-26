@@ -63,7 +63,7 @@ export default function TrustSection() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center max-w-6xl mx-auto">
           {/* Certification Images */}
           <AnimatedSection>
-            <div className="grid grid-cols-2 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
               <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <Image
                   src="/images/trust/construction-license.jpg"
@@ -79,41 +79,54 @@ export default function TrustSection() {
               </div>
               <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <Image
-                  src="/images/trust/kcc-certificate.jpg"
-                  alt="KCC e-MAX Club 회원사 명패"
+                  src="/images/trust/starplus-certificate.jpg"
+                  alt="KCC Star Plus 인증서"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                  <p className="text-white font-bold text-xs md:text-sm">KCC 공식 파트너</p>
-                  <p className="text-white/80 text-[10px] md:text-xs">e-MAX Club 회원사</p>
+                  <p className="text-white font-bold text-xs md:text-sm">KCC Star Plus</p>
+                  <p className="text-white/80 text-[10px] md:text-xs">e-MAX Club Prime Distributor</p>
                 </div>
               </div>
               <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <Image
                   src="/images/trust/ks-certificate.jpg"
-                  alt="KS 인증서"
+                  alt="KS 제품인증서"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                  <p className="text-white font-bold text-xs md:text-sm">KS 인증서</p>
+                  <p className="text-white font-bold text-xs md:text-sm">KS 제품인증서</p>
                   <p className="text-white/80 text-[10px] md:text-xs">한국산업표준 인증</p>
                 </div>
               </div>
               <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <Image
-                  src="/images/trust/hyunkyung-certificate.jpg"
-                  alt="현경시스템 인증서"
+                  src="/images/trust/emaster-certificate.jpg"
+                  alt="e-MASTER Club 인증서"
                   fill
                   className="object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
-                  <p className="text-white font-bold text-xs md:text-sm">현경시스템 인증서</p>
-                  <p className="text-white/80 text-[10px] md:text-xs">Star Plus 인증</p>
+                  <p className="text-white font-bold text-xs md:text-sm">e-MASTER 인증서</p>
+                  <p className="text-white/80 text-[10px] md:text-xs">이마스터클럽 회원사</p>
+                </div>
+              </div>
+              <div className="relative aspect-[3/4] rounded-xl md:rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+                <Image
+                  src="/images/trust/business-registration.jpg"
+                  alt="사업자등록증"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 md:p-4">
+                  <p className="text-white font-bold text-xs md:text-sm">사업자등록증</p>
+                  <p className="text-white/80 text-[10px] md:text-xs">(주)현경시스템</p>
                 </div>
               </div>
             </div>

@@ -286,12 +286,21 @@ const seedPortfolios = [
 
 export async function seedPortfoliosAction(): Promise<{ success: boolean; count: number }> {
   const existing = await getAllPortfoliosFromDB();
-  const existingSlugs = new Set(existing.map((p) => p.slug));
+  const existingBySlug = new Map(existing.map((p) => [p.slug, p]));
 
   let insertedCount = 0;
 
   for (const portfolio of seedPortfolios) {
-    if (existingSlugs.has(portfolio.slug)) continue;
+    const existingRecord = existingBySlug.get(portfolio.slug);
+
+    if (existingRecord) {
+      // 기존 레코드의 product가 시드 데이터와 다르면 업데이트
+      if (existingRecord.product !== portfolio.product) {
+        await updatePortfolio(existingRecord.id, { product: portfolio.product });
+        insertedCount++;
+      }
+      continue;
+    }
 
     const result = await createPortfolio(portfolio);
     if (result) insertedCount++;

@@ -1,9 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { Upload, X } from 'lucide-react';
+import { Upload, X, GripVertical } from 'lucide-react';
 import { PortfolioRecord } from '@/lib/supabase';
+
+interface ImageSlot {
+  preview: string | null;
+  existingUrl: string | null;
+  newFile: File | null;
+}
 
 interface PortfolioFormProps {
   portfolio?: PortfolioRecord;
@@ -11,29 +17,102 @@ interface PortfolioFormProps {
   submitLabel: string;
 }
 
-export default function PortfolioForm({ portfolio, action, submitLabel }: PortfolioFormProps) {
-  const [thumbnailPreview, setThumbnailPreview] = useState<string | null>(portfolio?.thumbnail_url || null);
-  const [beforePreview, setBeforePreview] = useState<string | null>(portfolio?.before_url || null);
-  const [afterPreview, setAfterPreview] = useState<string | null>(portfolio?.after_url || null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+const SLOT_LABELS = ['썸네일 (목록용)', '시공 전 (Before)', '시공 후 (After)'];
 
-  const handleImageChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-    setPreview: (url: string | null) => void
-  ) => {
+export default function PortfolioForm({ portfolio, action, submitLabel }: PortfolioFormProps) {
+  const [imageSlots, setImageSlots] = useState<ImageSlot[]>([
+    { preview: portfolio?.thumbnail_url || null, existingUrl: portfolio?.thumbnail_url || null, newFile: null },
+    { preview: portfolio?.before_url || null, existingUrl: portfolio?.before_url || null, newFile: null },
+    { preview: portfolio?.after_url || null, existingUrl: portfolio?.after_url || null, newFile: null },
+  ]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [dragIndex, setDragIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+  const fileInputRefs = useRef<(HTMLInputElement | null)[]>([null, null, null]);
+
+  const handleImageChange = (index: number, e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImageSlots((prev) => {
+        const next = [...prev];
+        next[index] = { preview: reader.result as string, existingUrl: null, newFile: file };
+        return next;
+      });
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleClearSlot = (index: number) => {
+    setImageSlots((prev) => {
+      const next = [...prev];
+      next[index] = { preview: null, existingUrl: null, newFile: null };
+      return next;
+    });
+    // file input 초기화
+    if (fileInputRefs.current[index]) {
+      fileInputRefs.current[index]!.value = '';
     }
+  };
+
+  // --- Drag and Drop ---
+  const handleDragStart = (index: number) => {
+    setDragIndex(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    setDragOverIndex(index);
+  };
+
+  const handleDragLeave = () => {
+    setDragOverIndex(null);
+  };
+
+  const handleDrop = (targetIndex: number) => {
+    if (dragIndex === null || dragIndex === targetIndex) {
+      setDragIndex(null);
+      setDragOverIndex(null);
+      return;
+    }
+    setImageSlots((prev) => {
+      const next = [...prev];
+      [next[dragIndex], next[targetIndex]] = [next[targetIndex], next[dragIndex]];
+      return next;
+    });
+    setDragIndex(null);
+    setDragOverIndex(null);
+  };
+
+  const handleDragEnd = () => {
+    setDragIndex(null);
+    setDragOverIndex(null);
   };
 
   const handleSubmit = async (formData: FormData) => {
     setIsSubmitting(true);
     try {
+      // imageSlots 기준으로 FormData 오버라이드
+      const fieldNames = ['thumbnail', 'before', 'after'] as const;
+      const existingFieldNames = ['existingThumbnail', 'existingBefore', 'existingAfter'] as const;
+
+      for (let i = 0; i < 3; i++) {
+        const slot = imageSlots[i];
+
+        // 기존 hidden input 값 덮어쓰기
+        formData.delete(existingFieldNames[i]);
+        formData.set(existingFieldNames[i], slot.existingUrl || '');
+
+        // 파일 덮어쓰기
+        formData.delete(fieldNames[i]);
+        if (slot.newFile) {
+          formData.set(fieldNames[i], slot.newFile);
+        } else {
+          formData.set(fieldNames[i], new File([], '', { type: 'application/octet-stream' }));
+        }
+      }
+
       await action(formData);
     } finally {
       setIsSubmitting(false);
@@ -130,6 +209,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
               <option value="알루미늄 창호">알루미늄 창호</option>
               <option value="PVC창호">PVC창호</option>
               <option value="발코니 창호">발코니 창호</option>
+              <option value="이중창">이중창</option>
             </select>
           </div>
         </div>
@@ -242,108 +322,66 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         </div>
       </div>
 
-      {/* 이미지 */}
+      {/* 이미지 (드래그앤드롭) */}
       <div className="bg-white rounded-2xl p-6 shadow-sm">
-        <h2 className="text-lg font-semibold text-gray-900 mb-6">이미지</h2>
+        <h2 className="text-lg font-semibold text-gray-900 mb-2">이미지</h2>
+        <p className="text-sm text-gray-500 mb-6">이미지를 드래그하여 위치를 변경할 수 있습니다.</p>
         <div className="grid md:grid-cols-3 gap-6">
-          {/* 썸네일 */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              썸네일 (목록용)
-            </label>
-            <div className="relative">
-              {thumbnailPreview ? (
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
-                  <Image src={thumbnailPreview} alt="썸네일" fill className="object-cover" />
-                  <button
-                    type="button"
-                    onClick={() => setThumbnailPreview(null)}
-                    className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600"
+          {imageSlots.map((slot, index) => (
+            <div key={index}>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                {SLOT_LABELS[index]}
+              </label>
+              <div
+                className={`relative transition-all ${
+                  dragOverIndex === index && dragIndex !== index
+                    ? 'ring-2 ring-blue-400 rounded-xl'
+                    : ''
+                }`}
+                onDragOver={(e) => handleDragOver(e, index)}
+                onDragLeave={handleDragLeave}
+                onDrop={() => handleDrop(index)}
+              >
+                {slot.preview ? (
+                  <div
+                    draggable
+                    onDragStart={() => handleDragStart(index)}
+                    onDragEnd={handleDragEnd}
+                    className={`relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 cursor-grab active:cursor-grabbing ${
+                      dragIndex === index ? 'opacity-50' : ''
+                    }`}
                   >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-[#EF4444] transition-colors">
-                  <Upload className="w-8 h-8 text-gray-400 mb-2" />
-                  <span className="text-sm text-gray-500">이미지 선택</span>
-                  <input
-                    type="file"
-                    name="thumbnail"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) => handleImageChange(e, setThumbnailPreview)}
-                  />
-                </label>
-              )}
+                    <Image src={slot.preview} alt={SLOT_LABELS[index]} fill className="object-cover" />
+                    <div className="absolute top-2 left-2 p-1 bg-black/40 text-white rounded-lg">
+                      <GripVertical className="w-4 h-4" />
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handleClearSlot(index)}
+                      className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                    <div className="absolute bottom-0 inset-x-0 bg-black/40 text-white text-xs text-center py-1">
+                      드래그하여 위치 변경
+                    </div>
+                  </div>
+                ) : (
+                  <label className="flex flex-col items-center justify-center aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-[#EF4444] transition-colors">
+                    <Upload className="w-8 h-8 text-gray-400 mb-2" />
+                    <span className="text-sm text-gray-500">이미지 선택</span>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      className="hidden"
+                      ref={(el) => { fileInputRefs.current[index] = el; }}
+                      onChange={(e) => handleImageChange(index, e)}
+                    />
+                  </label>
+                )}
+              </div>
             </div>
-          </div>
-
-          {/* Before */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              시공 전 (Before)
-            </label>
-            <div className="relative">
-              {beforePreview ? (
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
-                  <Image src={beforePreview} alt="시공 전" fill className="object-cover" />
-                  <button
-                    type="button"
-                    onClick={() => setBeforePreview(null)}
-                    className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-[#EF4444] transition-colors">
-                  <Upload className="w-8 h-8 text-gray-400 mb-2" />
-                  <span className="text-sm text-gray-500">이미지 선택</span>
-                  <input
-                    type="file"
-                    name="before"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) => handleImageChange(e, setBeforePreview)}
-                  />
-                </label>
-              )}
-            </div>
-          </div>
-
-          {/* After */}
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              시공 후 (After)
-            </label>
-            <div className="relative">
-              {afterPreview ? (
-                <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100">
-                  <Image src={afterPreview} alt="시공 후" fill className="object-cover" />
-                  <button
-                    type="button"
-                    onClick={() => setAfterPreview(null)}
-                    className="absolute top-2 right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600"
-                  >
-                    <X className="w-4 h-4" />
-                  </button>
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-[#EF4444] transition-colors">
-                  <Upload className="w-8 h-8 text-gray-400 mb-2" />
-                  <span className="text-sm text-gray-500">이미지 선택</span>
-                  <input
-                    type="file"
-                    name="after"
-                    accept="image/*"
-                    className="hidden"
-                    onChange={(e) => handleImageChange(e, setAfterPreview)}
-                  />
-                </label>
-              )}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 

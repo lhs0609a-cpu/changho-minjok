@@ -31,7 +31,7 @@ export default function PartnersSection() {
   return (
     <section className="py-16 md:py-24 bg-gray-50">
       <div className="container mx-auto px-4">
-        <AnimatedSection className="mb-12">
+        <AnimatedSection className="mb-12 text-center">
           <p className="text-[#767676] text-sm font-bold tracking-widest mb-4">
             TRUSTED PARTNERS
           </p>
@@ -44,11 +44,11 @@ export default function PartnersSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.1}>
-          <div className="space-y-4 mb-8">
+          <div className="space-y-4 mb-8 max-w-2xl mx-auto">
             {partners.map((partner) => (
               <div
                 key={partner.name}
-                className="bg-white rounded-2xl p-6 border border-gray-200 flex items-center gap-6"
+                className="bg-white rounded-2xl p-6 border border-gray-200 flex flex-col items-center text-center gap-4"
               >
                 <div className="w-32 h-20 md:w-40 md:h-24 relative flex-shrink-0 bg-gray-50 rounded-xl flex items-center justify-center overflow-hidden">
                   <Image
@@ -75,7 +75,7 @@ export default function PartnersSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.2}>
-          <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 mb-8">
+          <div className="bg-white rounded-2xl p-6 border-2 border-gray-200 mb-8 max-w-2xl mx-auto text-center">
             <h3 className="text-[#1E1E1E] font-bold text-lg mb-2">
               대기업 수준의 품질
             </h3>
@@ -87,7 +87,7 @@ export default function PartnersSection() {
         </AnimatedSection>
 
         <AnimatedSection delay={0.3}>
-          <div className="bg-gray-50 rounded-2xl py-8 px-6 text-center border-2 border-gray-200">
+          <div className="bg-gray-50 rounded-2xl py-8 px-6 text-center border-2 border-gray-200 max-w-2xl mx-auto">
             <p className="text-[#1E1E1E] text-lg md:text-xl font-bold">
               <span className="text-[#1E1E1E]">대기업 품질</span>에
             </p>

@@ -33,7 +33,7 @@ const reviews = [
     date: '2025.11',
     rating: 5,
     content: '3군데 견적 받아봤는데 여기가 제일 저렴하고 친절했습니다. 실측 오신 분이 꼼꼼하게 봐주시고, KCC 제품으로 견적 주셨어요. 시공 후 10년 이상 A/S 보증서도 주시고, 법인이라 안심되네요.',
-    highlight: '10년 A/S',
+    highlight: '10년 이상 A/S',
     verified: true,
   },
   {
@@ -86,7 +86,7 @@ export default function LandingReviews() {
             Real Reviews
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight">
-            <span className="text-[#EF4444]">15,000세대</span>가
+            <span className="text-[#EF4444]">15,000+세대</span>가
             <br className="sm:hidden" />
             선택한 이유
           </h2>
@@ -227,7 +227,7 @@ export default function LandingReviews() {
             href="#contact-form"
             className="inline-flex items-center justify-center gap-2 sm:gap-3 px-5 sm:px-8 py-3 sm:py-4 bg-[#EF4444] text-white rounded-xl font-bold text-sm sm:text-lg hover:bg-[#DC2626] transition-colors w-full sm:w-auto max-w-md mx-auto"
           >
-            15,000번째 만족 고객 되기
+            15,000+번째 만족 고객 되기
             <span className="text-white/80">→</span>
           </a>
           <p className="text-xs sm:text-sm text-gray-500 mt-3">

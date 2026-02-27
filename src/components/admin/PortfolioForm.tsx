@@ -85,28 +85,123 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
   const beforeInputRefs = useRef<(HTMLInputElement | null)[]>([null, null, null]);
   const afterInputRefs = useRef<(HTMLInputElement | null)[]>([null, null, null]);
 
-  // ── 이미지 업로드 핸들러 ──
+  // ── 파일 → ImageSlot 변환 ──
+  const fileToSlot = (file: File): Promise<ImageSlot> =>
+    new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve({ preview: reader.result as string, existingUrl: null, newFile: file });
+      reader.readAsDataURL(file);
+    });
+
+  // ── 단일 파일 선택 (개별 슬롯 클릭) ──
   const handleFileSelect = (
     e: React.ChangeEvent<HTMLInputElement>,
     setter: React.Dispatch<React.SetStateAction<ImageSlot[]>> | React.Dispatch<React.SetStateAction<ImageSlot>>,
     index?: number
   ) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      const newSlot: ImageSlot = { preview: reader.result as string, existingUrl: null, newFile: file };
-      if (index !== undefined) {
+    const files = e.target.files;
+    if (!files || files.length === 0) return;
+
+    if (index !== undefined && files.length === 1) {
+      // 단일 파일 → 특정 슬롯
+      fileToSlot(files[0]).then((slot) => {
         (setter as React.Dispatch<React.SetStateAction<ImageSlot[]>>)((prev) => {
           const next = [...prev];
-          next[index] = newSlot;
+          next[index] = slot;
           return next;
         });
-      } else {
-        (setter as React.Dispatch<React.SetStateAction<ImageSlot>>)(newSlot);
+      });
+    } else if (index !== undefined && files.length > 1) {
+      // 다중 파일 → 해당 슬롯부터 빈 슬롯에 순서대로
+      const fileArr = Array.from(files).slice(0, 3);
+      Promise.all(fileArr.map(fileToSlot)).then((slots) => {
+        (setter as React.Dispatch<React.SetStateAction<ImageSlot[]>>)((prev) => {
+          const next = [...prev];
+          let slotIdx = 0;
+          for (let i = 0; i < next.length && slotIdx < slots.length; i++) {
+            if (!next[i].preview) {
+              next[i] = slots[slotIdx++];
+            }
+          }
+          return next;
+        });
+      });
+    } else {
+      // 썸네일 (단일)
+      fileToSlot(files[0]).then((slot) => {
+        (setter as React.Dispatch<React.SetStateAction<ImageSlot>>)(slot);
+      });
+    }
+  };
+
+  // ── 다중 파일을 그룹 빈 슬롯에 채우기 (드래그 드롭/다중선택) ──
+  const fillGroupWithFiles = (
+    files: File[],
+    setter: React.Dispatch<React.SetStateAction<ImageSlot[]>>
+  ) => {
+    const imageFiles = files.filter((f) => f.type.startsWith('image/')).slice(0, 3);
+    if (imageFiles.length === 0) return;
+    Promise.all(imageFiles.map(fileToSlot)).then((slots) => {
+      setter((prev) => {
+        const next = [...prev];
+        let slotIdx = 0;
+        for (let i = 0; i < next.length && slotIdx < slots.length; i++) {
+          if (!next[i].preview) {
+            next[i] = slots[slotIdx++];
+          }
+        }
+        // 빈 슬롯이 부족하면 앞에서부터 덮어쓰기
+        if (slotIdx < slots.length) {
+          for (let i = 0; i < next.length && slotIdx < slots.length; i++) {
+            next[i] = slots[slotIdx++];
+          }
+        }
+        return next;
+      });
+    });
+  };
+
+  // ── 그룹 드롭존: 데스크탑에서 파일 드래그 드롭 ──
+  const [fileDropGroup, setFileDropGroup] = useState<string | null>(null);
+
+  const handleGroupFileDragOver = (e: React.DragEvent, group: string) => {
+    // 내부 슬롯 드래그 중이면 무시
+    if (dragState) return;
+    e.preventDefault();
+    e.stopPropagation();
+    setFileDropGroup(group);
+  };
+
+  const handleGroupFileDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setFileDropGroup(null);
+  };
+
+  const handleGroupFileDrop = (
+    e: React.DragEvent,
+    group: string,
+    setter: React.Dispatch<React.SetStateAction<ImageSlot[]>> | React.Dispatch<React.SetStateAction<ImageSlot>>
+  ) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setFileDropGroup(null);
+    // 내부 슬롯 드래그 중이면 무시 (슬롯 교환 로직이 처리)
+    if (dragState) return;
+
+    const files = Array.from(e.dataTransfer.files);
+    if (files.length === 0) return;
+
+    if (group === 'thumbnail') {
+      const imgFile = files.find((f) => f.type.startsWith('image/'));
+      if (imgFile) {
+        fileToSlot(imgFile).then((slot) => {
+          (setter as React.Dispatch<React.SetStateAction<ImageSlot>>)(slot);
+        });
       }
-    };
-    reader.readAsDataURL(file);
+    } else {
+      fillGroupWithFiles(files, setter as React.Dispatch<React.SetStateAction<ImageSlot[]>>);
+    }
   };
 
   const clearSlot = (
@@ -272,9 +367,11 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
             <label className="flex flex-col items-center justify-center aspect-[4/3] border-2 border-dashed border-gray-300 rounded-xl cursor-pointer hover:border-[#EF4444] transition-colors">
               <Upload className="w-8 h-8 text-gray-400 mb-2" />
               <span className="text-sm text-gray-500">이미지 선택</span>
+              <span className="text-xs text-gray-400 mt-1">또는 파일을 여기로 드래그</span>
               <input
                 type="file"
                 accept="image/*"
+                multiple
                 className="hidden"
                 ref={(el) => { inputRefs.current[index] = el; }}
                 onChange={(e) => handleFileSelect(e, setter, index)}
@@ -494,7 +591,12 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         </div>
 
         {/* 썸네일 */}
-        <div>
+        <div
+          onDragOver={(e) => handleGroupFileDragOver(e, 'thumbnail')}
+          onDragLeave={handleGroupFileDragLeave}
+          onDrop={(e) => handleGroupFileDrop(e, 'thumbnail', setThumbnailSlot)}
+          className={`p-4 -m-4 rounded-xl transition-all ${fileDropGroup === 'thumbnail' ? 'bg-blue-50 ring-2 ring-blue-300 ring-dashed' : ''}`}
+        >
           <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-gray-400" />
             썸네일 (목록용)
@@ -530,10 +632,20 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         </div>
 
         {/* 시공 전 */}
-        <div>
+        <div
+          onDragOver={(e) => handleGroupFileDragOver(e, 'before')}
+          onDragLeave={handleGroupFileDragLeave}
+          onDrop={(e) => {
+            // 내부 슬롯 드래그인 경우 그룹 핸들러에서 무시 (개별 슬롯이 처리)
+            if (dragState) return;
+            handleGroupFileDrop(e, 'before', setBeforeSlots);
+          }}
+          className={`p-4 -m-4 rounded-xl transition-all ${fileDropGroup === 'before' ? 'bg-blue-50 ring-2 ring-blue-300 ring-dashed' : ''}`}
+        >
           <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-blue-400" />
             시공 전 (Before) — 최대 3장
+            <span className="text-xs text-gray-400 font-normal ml-2">파일을 드래그하여 한번에 추가 가능</span>
           </h3>
           <div className="grid grid-cols-3 gap-4">
             {beforeSlots.map((slot, i) =>
@@ -543,10 +655,19 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         </div>
 
         {/* 시공 후 */}
-        <div>
+        <div
+          onDragOver={(e) => handleGroupFileDragOver(e, 'after')}
+          onDragLeave={handleGroupFileDragLeave}
+          onDrop={(e) => {
+            if (dragState) return;
+            handleGroupFileDrop(e, 'after', setAfterSlots);
+          }}
+          className={`p-4 -m-4 rounded-xl transition-all ${fileDropGroup === 'after' ? 'bg-blue-50 ring-2 ring-blue-300 ring-dashed' : ''}`}
+        >
           <h3 className="text-sm font-semibold text-gray-900 mb-3 flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-red-400" />
             시공 후 (After) — 최대 3장
+            <span className="text-xs text-gray-400 font-normal ml-2">파일을 드래그하여 한번에 추가 가능</span>
           </h3>
           <div className="grid grid-cols-3 gap-4">
             {afterSlots.map((slot, i) =>

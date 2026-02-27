@@ -5,6 +5,7 @@ import { notFound } from 'next/navigation';
 import { MapPin, Calendar, Star, ArrowLeft, ArrowRight, Home, Ruler, CheckCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import AnimatedSection from '@/components/shared/AnimatedSection';
+import BeforeAfterSlider from '@/components/tools/BeforeAfterSlider';
 import { getPortfolioBySlug } from '@/lib/portfolio-db';
 
 export const dynamic = 'force-dynamic';
@@ -100,17 +101,14 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
             <AnimatedSection>
               {hasBeforeAfter ? (
                 <div className="space-y-4">
-                  {/* 메인 Before/After 비교 (첫 번째 사진) */}
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                      <Image src={befores[0]} alt="시공 전" fill className="object-cover" />
-                      <div className="absolute bottom-4 left-4 px-3 py-1 bg-black/50 text-white text-sm rounded-lg">Before</div>
-                    </div>
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-                      <Image src={afters[0]} alt="시공 후" fill className="object-cover" />
-                      <div className="absolute bottom-4 left-4 px-3 py-1 bg-[#EF4444] text-white text-sm rounded-lg">After</div>
-                    </div>
-                  </div>
+                  {/* 메인 Before/After 인터랙티브 슬라이더 */}
+                  <BeforeAfterSlider
+                    beforeSrc={befores[0]}
+                    afterSrc={afters[0]}
+                    beforeAlt="시공 전"
+                    afterAlt="시공 후"
+                  />
+                  <p className="text-center text-[#767676] text-sm">슬라이더를 좌우로 드래그하여 비교해보세요</p>
 
                   {/* 추가 사진들 (2,3번째) */}
                   {(befores.length > 1 || afters.length > 1) && (

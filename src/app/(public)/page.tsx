@@ -5,6 +5,8 @@ import TrustSection from '@/components/home/TrustSection';
 import ProductHighlightSection from '@/components/home/ProductHighlightSection';
 import EstimateCTASection from '@/components/home/EstimateCTASection';
 import PortfolioPreviewSection from '@/components/home/PortfolioPreviewSection';
+import BeforeAfterShowcase from '@/components/home/BeforeAfterShowcase';
+import ToolsSection from '@/components/home/ToolsSection';
 import ColumnPreviewSection from '@/components/home/ColumnPreviewSection';
 import PartnersSection from '@/components/home/PartnersSection';
 import ContactSection from '@/components/home/ContactSection';
@@ -19,6 +21,8 @@ export default function HomePage() {
       <ProductHighlightSection />
       <EstimateCTASection />
       <PortfolioPreviewSection />
+      <BeforeAfterShowcase />
+      <ToolsSection />
       <ColumnPreviewSection />
       <PartnersSection />
       <ContactSection />

@@ -6,7 +6,8 @@ import { getPublishedPortfolios } from '@/lib/portfolio-db';
 
 export default async function BeforeAfterShowcase() {
   const portfolios = await getPublishedPortfolios();
-  const showcase = portfolios.find((p) => p.before_url && p.after_url);
+  // 마지막(최근) 시공사례부터 탐색 — 관리자가 직접 올린 동일 각도 사진 우선
+  const showcase = [...portfolios].reverse().find((p) => p.before_url && p.after_url);
 
   if (!showcase) return null;
 

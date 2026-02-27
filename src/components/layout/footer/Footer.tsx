@@ -174,9 +174,8 @@ export default function Footer() {
               >
                 <InstagramIcon className="w-4 h-4 sm:w-5 sm:h-5" />
               </a>
-              {/* TODO: 유튜브 채널 주소 받으면 href 교체 */}
               <a
-                href="https://www.youtube.com/"
+                href="https://youtube.com/channel/UCaFGGFP1prW0EoeAt9zqprw?si=p947AKAJWZUcWNSO"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl bg-[#292929] flex items-center justify-center text-[#767676] hover:bg-[#FF0000] hover:text-white transition-all"

@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 const stats = [
   { value: 10, suffix: '년 이상 →', label: '제조 경력', description: '2015년 설립' },
-  { value: 3500, suffix: '평', label: '공장 규모', description: '경기도 소재' },
+  { value: 3500, suffix: '평', label: '공장 규모', description: '경북 청도 소재' },
   { value: 30, suffix: '세대/일', label: '일일 생산량', description: '안정적 공급' },
   { value: 15000, suffix: '+', label: '누적 시공', description: '고객 만족' },
 ];
@@ -79,7 +79,7 @@ export default function SmartFactorySection() {
 
             <AnimatedSection delay={0.1}>
               <p className="text-lg text-[#767676] leading-relaxed mb-10 max-w-xl">
-                경기도에 위치한 3,500평 규모의 스마트 팩토리에서
+                경북 청도에 위치한 3,500평 규모의 스마트 팩토리에서
                 첨단 자동화 설비와 숙련된 장인의 기술력이 만납니다.
                 일관된 품질과 빠른 납기를 보장합니다.
               </p>

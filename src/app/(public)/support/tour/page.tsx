@@ -112,7 +112,7 @@ export default function TourPage() {
                     <MapPin className="w-6 h-6" />
                   </div>
                   <h3 className="font-semibold text-gray-900 mb-2">위치</h3>
-                  <p className="text-gray-600">경기도 화성시</p>
+                  <p className="text-gray-600">경북 청도군</p>
                 </div>
               </AnimatedSection>
             </div>

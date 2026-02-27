@@ -26,7 +26,7 @@ const history = [
   {
     year: '2023',
     events: [
-      { month: '12월', title: '연간 시공 15,000세대 달성' },
+      { month: '12월', title: '누적 시공 15,000세대 달성' },
       { month: '08월', title: 'KCC글라스 공식 파트너십 체결' },
       { month: '02월', title: '품질경영시스템 ISO 9001 인증' },
     ],
@@ -43,14 +43,14 @@ const history = [
     events: [
       { month: '11월', title: '누적 시공 10,000세대 돌파' },
       { month: '09월', title: 'KCC창호, KCC글라스, 휴그린 대리점 계약 및 협력', highlight: true },
-      { month: '06월', title: '경기 남부권 영업망 확장' },
+      { month: '06월', title: '경남/부산권 영업망 확장' },
     ],
   },
   {
     year: '2019',
     events: [
       { month: '08월', title: '자동화 생산설비 도입' },
-      { month: '01월', title: '서울/경기 전역 서비스 확대' },
+      { month: '01월', title: '대구/경북 전역 서비스 확대' },
     ],
   },
   {

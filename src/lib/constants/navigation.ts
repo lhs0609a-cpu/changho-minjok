@@ -75,7 +75,7 @@ export const COMPANY_INFO = {
   companyName: '(주)현경시스템',
   address: '경상북도 청도군 청도읍 청매로 86-29',
   phone: '1668-1453',
-  fax: '031-000-0001',
+  fax: '',
   email: 'changhopeople@naver.com',
   businessNumber: '268-86-01889',
   ceo: '허자현',
@@ -86,5 +86,5 @@ export const COMPANY_INFO_SUB = {
   name: '창호의민족',
   businessNumber: '221-31-52133',
   ceo: '허자현',
-  address: '경상남도 창원시 의창구 팔용로396번길 9, 1층(팔용동)',
+  address: '경상남도 창원시 의창구 용동로 45, 에프동 106호(사림동, 현대썬앤빌더스퀘어)',
 };

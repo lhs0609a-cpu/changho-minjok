@@ -14,7 +14,7 @@ const features = [
   {
     icon: Factory,
     title: '3,500평 규모',
-    description: '경기도에 위치한 대규모 스마트 팩토리에서 전 공정을 직접 관리합니다.',
+    description: '경북 청도에 위치한 대규모 스마트 팩토리에서 전 공정을 직접 관리합니다.',
   },
   {
     icon: Cpu,
@@ -40,7 +40,7 @@ const facilities = [
   '복층유리 제조 설비',
   '자동 절단기 및 용접기',
   '품질 검사실',
-  '자재 창고 (15,000평)',
+  '자재 창고',
   '완제품 보관창고',
 ];
 
@@ -95,7 +95,7 @@ export default function FactoryPage() {
                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
                       <Factory className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                     </div>
-                    <span className="text-white/80 text-xs sm:text-sm font-medium">경기도 소재</span>
+                    <span className="text-white/80 text-xs sm:text-sm font-medium">경북 청도 소재</span>
                   </div>
                   <h2 className="text-lg sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
                     3,500평 규모의 스마트 팩토리

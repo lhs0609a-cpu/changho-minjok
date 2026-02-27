@@ -92,8 +92,8 @@ export default function PartnersSection() {
               <span className="text-[#1E1E1E]">대기업 품질</span>에
             </p>
             <p className="text-[#1E1E1E] text-lg md:text-xl font-bold">
-              <span className="text-[#1E1E1E]">공장 직영</span>
-              <span className="text-[#1E1E1E]">만족가격</span>을 더했습니다
+              <span className="text-[#1E1E1E]">공장 직영</span>{' '}
+              <span className="text-[#1E1E1E]">만족 가격</span>을 더했습니다
             </p>
           </div>
         </AnimatedSection>

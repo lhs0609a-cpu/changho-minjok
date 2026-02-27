@@ -39,131 +39,148 @@ async function processMultiImages(
 }
 
 export async function createPortfolioAction(formData: FormData): Promise<void> {
-  const title = formData.get('title') as string;
-  const location = formData.get('location') as string;
-  const buildingType = formData.get('buildingType') as string;
-  const product = formData.get('product') as string;
-  const rating = parseInt(formData.get('rating') as string) || 5;
-  const date = formData.get('date') as string;
-  const description = formData.get('description') as string;
-  const area = formData.get('area') as string;
-  const windowCount = formData.get('windowCount') as string;
-  const duration = formData.get('duration') as string;
-  const featuresRaw = formData.get('features') as string;
-  const review = formData.get('review') as string;
-  const published = formData.get('published') === 'true';
-  const displayOrder = parseInt(formData.get('displayOrder') as string) || 1;
+  let slug = '';
+  try {
+    const title = formData.get('title') as string;
+    const location = formData.get('location') as string;
+    const buildingType = formData.get('buildingType') as string;
+    const product = formData.get('product') as string;
+    const rating = parseInt(formData.get('rating') as string) || 5;
+    const date = formData.get('date') as string;
+    const description = formData.get('description') as string;
+    const area = formData.get('area') as string;
+    const windowCount = formData.get('windowCount') as string;
+    const duration = formData.get('duration') as string;
+    const featuresRaw = formData.get('features') as string;
+    const review = formData.get('review') as string;
+    const published = formData.get('published') === 'true';
+    const displayOrder = parseInt(formData.get('displayOrder') as string) || 1;
 
-  const thumbnail = formData.get('thumbnail') as File;
-  let thumbnailUrl = null;
+    const thumbnail = formData.get('thumbnail') as File;
+    let thumbnailUrl = null;
 
-  const slug = generateSlug(title) + '-' + Date.now().toString().slice(-6);
+    slug = generateSlug(title) + '-' + Date.now().toString().slice(-6);
 
-  if (thumbnail && thumbnail.size > 0) {
-    thumbnailUrl = await uploadImage(thumbnail, slug);
-  }
+    if (thumbnail && thumbnail.size > 0) {
+      thumbnailUrl = await uploadImage(thumbnail, slug);
+    }
 
-  const beforeUrls = await processMultiImages(formData, 'before', slug, false);
-  const afterUrls = await processMultiImages(formData, 'after', slug, false);
+    const beforeUrls = await processMultiImages(formData, 'before', slug, false);
+    const afterUrls = await processMultiImages(formData, 'after', slug, false);
 
-  const features = (featuresRaw || '')
-    .split('\n')
-    .map((f) => f.trim())
-    .filter((f) => f.length > 0);
+    const features = (featuresRaw || '')
+      .split('\n')
+      .map((f) => f.trim())
+      .filter((f) => f.length > 0);
 
-  const result = await createPortfolio({
-    slug,
-    title,
-    location,
-    building_type: buildingType,
-    product,
-    rating,
-    date,
-    description,
-    area,
-    window_count: windowCount,
-    duration,
-    features,
-    review: review || null,
-    thumbnail_url: thumbnailUrl || null,
-    before_url: beforeUrls[0] || null,
-    after_url: afterUrls[0] || null,
-    gallery_urls: [...beforeUrls, ...afterUrls],
-    published,
-    display_order: displayOrder,
-  });
+    const result = await createPortfolio({
+      slug,
+      title,
+      location,
+      building_type: buildingType,
+      product,
+      rating,
+      date,
+      description,
+      area,
+      window_count: windowCount,
+      duration,
+      features,
+      review: review || null,
+      thumbnail_url: thumbnailUrl || null,
+      before_url: beforeUrls[0] || null,
+      after_url: afterUrls[0] || null,
+      gallery_urls: [...beforeUrls, ...afterUrls],
+      published,
+      display_order: displayOrder,
+    });
 
-  if (!result) {
+    if (!result) {
+      redirect('/admin/portfolio?error=create-failed');
+    }
+  } catch (error) {
+    // redirect()는 특수 에러이므로 다시 throw
+    if (error instanceof Error && 'digest' in error) throw error;
+    console.error('시공사례 생성 실패:', error);
     redirect('/admin/portfolio?error=create-failed');
   }
 
   revalidatePath('/admin/portfolio');
   revalidatePath('/portfolio');
+  revalidatePath('/');
   redirect('/admin/portfolio');
 }
 
 export async function updatePortfolioAction(formData: FormData): Promise<void> {
-  const id = formData.get('id') as string;
-  const slug = formData.get('slug') as string;
-  const title = formData.get('title') as string;
-  const location = formData.get('location') as string;
-  const buildingType = formData.get('buildingType') as string;
-  const product = formData.get('product') as string;
-  const rating = parseInt(formData.get('rating') as string) || 5;
-  const date = formData.get('date') as string;
-  const description = formData.get('description') as string;
-  const area = formData.get('area') as string;
-  const windowCount = formData.get('windowCount') as string;
-  const duration = formData.get('duration') as string;
-  const featuresRaw = formData.get('features') as string;
-  const review = formData.get('review') as string;
-  const published = formData.get('published') === 'true';
-  const displayOrder = parseInt(formData.get('displayOrder') as string) || 1;
+  let slug = '';
+  try {
+    const id = formData.get('id') as string;
+    slug = formData.get('slug') as string;
+    const title = formData.get('title') as string;
+    const location = formData.get('location') as string;
+    const buildingType = formData.get('buildingType') as string;
+    const product = formData.get('product') as string;
+    const rating = parseInt(formData.get('rating') as string) || 5;
+    const date = formData.get('date') as string;
+    const description = formData.get('description') as string;
+    const area = formData.get('area') as string;
+    const windowCount = formData.get('windowCount') as string;
+    const duration = formData.get('duration') as string;
+    const featuresRaw = formData.get('features') as string;
+    const review = formData.get('review') as string;
+    const published = formData.get('published') === 'true';
+    const displayOrder = parseInt(formData.get('displayOrder') as string) || 1;
 
-  const existingThumbnail = formData.get('existingThumbnail') as string;
-  const thumbnail = formData.get('thumbnail') as File;
-  let thumbnailUrl = existingThumbnail || null;
+    const existingThumbnail = formData.get('existingThumbnail') as string;
+    const thumbnail = formData.get('thumbnail') as File;
+    let thumbnailUrl = existingThumbnail || null;
 
-  if (thumbnail && thumbnail.size > 0) {
-    thumbnailUrl = await uploadImage(thumbnail, slug);
-  }
+    if (thumbnail && thumbnail.size > 0) {
+      thumbnailUrl = await uploadImage(thumbnail, slug);
+    }
 
-  const beforeUrls = await processMultiImages(formData, 'before', slug, true);
-  const afterUrls = await processMultiImages(formData, 'after', slug, true);
+    const beforeUrls = await processMultiImages(formData, 'before', slug, true);
+    const afterUrls = await processMultiImages(formData, 'after', slug, true);
 
-  const features = (featuresRaw || '')
-    .split('\n')
-    .map((f) => f.trim())
-    .filter((f) => f.length > 0);
+    const features = (featuresRaw || '')
+      .split('\n')
+      .map((f) => f.trim())
+      .filter((f) => f.length > 0);
 
-  const result = await updatePortfolio(id, {
-    title,
-    location,
-    building_type: buildingType,
-    product,
-    rating,
-    date,
-    description,
-    area,
-    window_count: windowCount,
-    duration,
-    features,
-    review: review || null,
-    thumbnail_url: thumbnailUrl || null,
-    before_url: beforeUrls[0] || null,
-    after_url: afterUrls[0] || null,
-    gallery_urls: [...beforeUrls, ...afterUrls],
-    published,
-    display_order: displayOrder,
-  });
+    const result = await updatePortfolio(id, {
+      title,
+      location,
+      building_type: buildingType,
+      product,
+      rating,
+      date,
+      description,
+      area,
+      window_count: windowCount,
+      duration,
+      features,
+      review: review || null,
+      thumbnail_url: thumbnailUrl || null,
+      before_url: beforeUrls[0] || null,
+      after_url: afterUrls[0] || null,
+      gallery_urls: [...beforeUrls, ...afterUrls],
+      published,
+      display_order: displayOrder,
+    });
 
-  if (!result) {
+    if (!result) {
+      redirect('/admin/portfolio?error=update-failed');
+    }
+  } catch (error) {
+    if (error instanceof Error && 'digest' in error) throw error;
+    console.error('시공사례 수정 실패:', error);
     redirect('/admin/portfolio?error=update-failed');
   }
 
   revalidatePath('/admin/portfolio');
   revalidatePath('/portfolio');
   revalidatePath(`/portfolio/${slug}`);
+  revalidatePath('/');
   redirect('/admin/portfolio');
 }
 

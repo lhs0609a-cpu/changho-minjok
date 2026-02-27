@@ -41,13 +41,27 @@ export default async function PortfolioDetailPage({ params }: PageProps) {
   };
 
   const colors = productColors[portfolio.product] || productColors['PVC창호'];
-  const gallery = portfolio.gallery_urls || [];
-  // gallery_urls: [before들..., after들...] 구조에서 분리
-  const beforeImages = gallery.filter((url) => url.includes('/before'));
-  const afterImages = gallery.filter((url) => url.includes('/after'));
-  // gallery에 before/after 패턴이 없으면 기존 before_url/after_url 사용
-  const befores = beforeImages.length > 0 ? beforeImages : (portfolio.before_url ? [portfolio.before_url] : []);
-  const afters = afterImages.length > 0 ? afterImages : (portfolio.after_url ? [portfolio.after_url] : []);
+  const gallery = (portfolio.gallery_urls || []).filter((url): url is string => typeof url === 'string' && url.length > 0);
+  // gallery_urls 구조: [before들..., after들...] (actions.ts에서 [...beforeUrls, ...afterUrls]로 저장)
+  // before_url/after_url은 각각 첫 번째 before/after 이미지
+  let befores: string[] = [];
+  let afters: string[] = [];
+
+  if (gallery.length > 0 && portfolio.before_url && portfolio.after_url) {
+    // gallery에서 before_url의 위치를 찾아 before/after 분리
+    const afterStartIndex = gallery.indexOf(portfolio.after_url);
+    if (afterStartIndex > 0) {
+      befores = gallery.slice(0, afterStartIndex);
+      afters = gallery.slice(afterStartIndex);
+    } else {
+      // after_url을 찾지 못하면 before_url/after_url만 사용
+      befores = [portfolio.before_url];
+      afters = [portfolio.after_url];
+    }
+  } else if (portfolio.before_url && portfolio.after_url) {
+    befores = [portfolio.before_url];
+    afters = [portfolio.after_url];
+  }
   const hasBeforeAfter = befores.length > 0 && afters.length > 0;
 
   return (

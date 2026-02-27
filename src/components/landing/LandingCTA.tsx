@@ -223,7 +223,7 @@ export default function LandingCTA() {
                 <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">
                   경남 창원시 의창구 용동로 45
                   <br />
-                  현대썬엔빌더스퀘어 F동 106호
+                  현대썬앤빌더스퀘어 F동 106호
                 </p>
               </div>
             </div>

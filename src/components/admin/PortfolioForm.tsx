@@ -3,6 +3,7 @@
 import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Upload, X, GripVertical } from 'lucide-react';
+import { toast } from 'sonner';
 import { PortfolioRecord } from '@/lib/supabase';
 
 interface ImageSlot {
@@ -34,24 +35,25 @@ function parseGalleryUrls(portfolio?: PortfolioRecord): { beforeUrls: (string | 
   if (portfolio.after_url) afterUrls[0] = portfolio.after_url;
 
   // gallery_urls에서 추가 이미지 파싱
+  // gallery_urls 구조: [before들..., after들...] (actions.ts에서 [...beforeUrls, ...afterUrls]로 저장)
   if (portfolio.gallery_urls && portfolio.gallery_urls.length > 0) {
-    const gallery = portfolio.gallery_urls;
-    // gallery_urls 순서: [before들..., after들...]
-    // before_url/after_url과 중복되지 않는 이미지를 추가 슬롯에 배치
-    const extraBefores = gallery.filter(
-      (url) => url !== portfolio.before_url && url !== portfolio.after_url && !url.includes('/after')
-    );
-    const extraAfters = gallery.filter(
-      (url) => url !== portfolio.before_url && url !== portfolio.after_url && url.includes('/after')
-    );
+    const gallery = portfolio.gallery_urls.filter((url): url is string => typeof url === 'string' && url.length > 0);
 
-    // 첫 번째가 이미 채워져 있으면 2,3번째 슬롯에
-    extraBefores.forEach((url, i) => {
-      if (i + 1 < 3) beforeUrls[i + 1] = url;
-    });
-    extraAfters.forEach((url, i) => {
-      if (i + 1 < 3) afterUrls[i + 1] = url;
-    });
+    if (gallery.length > 0 && portfolio.after_url) {
+      // after_url의 위치로 before/after 경계를 찾음
+      const afterStartIndex = gallery.indexOf(portfolio.after_url);
+      if (afterStartIndex > 0) {
+        const galleryBefores = gallery.slice(0, afterStartIndex);
+        const galleryAfters = gallery.slice(afterStartIndex);
+        // 슬롯에 배치 (최대 3장)
+        galleryBefores.forEach((url, i) => {
+          if (i < 3) beforeUrls[i] = url;
+        });
+        galleryAfters.forEach((url, i) => {
+          if (i < 3) afterUrls[i] = url;
+        });
+      }
+    }
   }
 
   return { beforeUrls, afterUrls };
@@ -87,9 +89,10 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
 
   // ── 파일 → ImageSlot 변환 ──
   const fileToSlot = (file: File): Promise<ImageSlot> =>
-    new Promise((resolve) => {
+    new Promise((resolve, reject) => {
       const reader = new FileReader();
       reader.onloadend = () => resolve({ preview: reader.result as string, existingUrl: null, newFile: file });
+      reader.onerror = () => reject(new Error(`파일 읽기 실패: ${file.name}`));
       reader.readAsDataURL(file);
     });
 
@@ -308,6 +311,13 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
       formData.delete('after');
 
       await action(formData);
+    } catch (error) {
+      // Next.js redirect()는 특수 에러를 throw하므로 그대로 전파
+      if (error instanceof Error && 'digest' in error) {
+        throw error;
+      }
+      console.error('시공사례 저장 중 오류:', error);
+      toast.error('저장 중 오류가 발생했습니다. 다시 시도해주세요.');
     } finally {
       setIsSubmitting(false);
     }

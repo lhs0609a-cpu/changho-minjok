@@ -12,6 +12,7 @@ const certImages = [
   { src: '/images/trust/ks-certificate.jpg', alt: 'KS 제품인증서', title: 'KS 제품인증서', sub: '한국산업표준 인증' },
   { src: '/images/trust/emaster-certificate.jpg', alt: 'e-MASTER Club 인증서', title: 'e-MASTER 인증서', sub: '이마스터클럽 회원사' },
   { src: '/images/trust/business-registration.jpg', alt: '사업자등록증', title: '사업자등록증', sub: '(주)현경시스템' },
+  { src: '/images/trust/changho-business-registration.jpg', alt: '창호의민족 사업자등록증', title: '사업자등록증', sub: '창호의 민족 (221-31-52133)' },
 ];
 
 const certifications = [
@@ -47,9 +48,9 @@ const certifications = [
   },
   {
     icon: Award,
-    title: '현경시스템 Star Plus',
-    description: '현경시스템 공식 인증',
-    detail: '품질 우수 업체',
+    title: 'KCC Star Plus',
+    description: 'KCC 공식 Star Plus 인증',
+    detail: 'e-MAX Club Prime Distributor',
   },
 ];
 

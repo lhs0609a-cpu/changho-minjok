@@ -18,8 +18,24 @@ interface PortfolioFormProps {
   submitLabel: string;
 }
 
+const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+
 function emptySlot(): ImageSlot {
   return { preview: null, existingUrl: null, newFile: null };
+}
+
+/** 파일 크기 검증 — 초과 시 toast 알림 후 유효한 파일만 반환 */
+function filterBySize(files: File[]): File[] {
+  const valid: File[] = [];
+  for (const f of files) {
+    if (f.size > MAX_FILE_SIZE) {
+      const sizeMB = (f.size / 1024 / 1024).toFixed(1);
+      toast.error(`"${f.name}" 파일이 너무 큽니다 (${sizeMB}MB). 5MB 이하로 줄여주세요.`);
+    } else {
+      valid.push(f);
+    }
+  }
+  return valid;
 }
 
 /** gallery_urls에서 before/after 이미지를 분리 (기존 데이터 호환) */
@@ -102,8 +118,10 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
     setter: React.Dispatch<React.SetStateAction<ImageSlot[]>> | React.Dispatch<React.SetStateAction<ImageSlot>>,
     index?: number
   ) => {
-    const files = e.target.files;
-    if (!files || files.length === 0) return;
+    const raw = e.target.files;
+    if (!raw || raw.length === 0) return;
+    const files = filterBySize(Array.from(raw));
+    if (files.length === 0) return;
 
     if (index !== undefined && files.length === 1) {
       // 단일 파일 → 특정 슬롯
@@ -116,7 +134,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
       });
     } else if (index !== undefined && files.length > 1) {
       // 다중 파일 → 해당 슬롯부터 빈 슬롯에 순서대로
-      const fileArr = Array.from(files).slice(0, 3);
+      const fileArr = files.slice(0, 3);
       Promise.all(fileArr.map(fileToSlot)).then((slots) => {
         (setter as React.Dispatch<React.SetStateAction<ImageSlot[]>>)((prev) => {
           const next = [...prev];
@@ -142,7 +160,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
     files: File[],
     setter: React.Dispatch<React.SetStateAction<ImageSlot[]>>
   ) => {
-    const imageFiles = files.filter((f) => f.type.startsWith('image/')).slice(0, 3);
+    const imageFiles = filterBySize(files.filter((f) => f.type.startsWith('image/'))).slice(0, 3);
     if (imageFiles.length === 0) return;
     Promise.all(imageFiles.map(fileToSlot)).then((slots) => {
       setter((prev) => {
@@ -196,7 +214,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
     if (files.length === 0) return;
 
     if (group === 'thumbnail') {
-      const imgFile = files.find((f) => f.type.startsWith('image/'));
+      const imgFile = filterBySize(files.filter((f) => f.type.startsWith('image/')))[0];
       if (imgFile) {
         fileToSlot(imgFile).then((slot) => {
           (setter as React.Dispatch<React.SetStateAction<ImageSlot>>)(slot);
@@ -598,6 +616,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         <div>
           <h2 className="text-lg font-semibold text-gray-900 mb-2">이미지</h2>
           <p className="text-sm text-gray-500">같은 그룹 내에서 이미지를 드래그하여 순서를 변경할 수 있습니다.</p>
+          <p className="text-xs text-gray-400 mt-1">이미지 1장당 최대 5MB</p>
         </div>
 
         {/* 썸네일 */}

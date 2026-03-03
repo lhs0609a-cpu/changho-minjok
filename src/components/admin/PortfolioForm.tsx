@@ -18,7 +18,7 @@ interface PortfolioFormProps {
   submitLabel: string;
 }
 
-const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+const MAX_FILE_SIZE = 20 * 1024 * 1024; // 20MB
 
 function emptySlot(): ImageSlot {
   return { preview: null, existingUrl: null, newFile: null };
@@ -30,7 +30,7 @@ function filterBySize(files: File[]): File[] {
   for (const f of files) {
     if (f.size > MAX_FILE_SIZE) {
       const sizeMB = (f.size / 1024 / 1024).toFixed(1);
-      toast.error(`"${f.name}" 파일이 너무 큽니다 (${sizeMB}MB). 5MB 이하로 줄여주세요.`);
+      toast.error(`"${f.name}" 파일이 너무 큽니다 (${sizeMB}MB). 20MB 이하로 줄여주세요.`);
     } else {
       valid.push(f);
     }
@@ -616,7 +616,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         <div>
           <h2 className="text-lg font-semibold text-gray-900 mb-2">이미지</h2>
           <p className="text-sm text-gray-500">같은 그룹 내에서 이미지를 드래그하여 순서를 변경할 수 있습니다.</p>
-          <p className="text-xs text-gray-400 mt-1">이미지 1장당 최대 5MB</p>
+          <p className="text-xs text-gray-400 mt-1">이미지 1장당 최대 20MB</p>
         </div>
 
         {/* 썸네일 */}

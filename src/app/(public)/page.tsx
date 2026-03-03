@@ -6,6 +6,7 @@ import ProductHighlightSection from '@/components/home/ProductHighlightSection';
 import EstimateCTASection from '@/components/home/EstimateCTASection';
 import PortfolioPreviewSection from '@/components/home/PortfolioPreviewSection';
 import BeforeAfterShowcase from '@/components/home/BeforeAfterShowcase';
+import ThermalInsulationSection from '@/components/home/ThermalInsulationSection';
 import ToolsSection from '@/components/home/ToolsSection';
 import ColumnPreviewSection from '@/components/home/ColumnPreviewSection';
 import PartnersSection from '@/components/home/PartnersSection';
@@ -22,6 +23,7 @@ export default function HomePage() {
       <EstimateCTASection />
       <PortfolioPreviewSection />
       <BeforeAfterShowcase />
+      <ThermalInsulationSection />
       <ToolsSection />
       <ColumnPreviewSection />
       <PartnersSection />

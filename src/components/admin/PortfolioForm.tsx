@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Upload, X, GripVertical } from 'lucide-react';
 import { toast } from 'sonner';
@@ -103,6 +103,53 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
   const thumbnailInputRef = useRef<HTMLInputElement | null>(null);
   const beforeInputRefs = useRef<(HTMLInputElement | null)[]>([null, null, null]);
   const afterInputRefs = useRef<(HTMLInputElement | null)[]>([null, null, null]);
+  const formRef = useRef<HTMLFormElement | null>(null);
+  const [draftRestored, setDraftRestored] = useState(false);
+
+  const DRAFT_KEY = 'portfolio-draft';
+  const DRAFT_FIELDS = [
+    'title', 'location', 'date', 'buildingType', 'product',
+    'area', 'windowCount', 'duration', 'description', 'features',
+    'rating', 'review', 'published', 'displayOrder',
+  ];
+
+  // 임시저장: localStorage에 텍스트 필드 저장
+  const saveDraft = () => {
+    if (!formRef.current) return;
+    const fd = new FormData(formRef.current);
+    const draft: Record<string, string> = {};
+    for (const key of DRAFT_FIELDS) {
+      draft[key] = (fd.get(key) as string) || '';
+    }
+    localStorage.setItem(DRAFT_KEY, JSON.stringify(draft));
+    toast.success('임시저장되었습니다.');
+  };
+
+  const clearDraft = () => {
+    localStorage.removeItem(DRAFT_KEY);
+  };
+
+  // 새 시공사례 작성 시에만 드래프트 복원
+  useEffect(() => {
+    if (portfolio) return; // 편집 모드에서는 복원 안 함
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY);
+      if (!raw) return;
+      const draft: Record<string, string> = JSON.parse(raw);
+      if (!formRef.current) return;
+      for (const key of DRAFT_FIELDS) {
+        if (draft[key] === undefined) continue;
+        const el = formRef.current.elements.namedItem(key);
+        if (el && 'value' in el) {
+          (el as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement).value = draft[key];
+        }
+      }
+      setDraftRestored(true);
+      toast.info('임시저장된 내용이 복원되었습니다.');
+    } catch {
+      // 파싱 오류 시 무시
+    }
+  }, [portfolio]);
 
   // ── 파일 → ImageSlot 변환 ──
   const fileToSlot = (file: File): Promise<ImageSlot> =>
@@ -292,12 +339,13 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
     setIsSubmitting(true);
     try {
       const title = formData.get('title') as string;
-      const folder = title.replace(/[^a-zA-Z0-9가-힣]/g, '-').slice(0, 30) + '-' + Date.now().toString().slice(-6);
+      const folder = title.replace(/[^a-zA-Z0-9]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '').slice(0, 30) || 'portfolio';
+      const folderWithId = folder + '-' + Date.now().toString().slice(-6);
 
       // 썸네일 업로드
       let thumbnailUrl = thumbnailSlot.existingUrl || '';
       if (thumbnailSlot.newFile) {
-        thumbnailUrl = await uploadImageClient(thumbnailSlot.newFile, folder);
+        thumbnailUrl = await uploadImageClient(thumbnailSlot.newFile, folderWithId);
       }
       formData.set('thumbnailUrl', thumbnailUrl);
 
@@ -306,7 +354,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         const slot = beforeSlots[i];
         let url = slot.existingUrl || '';
         if (slot.newFile) {
-          url = await uploadImageClient(slot.newFile, folder);
+          url = await uploadImageClient(slot.newFile, folderWithId);
         }
         formData.set(`beforeUrl_${i}`, url);
       }
@@ -316,7 +364,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
         const slot = afterSlots[i];
         let url = slot.existingUrl || '';
         if (slot.newFile) {
-          url = await uploadImageClient(slot.newFile, folder);
+          url = await uploadImageClient(slot.newFile, folderWithId);
         }
         formData.set(`afterUrl_${i}`, url);
       }
@@ -336,6 +384,7 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
       formData.delete('after');
 
       await action(formData);
+      clearDraft();
     } catch (error) {
       // Next.js redirect()는 특수 에러를 throw하므로 그대로 전파
       if (error instanceof Error && 'digest' in error) {
@@ -419,12 +468,25 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
   };
 
   return (
-    <form action={handleSubmit} className="space-y-8">
+    <form ref={formRef} action={handleSubmit} className="space-y-8">
       {portfolio && (
         <>
           <input type="hidden" name="id" value={portfolio.id} />
           <input type="hidden" name="slug" value={portfolio.slug} />
         </>
+      )}
+
+      {draftRestored && (
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-xl text-sm flex items-center justify-between">
+          <span>임시저장된 내용이 복원되었습니다. 이미지는 다시 추가해주세요.</span>
+          <button
+            type="button"
+            onClick={() => { clearDraft(); setDraftRestored(false); }}
+            className="text-blue-600 hover:text-blue-800 font-medium ml-4 whitespace-nowrap"
+          >
+            닫기
+          </button>
+        </div>
       )}
 
       {/* 기본 정보 */}
@@ -744,6 +806,15 @@ export default function PortfolioForm({ portfolio, action, submitLabel }: Portfo
 
       {/* 버튼 */}
       <div className="flex justify-end gap-4">
+        {!portfolio && (
+          <button
+            type="button"
+            onClick={saveDraft}
+            className="px-8 py-3 bg-gray-200 text-gray-700 font-semibold rounded-xl hover:bg-gray-300 transition-colors"
+          >
+            임시저장
+          </button>
+        )}
         <button
           type="submit"
           disabled={isSubmitting}

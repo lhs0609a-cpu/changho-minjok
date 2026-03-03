@@ -2,15 +2,11 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import BeforeAfterSlider from '@/components/tools/BeforeAfterSlider';
-import { getPublishedPortfolios } from '@/lib/portfolio-db';
 
-export default async function BeforeAfterShowcase() {
-  const portfolios = await getPublishedPortfolios();
-  // 동일 각도 B/A 사진이 가장 잘 맞는 첫 번째(대표) 시공사례 우선
-  const showcase = portfolios.find((p) => p.before_url && p.after_url);
+const beforeSrc = '/images/home/showcase-before.jpg';
+const afterSrc = '/images/home/showcase-after.jpg';
 
-  if (!showcase) return null;
-
+export default function BeforeAfterShowcase() {
   return (
     <section className="py-24 md:py-32 bg-[#F5F5F5]">
       <div className="container mx-auto px-4 lg:px-8">
@@ -30,13 +26,13 @@ export default async function BeforeAfterShowcase() {
         {/* Slider */}
         <AnimatedSection delay={0.2} className="max-w-4xl mx-auto">
           <BeforeAfterSlider
-            beforeSrc={showcase.before_url!}
-            afterSrc={showcase.after_url!}
-            beforeAlt={`${showcase.title} - 시공 전`}
-            afterAlt={`${showcase.title} - 시공 후`}
+            beforeSrc={beforeSrc}
+            afterSrc={afterSrc}
+            beforeAlt="거실 슬라이딩 도어 - 시공 전"
+            afterAlt="거실 슬라이딩 도어 - 시공 후"
           />
           <p className="text-center text-[#767676] text-sm mt-4">
-            드래그하여 비교해보세요 &middot; {showcase.title}
+            드래그하여 비교해보세요 &middot; 거실 슬라이딩 도어
           </p>
         </AnimatedSection>
 

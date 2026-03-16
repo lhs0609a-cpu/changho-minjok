@@ -3,12 +3,20 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShieldCheck, ShieldX, Search, X } from 'lucide-react';
-import { searchStaff, StaffMember } from '@/lib/constants/staff';
+import { ShieldCheck, ShieldX, Search, X, Loader2 } from 'lucide-react';
+
+interface AdvisorMember {
+  name: string;
+  phone: string;
+  displayPhone: string;
+  email: string;
+  position: string;
+}
 
 type SearchResult =
   | { status: 'idle' }
-  | { status: 'found'; member: StaffMember }
+  | { status: 'searching' }
+  | { status: 'found'; member: AdvisorMember }
   | { status: 'not_found' };
 
 export default function AdvisorWidget({ embedded = false }: { embedded?: boolean }) {
@@ -20,14 +28,22 @@ export default function AdvisorWidget({ embedded = false }: { embedded?: boolean
   // 랜딩 페이지에서는 FloatingCTA에 embedded로 포함되므로 standalone 숨김
   if (!embedded && pathname === '/landing') return null;
 
-  const handleSearch = (e: React.FormEvent) => {
+  const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
 
-    const member = searchStaff(query);
-    if (member) {
-      setResult({ status: 'found', member });
-    } else {
+    setResult({ status: 'searching' });
+
+    try {
+      const res = await fetch(`/api/advisors/search?q=${encodeURIComponent(query.trim())}`);
+      const data = await res.json();
+
+      if (data.found && data.member) {
+        setResult({ status: 'found', member: data.member });
+      } else {
+        setResult({ status: 'not_found' });
+      }
+    } catch {
       setResult({ status: 'not_found' });
     }
   };
@@ -84,9 +100,14 @@ export default function AdvisorWidget({ embedded = false }: { embedded?: boolean
                 />
                 <button
                   type="submit"
-                  className="h-10 px-4 bg-[#FF6F0F] hover:bg-[#E5630D] rounded-lg text-white text-sm font-bold transition-colors flex items-center gap-1.5"
+                  disabled={result.status === 'searching'}
+                  className="h-10 px-4 bg-[#FF6F0F] hover:bg-[#E5630D] disabled:opacity-50 rounded-lg text-white text-sm font-bold transition-colors flex items-center gap-1.5"
                 >
-                  <Search className="w-4 h-4" />
+                  {result.status === 'searching' ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Search className="w-4 h-4" />
+                  )}
                   조회
                 </button>
               </form>

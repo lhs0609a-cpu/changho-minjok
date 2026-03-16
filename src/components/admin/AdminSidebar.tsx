@@ -22,6 +22,7 @@ import {
   ChevronRight,
   Zap,
   Building2,
+  UserCheck,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -63,6 +64,7 @@ const navGroups: NavGroup[] = [
       { href: '/admin/customers', label: '고객관리(CRM)', icon: Users },
       { href: '/admin/estimates', label: '견적 관리', icon: Calculator },
       { href: '/admin/reviews', label: '후기 관리', icon: Star },
+      { href: '/admin/advisors', label: '어드바이저 관리', icon: UserCheck },
     ],
   },
   {

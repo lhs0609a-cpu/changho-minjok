@@ -12,6 +12,8 @@ export async function createPopupAction(formData: FormData) {
   const end_date = formData.get('end_date') as string;
   const is_active = formData.get('is_active') === 'true';
   const display_order = parseInt(formData.get('display_order') as string) || 1;
+  const popup_width = parseInt(formData.get('popup_width') as string) || null;
+  const popup_height = parseInt(formData.get('popup_height') as string) || null;
 
   if (!title) {
     return { success: false, error: '제목을 입력해주세요.' };
@@ -25,6 +27,8 @@ export async function createPopupAction(formData: FormData) {
     end_date: end_date || undefined,
     is_active,
     display_order,
+    popup_width,
+    popup_height,
   });
 
   if (!popup) {
@@ -44,6 +48,8 @@ export async function updatePopupAction(formData: FormData) {
   const end_date = formData.get('end_date') as string;
   const is_active = formData.get('is_active') === 'true';
   const display_order = parseInt(formData.get('display_order') as string) || 1;
+  const popup_width = parseInt(formData.get('popup_width') as string) || null;
+  const popup_height = parseInt(formData.get('popup_height') as string) || null;
 
   if (!id || !title) {
     return { success: false, error: '필수 정보가 누락되었습니다.' };
@@ -57,6 +63,8 @@ export async function updatePopupAction(formData: FormData) {
     end_date: end_date || null,
     is_active,
     display_order,
+    popup_width,
+    popup_height,
   });
 
   if (!popup) {

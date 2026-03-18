@@ -9,6 +9,8 @@ interface Popup {
   title: string;
   image_url: string | null;
   link_url: string | null;
+  popup_width?: number | null;
+  popup_height?: number | null;
 }
 
 interface PopupModalProps {
@@ -22,12 +24,11 @@ export default function PopupModal({ popups }: PopupModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    // 로컬 스토리지에서 숨김 설정 확인
     const hideUntil = localStorage.getItem(HIDE_POPUP_KEY);
     if (hideUntil) {
       const hideDate = new Date(hideUntil);
       if (hideDate > new Date()) {
-        return; // 아직 숨김 기간 중
+        return;
       }
     }
 
@@ -39,6 +40,8 @@ export default function PopupModal({ popups }: PopupModalProps) {
   }
 
   const currentPopup = visiblePopups[currentIndex];
+  const width = currentPopup.popup_width || 400;
+  const height = currentPopup.popup_height || 500;
 
   const handleClose = () => {
     setVisiblePopups([]);
@@ -68,7 +71,13 @@ export default function PopupModal({ popups }: PopupModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
-      <div className="relative bg-white rounded-2xl shadow-2xl max-w-[calc(100%-2rem)] sm:max-w-md w-full overflow-hidden">
+      <div
+        className="relative bg-white rounded-2xl shadow-2xl overflow-hidden"
+        style={{
+          width: `min(${width}px, calc(100vw - 2rem))`,
+          maxHeight: `calc(100vh - 2rem)`,
+        }}
+      >
         {/* Close Button */}
         <button
           onClick={handleClose}
@@ -83,7 +92,10 @@ export default function PopupModal({ popups }: PopupModalProps) {
           onClick={handleClick}
         >
           {currentPopup.image_url ? (
-            <div className="relative aspect-[4/5]">
+            <div
+              className="relative"
+              style={{ height: `min(${height - 52}px, calc(100vh - 2rem - 52px))` }}
+            >
               <Image
                 src={currentPopup.image_url}
                 alt={currentPopup.title}
@@ -92,8 +104,13 @@ export default function PopupModal({ popups }: PopupModalProps) {
               />
             </div>
           ) : (
-            <div className="p-8 text-center">
-              <h2 className="text-xl font-bold text-gray-900">{currentPopup.title}</h2>
+            <div
+              className="flex items-center justify-center"
+              style={{ height: `min(${height - 52}px, calc(100vh - 2rem - 52px))` }}
+            >
+              <h2 className="text-xl font-bold text-gray-900 p-8 text-center">
+                {currentPopup.title}
+              </h2>
             </div>
           )}
         </div>

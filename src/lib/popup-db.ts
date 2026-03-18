@@ -9,6 +9,8 @@ export interface PopupRecord {
   end_date: string | null;
   is_active: boolean;
   display_order: number;
+  popup_width: number | null;
+  popup_height: number | null;
   created_at: string;
 }
 
@@ -20,6 +22,8 @@ export interface PopupInput {
   end_date?: string | null;
   is_active?: boolean;
   display_order?: number;
+  popup_width?: number | null;
+  popup_height?: number | null;
 }
 
 export async function getAllPopups(): Promise<PopupRecord[]> {

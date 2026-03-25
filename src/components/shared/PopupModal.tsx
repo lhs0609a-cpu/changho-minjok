@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { X } from 'lucide-react';
 
 interface Popup {
@@ -40,8 +39,7 @@ export default function PopupModal({ popups }: PopupModalProps) {
   }
 
   const currentPopup = visiblePopups[currentIndex];
-  const width = currentPopup.popup_width || 400;
-  const height = currentPopup.popup_height || 500;
+  const maxW = currentPopup.popup_width || 500;
 
   const handleClose = () => {
     setVisiblePopups([]);
@@ -72,10 +70,10 @@ export default function PopupModal({ popups }: PopupModalProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50">
       <div
-        className="relative bg-white rounded-2xl shadow-2xl overflow-hidden"
+        className="relative bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
         style={{
-          width: `min(${width}px, calc(100vw - 2rem))`,
-          maxHeight: `calc(100vh - 2rem)`,
+          maxWidth: `min(${maxW}px, calc(100vw - 2rem))`,
+          maxHeight: 'calc(100vh - 2rem)',
         }}
       >
         {/* Close Button */}
@@ -86,28 +84,19 @@ export default function PopupModal({ popups }: PopupModalProps) {
           <X className="w-5 h-5 text-gray-600" />
         </button>
 
-        {/* Content */}
+        {/* Content - 이미지 원본 비율 유지, 화면에 맞게 축소 */}
         <div
-          className={currentPopup.link_url ? 'cursor-pointer' : ''}
+          className={`overflow-auto flex-1 min-h-0 ${currentPopup.link_url ? 'cursor-pointer' : ''}`}
           onClick={handleClick}
         >
           {currentPopup.image_url ? (
-            <div
-              className="relative"
-              style={{ height: `min(${height - 52}px, calc(100vh - 2rem - 52px))` }}
-            >
-              <Image
-                src={currentPopup.image_url}
-                alt={currentPopup.title}
-                fill
-                className="object-cover"
-              />
-            </div>
+            <img
+              src={currentPopup.image_url}
+              alt={currentPopup.title}
+              className="w-full h-auto block"
+            />
           ) : (
-            <div
-              className="flex items-center justify-center"
-              style={{ height: `min(${height - 52}px, calc(100vh - 2rem - 52px))` }}
-            >
+            <div className="flex items-center justify-center min-h-[200px]">
               <h2 className="text-xl font-bold text-gray-900 p-8 text-center">
                 {currentPopup.title}
               </h2>
@@ -116,7 +105,7 @@ export default function PopupModal({ popups }: PopupModalProps) {
         </div>
 
         {/* Footer */}
-        <div className="flex items-center justify-between p-4 border-t border-gray-100">
+        <div className="flex items-center justify-between p-4 border-t border-gray-100 shrink-0">
           <button
             onClick={handleHideToday}
             className="text-sm text-gray-500 hover:text-gray-700"

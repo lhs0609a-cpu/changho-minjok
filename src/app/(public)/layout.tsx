@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from 'next/cache';
 import Header from '@/components/layout/header/Header';
 import Footer from '@/components/layout/footer/Footer';
 import AdvisorWidget from '@/components/shared/AdvisorWidget';
@@ -9,6 +10,7 @@ export default async function PublicLayout({
 }: {
   children: React.ReactNode;
 }) {
+  noStore();
   const popups = await getActivePopups();
 
   return (

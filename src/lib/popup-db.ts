@@ -47,26 +47,30 @@ export async function getAllPopups(): Promise<PopupRecord[]> {
 
 export async function getActivePopups(): Promise<PopupRecord[]> {
   if (!supabase) {
-    console.warn('Supabase not configured');
+    console.warn('[Popup] Supabase not configured');
     return [];
   }
-
-  const now = new Date().toISOString();
 
   const { data, error } = await supabase
     .from('popups')
     .select('*')
     .eq('is_active', true)
-    .or(`start_date.is.null,start_date.lte.${now}`)
-    .or(`end_date.is.null,end_date.gte.${now}`)
     .order('display_order', { ascending: true });
 
   if (error) {
-    console.error('Error fetching active popups:', error);
+    console.error('[Popup] Error fetching active popups:', error);
     return [];
   }
 
-  return data || [];
+  // 날짜 필터링을 JS에서 처리 (Supabase .or() 체이닝 버그 우회)
+  const now = new Date();
+  const filtered = (data || []).filter((popup) => {
+    if (popup.start_date && new Date(popup.start_date) > now) return false;
+    if (popup.end_date && new Date(popup.end_date) < now) return false;
+    return true;
+  });
+
+  return filtered;
 }
 
 export async function getPopupById(id: string): Promise<PopupRecord | null> {
